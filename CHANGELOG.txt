@@ -1,0 +1,13 @@
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Changelog for package Dispatch
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+--------------------
+[version]:  1.0.1
+[message]:  add
+[feather]:
+[fix    ]:
+[TODO   ]:
+[info   ]: author: zxt ; time: 2021-07-07 15:46:00  ; email:   ; tel:   ;
+--------------------
