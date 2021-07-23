@@ -6,6 +6,10 @@
 # @File : wato_dispatch.py
 # @Software: PyCharm
 
+
+# 独立的调度系统
+
+
 from sqlalchemy import Column, create_engine
 from sqlalchemy import VARCHAR, DateTime, Float, Integer, BOOLEAN
 from sqlalchemy.orm import sessionmaker
