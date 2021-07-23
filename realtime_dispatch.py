@@ -3,7 +3,7 @@
 # @Time : 2021/7/21 16:45
 # @Author : Opfer
 # @Site :
-# @File : traffic_flow_dispatch.py    
+# @File : realtime_dispatch.py
 # @Software: PyCharm
 
 # !E:\Pycharm Projects\Waytous
@@ -581,7 +581,7 @@ class ExcavatorInfo(DeviceMap):
         # 读取实时装载量
         self.update_actual_load_throughout()
 
-        # 卸载目标产量
+        # 挖机目标产量
         self.excavator_target_mass = np.full(self.shovels, shovel_target_mass)
 
         # # 同步挖机虚拟装载量
@@ -1186,7 +1186,7 @@ class Dispatcher(DeviceMap):
 
         target = 0
 
-        shovel_target_mass = self.excavator.shovel_target_mass
+        excavator_target_mass = self.excavator.excavator_target_mass
         loading_time = self.excavator.loading_time
         dump_target_mass = self.dump.dump_target_mass
         unloading_time = self.dump.unloading_time
@@ -1195,7 +1195,7 @@ class Dispatcher(DeviceMap):
             logger.info("矿卡状态：矿卡启动或故障恢复")
             logger.info("矿卡行程：无")
             logger.info(f'涉及电铲：{list(self.excavator_uuid_to_index_dict.keys())}')
-            logger.info(f'电铲饱和度：{(1 - self.sim_shovel_real_mass / shovel_target_mass)}')
+            logger.info(f'电铲饱和度：{(1 - self.sim_shovel_real_mass / excavator_target_mass)}')
             logger.info(
                 f'行程时间：{(np.maximum(self.sim_shovel_ava_time, now + self.park_to_load_eq[0, :]) + loading_time - now)}')
             logger.info(f'行驶时间：{self.park_to_load_eq[0, :] + loading_time}')
