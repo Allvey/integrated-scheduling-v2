@@ -6,6 +6,10 @@
 # @File : tables.py
 # @Software: PyCharm
 
+
+# 存储数据库表结构
+
+
 from sqlalchemy import Column, create_engine
 from sqlalchemy import VARCHAR, DateTime, Float, Integer, BOOLEAN
 from sqlalchemy.orm import sessionmaker
