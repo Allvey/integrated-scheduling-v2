@@ -3,7 +3,7 @@
 # @Time : 2021/6/22 12:46
 # @Author : Opfer
 # @Site :
-# @File : Tables.py    
+# @File : tables.py
 # @Software: PyCharm
 
 from sqlalchemy import Column, create_engine
@@ -192,8 +192,9 @@ class EquipmentPair(Base):
     unload_area_id = Column(VARCHAR(36))
     dispatch_id = Column(VARCHAR(36))
     isdeleted = Column(BOOLEAN)
+    createtime = Column(DateTime)
 
-    def __init__(self, id, truck_id, exactor_id, dump_id, load_area_id, unload_area_id, dispatch_id, isdeleted):
+    def __init__(self, id, truck_id, exactor_id, dump_id, load_area_id, unload_area_id, dispatch_id, isdeleted, createtime):
         self.id = id
         self.truck_id = truck_id
         self.exactor_id = exactor_id
@@ -202,6 +203,7 @@ class EquipmentPair(Base):
         self.unload_area_id = unload_area_id
         self.dispatch_id = dispatch_id
         self.isdeleted = isdeleted
+        self.createtime = createtime
 
 class Dispatch(Base):
     # 表的名字:

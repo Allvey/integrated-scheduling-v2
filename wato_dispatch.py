@@ -3,7 +3,7 @@
 # @Time : 2021/6/15 10:35
 # @Author : Opfer
 # @Site :
-# @File : WatoDisp.py    
+# @File : wato_dispatch.py
 # @Software: PyCharm
 
 from sqlalchemy import Column, create_engine
@@ -18,7 +18,7 @@ import copy
 import json
 import sched
 import time
-from Tables import *
+from tables import *
 from urllib.parse import quote
 import logging
 import logging.handlers
