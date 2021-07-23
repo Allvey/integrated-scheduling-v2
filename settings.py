@@ -6,10 +6,13 @@
 # @File : settings.py    
 # @Software: PyCharm
 
+
+# 数据库设备, redis设置, 日志设置
+
+
 from tables import *
 from urllib.parse import quote
 import logging.handlers
-
 
 # 创建日志
 ########################################################################################################################

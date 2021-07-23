@@ -6,13 +6,9 @@
 # @File : realtime_dispatch.py
 # @Software: PyCharm
 
-# !E:\Pycharm Projects\Waytous
-# -*- coding: utf-8 -*-
-# @Time : 2021/6/15 10:35
-# @Author : Opfer
-# @Site :
-# @File : WatoDisp.py
-# @Software: PyCharm
+
+# 实时调度模块
+
 
 from sqlalchemy import Column, create_engine
 from sqlalchemy import VARCHAR, DateTime, Float, Integer, BOOLEAN
@@ -36,7 +32,6 @@ from settings import *
 from static_data_process import *
 
 # 全局参数设定
-########################################################################################################################
 
 # 空载任务集合
 empty_task_set = [0, 1, 5]
@@ -62,210 +57,8 @@ task_set = [-2, 0, 1, 2, 3, 4, 5]
 # Big integer
 M = 100000000
 
-# # 创建日志
-# ########################################################################################################################
-# # 日志存储地址
-# log_path = '/usr/local/fleet-log/dispatch'
-# # log_path = '/root/WatoDisp/logs'
-#
-# # # 创建日志目录
-# # if not os.path.exists(log_path):
-# #     os.mkdir(log_path)
-#
-# # logging初始化工作
-# logging.basicConfig()
-#
-# logger = logging.getLogger(__name__)
-# logger.setLevel(logging.INFO)
-#
-# # timefilehandler = logging.handlers.TimedRotatingFileHandler(log_path + "/dispatch.log", when='M', interval=1, backupCount=60)
-# # filehandler = logging.handlers.RotatingFileHandler(log_path + "/dispatch.log", maxBytes=3*1024*1024, backupCount=10)
-# filehandler = logging.handlers.RotatingFileHandler("logs/dispatch.log", maxBytes=3 * 1024 * 1024, backupCount=10)
-# # 设置后缀名称，跟strftime的格式一样
-# filehandler.suffix = "%Y-%m-%d_%H-%M.log"
-#
-# formatter = logging.Formatter('%(asctime)s - %(name)s: %(levelname)s %(message)s')
-# filehandler.setFormatter(formatter)
-# logger.addHandler(filehandler)
-#
-# # 连接reids
-# ########################################################################################################################
-# # redis 5 存储设备状态
-# pool5 = ConnectionPool(host='192.168.28.111', db=5, port=6379, password='Huituo@123')
-#
-# redis5 = StrictRedis(connection_pool=pool5)
-#
-# # redis 2 存储派车计划
-# pool2 = ConnectionPool(host='192.168.28.111', db=2, port=6379, password='Huituo@123')
-#
-# redis2 = StrictRedis(connection_pool=pool2)
-#
-# # 数据库连接设置
-# ########################################################################################################################
-# # 创建对象的基类:
-# Base = declarative_base()
-#
-# try:
-#     engine_mysql = create_engine('mysql+mysqlconnector://root:%s@192.168.28.111:3306/waytous' % quote('Huituo@123'))
-#
-#     engine_postgre = create_engine('postgresql://postgres:%s@192.168.28.111:5432/shenbao_2021520' % quote('Huituo@123'))
-#
-#     # 创建DBsession_mysql类型:
-#     DBsession_mysql = sessionmaker(bind=engine_mysql)
-#
-#     DBsession_postgre = sessionmaker(bind=engine_postgre)
-#
-#     # 创建session_mysql对象:
-#     session_mysql = DBsession_mysql()
-#
-#     session_postgre = DBsession_postgre()
-# except Exception as es:
-#     logger.error("数据库连接失败")
-#     logger.error(es)
-
-
-# # 下面开始数据处理部分
-# ########################################################################################################################
-#
-# def build_work_area_uuid_index_map():
-#     # load_area_id <-> load_area_index
-#     # unload_area_id <-> unload_area_index
-#     load_area_uuid_to_index_dict = {}
-#     unload_area_uuid_to_index_dict = {}
-#     load_area_index_to_uuid_dict = {}
-#     unload_area_index_to_uuid_dict = {}
-#
-#     unload_area_num = 0
-#     load_area_num = 0
-#
-#     try:
-#         for item in session_postgre.query(WalkTime).all():
-#             load_area = str(item.load_area_id)
-#             unload_area = str(item.unload_area_id)
-#             if load_area not in load_area_uuid_to_index_dict:
-#                 load_area_uuid_to_index_dict[load_area] = load_area_num
-#                 load_area_index_to_uuid_dict[load_area_num] = load_area
-#                 load_area_num = load_area_num + 1
-#             if unload_area not in unload_area_uuid_to_index_dict:
-#                 unload_area_uuid_to_index_dict[unload_area] = unload_area_num
-#                 unload_area_index_to_uuid_dict[unload_area_num] = unload_area
-#                 unload_area_num = unload_area_num + 1
-#         if unload_area_num < 1 or load_area_num < 1:
-#             raise Exception("无路网信息")
-#     except Exception as es:
-#         logger.error(es)
-#     return load_area_uuid_to_index_dict, unload_area_uuid_to_index_dict, \
-#            load_area_index_to_uuid_dict, unload_area_index_to_uuid_dict
-#
-#
-# def build_park_uuid_index_map():
-#     # park_id <-> park_index
-#     park_uuid_to_index_dict = {}
-#     park_index_to_uuid_dict = {}
-#
-#     park_num = 0
-#
-#     try:
-#         for item in session_postgre.query(WalkTimePort).all():
-#             park = str(item.park_area_id)
-#             if park not in park_uuid_to_index_dict:
-#                 park_uuid_to_index_dict[park] = park_num
-#                 park_index_to_uuid_dict[park_num] = park
-#                 park_num = park_num + 1
-#         if park_num < 1:
-#             raise Exception("无备停区路网信息")
-#     except Exception as es:
-#         logger.error(es)
-#
-#     return park_uuid_to_index_dict, park_index_to_uuid_dict
-#
-#
-# def build_truck_uuid_name_map():
-#     # truck_id <-> truck_name
-#     truck_uuid_to_name_dict = {}
-#     truck_name_to_uuid_dict = {}
-#
-#     try:
-#         for item in session_mysql.query(Equipment).filter_by(device_type=1).all():
-#             truck_id = item.id
-#             truck_name = item.equipment_id
-#
-#             truck_name_to_uuid_dict[truck_name] = truck_id
-#             truck_uuid_to_name_dict[truck_id] = truck_name
-#         if len(truck_uuid_to_name_dict) < 1 or len(truck_name_to_uuid_dict) < 1:
-#             raise Exception("无矿卡设备可用-矿卡设备映射异常")
-#     except Exception as es:
-#         logger.warning(es)
-#     return truck_uuid_to_name_dict, truck_name_to_uuid_dict
-#
-#
-# def update_deveices_map(unload_area_uuid_to_index_dict, load_area_uuid_to_index_dict):
-#     excavator_uuid_to_index_dict = {}  # 用于将Excavator表中的area_id映射到index
-#     dump_uuid_to_index_dict = {}  # 用于将Dump表中的area_id映射到index
-#     excavator_index_to_uuid_dict = {}  # 用于将index映射到Excavator表中的area_id
-#     dump_index_to_uuid_dict = {}  # 用于将index映射到Dump表中的area_id
-#
-#     dump_uuid_to_unload_area_uuid_dict = {}
-#     excavator_uuid_to_load_area_uuid_dict = {}
-#     excavator_index_to_load_area_index_dict = {}
-#     dump_index_to_unload_area_index_dict = {}
-#
-#     try:
-#         excavator_num = 0
-#         dump_num = 0
-#         for item in session_mysql.query(Dispatch).filter_by(isdeleted=0, isauto=1).all():
-#             # excavator_id <-> excavator_index
-#             # dump_id <-> dump_index
-#             # excavator_id <-> load_area_id
-#             # dump_id <-> unload_area_id
-#             # excavator_index <-> load_area_index
-#             # dump_index <-> unload_area_index
-#             excavator_id = item.exactor_id
-#             load_area_id = item.load_area_id
-#             unload_area_id = item.unload_area_id
-#             dump_id = item.dump_id
-#             if dump_id not in dump_uuid_to_unload_area_uuid_dict:
-#                 dump_uuid_to_index_dict[dump_id] = dump_num
-#                 dump_index_to_uuid_dict[dump_num] = dump_id
-#                 dump_uuid_to_unload_area_uuid_dict[dump_id] = unload_area_id
-#                 dump_index_to_unload_area_index_dict[dump_uuid_to_index_dict[dump_id]] = \
-#                     unload_area_uuid_to_index_dict[unload_area_id]
-#                 dump_num = dump_num + 1
-#             if excavator_id not in excavator_uuid_to_index_dict:
-#                 excavator_uuid_to_index_dict[excavator_id] = excavator_num
-#                 excavator_index_to_uuid_dict[excavator_num] = excavator_id
-#                 excavator_uuid_to_load_area_uuid_dict[excavator_id] = load_area_id
-#                 excavator_index_to_load_area_index_dict[excavator_uuid_to_index_dict[excavator_id]] = \
-#                     load_area_uuid_to_index_dict[load_area_id]
-#                 excavator_num = excavator_num + 1
-#         if excavator_num < 1 or dump_num < 1:
-#             raise Exception("无动态派车计划可用-动态派车挖机/卸点映射失败")
-#     except Exception as es:
-#         logger.warning(es)
-#
-#     return {'excavator_uuid_to_index_dict': excavator_uuid_to_index_dict,
-#             'dump_uuid_to_index_dict': dump_uuid_to_index_dict,
-#             'excavator_index_to_uuid_dict': excavator_index_to_uuid_dict,
-#             'dump_index_to_uuid_dict': dump_index_to_uuid_dict,
-#             'dump_uuid_to_unload_area_uuid_dict': dump_uuid_to_unload_area_uuid_dict,
-#             'excavator_uuid_to_load_area_uuid_dict': excavator_uuid_to_load_area_uuid_dict,
-#             'excavator_index_to_load_area_index_dict': excavator_index_to_load_area_index_dict,
-#             'dump_index_to_unload_area_index_dict': dump_index_to_unload_area_index_dict}
-#
-# def update_truck_uuid_index_map(dynamic_truck_set):
-#     truck_uuid_to_index_dict = {}
-#     truck_index_to_uuid_dict = {}
-#
-#     # truck_id <-> truck_index
-#     truck_num = 0
-#     for truck_id in dynamic_truck_set:
-#         truck_uuid_to_index_dict[truck_id] = truck_num
-#         truck_index_to_uuid_dict[truck_num] = truck_id
-#         truck_num = truck_num + 1
-#
-#     return {'truck_uuid_to_index_dict': truck_uuid_to_index_dict,
-#             'truck_index_to_uuid_dict': truck_index_to_uuid_dict}
-
+# 装载区、卸载区、备停区在调度算法运行器件默认不发生改变，提前计算部分参量
+# (uuid,index(id)映射关系, 装载区数量, 卸载区数量, 备停区数量, 以及初次统计动态调度矿卡)
 load_area_uuid_to_index_dict, unload_area_uuid_to_index_dict, \
 load_area_index_to_uuid_dict, unload_area_index_to_uuid_dict = build_work_area_uuid_index_map()
 
@@ -292,6 +85,8 @@ dynamic_excavator_set = set(update_autodisp_excavator())
 dynamic_dump_set = set(update_autodisp_dump())
 
 
+# 设备映射类, 存储除工作区以外的映射关系
+# 其余设备类继承该类
 class DeviceMap:
     def __init__(self):
         self.excavator_uuid_to_index_dict = {}
@@ -326,6 +121,7 @@ class DeviceMap:
         self.truck_index_to_uuid_dict = truck_map_dict['truck_index_to_uuid_dict']
 
 
+# 卸载设备类
 class DumpInfo(DeviceMap):
     def __init__(self):
         super().__init__()
@@ -350,6 +146,7 @@ class DumpInfo(DeviceMap):
         # 卸载时间
         self.unloading_time = np.zeros(self.dumps)
 
+    # 更新卸点卸载时间
     def update_dump_unloadtime(self):
         self.unloading_time = np.zeros(self.dumps)
 
@@ -371,6 +168,7 @@ class DumpInfo(DeviceMap):
                 self.unloading_time[self.dump_uuid_to_index_dict[dump_id]] = 1.00
         # print("average_unload_time: ", self.unloading_time[self.dump_uuid_to_index_dict[dump_id]])
 
+    # 更新卸点实际卸载量
     def update_actual_unload_thoughout(self):
         self.cur_dump_real_mass = np.zeros(self.dumps)
         now = datetime.now().strftime('%Y-%m-%d')
@@ -429,6 +227,7 @@ class DumpInfo(DeviceMap):
 
         print("Dump update!")
 
+        # 装载设备映射
         self.load()
 
         # # 初始化卸点可用时间
@@ -436,23 +235,22 @@ class DumpInfo(DeviceMap):
         #                                    (datetime.now() - self.start_time) / timedelta(hours=0, minutes=1,
         #                                                                                   seconds=0))
 
-        # 用于动态调度的卸载设备数量
+        # 用于动态调度的卸载设备
         self.dynamic_dump_set = set(update_autodisp_dump())
 
-        # 更新挖机和卸载设备数量
         self.dumps = len(self.dynamic_dump_set)
 
         # 计算平均卸载时间
         self.update_dump_unloadtime()
 
-        # 读取实时卸载量
+        # 计算实时卸载量
         self.update_actual_unload_thoughout()
 
         # 卸载目标产量
         self.dump_target_mass = np.full(self.dumps, dump_target_mass)
 
-        # 同步虚拟卸载量
-        self.sim_dump_real_mass = copy.deepcopy(self.cur_dump_real_mass)
+        # # 同步虚拟卸载量
+        # self.sim_dump_real_mass = copy.deepcopy(self.cur_dump_real_mass)
 
         # # 计算卸载点预估产量
         # self.update_pre_unload_throughout()
@@ -464,7 +262,7 @@ class ExcavatorInfo(DeviceMap):
         # 装载设备数量
         self.shovels = len(dynamic_excavator_set)
         # 目标产量
-        self.shovel_target_mass = np.zeros(self.shovels)
+        self.excavator_target_mass = np.zeros(self.shovels)
         # 真实实际产量
         self.cur_shovel_real_mass = np.zeros(self.shovels)
         # # 预计产量（包含正在驶往目的地的矿卡载重）
@@ -482,6 +280,7 @@ class ExcavatorInfo(DeviceMap):
         # 装载时间
         self.loading_time = np.zeros(self.shovels)
 
+    # 更新挖机装载时间
     def update_excavator_loadtime(self):
         self.loading_time = np.zeros(self.shovels)
 
@@ -502,6 +301,7 @@ class ExcavatorInfo(DeviceMap):
                 logger.error(es)
                 self.loading_time[self.excavator_uuid_to_index_dict[excavator_id]] = 1.00
 
+    # 更新挖机实际装载量
     def update_actual_load_throughout(self):
         self.cur_shovel_real_mass = np.zeros(self.shovels)
         now = datetime.now().strftime('%Y-%m-%d')
@@ -562,6 +362,7 @@ class ExcavatorInfo(DeviceMap):
 
         print("Shovel update!")
 
+        # 装载映射关系
         self.load()
 
         # # 初始化挖机可用时间
@@ -569,16 +370,15 @@ class ExcavatorInfo(DeviceMap):
         #                                    (datetime.now() - self.start_time) / timedelta(hours=0, minutes=1,
         #                                                                                   seconds=0))
 
-        # 用于动态调度的卸载设备数量
+        # 用于动态调度的挖机设备
         self.dynamic_excavator_set = set(update_autodisp_excavator())
 
-        # 更新挖机和卸载设备数量
         self.shovels = len(self.dynamic_excavator_set)
 
         # 计算平均装载时间
         self.update_excavator_loadtime()
 
-        # 读取实时装载量
+        # 计算实时装载量
         self.update_actual_load_throughout()
 
         # 挖机目标产量
@@ -612,7 +412,7 @@ class TruckInfo(DeviceMap):
         # 相对矿卡装载/卸载时间
         self.relative_last_load_time = {}
         self.relative_last_unload_time = {}
-        # 矿卡阶段
+        # 矿卡当前任务
         self.truck_current_task = {}
         # 调度开始时间
         self.start_time = datetime.now()
@@ -621,7 +421,13 @@ class TruckInfo(DeviceMap):
         # self.sim_truck_ava_time = np.zeros(self.trucks)
         # 矿卡有效载重
         self.payload = np.zeros(self.trucks)
+        # 矿卡当前行程(第一列为出发地序号, 第二列为目的地序号)
+        self.truck_current_trip = np.full((self.trucks, 2), -1)
+        # 矿卡最后装载/卸载时间
+        self.last_load_time = {}
+        self.last_unload_time = {}
 
+    # 更新矿卡当前任务
     def update_truck_current_task(self):
         self.truck_current_task = {}
         device_name_set = redis2.keys()
@@ -644,6 +450,7 @@ class TruckInfo(DeviceMap):
         logger.info("矿卡当前任务：")
         logger.info(self.truck_current_task)
 
+    # 更新矿卡实际容量
     def update_truck_payload(self):
         try:
             self.payload = np.zeros(self.trucks)
@@ -656,15 +463,13 @@ class TruckInfo(DeviceMap):
             logger.error("读取矿卡有效载重异常-矿卡型号信息缺失")
             logger.error(es)
 
+    # 更新矿卡最后装载/卸载时间
     def update_truck_last_leave_time(self):
         self.last_load_time = {}
         self.last_unload_time = {}
 
         self.relative_last_load_time = {}
         self.relative_last_unload_time = {}
-
-        # for x in redis2.keys():
-        #     print(redis2.get(x))
 
         try:
 
@@ -702,7 +507,9 @@ class TruckInfo(DeviceMap):
             logger.error("读取矿卡可用时间异常-redis读取异常")
             logger.error(es)
 
+    # 更新矿卡行程
     def update_truck_trip(self):
+        # 初始化矿卡行程, -1代表备停区
         self.truck_current_trip = np.full((self.trucks, 2), -1)
         for i in range(self.trucks):
             try:
@@ -762,10 +569,9 @@ class TruckInfo(DeviceMap):
         # print("当前矿卡行程：")
         # print(self.truck_current_trip)
 
+    # 更新矿卡预计抵达目的地时间
     def update_truck_reach_time(self):
         try:
-
-            now = float((datetime.now() - self.start_time) / timedelta(hours=0, minutes=1, seconds=0))
 
             shovel_ava_ls = [[] for _ in range(self.shovels)]
             dump_ava_ls = [[] for _ in range(self.dumps)]
@@ -788,30 +594,34 @@ class TruckInfo(DeviceMap):
         return shovel_ava_ls, dump_ava_ls
 
     def period_update(self):
+
+        print("Truck update!")
+
+        # 更新装载映射关系
         self.load()
 
-        # 全部矿卡设备集合
+        # 更新全部矿卡设备集合
         truck_set = set(update_total_truck())
 
-        # 固定派车矿卡集合
+        # 更新固定派车矿卡集合
         fixed_truck_set = set(update_fixdisp_truck())
 
-        # 动态派车矿卡集合
+        # 更新动态派车矿卡集合
         self.dynamic_truck_set = truck_set.difference(fixed_truck_set)
 
         # 更新矿卡数量
         self.trucks = len(self.dynamic_truck_set)
 
-        # 卡车当前任务
+        # 更新卡车当前任务
         self.update_truck_current_task()
 
-        # 有效载重
+        # 更新有效载重
         self.update_truck_payload()
 
-        # 卡车最后一次装载/卸载时间
+        # 更新卡车最后一次装载/卸载时间
         self.update_truck_last_leave_time()
 
-        # 读取卡车当前行程
+        # 更新卡车当前行程
         self.update_truck_trip()
 
 
@@ -819,11 +629,10 @@ class Dispatcher(DeviceMap):
     def __init__(self):
         # 三类设备field
         self.dump = DumpInfo()
-
         self.excavator = ExcavatorInfo()
-
         self.truck = TruckInfo()
 
+        # 模拟挖机/卸点产量(防止调度修改真实产量)
         self.sim_dump_real_mass = np.zeros(self.dump.dumps)
         self.sim_shovel_real_mass = np.zeros(self.excavator.shovels)
         # 真实设备可用时间
@@ -831,23 +640,24 @@ class Dispatcher(DeviceMap):
         self.cur_truck_reach_shovel = np.zeros(self.truck.trucks)
         self.cur_shovel_ava_time = np.zeros(self.excavator.shovels)
         self.cur_dump_ava_time = np.zeros(self.dump.dumps)
+        # 卡车完成装载及卸载时间(矿卡可用时间)
+        self.cur_truck_ava_time = np.zeros(self.truck.trucks)
+        # 模拟矿卡可用时间
+        self.sim_truck_ava_time = np.zeros(self.truck.trucks)
         # 模拟各设备可用时间(防止调度修改真实产量)
-        # self.sim_truck_reach_dump = np.zeros(self.trucks)
-        # self.sim_truck_reach_shovel = np.zeros(self.trucks)
         self.sim_shovel_ava_time = np.zeros(self.excavator.shovels)
         self.sim_dump_ava_time = np.zeros(self.dump.dumps)
-        # 挖机/卸点预计产量
+        # 挖机/卸点预计产量(包含正在驶往挖机/卸点那部分矿卡的载重)
         self.pre_dump_real_mass = np.zeros(self.dump.dumps)
         self.pre_shovel_real_mass = np.zeros(self.excavator.shovels)
 
-        # # 矿卡阶段
-        # self.truck_current_task = {}
         # 维护一个矿卡调度表
         self.Seq = [[] for _ in range(self.truck.trucks)]
         # 调度开始时间
         self.start_time = datetime.now()
         # self.relative_now_time = datetime.now() - self.start_time
 
+        # 工作区和设备不具备一一对应关系, 为方便就计算, 算法维护两套路网: 面向路网和面向设备
         # 行走时间(面向路网)
         self.com_time_area = np.full((unload_area_num, load_area_num), M)
         self.go_time_area = np.full((unload_area_num, load_area_num), M)
@@ -859,33 +669,21 @@ class Dispatcher(DeviceMap):
         # 备停区行走时间(面向设备)
         self.park_to_load_eq = np.full((park_num, self.excavator.shovels), M)
 
-        # 卡车完成装载及卸载时间
-        self.cur_truck_ava_time = np.zeros(self.truck.trucks)
-        self.sim_truck_ava_time = np.zeros(self.truck.trucks)
-
+        # 下面是交通流调度部分
+        # 驶往挖机的实际车流
         self.actual_goto_excavator_traffic_flow = np.zeros((self.dump.dumps, self.excavator.shovels))
+        # 驶往卸点的实际车流
         self.actual_goto_dump_traffic_flow = np.zeros((self.dump.dumps, self.excavator.shovels))
 
+        # 驶往挖机的实际车次
         self.goto_dump_truck_num = np.zeros((self.dump.dumps, self.excavator.shovels))
+        # 驶往卸点的实际车次
         self.goto_excavator_truck_num = np.zeros((self.dump.dumps, self.excavator.shovels))
 
+        # 驶往挖机的理想车流
         self.opt_goto_dump_traffic_flow = np.zeros((self.dump.dumps, self.excavator.shovels))
+        # 驶往卸点的实际车流
         self.opt_goto_excavator_traffic_flow = np.zeros((self.dump.dumps, self.excavator.shovels))
-
-        try:
-            # 处理距离
-            for item in session_postgre.query(WalkTime).all():
-                load_area = str(item.load_area_id)
-                unload_area = str(item.unload_area_id)
-                load_area_index = load_area_uuid_to_index_dict[load_area]
-                unload_area_index = unload_area_uuid_to_index_dict[unload_area]
-                self.com_time_area[unload_area_index][load_area_index] = float(
-                    60 / 1000 * item.to_load_distance / empty_speed)
-                self.go_time_area[unload_area_index][load_area_index] = float(
-                    60 / 1000 * item.to_unload_distance / heavy_speed)
-        except Exception as es:
-            logger.error("路网信息异常")
-            logger.error(es)
 
     # def update_deveices_map(self):
     #     self.excavator_uuid_to_index_dict = {}  # 用于将Excavator表中的area_id映射到index
@@ -943,6 +741,23 @@ class Dispatcher(DeviceMap):
     #         truck_num = truck_num + 1
 
     def update_walk_time(self):
+        # 计算路网行走时间
+        try:
+            # 处理距离
+            for item in session_postgre.query(WalkTime).all():
+                load_area = str(item.load_area_id)
+                unload_area = str(item.unload_area_id)
+                load_area_index = load_area_uuid_to_index_dict[load_area]
+                unload_area_index = unload_area_uuid_to_index_dict[unload_area]
+                self.com_time_area[unload_area_index][load_area_index] = float(
+                    60 / 1000 * item.to_load_distance / empty_speed)
+                self.go_time_area[unload_area_index][load_area_index] = float(
+                    60 / 1000 * item.to_unload_distance / heavy_speed)
+        except Exception as es:
+            logger.error("路网信息异常")
+            logger.error(es)
+
+        # 计算设备路网行走时间
         try:
 
             for i in range(self.dump.dumps):
@@ -957,7 +772,6 @@ class Dispatcher(DeviceMap):
             logger.error(es)
 
         try:
-
             for item in session_postgre.query(WalkTimePort).all():
                 load_area = str(item.load_area_id)
                 park_area = str(item.park_area_id)
@@ -979,9 +793,9 @@ class Dispatcher(DeviceMap):
             logger.error("备停区设备路网信息异常")
             logger.error(es)
 
+    # 更新矿卡预计抵达目的地时间
     def update_truck_reach_time(self):
         try:
-
             shovels = self.excavator.shovels
             dumps = self.dump.dumps
             trucks = self.truck.trucks
@@ -1014,6 +828,7 @@ class Dispatcher(DeviceMap):
 
         return shovel_ava_ls, dump_ava_ls
 
+    # 更新挖机预计可用时间
     def update_shovel_ava_time(self, shovel_ava_ls):
         try:
 
@@ -1039,6 +854,7 @@ class Dispatcher(DeviceMap):
             logger.error("挖机可用时间计算异常")
             logger.error(es)
 
+    # 更新卸点预计可用时间
     def update_dump_ava_time(self, dump_ava_ls):
         try:
 
@@ -1063,6 +879,7 @@ class Dispatcher(DeviceMap):
             logger.error("卸点可用时间计算异常")
             logger.error(es)
 
+    # 更新实际交通流
     def update_actual_traffic_flow(self):
         for item in session_mysql.query(EquipmentPair).filter(EquipmentPair.createtime >= self.start_time).all():
             dump_index = self.dump_uuid_to_index_dict[item.dump_id]
@@ -1088,6 +905,7 @@ class Dispatcher(DeviceMap):
                                                   ((datetime.now() - self.start_time) / timedelta(hours=0, minutes=1,
                                                                                                   seconds=0))
 
+    # 更新卸点预计产量
     def update_pre_unload_throughout(self):
         try:
             self.pre_dump_real_mass = copy.deepcopy(self.dump.cur_dump_real_mass)
@@ -1105,6 +923,7 @@ class Dispatcher(DeviceMap):
             logger.error("卸点预计装载量计算异常")
             logger.error(es)
 
+    # 更新挖机预计产量
     def update_pre_load_throughout(self):
         try:
             self.pre_shovel_real_mass = copy.deepcopy(self.excavator.cur_shovel_real_mass)
@@ -1128,10 +947,13 @@ class Dispatcher(DeviceMap):
 
         self.load()
 
+        # 更新卸点对象
         self.dump.period_update()
 
+        # 更新挖机对象
         self.excavator.period_update()
 
+        # 更新矿卡对象
         self.truck.period_update()
 
         # 设备距离（不同于工作区距离）
@@ -1171,10 +993,13 @@ class Dispatcher(DeviceMap):
 
     def truck_schedule(self, truck_id):
 
+        # 矿卡对应序号
         truck_index = self.truck_uuid_to_index_dict[truck_id]
 
+        # 矿卡行程
         trip = self.truck.truck_current_trip[truck_index]
 
+        # 矿卡当前任务
         task = self.truck.truck_current_task[self.truck_index_to_uuid_dict[truck_index]]
 
         now = float((datetime.now() - self.start_time) / timedelta(hours=0, minutes=1, seconds=0))
@@ -1276,16 +1101,12 @@ class Dispatcher(DeviceMap):
 
     def schedule_construct(self):
 
+        # 读取所需信息
         trucks = self.truck.trucks
-
         truck_current_trip = self.truck.truck_current_trip
-
         truck_current_task = self.truck.truck_current_task
-
         payload = self.truck.payload
-
         unloading_time = self.dump.unloading_time
-
         loading_time = self.excavator.loading_time
 
         # Seq初始化
@@ -1419,19 +1240,20 @@ class Dispatcher(DeviceMap):
 
 # 下面三个函数保证程序定期执行，不用管他
 def process(dispatcher, dump, excavator, truck):
+    # 清空数据库缓存
     session_mysql.commit()
     session_mysql.flush()
 
+    # 设备对象周期更新
     dump.period_update()
-
     excavator.period_update()
-
     truck.period_update()
-
     dispatcher.period_update()
 
+    # 参数重置
     dispatcher.sim_para_reset()
 
+    # 调度计算
     dispatcher.schedule_construct()
 
 

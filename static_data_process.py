@@ -6,11 +6,11 @@
 # @File : static_data_process.py    
 # @Software: PyCharm
 
+
+# 静态数据处理(函数名即为注释)
+
+
 from settings import *
-
-
-# 下面开始数据处理部分
-########################################################################################################################
 
 def build_work_area_uuid_index_map():
     # load_area_id <-> load_area_index
