@@ -124,7 +124,7 @@ def update_deveices_map(unload_area_uuid_to_index_dict, load_area_uuid_to_index_
                     load_area_uuid_to_index_dict[load_area_id]
                 excavator_num = excavator_num + 1
         if excavator_num < 1 or dump_num < 1:
-            raise Exception("无动态派车计划可用-动态派车挖机/卸点映射失败")
+            raise Exception("无动态派车计划可用-动态派车挖机/卸载设备映射失败")
     except Exception as es:
         logger.warning(es)
 
@@ -191,7 +191,7 @@ def update_autodisp_excavator():
         for item in session_mysql.query(Dispatch).filter_by(isdeleted=0, isauto=1).all():
             dynamic_excavator_list.append(item.exactor_id)
         if len(dynamic_excavator_list) < 1:
-            raise Exception("无动态派车计划可用-动态派车挖机/卸点集合读取异常")
+            raise Exception("无动态派车计划可用-动态派车挖机/卸载设备集合读取异常")
     except Exception as es:
         logger.warning(es)
 
@@ -205,7 +205,7 @@ def update_autodisp_dump():
         for item in session_mysql.query(Dispatch).filter_by(isdeleted=0, isauto=1).all():
             dynamic_dump_list.append(item.dump_id)
         if len(dynamic_dump_list) < 1:
-            raise Exception("无动态派车计划可用-动态派车挖机/卸点集合读取异常")
+            raise Exception("无动态派车计划可用-动态派车挖机/卸载设备集合读取异常")
     except Exception as es:
         logger.warning(es)
     return dynamic_dump_list

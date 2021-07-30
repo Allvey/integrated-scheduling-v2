@@ -209,6 +209,16 @@ class EquipmentPair(Base):
         self.isdeleted = isdeleted
         self.createtime = createtime
 
+class Lane(Base):
+    # 表的名字
+    __tablename__ = 'Geo_Node'
+    Id = Column(VARCHAR(36), primary_key=True)
+    LaneIds = Column(VARCHAR(100))
+
+    def __init__(self, Id, LaneIds):
+        self.Id = Id
+        self.LaneIds = LaneIds
+
 class Dispatch(Base):
     # 表的名字:
     __tablename__ = 'sys_dispatch_setting'

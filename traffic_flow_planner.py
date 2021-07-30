@@ -18,35 +18,39 @@ from settings import *
 
 # 需要提供的值
 # traffic_programme_para.excavator_strength[excavator_index] = 200  # 挖机最大装载能力，单位吨/小时
-# traffic_programme_para.grade_loading_array[excavator_index] = 100  # 挖机装载物料品位
-# traffic_programme_para.excavator_priority_coefficient[excavator_index] = 1  # 挖机优先级
 # traffic_programme_para.dump_strength[dump_index] = 200  # 卸载设备最大卸载能力，单位吨/小时
+
+# traffic_programme_para.grade_loading_array[excavator_index] = 100  # 挖机装载物料品位
+
+# traffic_programme_para.excavator_priority_coefficient[excavator_index] = 1  # 挖机优先级
+# traffic_programme_para.dump_priority_coefficient[dump_index] = 1  # 卸载设备优先级
+
 # traffic_programme_para.grade_upper_dump_array[dump_index] = 100  # 卸点品位上限
 # traffic_programme_para.grade_lower_dump_array[dump_index] = 100  # 卸点品位下限
-# traffic_programme_para.dump_priority_coefficient[dump_index] = 1  # 卸载设备优先级
+
 
 
 
 class TrafficProgPara(object):
     def __init__(self, num_of_load_area, num_of_unload_area, num_of_excavator, num_of_dump):
-        self.load_area_uuid_to_ref_id_dict = {}  # 用于保存装载点uuid到id的映射
-        self.load_area_ref_id_to_uuid_dict = {}  # 用于保存装载点id到uuid的映射
-        self.unload_area_uuid_to_ref_id_dict = {}  # 用于保存卸载点uuid到id的映射
-        self.unload_area_ref_id_to_uuid_dict = {}  # 用于保存卸载点id到uuid的映射
+        self.load_area_uuid_to_index_dict = {}  # 用于保存装载点uuid到id的映射
+        self.load_area_index_to_uuid_dict = {}  # 用于保存装载点id到uuid的映射
+        self.unload_area_uuid_to_index_dict = {}  # 用于保存卸载点uuid到id的映射
+        self.unload_area_index_to_uuid_dict = {}  # 用于保存卸载点id到uuid的映射
 
-        self.excavator_uuid_to_ref_id_dict = {}  # 用于保存挖机uuid到id的映射
-        self.excavator_ref_id_to_uuid_dict = {}  # 用于保存挖机id到uuid的映射
-        self.dump_uuid_to_ref_id_dict = {}  # 用于保存卸点uuid到id的映射
-        self.dump_ref_id_to_uuid_dict = {}  # 用于保存卸点id到uuid的映射
+        self.excavator_uuid_to_index_dict = {}  # 用于保存挖机uuid到id的映射
+        self.excavator_index_to_uuid_dict = {}  # 用于保存挖机id到uuid的映射
+        self.dump_uuid_to_index_dict = {}  # 用于保存卸点uuid到id的映射
+        self.dump_index_to_uuid_dict = {}  # 用于保存卸点id到uuid的映射
 
         self.dump_uuid_to_unload_area_uuid_dict = {}  # 用于保存卸点与卸载区的绑定关系(uuid)
         self.excavator_uuid_to_load_area_uuid_dict = {}  # 用于保存挖机与装载区的绑定关系(uuid)
-        self.dump_ref_id_to_unload_area_ref_id_dict = {}  # 用于保存卸点与卸载区的绑定关系(id)
-        self.excavator_ref_id_to_load_area_ref_id_dict = {}  # 用于保存挖机与装载区的绑定关系(id)
+        self.dump_index_to_unload_area_index_dict = {}  # 用于保存卸点与卸载区的绑定关系(id)
+        self.excavator_index_to_load_area_index_dict = {}  # 用于保存挖机与装载区的绑定关系(id)
 
-        self.excavator_strength = np.zeros(num_of_excavator)  # 用于保存电铲的工作强度,单位是t/h
-        self.excavator_priority_coefficient = np.zeros(num_of_excavator)  # 每个电铲的优先级系数
-        self.grade_loading_array = np.zeros(num_of_excavator)  # 用于保存电铲挖掘矿石的品位
+        self.excavator_strength = np.zeros(num_of_excavator)  # 用于保存挖机的工作强度,单位是t/h
+        self.excavator_priority_coefficient = np.zeros(num_of_excavator)  # 每个挖机的优先级系数
+        self.grade_loading_array = np.zeros(num_of_excavator)  # 用于保存挖机挖掘矿石的品位
         self.dump_strength = np.zeros(num_of_dump)  # 卸载点的工作强度，单位是t/h
         self.dump_priority_coefficient = np.zeros(num_of_dump)  # 每个卸载点的优先级系数
         self.goto_unload_area_factor = np.full((num_of_load_area, num_of_unload_area), 10, dtype=float)  # 卸载道路的运输系数
@@ -79,16 +83,16 @@ def extract_excavator_info(traffic_programme_para):
     for dispatch in session_mysql.query(Dispatch).filter_by(isdeleted=0, isauto=1).all():
         excavator_id = dispatch.exactor_id
         load_area_id = dispatch.load_area_id
-        if excavator_id not in traffic_programme_para.excavator_uuid_to_ref_id_dict:
+        if excavator_id not in traffic_programme_para.excavator_uuid_to_index_dict:
             # excavator_uuid <-> excavator_uuid
-            traffic_programme_para.excavator_uuid_to_ref_id_dict[excavator_id] = excavator_index
-            traffic_programme_para.excavator_ref_id_to_uuid_dict[excavator_index] = excavator_id
+            traffic_programme_para.excavator_uuid_to_index_dict[excavator_id] = excavator_index
+            traffic_programme_para.excavator_index_to_uuid_dict[excavator_index] = excavator_id
             # excavator_uuid -> load_area_uuid
             traffic_programme_para.excavator_uuid_to_load_area_uuid_dict[excavator_id] = load_area_id
             # excavator_id -> load_area_id
-            traffic_programme_para.excavator_ref_id_to_load_area_ref_id_dict[
-                traffic_programme_para.excavator_uuid_to_ref_id_dict[excavator_id]] = \
-                traffic_programme_para.load_area_uuid_to_ref_id_dict[load_area_id]
+            traffic_programme_para.excavator_index_to_load_area_index_dict[
+                traffic_programme_para.excavator_uuid_to_index_dict[excavator_id]] = \
+                traffic_programme_para.load_area_uuid_to_index_dict[load_area_id]
 
             traffic_programme_para.excavator_strength[excavator_index] = 300  # 挖机最大装载能力，单位吨/小时
             traffic_programme_para.grade_loading_array[excavator_index] = 100  # 挖机装载物料品位
@@ -103,14 +107,14 @@ def extract_dump_info(traffic_programme_para):
         dump_id = dispatch.dump_id
         if dump_id not in traffic_programme_para.dump_uuid_to_unload_area_uuid_dict:
             # dump_uuid <-> dump_id
-            traffic_programme_para.dump_uuid_to_ref_id_dict[dump_id] = dump_index
-            traffic_programme_para.dump_ref_id_to_uuid_dict[dump_index] = dump_id
+            traffic_programme_para.dump_uuid_to_index_dict[dump_id] = dump_index
+            traffic_programme_para.dump_index_to_uuid_dict[dump_index] = dump_id
             # dump_uuid -> unload_area_uuid
             traffic_programme_para.dump_uuid_to_unload_area_uuid_dict[dump_id] = unload_area_id
             # dump_id -> unload_area_id
-            traffic_programme_para.dump_ref_id_to_unload_area_ref_id_dict[
-                traffic_programme_para.dump_uuid_to_ref_id_dict[dump_id]] = \
-                traffic_programme_para.unload_area_uuid_to_ref_id_dict[unload_area_id]
+            traffic_programme_para.dump_index_to_unload_area_index_dict[
+                traffic_programme_para.dump_uuid_to_index_dict[dump_id]] = \
+                traffic_programme_para.unload_area_uuid_to_index_dict[unload_area_id]
 
             traffic_programme_para.dump_strength[dump_index] = 300  # 卸载设备最大卸载能力，单位吨/小时
             traffic_programme_para.grade_upper_dump_array[dump_index] = 100  # 卸点品位上限
@@ -129,13 +133,13 @@ def extract_walk_time_info(traffic_programme_para):
         load_area_id = str(walk_time.load_area_id)
         unload_area_id = str(walk_time.unload_area_id)
 
-        if load_area_id not in traffic_programme_para.load_area_uuid_to_ref_id_dict:
-            traffic_programme_para.load_area_uuid_to_ref_id_dict[load_area_id] = load_area_index
-            traffic_programme_para.load_area_ref_id_to_uuid_dict[load_area_index] = load_area_id
+        if load_area_id not in traffic_programme_para.load_area_uuid_to_index_dict:
+            traffic_programme_para.load_area_uuid_to_index_dict[load_area_id] = load_area_index
+            traffic_programme_para.load_area_index_to_uuid_dict[load_area_index] = load_area_id
             load_area_index = load_area_index + 1
-        if unload_area_id not in traffic_programme_para.unload_area_uuid_to_ref_id_dict:
-            traffic_programme_para.unload_area_uuid_to_ref_id_dict[unload_area_id] = unload_area_index
-            traffic_programme_para.unload_area_ref_id_to_uuid_dict[unload_area_index] = unload_area_id
+        if unload_area_id not in traffic_programme_para.unload_area_uuid_to_index_dict:
+            traffic_programme_para.unload_area_uuid_to_index_dict[unload_area_id] = unload_area_index
+            traffic_programme_para.unload_area_index_to_uuid_dict[unload_area_index] = unload_area_id
             unload_area_index = unload_area_index + 1
 
     # 路网信息读取
@@ -143,8 +147,8 @@ def extract_walk_time_info(traffic_programme_para):
         load_area_id = str(walk_time.load_area_id)
         unload_area_id = str(walk_time.unload_area_id)
         # 将uuid转为id
-        load_area_index = traffic_programme_para.load_area_uuid_to_ref_id_dict[load_area_id]
-        unload_area_index = traffic_programme_para.unload_area_uuid_to_ref_id_dict[unload_area_id]
+        load_area_index = traffic_programme_para.load_area_uuid_to_index_dict[load_area_id]
+        unload_area_index = traffic_programme_para.unload_area_uuid_to_index_dict[unload_area_id]
 
         # 运输路线距离
         traffic_programme_para.goto_load_area_distance[unload_area_index][load_area_index] = walk_time.to_load_distance
@@ -153,7 +157,7 @@ def extract_walk_time_info(traffic_programme_para):
 
         # 卸载道路上，每运输1吨货物需要一辆卡车运行时长,等于（该卸载道路上车辆平均运行时长/卡车平均实际装载量）
         # 单位为辆小时/吨
-        # i代表第i个电铲,j代表第j个卸载点
+        # i代表第i个挖机,j代表第j个卸载点
         # walktime_goto_unload_point单位是秒，需要除以3600，转成小时
         traffic_programme_para.goto_load_area_factor[unload_area_index][load_area_index] = \
             (60 / 1000 * walk_time.to_load_distance / traffic_programme_para.empty_speed) / traffic_programme_para.payload
@@ -161,14 +165,14 @@ def extract_walk_time_info(traffic_programme_para):
 
         # 装载道路上，每提供1吨的装载能力需要一辆卡车运行时长,等于（该装载道路上车辆平均运行时长/卡车平均装载能力）
         # 单位为辆小时/吨
-        # i代表第i个卸载点,j代表第j个电铲
+        # i代表第i个卸载点,j代表第j个挖机
         # walktime_goto_excavator单位是秒，需要除以3600，转成小时
         traffic_programme_para.goto_unload_area_factor[load_area_index][unload_area_index] = \
             (60 / 1000 * walk_time.to_unload_distance / traffic_programme_para.heavy_speed) / traffic_programme_para.payload
         # / traffic_programme_para.avg_goto_excavator_weight[unload_area_index][load_area_index]
 
 
-# 从数据库中读取电铲和卸载点相关参数，并将线性规划所用参数保存在TrafficProgPara类中
+# 从数据库中读取挖机和卸载点相关参数，并将线性规划所用参数保存在TrafficProgPara类中
 def traffic_programme_para_init(num_of_load_area, num_of_unload_area, num_of_excavator, num_of_dump):
     # 初始化流量规划参数类
     traffic_programme_para = TrafficProgPara(num_of_load_area, num_of_unload_area, num_of_excavator, num_of_dump)
@@ -192,8 +196,8 @@ def traffic_programme_para_init(num_of_load_area, num_of_unload_area, num_of_exc
     for i in range(num_of_excavator):
         for j in range(num_of_dump):
             # 查找挖机绑定的装载区, 卸载设备绑定的卸载区
-            load_area_index = traffic_programme_para.excavator_ref_id_to_load_area_ref_id_dict[i]
-            unload_area_index = traffic_programme_para.dump_ref_id_to_unload_area_ref_id_dict[j]
+            load_area_index = traffic_programme_para.excavator_index_to_load_area_index_dict[i]
+            unload_area_index = traffic_programme_para.dump_index_to_unload_area_index_dict[j]
 
             # 逻辑道路因子赋值, 来自实际道路因子
             traffic_programme_para.goto_excavator_factor[j][i] = \
@@ -202,7 +206,7 @@ def traffic_programme_para_init(num_of_load_area, num_of_unload_area, num_of_exc
             traffic_programme_para.goto_unload_point_factor[i][j] = \
                 traffic_programme_para.goto_unload_area_factor[load_area_index][unload_area_index]
 
-            # 每条卸载道路的优先级,等于电铲的优先级乘以卸载点的优先级
+            # 每条卸载道路的优先级,等于挖机的优先级乘以卸载点的优先级
             traffic_programme_para.priority_coefficient[i][j] = traffic_programme_para.excavator_priority_coefficient[i] \
                                                                 * traffic_programme_para.dump_priority_coefficient[j]
 
@@ -211,7 +215,7 @@ def traffic_programme_para_init(num_of_load_area, num_of_unload_area, num_of_exc
                 traffic_programme_para.goto_load_area_distance[unload_area_index][load_area_index]
 
             traffic_programme_para.goto_dump_distance[i][j] = \
-                traffic_programme_para.goto_load_area_distance[load_area_index][unload_area_index]
+                traffic_programme_para.goto_unload_area_distance[load_area_index][unload_area_index]
 
     return traffic_programme_para
 
@@ -222,13 +226,13 @@ def transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator,
                                  max_unload_weigh_alg_flag, truck_total_num,
                                  goto_excavator_dis, goto_dump_dis, min_throughout,
                                  grade_lower_array=None, grade_upper_array=None):
-    row = len(coefficient)  # 代表电铲的个数,第i行代表第i台电铲
+    row = len(coefficient)  # 代表挖机的个数,第i行代表第i台挖机
     col = len(coefficient[0])  # 代表卸载点的个数,第j行代表第j个卸载点
 
     # prob = pulp.LpProblem('Transportation Problem', sense=pulp.LpMaximize)
-    # 卸载道路的流量,单位是吨/小时,i代表起点为第i个电铲,j代表终点为第j个卸载点
+    # 卸载道路的流量,单位是吨/小时,i代表起点为第i个挖机,j代表终点为第j个卸载点
     var_x = [[pulp.LpVariable('x{0}{1}'.format(i, j), lowBound=0) for j in range(col)] for i in range(row)]
-    # 装载道路的流量,单位是吨/小时,i代表起点为第i个卸载点,j代表终点为第j个电铲
+    # 装载道路的流量,单位是吨/小时,i代表起点为第i个卸载点,j代表终点为第j个挖机
     var_y = [[pulp.LpVariable('y{0}{1}'.format(i, j), lowBound=0) for j in range(row)] for i in range(col)]
 
     flatten = lambda x: [y for l in x for y in flatten(l)] if type(x) is list else [x]
@@ -259,7 +263,7 @@ def transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator,
              pulp.lpSum(load_truck_totla_num_array) <= truck_total_num)
 
     # 最大工作强度约束
-    # 约束每个电铲的工作强度
+    # 约束每个挖机的工作强度
     for i in range(row):
         prob += (pulp.lpSum(var_x[i]) <= b_excavator[i])
     # 约束每个卸载点的工作强度
@@ -268,7 +272,7 @@ def transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator,
 
     '''
     # 车流基尔霍夫定理约束
-    # 进入电铲和从电铲出去的车辆个数需要相同
+    # 进入挖机和从挖机出去的车辆个数需要相同
     for i in range(row):
         prob += (pulp.lpSum(unload_truck_total_num_array[i]) == pulp.lpSum(load_truck_totla_num_array[:,i]))
     # 从装载点离开和进来的车辆个数需要相同
@@ -285,7 +289,7 @@ def transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator,
         prob += (pulp.lpSum((np.array(var_y))[j]) <= pulp.lpSum((np.array(var_x))[:, j]))
 
     # 矿石品位约束卸载
-    # 去往卸载点的流量使用矩阵乘法乘以每个电铲处矿石的品位，得到每个卸载点的矿石品位总和
+    # 去往卸载点的流量使用矩阵乘法乘以每个挖机处矿石的品位，得到每个卸载点的矿石品位总和
     grade_array = np.dot(grade_loading_array, var_x)
     for j in range(col):
         sum_traffic_unload = pulp.lpSum((np.array(var_x))[:, j])

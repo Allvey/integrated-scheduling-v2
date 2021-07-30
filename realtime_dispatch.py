@@ -31,6 +31,10 @@ from traffic_flow_planner import *
 from settings import *
 from static_data_process import *
 
+# item = session_postgre.query(Lane).first()
+#
+# print(item.LaneIds)
+
 # 全局参数设定
 
 # 空载任务集合
@@ -45,7 +49,7 @@ empty_speed = 25
 # 重载矿卡速度，单位（km/h）
 heavy_speed = 22
 
-# 卸点目标卸载量
+# 卸载设备目标卸载量
 dump_target_mass = 5000
 
 # 挖机目标装载量
@@ -85,6 +89,11 @@ logger.info(dynamic_truck_set)
 # 用于动态调度的挖机及卸载设备
 dynamic_excavator_set = set(update_autodisp_excavator())
 dynamic_dump_set = set(update_autodisp_dump())
+
+
+item = session_postgre.query(Lane).first()
+
+print(item.LaneIds)
 
 
 # 设备映射类, 存储除工作区以外的映射关系
@@ -141,26 +150,29 @@ class DumpInfo(DeviceMap):
         # self.cur_dump_ava_time = np.zeros(self.dumps)
         # # 模拟各设备可用时间（防止调度修改真实产量）
         # self.sim_dump_ava_time = np.zeros(self.dumps)
-        # 用于动态调度的卸载点集合
+        # 用于动态调度的卸载设备集合
         self.dynamic_dump_set = []
         # 开始时间
         self.start_time = datetime.now()
         # 卸载时间
         self.unloading_time = np.zeros(self.dumps)
-    
+
     def get_unloading_time(self):
         return self.unloading_time
-    
+
     def get_dump_num(self):
         return self.dumps
-    
+
     def get_dump_target_mass(self):
         return self.dump_target_mass
-    
+
     def get_dump_actual_mass(self):
         return self.cur_dump_real_mass
-    
-    # 更新卸点卸载时间
+
+    def get_dynamic_dump_set(self):
+        return self.dynamic_dump_set
+
+    # 更新卸载设备卸载时间
     def update_dump_unloadtime(self):
         self.unloading_time = np.zeros(self.dumps)
 
@@ -177,12 +189,12 @@ class DumpInfo(DeviceMap):
                     unload_count = unload_count + 1
                 self.unloading_time[self.dump_uuid_to_index_dict[dump_id]] = ave_unload_time / unload_count
             except Exception as es:
-                logger.error(f'卸载点 {dump_id} 卸载时间信息缺失, 已设为默认值(1min)')
+                logger.error(f'卸载设备 {dump_id} 卸载时间信息缺失, 已设为默认值(1min)')
                 logger.error(es)
                 self.unloading_time[self.dump_uuid_to_index_dict[dump_id]] = 1.00
         # print("average_unload_time: ", self.unloading_time[self.dump_uuid_to_index_dict[dump_id]])
 
-    # 更新卸点实际卸载量
+    # 更新卸载设备实际卸载量
     def update_actual_unload_thoughout(self):
         self.cur_dump_real_mass = np.zeros(self.dumps)
         now = datetime.now().strftime('%Y-%m-%d')
@@ -204,7 +216,7 @@ class DumpInfo(DeviceMap):
         # 装载设备映射
         self.load()
 
-        # # 初始化卸点可用时间
+        # # 初始化卸载设备可用时间
         # self.cur_dump_ava_time = np.full(self.dumps,
         #                                    (datetime.now() - self.start_time) / timedelta(hours=0, minutes=1,
         #                                                                                   seconds=0))
@@ -226,7 +238,7 @@ class DumpInfo(DeviceMap):
         # # 同步虚拟卸载量
         # self.sim_dump_real_mass = copy.deepcopy(self.cur_dump_real_mass)
 
-        # # 计算卸载点预估产量
+        # # 计算卸载设备预估产量
         # self.update_pre_unload_throughout()
 
 
@@ -248,7 +260,7 @@ class ExcavatorInfo(DeviceMap):
         # self.cur_excavator_ava_time = np.zeros(self.excavators)
         # # 模拟各设备可用时间(防止调度修改真实产量)
         # self.sim_excavator_ava_time = np.zeros(self.excavators)
-        # 用于动态调度的卸载点集合
+        # 用于动态调度的卸载设备集合
         self.dynamic_excavator_set = []
         # 开始时间
         self.start_time = datetime.now()
@@ -266,6 +278,9 @@ class ExcavatorInfo(DeviceMap):
 
     def get_excavator_actual_mass(self):
         return self.cur_excavator_real_mass
+
+    def get_dynamic_excavator_set(self):
+        return self.dynamic_excavator_set
 
     # 更新挖机装载时间
     def update_excavator_loadtime(self):
@@ -332,7 +347,7 @@ class ExcavatorInfo(DeviceMap):
         # # 同步挖机虚拟装载量
         # self.sim_excavator_real_mass = copy.deepcopy(self.cur_excavator_real_mass)
 
-        # # 计算卸载点预估产量
+        # # 计算卸载设备预估产量
         # self.update_pre_load_throughout()
 
 
@@ -351,6 +366,24 @@ class WalkManage(DeviceMap):
         self.park_to_load_area = np.full((park_num, load_area_num), M)
         # 备停区行走时间(面向设备)
         self.park_to_load_eq = np.full((park_num, len(update_autodisp_excavator())), M)
+
+    def get_com_time_area(self):
+        return self.com_time_area
+
+    def get_go_time_area(self):
+        return self.go_time_area
+
+    def get_com_time_eq(self):
+        return self.com_time_eq
+
+    def get_go_time_eq(self):
+        return self.go_time_eq
+
+    def get_park_to_load_area(self):
+        return self.park_to_load_area
+
+    def get_park_to_load_eq(self):
+        return self.park_to_load_eq
 
     def update_walk_time(self):
 
@@ -426,20 +459,16 @@ class TruckInfo(DeviceMap):
         self.walker = WalkManage()
         # 矿卡数量
         self.trucks = len(dynamic_truck_set)
-        # 矿卡抵达卸点时间
+        # 矿卡抵达卸载设备时间
         self.cur_truck_reach_dump = np.zeros(self.trucks)
         # 矿卡抵达挖机时间
         self.cur_truck_reach_excavator = np.zeros(self.trucks)
         # 用于动态派车的矿卡集合
         self.dynamic_truck_set = []
-        # 用于动态派车的挖机集合
-        self.dynamic_excavator_set = []
-        # 用于动态调度的卸载点集合
-        self.dynamic_dump_set = []
-        # 矿卡装载/卸载时间
+        # 矿卡最后装载/卸载时间
         self.last_load_time = {}
         self.last_unload_time = {}
-        # 相对矿卡装载/卸载时间
+        # 相对矿卡最后装载/卸载时间
         self.relative_last_load_time = {}
         self.relative_last_unload_time = {}
         # 矿卡当前任务
@@ -453,9 +482,34 @@ class TruckInfo(DeviceMap):
         self.payload = np.zeros(self.trucks)
         # 矿卡当前行程(第一列为出发地序号, 第二列为目的地序号)
         self.truck_current_trip = np.full((self.trucks, 2), -1)
-        # 矿卡最后装载/卸载时间
-        self.last_load_time = {}
-        self.last_unload_time = {}
+
+    def get_truck_current_trip(self):
+        return self.truck_current_trip
+
+    def get_truck_current_task(self):
+        return self.truck_current_task
+
+    def get_truck_num(self):
+        return self.trucks
+
+    def get_truck_reach_dump(self):
+        return self.cur_truck_reach_dump
+
+    def get_truck_reach_excavator(self):
+        return self.cur_truck_reach_excavator
+
+    def get_dynamic_truck_set(self):
+        return self.dynamic_truck_set
+
+    def get_realative_last_load_time(self):
+        return self.relative_last_load_time
+
+
+    def get_realative_last_unload_time(self):
+        return self.relative_unlast_load_time
+
+    def get_payload(self):
+        return self.payload
 
     # 更新矿卡当前任务
     def update_truck_current_task(self):
@@ -540,8 +594,8 @@ class TruckInfo(DeviceMap):
     # 更新矿卡行程
     def update_truck_trip(self):
 
-        com_time_area = self.walker.com_time_area
-        go_time_area = self.walker.go_time_area
+        com_time_area = self.walker.get_com_time_area()
+        go_time_area = self.walker.get_go_time_area()
 
         # 初始化矿卡行程, -1代表备停区
         self.truck_current_trip = np.full((self.trucks, 2), -1)
@@ -647,61 +701,61 @@ class Dispatcher(DeviceMap):
         self.truck = TruckInfo()
         self.walker = WalkManage()
 
-        # 模拟挖机/卸点产量(防止调度修改真实产量)
-        self.sim_dump_real_mass = np.zeros(self.dump.dumps)
-        self.sim_excavator_real_mass = np.zeros(self.excavator.excavators)
+        # 模拟挖机/卸载设备产量(防止调度修改真实产量)
+        self.sim_dump_real_mass = np.zeros(self.dump.get_dump_num())
+        self.sim_excavator_real_mass = np.zeros(self.excavator.get_excavator_num())
         # 真实设备可用时间
-        self.cur_truck_reach_dump = np.zeros(self.truck.trucks)
-        self.cur_truck_reach_excavator = np.zeros(self.truck.trucks)
-        self.cur_excavator_ava_time = np.zeros(self.excavator.excavators)
-        self.cur_dump_ava_time = np.zeros(self.dump.dumps)
+        self.cur_truck_reach_dump = np.zeros(self.truck.get_truck_num())
+        self.cur_truck_reach_excavator = np.zeros(self.truck.get_truck_num())
+        self.cur_excavator_ava_time = np.zeros(self.excavator.get_excavator_num())
+        self.cur_dump_ava_time = np.zeros(self.dump.get_dump_num())
         # 卡车完成装载及卸载时间(矿卡可用时间)
-        self.cur_truck_ava_time = np.zeros(self.truck.trucks)
+        self.cur_truck_ava_time = np.zeros(self.truck.get_truck_num())
         # 模拟矿卡可用时间
-        self.sim_truck_ava_time = np.zeros(self.truck.trucks)
+        self.sim_truck_ava_time = np.zeros(self.truck.get_truck_num())
         # 模拟各设备可用时间(防止调度修改真实产量)
-        self.sim_excavator_ava_time = np.zeros(self.excavator.excavators)
-        self.sim_dump_ava_time = np.zeros(self.dump.dumps)
-        # 挖机/卸点预计产量(包含正在驶往挖机/卸点那部分矿卡的载重)
-        self.pre_dump_real_mass = np.zeros(self.dump.dumps)
-        self.pre_excavator_real_mass = np.zeros(self.excavator.excavators)
+        self.sim_excavator_ava_time = np.zeros(self.excavator.get_excavator_num())
+        self.sim_dump_ava_time = np.zeros(self.dump.get_dump_num())
+        # 挖机/卸载设备预计产量(包含正在驶往挖机/卸载设备那部分矿卡的载重)
+        self.pre_dump_real_mass = np.zeros(self.dump.get_dump_num())
+        self.pre_excavator_real_mass = np.zeros(self.excavator.get_excavator_num())
 
         # 维护一个矿卡调度表
-        self.Seq = [[] for _ in range(self.truck.trucks)]
+        self.Seq = [[] for _ in range(self.truck.get_truck_num())]
         # 调度开始时间
         self.start_time = datetime.now()
         # self.relative_now_time = datetime.now() - self.start_time
 
         # 下面是交通流调度部分
         # 驶往挖机的实际车流
-        self.actual_goto_excavator_traffic_flow = np.zeros((self.dump.dumps, self.excavator.excavators))
-        # 驶往卸点的实际车流
-        self.actual_goto_dump_traffic_flow = np.zeros((self.dump.dumps, self.excavator.excavators))
+        self.actual_goto_excavator_traffic_flow = np.zeros((self.dump.get_dump_num(), self.excavator.get_excavator_num()))
+        # 驶往卸载设备的实际车流
+        self.actual_goto_dump_traffic_flow = np.zeros((self.dump.get_dump_num(), self.excavator.get_excavator_num()))
 
         # 驶往挖机的实际车次
-        self.goto_dump_truck_num = np.zeros((self.dump.dumps, self.excavator.excavators))
-        # 驶往卸点的实际车次
-        self.goto_excavator_truck_num = np.zeros((self.dump.dumps, self.excavator.excavators))
+        self.goto_dump_truck_num = np.zeros((self.dump.get_dump_num(), self.excavator.get_excavator_num()))
+        # 驶往卸载设备的实际车次
+        self.goto_excavator_truck_num = np.zeros((self.dump.get_dump_num(), self.excavator.get_excavator_num()))
 
         # 驶往挖机的理想车流
-        self.opt_goto_dump_traffic_flow = np.zeros((self.dump.dumps, self.excavator.excavators))
-        # 驶往卸点的实际车流
-        self.opt_goto_excavator_traffic_flow = np.zeros((self.dump.dumps, self.excavator.excavators))
+        self.opt_goto_dump_traffic_flow = np.zeros((self.dump.get_dump_num(), self.excavator.get_excavator_num()))
+        # 驶往卸载设备的实际车流
+        self.opt_goto_excavator_traffic_flow = np.zeros((self.dump.get_dump_num(), self.excavator.get_excavator_num()))
 
     # 更新矿卡预计抵达目的地时间
     def update_truck_reach_time(self):
         try:
-            excavators = self.excavator.excavators
-            dumps = self.dump.dumps
-            trucks = self.truck.trucks
+            excavators = self.excavator.get_excavator_num()
+            dumps = self.dump.get_dump_num()
+            trucks = self.truck.get_truck_num()
 
-            truck_current_task = self.truck.truck_current_task
+            truck_current_task = self.truck.get_truck_current_task()
 
-            truck_current_trip = self.truck.truck_current_trip
+            truck_current_trip = self.truck.get_truck_current_trip()
 
-            cur_truck_reach_excavator = self.truck.cur_truck_reach_excavator
+            cur_truck_reach_excavator = self.truck.get_truck_reach_excavator()
 
-            cur_truck_reach_dump = self.truck.cur_truck_reach_dump
+            cur_truck_reach_dump = self.truck.get_truck_reach_dump()
 
             excavator_ava_ls = [[] for _ in range(excavators)]
             dump_ava_ls = [[] for _ in range(dumps)]
@@ -752,7 +806,7 @@ class Dispatcher(DeviceMap):
             logger.error("挖机可用时间计算异常")
             logger.error(es)
 
-    # 更新卸点预计可用时间
+    # 更新卸载设备预计可用时间
     def update_dump_ava_time(self, dump_ava_ls):
 
         unloading_time = self.dump.get_unloading_time()
@@ -771,20 +825,20 @@ class Dispatcher(DeviceMap):
                                                              unloading_time[dump_index]
                         self.cur_truck_ava_time[int(tmp[i][1])] = self.cur_dump_ava_time[dump_index]
 
-                        # 若卸点可用时间严重偏离，进行修正
+                        # 若卸载设备可用时间严重偏离，进行修正
                         if abs(self.cur_dump_ava_time[dump_index] - now) > 60:
                             self.cur_dump_ava_time[dump_index] = now
                         if abs(self.cur_truck_ava_time[int(tmp[i][1])] - now) > 60:
                             self.cur_truck_ava_time[int(tmp[i][1])] = now
         except Exception as es:
-            logger.error("卸点可用时间计算异常")
+            logger.error("卸载设备可用时间计算异常")
             logger.error(es)
 
     # 更新实际交通流
     def update_actual_traffic_flow(self):
 
-        truck_current_task = self.truck.truck_current_task
-        payload = self.truck.payload
+        truck_current_task = self.truck.get_truck_current_task()
+        payload = self.truck.get_payload()
 
         for item in session_mysql.query(EquipmentPair).filter(EquipmentPair.createtime >= self.start_time).all():
             dump_index = self.dump_uuid_to_index_dict[item.dump_id]
@@ -810,40 +864,47 @@ class Dispatcher(DeviceMap):
                                                   ((datetime.now() - self.start_time) / timedelta(hours=0, minutes=1,
                                                                                                   seconds=0))
 
-    # 更新卸点预计产量
+    # 更新卸载设备预计产量
     def update_pre_unload_throughout(self):
+
+        truck_current_task = self.truck.get_truck_current_task()
+        payload = self.truck.get_payload()
+
         try:
-            self.pre_dump_real_mass = copy.deepcopy(self.dump.cur_dump_real_mass)
-            for i in range(self.truck.trucks):
+            self.pre_dump_real_mass = copy.deepcopy(self.dump.get_dump_actual_mass())
+            for i in range(self.truck.get_truck_num()):
                 # task = self.truck_current_stage[i][0]
-                task = self.truck.truck_current_task[self.truck_index_to_uuid_dict[i]]
-                end_area_index = self.truck.truck_current_trip[i][1]
+                task = truck_current_task[self.truck_index_to_uuid_dict[i]]
+                end_area_index = self.truck.get_truck_current_trip()[i][1]
                 # 若矿卡正常行驶，需要将该部分载重计入实时产量
                 if task in heavy_task_set:
-                    self.pre_dump_real_mass[end_area_index] = self.pre_dump_real_mass[end_area_index] + \
-                                                              self.truck.payload[i]
+                    self.pre_dump_real_mass[end_area_index] = self.pre_dump_real_mass[end_area_index] + payload[i]
                 else:
                     pass
         except Exception as es:
-            logger.error("卸点预计装载量计算异常")
+            logger.error("卸载设备预计装载量计算异常")
             logger.error(es)
 
     # 更新挖机预计产量
     def update_pre_load_throughout(self):
+
+        truck_current_task = self.truck.get_truck_current_task()
+        payload = self.truck.get_payload()
+
         try:
-            self.pre_excavator_real_mass = copy.deepcopy(self.excavator.cur_excavator_real_mass)
+            self.pre_excavator_real_mass = copy.deepcopy(self.excavator.get_excavator_actual_mass())
             for i in range(self.truck.trucks):
                 # task = self.truck_current_stage[i][0]
-                task = self.truck.truck_current_task[self.truck_index_to_uuid_dict[i]]
-                end_area_index = self.truck.truck_current_trip[i][1]
+                task = truck_current_task[self.truck_index_to_uuid_dict[i]]
+                end_area_index = self.truck.get_truck_current_trip()[i][1]
                 # 若矿卡正常行驶，需要将该部分载重计入实时产量
                 if task in empty_task_set:
                     self.pre_excavator_real_mass[end_area_index] = self.pre_excavator_real_mass[end_area_index] + \
-                                                                self.truck.payload[i]
+                                                                   payload[i]
                 else:
                     pass
         except Exception as es:
-            logger.error("挖机/卸点预计装载量计算异常")
+            logger.error("挖机/卸载设备预计装载量计算异常")
             logger.error(es)
 
     def period_update(self):
@@ -852,7 +913,7 @@ class Dispatcher(DeviceMap):
 
         self.load()
 
-        # 更新卸点对象
+        # 更新卸载设备对象
         self.dump.period_update()
 
         # 更新挖机对象
@@ -879,13 +940,13 @@ class Dispatcher(DeviceMap):
         # 挖机可用时间
         self.update_excavator_ava_time(excavator_reach_list)
 
-        # 卸点可用时间
+        # 卸载设备可用时间
         self.update_dump_ava_time(dump_reach_list)
 
         # 挖机预计装载量
         self.update_pre_load_throughout()
 
-        # 卸点预计卸载量
+        # 卸载设备预计卸载量
         self.update_pre_unload_throughout()
 
     def sim_para_reset(self):
@@ -895,7 +956,7 @@ class Dispatcher(DeviceMap):
         self.sim_excavator_ava_time = copy.deepcopy(self.cur_excavator_ava_time)
         self.sim_dump_ava_time = copy.deepcopy(self.cur_dump_ava_time)
 
-        # 电铲\卸载点产量重置
+        # 挖机\卸载设备产量重置
         self.sim_dump_real_mass = copy.deepcopy(self.pre_dump_real_mass)
         self.sim_excavator_real_mass = copy.deepcopy(self.pre_excavator_real_mass)
 
@@ -904,21 +965,21 @@ class Dispatcher(DeviceMap):
         # 矿卡对应序号
         truck_index = self.truck_uuid_to_index_dict[truck_id]
         # 矿卡行程
-        trip = self.truck.truck_current_trip[truck_index]
+        trip = self.truck.get_truck_current_trip()[truck_index]
         # 矿卡当前任务
-        task = self.truck.truck_current_task[self.truck_index_to_uuid_dict[truck_index]]
+        task = self.truck.get_truck_current_task()[self.truck_index_to_uuid_dict[truck_index]]
         # 挖机目标产量
-        excavator_target_mass = self.excavator.excavator_target_mass
+        excavator_target_mass = self.excavator.get_excavator_target_mass()
         # 挖机装载时间
-        loading_time = self.excavator.loading_time
-        # 卸点目标产量
-        dump_target_mass = self.dump.dump_target_mass
-        # 卸点卸载时间
-        unloading_time = self.dump.unloading_time
+        loading_time = self.excavator.get_loading_time()
+        # 卸载设备目标产量
+        dump_target_mass = self.dump.get_dump_target_mass()
+        # 卸载设备卸载时间
+        unloading_time = self.dump.get_unloading_time()
         # 路网信息
-        park_to_load_eq = self.walker.park_to_load_eq
-        go_time_eq = self.walker.go_time_eq
-        com_time_eq = self.walker.com_time_eq
+        park_to_load_eq = self.walker.get_park_to_load_eq()
+        go_time_eq = self.walker.get_o_time_eq()
+        com_time_eq = self.walker.get_com_time_eq()
 
         now = float((datetime.now() - self.start_time) / timedelta(hours=0, minutes=1, seconds=0))
 
@@ -932,8 +993,8 @@ class Dispatcher(DeviceMap):
         if task == -2:
             logger.info("矿卡状态：矿卡启动或故障恢复")
             logger.info("矿卡行程：无")
-            logger.info(f'涉及电铲：{list(self.excavator_uuid_to_index_dict.keys())}')
-            logger.info(f'电铲饱和度：{(1 - self.sim_excavator_real_mass / excavator_target_mass)}')
+            logger.info(f'涉及挖机：{list(self.excavator_uuid_to_index_dict.keys())}')
+            logger.info(f'挖机饱和度：{(1 - self.sim_excavator_real_mass / excavator_target_mass)}')
             logger.info(
                 f'行程时间：{(np.maximum(self.sim_excavator_ava_time, now + park_to_load_eq[0, :]) + loading_time - now)}')
             logger.info(f'行驶时间：{park_to_load_eq[0, :] + loading_time}')
@@ -949,32 +1010,32 @@ class Dispatcher(DeviceMap):
 
             logger.info("矿卡状态：矿卡空载")
             logger.info(f'矿卡行程：{self.dump_index_to_uuid_dict[trip[0]]}-{self.excavator_index_to_uuid_dict[trip[1]]}')
-            logger.info(f'涉及卸点：{list(self.dump_uuid_to_index_dict.keys())}')
-            logger.info(f'卸点饱和度：{(1 - self.sim_dump_real_mass / dump_target_mass)}')
+            logger.info(f'涉及卸载设备：{list(self.dump_uuid_to_index_dict.keys())}')
+            logger.info(f'卸载设备饱和度：{(1 - self.sim_dump_real_mass / dump_target_mass)}')
             logger.info(
                 f'行程时间：{(np.maximum(self.sim_dump_ava_time, self.sim_truck_ava_time[truck_index] + go_time_eq[:, trip[1]]) + unloading_time - self.sim_truck_ava_time[truck_index])}')
             logger.info(f'行驶时间：{go_time_eq[:, trip[1]] + unloading_time}')
 
-            # 卡车空载，计算下一次卸载点
-            target = np.argmax(10 * (1 - self.sim_dump_real_mass / dump_target_mass) /
-                               (np.maximum(self.sim_dump_ava_time,
-                                           # self.sim_truck_reach_excavator[truck_index] + self.loading_time[trip[1]]
-                                           self.sim_truck_ava_time[truck_index]
-                                           + go_time_eq[:, trip[1]]) + unloading_time
-                                - self.sim_truck_ava_time[truck_index]))
+            # # 卡车空载，计算下一次卸载设备
+            # target = np.argmax(10 * (1 - self.sim_dump_real_mass / dump_target_mass) /
+            #                    (np.maximum(self.sim_dump_ava_time,
+            #                                # self.sim_truck_reach_excavator[truck_index] + self.loading_time[trip[1]]
+            #                                self.sim_truck_ava_time[truck_index]
+            #                                + go_time_eq[:, trip[1]]) + unloading_time
+            #                     - self.sim_truck_ava_time[truck_index]))
 
-            # try:
-            #     assert self.actual_goto_dump_traffic_flow.shape == (self.excavators, self.dumps)
-            #     assert self.opt_goto_dump_traffic_flow.shape == (self.excavators, self.dumps)
-            # except Exception as es:
-            #     logger.warning(es)
-            #     self.actual_goto_dump_traffic_flow = \
-            #         np.array(self.actual_goto_dump_traffic_flow).reshape((self.excavators, self.dumps))
-            #     self.opt_goto_dump_traffic_flow = \
-            #         np.array(self.opt_goto_dump_traffic_flow).reshape((self.excavators, self.dumps))
-            #
-            # target = np.argmin(
-            #     self.actual_goto_dump_traffic_flow[int(trip[1]), :] / self.opt_goto_dump_traffic_flow[int(trip[1]), :])
+            try:
+                assert self.actual_goto_dump_traffic_flow.shape == (self.excavators, self.dumps)
+                assert self.opt_goto_dump_traffic_flow.shape == (self.excavators, self.dumps)
+            except Exception as es:
+                logger.warning(es)
+                self.actual_goto_dump_traffic_flow = \
+                    np.array(self.actual_goto_dump_traffic_flow).reshape((self.excavators, self.dumps))
+                self.opt_goto_dump_traffic_flow = \
+                    np.array(self.opt_goto_dump_traffic_flow).reshape((self.excavators, self.dumps))
+
+            target = np.argmin(
+                self.actual_goto_dump_traffic_flow[int(trip[1]), :] / self.opt_goto_dump_traffic_flow[int(trip[1]), :])
 
             logger.info(f'目的地：{self.dump_index_to_uuid_dict[target]}')
 
@@ -982,8 +1043,8 @@ class Dispatcher(DeviceMap):
 
             logger.info("矿卡状态：矿卡重载")
             logger.info(f'矿卡行程：{self.excavator_index_to_uuid_dict[trip[0]]}-{self.dump_index_to_uuid_dict[trip[1]]}')
-            logger.info(f'涉及卸点：{list(self.excavator_uuid_to_index_dict.keys())}')
-            logger.info(f'卸点饱和度：{(1 - self.sim_excavator_real_mass / excavator_target_mass)}')
+            logger.info(f'涉及卸载设备：{list(self.excavator_uuid_to_index_dict.keys())}')
+            logger.info(f'卸载设备饱和度：{(1 - self.sim_excavator_real_mass / excavator_target_mass)}')
             logger.info(
                 f'行程时间：{(np.maximum(self.sim_excavator_ava_time, self.sim_truck_ava_time[truck_index] + com_time_eq[trip[1], :]) + loading_time - self.sim_truck_ava_time[truck_index])}')
             logger.info(f'行驶时间：{com_time_eq[trip[1], :] + loading_time}')
@@ -1015,14 +1076,14 @@ class Dispatcher(DeviceMap):
     def schedule_construct(self):
 
         # 读取所需信息
-        trucks = self.truck.trucks
-        truck_current_trip = self.truck.truck_current_trip
-        truck_current_task = self.truck.truck_current_task
-        payload = self.truck.payload
-        unloading_time = self.dump.unloading_time
-        loading_time = self.excavator.loading_time
-        go_time_area = self.walker.go_time_area
-        com_time_area = self.walker.com_time_area
+        trucks = self.truck.get_truck_num()
+        truck_current_trip = self.truck.get_truck_current_trip()
+        truck_current_task = self.truck.get_truck_current_task()
+        payload = self.truck.get_payload()
+        unloading_time = self.dump.get_unloading_time()
+        loading_time = self.excavator.get_loading_time()
+        go_time_area = self.walker.get_go_time_area()
+        com_time_area = self.walker.get_com_time_area()
 
         # Seq初始化
         Seq = [[truck_current_trip[i][1], -1] for i in range(trucks)]
@@ -1067,7 +1128,7 @@ class Dispatcher(DeviceMap):
                         # 更新变量，预计产量更新
                         self.sim_dump_real_mass[target_eq_index] = self.sim_dump_real_mass[target_eq_index] + \
                                                                    payload[truck]
-                        # 预计卸点可用时间更新
+                        # 预计卸载设备可用时间更新
                         self.sim_dump_ava_time[target_eq_index] = (
                                 max(
                                     self.sim_dump_ava_time[target_eq_index],
@@ -1101,7 +1162,7 @@ class Dispatcher(DeviceMap):
             try:
 
                 record = {"truckId": self.truck_index_to_uuid_dict[i]}
-                task = self.truck.truck_current_task[self.truck_index_to_uuid_dict[i]]
+                task = self.truck.get_truck_current_task()[self.truck_index_to_uuid_dict[i]]
                 if task in empty_task_set:
                     item = session_mysql.query(Dispatch).filter_by(
                         dump_id=self.dump_index_to_uuid_dict[Seq[i][1]], isauto=1, isdeleted=0).first()
