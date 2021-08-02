@@ -119,15 +119,19 @@ class WalkTime(Base):
     unload_area_name = Column(VARCHAR(30))
     to_unload_distance = Column(Float(10))
     to_load_distance = Column(Float(10))
+    to_unload_lanes = Column(VARCHAR(100))
+    to_load_lanes = Column(VARCHAR(100))
 
     def __init__(self, load_area_id, unload_area_id, load_area_name, unload_area_name, to_load_distance,
-                 to_unload_distance):
+                 to_unload_distance, to_unload_lanes, to_load_lanes):
         self.load_area_id = load_area_id
         self.unload_area_id = unload_area_id
         self.load_area_name = load_area_name
         self.unload_area_name = unload_area_name
         self.to_load_distance = to_load_distance
         self.to_unload_distance = to_unload_distance
+        self.to_unload_lanes = to_unload_lanes
+        self.to_load_lanes = to_load_lanes
 
     # Rid = Column(VARCHAR(36), primary_key=True)
     # load_area_id = Column(VARCHAR(36))
@@ -209,15 +213,27 @@ class EquipmentPair(Base):
         self.isdeleted = isdeleted
         self.createtime = createtime
 
+# class Lane(Base):
+#     # 表的名字
+#     __tablename__ = 'Geo_Node'
+#     Id = Column(VARCHAR(36), primary_key=True)
+#     LaneIds = Column(VARCHAR(100))
+#
+#     def __init__(self, Id, LaneIds):
+#         self.Id = Id
+#         self.LaneIds = LaneIds
+
 class Lane(Base):
     # 表的名字
-    __tablename__ = 'Geo_Node'
+    __tablename__ = 'Geo_Lane'
     Id = Column(VARCHAR(36), primary_key=True)
-    LaneIds = Column(VARCHAR(100))
+    Length = Column(Float)
+    MaxSpeed = Column(Float)
 
-    def __init__(self, Id, LaneIds):
+    def __init__(self, Id, Length, MaxSpeed):
         self.Id = Id
-        self.LaneIds = LaneIds
+        self.Length = Length
+        self.MaxSpeed = MaxSpeed
 
 class Dispatch(Base):
     # 表的名字:
@@ -259,7 +275,7 @@ class Dispatch(Base):
         self.deletor = deletor
         self.deletetime = deletetime
 
-class WalkTimePort(Base):
+class WalkTimePark(Base):
     __tablename__ = 'park_load_distance'
 
     park_area_id = Column(VARCHAR(36), primary_key=True)
@@ -267,13 +283,15 @@ class WalkTimePort(Base):
     park_area_name = Column(VARCHAR(36))
     load_area_name = Column(VARCHAR(36))
     park_load_distance = Column(Float(10))
+    park_load_lanes = Column(VARCHAR(100))
 
-    def __init__(self, park_area_id, load_area_id, park_area_name, load_area_name, park_load_distance):
+    def __init__(self, park_area_id, load_area_id, park_area_name, load_area_name, park_load_distance, park_load_lanes):
         self.park_area_id = park_area_id
         self.load_area_id = load_area_id
         self.park_area_name = park_area_name
         self.load_area_name = load_area_name
         self.park_load_distance = park_load_distance
+        self.park_load_lanes = park_load_lanes
 
 class Equipment(Base):
     __tablename__ = 'sys_equipment'

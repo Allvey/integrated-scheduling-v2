@@ -53,10 +53,14 @@ class TrafficProgPara(object):
         self.grade_loading_array = np.zeros(num_of_excavator)  # 用于保存挖机挖掘矿石的品位
         self.dump_strength = np.zeros(num_of_dump)  # 卸载点的工作强度，单位是t/h
         self.dump_priority_coefficient = np.zeros(num_of_dump)  # 每个卸载点的优先级系数
+
+        # 装载道路上，每提供1吨的装载能力需要一辆卡车运行时长,等于（该装载道路上车辆平均运行时长/卡车平均装载能力）
         self.goto_unload_area_factor = np.full((num_of_load_area, num_of_unload_area), 10, dtype=float)  # 卸载道路的运输系数
         self.goto_unload_point_factor = np.full((num_of_excavator, num_of_dump), 10, dtype=float)  # 逻辑卸载道路的运输系数
+        # 卸载道路上，每运输1吨货物需要一辆卡车运行时长,等于（该卸载道路上车辆平均运行时长/卡车平均实际装载量）
         self.goto_load_area_factor = np.full((num_of_unload_area, num_of_load_area), 10, dtype=float)  # 装载道路的运输系数
-        self.goto_excavator_factor = np.full((num_of_dump, num_of_excavator), 10, dtype=float)  # 逻辑1装载道路的运输系数
+        self.goto_excavator_factor = np.full((num_of_dump, num_of_excavator), 10, dtype=float)  # 逻辑装载道路的运输系数
+
         self.priority_coefficient = np.zeros((num_of_excavator, num_of_dump))  # 卸载道路的优先级系数
         self.grade_lower_dump_array = np.zeros(num_of_dump)  # 卸载点矿石品位下限
         self.grade_upper_dump_array = np.zeros(num_of_dump)  # 卸载点矿石品位上限
@@ -65,11 +69,11 @@ class TrafficProgPara(object):
         self.heavy_speed = 22  # 重载矿卡平均时速
         self.goto_load_area_distance = np.zeros((num_of_unload_area, num_of_load_area))  # 空载运输路线距离
         self.goto_unload_area_distance = np.zeros((num_of_load_area, num_of_unload_area))  # 重载运输路线距离
-        # 装载道路上，每提供1吨的装载能力需要一辆卡车运行时长,等于（该装载道路上车辆平均运行时长/卡车平均装载能力）
-        self.avg_goto_excavator_weight = np.zeros((num_of_load_area, num_of_unload_area))
+        # 装载道路权重因子
+        # self.avg_goto_excavator_weight = np.zeros((num_of_load_area, num_of_unload_area))
         self.avg_goto_excavator_weight = np.full((num_of_load_area, num_of_unload_area), 1)
-        # 卸载道路上，每运输1吨货物需要一辆卡车运行时长,等于（该卸载道路上车辆平均运行时长/卡车平均实际装载量）
-        self.avg_goto_unload_point_weight = np.zeros((num_of_load_area, num_of_unload_area))
+        # 卸载道路
+        # self.avg_goto_unload_point_weight = np.zeros((num_of_load_area, num_of_unload_area))
         self.avg_goto_unload_point_weight = np.full((num_of_load_area, num_of_unload_area), 1)
         self.goto_excavator_distance = np.zeros((num_of_dump, num_of_excavator))  # 逻辑空载运输路线距离
         self.goto_dump_distance = np.zeros((num_of_excavator, num_of_dump))  # 逻辑重载运输路线距离

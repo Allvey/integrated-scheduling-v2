@@ -51,7 +51,7 @@ def build_park_uuid_index_map():
     park_num = 0
 
     try:
-        for item in session_postgre.query(WalkTimePort).all():
+        for item in session_postgre.query(WalkTimePark).all():
             park = str(item.park_area_id)
             if park not in park_uuid_to_index_dict:
                 park_uuid_to_index_dict[park] = park_num
@@ -223,3 +223,9 @@ def update_unload_area():
     for walk_time in session_postgre.query(WalkTime).all():
         unload_area_list.append(walk_time.unload_area_id)
     return unload_area_list
+
+def update_park_area():
+    park_area_list = []
+    for walk_time_park in session_postgre.query(WalkTimePark).all():
+        park_area_list.append(walk_time_park.park_area_id)
+    return park_area_list

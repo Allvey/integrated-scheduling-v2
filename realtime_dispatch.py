@@ -31,10 +31,6 @@ from traffic_flow_planner import *
 from settings import *
 from static_data_process import *
 
-# item = session_postgre.query(Lane).first()
-#
-# print(item.LaneIds)
-
 # 全局参数设定
 
 # 空载任务集合
@@ -89,11 +85,6 @@ logger.info(dynamic_truck_set)
 # 用于动态调度的挖机及卸载设备
 dynamic_excavator_set = set(update_autodisp_excavator())
 dynamic_dump_set = set(update_autodisp_dump())
-
-
-item = session_postgre.query(Lane).first()
-
-print(item.LaneIds)
 
 
 # 设备映射类, 存储除工作区以外的映射关系
@@ -428,7 +419,7 @@ class WalkManage(DeviceMap):
 
         try:
 
-            for item in session_postgre.query(WalkTimePort).all():
+            for item in session_postgre.query(WalkTimePark).all():
                 load_area = str(item.load_area_id)
                 park_area = str(item.park_area_id)
                 load_area_index = load_area_uuid_to_index_dict[load_area]
