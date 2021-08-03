@@ -7,9 +7,8 @@
 # @Software: PyCharm
 
 # import
-import numpy as np
 import pulp
-from traffic_flow_info import *
+from traffic_flow.traffic_flow_info import *
 # from backstore_traffic_flow_info import *
 # import time
 # start = time.time()

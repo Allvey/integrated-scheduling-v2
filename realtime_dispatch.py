@@ -10,25 +10,7 @@
 # 实时调度模块
 
 
-from sqlalchemy import Column, create_engine
-from sqlalchemy import VARCHAR, DateTime, Float, Integer, BOOLEAN
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
-import numpy as np
-from redis import StrictRedis, ConnectionPool
-import redis
-from datetime import datetime, timedelta
-import copy
-import json
-import sched
-import time
-from tables import *
-from urllib.parse import quote
-import logging
-import logging.handlers
-import os
-from traffic_flow_planner import *
-from settings import *
+from traffic_flow.traffic_flow_planner import *
 from static_data_process import *
 
 # 全局参数设定
