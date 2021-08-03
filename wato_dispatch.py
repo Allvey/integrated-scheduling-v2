@@ -90,7 +90,7 @@ logging.basicConfig()
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-timefilehandler = logging.handlers.TimedRotatingFileHandler("logs/dispatch.log", when='M', interval=1, backupCount=60)
+timefilehandler = logging.handlers.TimedRotatingFileHandler("RDlogs/dispatch.log", when='M', interval=1, backupCount=60)
 # 设置后缀名称，跟strftime的格式一样
 timefilehandler.suffix = "%Y-%m-%d_%H-%M.log"
 
