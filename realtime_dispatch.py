@@ -969,7 +969,7 @@ class Dispatcher(DeviceMap):
         unloading_time = self.dump.get_unloading_time()
         # 路网信息
         park_to_load_eq = self.walker.get_park_to_load_eq()
-        go_time_eq = self.walker.get_o_time_eq()
+        go_time_eq = self.walker.get_go_time_eq()
         com_time_eq = self.walker.get_com_time_eq()
 
         now = float((datetime.now() - self.start_time) / timedelta(hours=0, minutes=1, seconds=0))
