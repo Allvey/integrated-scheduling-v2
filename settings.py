@@ -8,11 +8,6 @@
 
 
 # 数据库设备, redis设置, 日志设置
-
-<<<<<<< HEAD
-=======
-
->>>>>>> acc639d456bb6cab81fb693f04b04a95a6f30b81
 from tables import *
 from urllib.parse import quote
 import logging.handlers

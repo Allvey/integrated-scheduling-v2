@@ -51,11 +51,7 @@ def build_park_uuid_index_map():
     park_num = 0
 
     try:
-<<<<<<< HEAD
         for item in session_postgre.query(WalkTimePark).all():
-=======
-        for item in session_postgre.query(WalkTimePort).all():
->>>>>>> acc639d456bb6cab81fb693f04b04a95a6f30b81
             park = str(item.park_area_id)
             if park not in park_uuid_to_index_dict:
                 park_uuid_to_index_dict[park] = park_num
@@ -128,11 +124,7 @@ def update_deveices_map(unload_area_uuid_to_index_dict, load_area_uuid_to_index_
                     load_area_uuid_to_index_dict[load_area_id]
                 excavator_num = excavator_num + 1
         if excavator_num < 1 or dump_num < 1:
-<<<<<<< HEAD
             raise Exception("无动态派车计划可用-动态派车挖机/卸载设备映射失败")
-=======
-            raise Exception("无动态派车计划可用-动态派车挖机/卸点映射失败")
->>>>>>> acc639d456bb6cab81fb693f04b04a95a6f30b81
     except Exception as es:
         logger.warning(es)
 
@@ -199,11 +191,7 @@ def update_autodisp_excavator():
         for item in session_mysql.query(Dispatch).filter_by(isdeleted=0, isauto=1).all():
             dynamic_excavator_list.append(item.exactor_id)
         if len(dynamic_excavator_list) < 1:
-<<<<<<< HEAD
             raise Exception("无动态派车计划可用-动态派车挖机/卸载设备集合读取异常")
-=======
-            raise Exception("无动态派车计划可用-动态派车挖机/卸点集合读取异常")
->>>>>>> acc639d456bb6cab81fb693f04b04a95a6f30b81
     except Exception as es:
         logger.warning(es)
 
@@ -217,11 +205,7 @@ def update_autodisp_dump():
         for item in session_mysql.query(Dispatch).filter_by(isdeleted=0, isauto=1).all():
             dynamic_dump_list.append(item.dump_id)
         if len(dynamic_dump_list) < 1:
-<<<<<<< HEAD
             raise Exception("无动态派车计划可用-动态派车挖机/卸载设备集合读取异常")
-=======
-            raise Exception("无动态派车计划可用-动态派车挖机/卸点集合读取异常")
->>>>>>> acc639d456bb6cab81fb693f04b04a95a6f30b81
     except Exception as es:
         logger.warning(es)
     return dynamic_dump_list
@@ -238,7 +222,6 @@ def update_unload_area():
     unload_area_list = []
     for walk_time in session_postgre.query(WalkTime).all():
         unload_area_list.append(walk_time.unload_area_id)
-<<<<<<< HEAD
     return unload_area_list
 
 def update_park_area():
@@ -246,6 +229,3 @@ def update_park_area():
     for walk_time_park in session_postgre.query(WalkTimePark).all():
         park_area_list.append(walk_time_park.park_area_id)
     return park_area_list
-=======
-    return unload_area_list
->>>>>>> acc639d456bb6cab81fb693f04b04a95a6f30b81

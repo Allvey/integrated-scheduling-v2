@@ -119,28 +119,19 @@ class WalkTime(Base):
     unload_area_name = Column(VARCHAR(30))
     to_unload_distance = Column(Float(10))
     to_load_distance = Column(Float(10))
-<<<<<<< HEAD
     to_unload_lanes = Column(VARCHAR(100))
     to_load_lanes = Column(VARCHAR(100))
 
     def __init__(self, load_area_id, unload_area_id, load_area_name, unload_area_name, to_load_distance,
                  to_unload_distance, to_unload_lanes, to_load_lanes):
-=======
-
-    def __init__(self, load_area_id, unload_area_id, load_area_name, unload_area_name, to_load_distance,
-                 to_unload_distance):
->>>>>>> acc639d456bb6cab81fb693f04b04a95a6f30b81
         self.load_area_id = load_area_id
         self.unload_area_id = unload_area_id
         self.load_area_name = load_area_name
         self.unload_area_name = unload_area_name
         self.to_load_distance = to_load_distance
         self.to_unload_distance = to_unload_distance
-<<<<<<< HEAD
         self.to_unload_lanes = to_unload_lanes
         self.to_load_lanes = to_load_lanes
-=======
->>>>>>> acc639d456bb6cab81fb693f04b04a95a6f30b81
 
     # Rid = Column(VARCHAR(36), primary_key=True)
     # load_area_id = Column(VARCHAR(36))
@@ -222,7 +213,6 @@ class EquipmentPair(Base):
         self.isdeleted = isdeleted
         self.createtime = createtime
 
-<<<<<<< HEAD
 # class Lane(Base):
 #     # 表的名字
 #     __tablename__ = 'Geo_Node'
@@ -245,8 +235,6 @@ class Lane(Base):
         self.Length = Length
         self.MaxSpeed = MaxSpeed
 
-=======
->>>>>>> acc639d456bb6cab81fb693f04b04a95a6f30b81
 class Dispatch(Base):
     # 表的名字:
     __tablename__ = 'sys_dispatch_setting'
@@ -287,11 +275,7 @@ class Dispatch(Base):
         self.deletor = deletor
         self.deletetime = deletetime
 
-<<<<<<< HEAD
 class WalkTimePark(Base):
-=======
-class WalkTimePort(Base):
->>>>>>> acc639d456bb6cab81fb693f04b04a95a6f30b81
     __tablename__ = 'park_load_distance'
 
     park_area_id = Column(VARCHAR(36), primary_key=True)
@@ -299,23 +283,15 @@ class WalkTimePort(Base):
     park_area_name = Column(VARCHAR(36))
     load_area_name = Column(VARCHAR(36))
     park_load_distance = Column(Float(10))
-<<<<<<< HEAD
     park_load_lanes = Column(VARCHAR(100))
 
     def __init__(self, park_area_id, load_area_id, park_area_name, load_area_name, park_load_distance, park_load_lanes):
-=======
-
-    def __init__(self, park_area_id, load_area_id, park_area_name, load_area_name, park_load_distance):
->>>>>>> acc639d456bb6cab81fb693f04b04a95a6f30b81
         self.park_area_id = park_area_id
         self.load_area_id = load_area_id
         self.park_area_name = park_area_name
         self.load_area_name = load_area_name
         self.park_load_distance = park_load_distance
-<<<<<<< HEAD
         self.park_load_lanes = park_load_lanes
-=======
->>>>>>> acc639d456bb6cab81fb693f04b04a95a6f30b81
 
 class Equipment(Base):
     __tablename__ = 'sys_equipment'
