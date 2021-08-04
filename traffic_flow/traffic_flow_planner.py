@@ -19,12 +19,12 @@ from traffic_flow.traffic_flow_info import *
 # traffic_programme_para.grade_loading_array[excavator_index] = 100  # 挖机装载物料品位
 # traffic_programme_para.excavator_priority_coefficient[excavator_index] = 1  # 挖机优先级
 # traffic_programme_para.dump_strength[dump_index] = 200  # 卸载设备最大卸载能力，单位吨/小时
-# traffic_programme_para.grade_upper_dump_array[dump_index] = 100  # 卸点品位上限
-# traffic_programme_para.grade_lower_dump_array[dump_index] = 100  # 卸点品位下限
+# traffic_programme_para.grade_upper_dump_array[dump_index] = 100  # 卸载设备品位上限
+# traffic_programme_para.grade_lower_dump_array[dump_index] = 100  # 卸载设备品位下限
 # traffic_programme_para.dump_priority_coefficient[dump_index] = 1  # 卸载设备优先级
 
 
-# 从数据库中读取电铲和卸载点相关参数，并将线性规划所用参数保存在TrafficProgPara类中
+# 从数据库中读取挖机和卸载设备相关参数，并将线性规划所用参数保存在TrafficProgPara类中
 
 
 # 解决线性规划问题，生成每条道路的流量
@@ -33,13 +33,13 @@ def transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator,
                                  max_unload_weigh_alg_flag, truck_total_num,
                                  goto_excavator_dis, goto_dump_dis, min_throughout,
                                  grade_lower_array=None, grade_upper_array=None):
-    row = len(coefficient)  # 代表电铲的个数,第i行代表第i台电铲
-    col = len(coefficient[0])  # 代表卸载点的个数,第j行代表第j个卸载点
+    row = len(coefficient)  # 代表挖机的个数,第i行代表第i台挖机
+    col = len(coefficient[0])  # 代表卸载设备的个数,第j行代表第j个卸载设备
 
     # prob = pulp.LpProblem('Transportation Problem', sense=pulp.LpMaximize)
-    # 卸载道路的流量,单位是吨/小时,i代表起点为第i个电铲,j代表终点为第j个卸载点
+    # 卸载道路的流量,单位是吨/小时,i代表起点为第i个挖机,j代表终点为第j个卸载设备
     var_x = [[pulp.LpVariable('x{0}{1}'.format(i, j), lowBound=0) for j in range(col)] for i in range(row)]
-    # 装载道路的流量,单位是吨/小时,i代表起点为第i个卸载点,j代表终点为第j个电铲
+    # 装载道路的流量,单位是吨/小时,i代表起点为第i个卸载设备,j代表终点为第j个挖机
     var_y = [[pulp.LpVariable('y{0}{1}'.format(i, j), lowBound=0) for j in range(row)] for i in range(col)]
 
     flatten = lambda x: [y for l in x for y in flatten(l)] if type(x) is list else [x]
@@ -70,16 +70,16 @@ def transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator,
              pulp.lpSum(load_truck_totla_num_array) <= truck_total_num)
 
     # 最大工作强度约束
-    # 约束每个电铲的工作强度
+    # 约束每个挖机的工作强度
     for i in range(row):
         prob += (pulp.lpSum(var_x[i]) <= b_excavator[i])
-    # 约束每个卸载点的工作强度
+    # 约束每个卸载设备的工作强度
     for j in range(col):
         prob += (pulp.lpSum(var_y[j]) <= b_dump[j])
 
     '''
     # 车流基尔霍夫定理约束
-    # 进入电铲和从电铲出去的车辆个数需要相同
+    # 进入挖机和从挖机出去的车辆个数需要相同
     for i in range(row):
         prob += (pulp.lpSum(unload_truck_total_num_array[i]) == pulp.lpSum(load_truck_totla_num_array[:,i]))
     # 从装载点离开和进来的车辆个数需要相同
@@ -87,16 +87,16 @@ def transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator,
         prob += (pulp.lpSum(load_truck_totla_num_array[j]) == pulp.lpSum(unload_truck_total_num_array[:,j]))
     '''
 
-    # 从装载点去往卸载点的流量之和要小于从卸载点到装载点的流量之和
+    # 从装载点去往卸载设备的流量之和要小于从卸载设备到装载点的流量之和
     for i in range(row):
         prob += (pulp.lpSum((np.array(var_x))[i]) <= pulp.lpSum((np.array(var_y))[:, i]))
 
-    # 从卸载点出发去往装载点的流量之和要小于从装载点到本卸载点的流量之和
+    # 从卸载设备出发去往装载点的流量之和要小于从装载点到本卸载设备的流量之和
     for j in range(col):
         prob += (pulp.lpSum((np.array(var_y))[j]) <= pulp.lpSum((np.array(var_x))[:, j]))
 
     # 矿石品位约束卸载
-    # 去往卸载点的流量使用矩阵乘法乘以每个电铲处矿石的品位，得到每个卸载点的矿石品位总和
+    # 去往卸载设备的流量使用矩阵乘法乘以每个挖机处矿石的品位，得到每个卸载设备的矿石品位总和
     grade_array = np.dot(grade_loading_array, var_x)
     for j in range(col):
         sum_traffic_unload = pulp.lpSum((np.array(var_x))[:, j])
@@ -147,7 +147,7 @@ def traffic_flow_plan():
 
     load_area_num = len(load_area_set)
 
-    print("装载区数量:", load_area_num, "卸载区数量:", unload_area_num, "挖机数量:", excavator_num, "卸点数量:", dump_num)
+    print("装载区数量:", load_area_num, "卸载区数量:", unload_area_num, "挖机数量:", excavator_num, "卸载设备数量:", dump_num)
 
     # 初始化参量
     traffic_programme_para = Traffic_para_init(load_area_num, unload_area_num, excavator_num, dump_num)

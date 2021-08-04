@@ -1356,3 +1356,1043 @@
 2021-08-03 10:42:56,188 - settings: INFO 行驶时间：[3.125]
 2021-08-03 10:42:56,188 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
 2021-08-03 10:42:56,632 - settings: INFO #####################################周期更新结束#####################################
+2021-08-03 10:52:00,599 - settings: INFO 最大产量调度模式
+2021-08-03 10:52:00,611 - settings: INFO 最大产量:179.21176
+2021-08-03 10:52:00,611 - settings: INFO 各变量取值:
+2021-08-03 10:52:00,612 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-03 10:52:00,612 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-03 10:52:00,715 - settings: INFO 可用于动态派车的矿卡：
+2021-08-03 10:52:00,715 - settings: INFO {'5f010e86-3398-4f88-a0e7-27d104cc8bbd', '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19', '9b251c39-42e8-4071-9a1f-d36625555513', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', '31c1c93a-b037-4ab6-88b6-eef6cd23804b', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', 'fb1d5516-9a42-4f6e-84fe-9955723badce', '5221a7f5-0a90-482f-b2bd-c902110a792d', 'f68909a0-e644-415f-a140-15c19f162b8f', 'e0118ce2-7644-4f6e-aadc-8e0c33b11241', 'aae4642f-f74b-4514-971e-c800a4182152'}
+2021-08-03 10:52:00,763 - settings: INFO  
+2021-08-03 10:52:00,763 - settings: INFO 调度系统启动
+2021-08-03 10:52:01,007 - settings: INFO #####################################周期更新开始#####################################
+2021-08-03 10:52:01,668 - settings: INFO 矿卡当前任务：
+2021-08-03 10:52:01,669 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': -2, '9b251c39-42e8-4071-9a1f-d36625555513': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'fb1d5516-9a42-4f6e-84fe-9955723badce': -2, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2, 'aae4642f-f74b-4514-971e-c800a4182152': -2, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': -2, 'f68909a0-e644-415f-a140-15c19f162b8f': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': -2}
+2021-08-03 10:52:03,017 - settings: INFO 最大产量调度模式
+2021-08-03 10:52:03,028 - settings: INFO 最大产量:179.21176
+2021-08-03 10:52:03,028 - settings: INFO 各变量取值:
+2021-08-03 10:52:03,029 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-03 10:52:03,029 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-03 10:52:03,029 - settings: INFO  
+2021-08-03 10:52:03,029 - settings: INFO 调度矿卡 5f010e86-3398-4f88-a0e7-27d104cc8bbd  KK008
+2021-08-03 10:52:03,029 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-03 10:52:03,030 - settings: INFO 矿卡行程：无
+2021-08-03 10:52:03,030 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-03 10:52:03,030 - settings: INFO 挖机饱和度：[0.99]
+2021-08-03 10:52:03,030 - settings: INFO 行程时间：[3.125]
+2021-08-03 10:52:03,030 - settings: INFO 行驶时间：[3.125]
+2021-08-03 10:52:03,030 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-03 10:52:03,030 - settings: INFO  
+2021-08-03 10:52:03,030 - settings: INFO 调度矿卡 35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19  KK006
+2021-08-03 10:52:03,030 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-03 10:52:03,030 - settings: INFO 矿卡行程：无
+2021-08-03 10:52:03,030 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-03 10:52:03,031 - settings: INFO 挖机饱和度：[0.99]
+2021-08-03 10:52:03,031 - settings: INFO 行程时间：[3.125]
+2021-08-03 10:52:03,031 - settings: INFO 行驶时间：[3.125]
+2021-08-03 10:52:03,031 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-03 10:52:03,031 - settings: INFO  
+2021-08-03 10:52:03,031 - settings: INFO 调度矿卡 9b251c39-42e8-4071-9a1f-d36625555513  验证bug
+2021-08-03 10:52:03,031 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-03 10:52:03,031 - settings: INFO 矿卡行程：无
+2021-08-03 10:52:03,031 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-03 10:52:03,031 - settings: INFO 挖机饱和度：[0.99]
+2021-08-03 10:52:03,032 - settings: INFO 行程时间：[3.125]
+2021-08-03 10:52:03,032 - settings: INFO 行驶时间：[3.125]
+2021-08-03 10:52:03,032 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-03 10:52:03,032 - settings: INFO  
+2021-08-03 10:52:03,032 - settings: INFO 调度矿卡 fa028808-a3f0-47dd-9929-f23e2cac2bf8  KK005
+2021-08-03 10:52:03,032 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-03 10:52:03,032 - settings: INFO 矿卡行程：无
+2021-08-03 10:52:03,032 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-03 10:52:03,032 - settings: INFO 挖机饱和度：[0.99]
+2021-08-03 10:52:03,032 - settings: INFO 行程时间：[3.125]
+2021-08-03 10:52:03,032 - settings: INFO 行驶时间：[3.125]
+2021-08-03 10:52:03,033 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-03 10:52:03,033 - settings: INFO  
+2021-08-03 10:52:03,033 - settings: INFO 调度矿卡 dd8f0405-1ade-4d23-8985-2a1e603c5c2a  KK002
+2021-08-03 10:52:03,033 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-03 10:52:03,033 - settings: INFO 矿卡行程：无
+2021-08-03 10:52:03,033 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-03 10:52:03,033 - settings: INFO 挖机饱和度：[0.99]
+2021-08-03 10:52:03,033 - settings: INFO 行程时间：[3.125]
+2021-08-03 10:52:03,033 - settings: INFO 行驶时间：[3.125]
+2021-08-03 10:52:03,033 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-03 10:52:03,033 - settings: INFO  
+2021-08-03 10:52:03,033 - settings: INFO 调度矿卡 31c1c93a-b037-4ab6-88b6-eef6cd23804b  XDE120-8
+2021-08-03 10:52:03,034 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-03 10:52:03,034 - settings: INFO 矿卡行程：无
+2021-08-03 10:52:03,034 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-03 10:52:03,034 - settings: INFO 挖机饱和度：[0.99]
+2021-08-03 10:52:03,034 - settings: INFO 行程时间：[3.125]
+2021-08-03 10:52:03,034 - settings: INFO 行驶时间：[3.125]
+2021-08-03 10:52:03,034 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-03 10:52:03,034 - settings: INFO  
+2021-08-03 10:52:03,034 - settings: INFO 调度矿卡 1b787c4a-210a-46ce-a32c-73cbc1cd5e39  KK007
+2021-08-03 10:52:03,034 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-03 10:52:03,034 - settings: INFO 矿卡行程：无
+2021-08-03 10:52:03,034 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-03 10:52:03,035 - settings: INFO 挖机饱和度：[0.99]
+2021-08-03 10:52:03,035 - settings: INFO 行程时间：[3.125]
+2021-08-03 10:52:03,035 - settings: INFO 行驶时间：[3.125]
+2021-08-03 10:52:03,035 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-03 10:52:03,035 - settings: INFO  
+2021-08-03 10:52:03,035 - settings: INFO 调度矿卡 fb1d5516-9a42-4f6e-84fe-9955723badce  KK001
+2021-08-03 10:52:03,035 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-03 10:52:03,035 - settings: INFO 矿卡行程：无
+2021-08-03 10:52:03,035 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-03 10:52:03,035 - settings: INFO 挖机饱和度：[0.99]
+2021-08-03 10:52:03,036 - settings: INFO 行程时间：[3.125]
+2021-08-03 10:52:03,036 - settings: INFO 行驶时间：[3.125]
+2021-08-03 10:52:03,036 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-03 10:52:03,036 - settings: INFO  
+2021-08-03 10:52:03,036 - settings: INFO 调度矿卡 5221a7f5-0a90-482f-b2bd-c902110a792d  NTE200-4（18#）
+2021-08-03 10:52:03,036 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-03 10:52:03,036 - settings: INFO 矿卡行程：无
+2021-08-03 10:52:03,036 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-03 10:52:03,036 - settings: INFO 挖机饱和度：[0.99]
+2021-08-03 10:52:03,036 - settings: INFO 行程时间：[3.125]
+2021-08-03 10:52:03,036 - settings: INFO 行驶时间：[3.125]
+2021-08-03 10:52:03,037 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-03 10:52:03,037 - settings: INFO  
+2021-08-03 10:52:03,037 - settings: INFO 调度矿卡 f68909a0-e644-415f-a140-15c19f162b8f  KK004
+2021-08-03 10:52:03,037 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-03 10:52:03,037 - settings: INFO 矿卡行程：无
+2021-08-03 10:52:03,037 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-03 10:52:03,037 - settings: INFO 挖机饱和度：[0.99]
+2021-08-03 10:52:03,037 - settings: INFO 行程时间：[3.125]
+2021-08-03 10:52:03,037 - settings: INFO 行驶时间：[3.125]
+2021-08-03 10:52:03,037 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-03 10:52:03,037 - settings: INFO  
+2021-08-03 10:52:03,037 - settings: INFO 调度矿卡 e0118ce2-7644-4f6e-aadc-8e0c33b11241  KK003
+2021-08-03 10:52:03,038 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-03 10:52:03,038 - settings: INFO 矿卡行程：无
+2021-08-03 10:52:03,038 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-03 10:52:03,038 - settings: INFO 挖机饱和度：[0.99]
+2021-08-03 10:52:03,038 - settings: INFO 行程时间：[3.125]
+2021-08-03 10:52:03,038 - settings: INFO 行驶时间：[3.125]
+2021-08-03 10:52:03,038 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-03 10:52:03,038 - settings: INFO  
+2021-08-03 10:52:03,038 - settings: INFO 调度矿卡 aae4642f-f74b-4514-971e-c800a4182152  KK010
+2021-08-03 10:52:03,038 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-03 10:52:03,038 - settings: INFO 矿卡行程：无
+2021-08-03 10:52:03,038 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-03 10:52:03,039 - settings: INFO 挖机饱和度：[0.99]
+2021-08-03 10:52:03,039 - settings: INFO 行程时间：[3.125]
+2021-08-03 10:52:03,039 - settings: INFO 行驶时间：[3.125]
+2021-08-03 10:52:03,039 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-03 10:52:03,479 - settings: INFO #####################################周期更新结束#####################################
+2021-08-03 12:14:26,492 - settings: ERROR (psycopg2.OperationalError) could not connect to server: Connection timed out (0x0000274C/10060)
+	Is the server running on host "192.168.28.111" and accepting
+	TCP/IP connections on port 5432?
+
+(Background on this error at: http://sqlalche.me/e/14/e3q8)
+2021-08-03 14:33:48,491 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:33:48,501 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:33:52,224 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:33:52,246 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:35:50,642 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:35:50,650 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:35:54,378 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:35:54,386 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:36:08,318 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:36:08,326 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:36:13,176 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:36:13,183 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:36:24,470 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:36:24,479 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:36:30,782 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:36:30,789 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:36:38,199 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:36:38,206 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:36:47,434 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:36:47,460 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:36:51,206 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:36:51,220 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:37:07,127 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:37:07,134 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:37:17,741 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:37:17,753 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:41:07,269 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:41:07,275 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:41:11,122 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:41:11,126 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:41:50,476 - settings: ERROR (psycopg2.OperationalError) could not connect to server: Connection timed out (0x0000274C/10060)
+	Is the server running on host "192.168.28.111" and accepting
+	TCP/IP connections on port 5432?
+
+(Background on this error at: http://sqlalche.me/e/14/e3q8)
+2021-08-03 14:42:20,855 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:42:20,862 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:42:42,047 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:42:42,092 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:42:53,204 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:42:53,213 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:43:03,923 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:43:03,929 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:43:07,005 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:43:07,014 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 14:43:40,927 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 14:43:40,937 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 15:04:09,112 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 15:04:09,121 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 15:04:31,638 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 15:04:31,647 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 15:05:38,868 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 15:05:38,876 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 15:05:45,122 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 15:05:45,128 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 15:05:53,414 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 15:05:53,425 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 15:07:03,866 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 15:07:03,876 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 15:07:13,141 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 15:07:13,157 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 15:07:29,376 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 15:07:29,385 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 15:07:38,190 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 15:07:38,198 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 15:07:58,460 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 15:07:58,469 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 15:08:12,678 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 15:08:12,690 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-03 15:09:04,005 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-03 15:09:04,012 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-04 10:40:16,376 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-04 10:40:16,384 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-04 10:40:29,986 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-04 10:40:29,994 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-04 10:40:42,495 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-04 10:40:42,502 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-04 10:47:49,617 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-04 10:47:49,624 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-04 10:47:55,037 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-04 10:47:55,045 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-04 10:47:57,542 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-04 10:47:57,549 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-04 10:48:15,620 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-04 10:48:15,633 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-04 10:48:24,867 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-04 10:48:24,875 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-04 10:48:37,405 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-04 10:48:37,411 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-04 10:48:54,088 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-04 10:48:54,096 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-04 10:49:20,276 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-04 10:49:20,290 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-04 10:49:33,322 - settings: ERROR (psycopg2.errors.UndefinedTable) relation "work_area_distance" does not exist
+LINE 2: FROM work_area_distance
+             ^
+
+[SQL: SELECT work_area_distance.load_area_id AS work_area_distance_load_area_id, work_area_distance.unload_area_id AS work_area_distance_unload_area_id, work_area_distance.load_area_name AS work_area_distance_load_area_name, work_area_distance.unload_area_name AS work_area_distance_unload_area_name, work_area_distance.to_unload_distance AS work_area_distance_to_unload_distance, work_area_distance.to_load_distance AS work_area_distance_to_load_distance, work_area_distance.to_unload_lanes AS work_area_distance_to_unload_lanes, work_area_distance.to_load_lanes AS work_area_distance_to_load_lanes 
+FROM work_area_distance]
+(Background on this error at: http://sqlalche.me/e/14/f405)
+2021-08-04 10:49:33,338 - settings: ERROR (psycopg2.errors.InFailedSqlTransaction) current transaction is aborted, commands ignored until end of transaction block
+
+[SQL: SELECT park_load_distance.park_area_id AS park_load_distance_park_area_id, park_load_distance.load_area_id AS park_load_distance_load_area_id, park_load_distance.park_area_name AS park_load_distance_park_area_name, park_load_distance.load_area_name AS park_load_distance_load_area_name, park_load_distance.park_load_distance AS park_load_distance_park_load_distance, park_load_distance.park_load_lanes AS park_load_distance_park_load_lanes 
+FROM park_load_distance]
+(Background on this error at: http://sqlalche.me/e/14/2j85)
+2021-08-04 14:22:21,399 - settings: INFO 最大产量调度模式
+2021-08-04 14:22:21,438 - settings: INFO 最大产量:179.21176
+2021-08-04 14:22:21,438 - settings: INFO 各变量取值:
+2021-08-04 14:22:21,439 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 14:22:21,439 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 14:22:29,444 - settings: INFO 最大产量调度模式
+2021-08-04 14:22:29,458 - settings: INFO 最大产量:179.21176
+2021-08-04 14:22:29,458 - settings: INFO 各变量取值:
+2021-08-04 14:22:29,458 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 14:22:29,459 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 14:22:37,090 - settings: INFO 最大产量调度模式
+2021-08-04 14:22:37,103 - settings: INFO 最大产量:179.21176
+2021-08-04 14:22:37,103 - settings: INFO 各变量取值:
+2021-08-04 14:22:37,103 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 14:22:37,104 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 14:35:16,260 - settings: INFO 最大产量调度模式
+2021-08-04 14:35:16,274 - settings: INFO 最大产量:179.21176
+2021-08-04 14:35:16,274 - settings: INFO 各变量取值:
+2021-08-04 14:35:16,274 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 14:35:16,274 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 15:30:51,849 - settings: INFO 最大产量调度模式
+2021-08-04 15:30:51,863 - settings: INFO 最大产量:179.21176
+2021-08-04 15:30:51,863 - settings: INFO 各变量取值:
+2021-08-04 15:30:51,863 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 15:30:51,863 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 15:31:04,593 - settings: INFO 最大产量调度模式
+2021-08-04 15:31:04,605 - settings: INFO 最大产量:179.21176
+2021-08-04 15:31:04,605 - settings: INFO 各变量取值:
+2021-08-04 15:31:04,605 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 15:31:04,606 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 15:32:01,672 - settings: INFO 最大产量调度模式
+2021-08-04 15:32:01,686 - settings: INFO 最大产量:179.21176
+2021-08-04 15:32:01,686 - settings: INFO 各变量取值:
+2021-08-04 15:32:01,686 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 15:32:01,687 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 15:38:47,517 - settings: INFO 最大产量调度模式
+2021-08-04 15:38:47,530 - settings: INFO 最大产量:179.21176
+2021-08-04 15:38:47,530 - settings: INFO 各变量取值:
+2021-08-04 15:38:47,530 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 15:38:47,531 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 15:38:47,599 - settings: INFO 可用于动态派车的矿卡：
+2021-08-04 15:38:47,599 - settings: INFO {'5221a7f5-0a90-482f-b2bd-c902110a792d', 'e0118ce2-7644-4f6e-aadc-8e0c33b11241', 'aae4642f-f74b-4514-971e-c800a4182152', '9b251c39-42e8-4071-9a1f-d36625555513', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', 'f68909a0-e644-415f-a140-15c19f162b8f', '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', '31c1c93a-b037-4ab6-88b6-eef6cd23804b', 'fb1d5516-9a42-4f6e-84fe-9955723badce', '5f010e86-3398-4f88-a0e7-27d104cc8bbd'}
+2021-08-04 15:38:47,646 - settings: INFO  
+2021-08-04 15:38:47,646 - settings: INFO 调度系统启动
+2021-08-04 15:38:48,468 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 15:38:48,920 - settings: INFO 矿卡当前任务：
+2021-08-04 15:38:48,921 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': -2, '9b251c39-42e8-4071-9a1f-d36625555513': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'fb1d5516-9a42-4f6e-84fe-9955723badce': -2, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2, 'aae4642f-f74b-4514-971e-c800a4182152': -2, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': -2, 'f68909a0-e644-415f-a140-15c19f162b8f': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': -2}
+2021-08-04 15:38:51,480 - settings: INFO 最大产量调度模式
+2021-08-04 15:38:51,492 - settings: INFO 最大产量:179.21176
+2021-08-04 15:38:51,492 - settings: INFO 各变量取值:
+2021-08-04 15:38:51,492 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 15:38:51,492 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 15:38:51,493 - settings: INFO  
+2021-08-04 15:38:51,493 - settings: INFO 调度矿卡 5221a7f5-0a90-482f-b2bd-c902110a792d  NTE200-4（18#）
+2021-08-04 15:38:51,493 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:38:51,493 - settings: INFO 矿卡行程：无
+2021-08-04 15:38:51,493 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:38:51,493 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:38:51,493 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:38:51,493 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:38:51,494 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:38:51,494 - settings: INFO  
+2021-08-04 15:38:51,494 - settings: INFO 调度矿卡 e0118ce2-7644-4f6e-aadc-8e0c33b11241  KK003
+2021-08-04 15:38:51,494 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:38:51,494 - settings: INFO 矿卡行程：无
+2021-08-04 15:38:51,494 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:38:51,494 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:38:51,494 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:38:51,494 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:38:51,494 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:38:51,494 - settings: INFO  
+2021-08-04 15:38:51,494 - settings: INFO 调度矿卡 aae4642f-f74b-4514-971e-c800a4182152  KK010
+2021-08-04 15:38:51,495 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:38:51,495 - settings: INFO 矿卡行程：无
+2021-08-04 15:38:51,495 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:38:51,495 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:38:51,495 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:38:51,495 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:38:51,495 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:38:51,495 - settings: INFO  
+2021-08-04 15:38:51,495 - settings: INFO 调度矿卡 9b251c39-42e8-4071-9a1f-d36625555513  验证bug
+2021-08-04 15:38:51,495 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:38:51,495 - settings: INFO 矿卡行程：无
+2021-08-04 15:38:51,495 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:38:51,496 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:38:51,496 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:38:51,496 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:38:51,496 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:38:51,496 - settings: INFO  
+2021-08-04 15:38:51,496 - settings: INFO 调度矿卡 1b787c4a-210a-46ce-a32c-73cbc1cd5e39  KK007
+2021-08-04 15:38:51,496 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:38:51,496 - settings: INFO 矿卡行程：无
+2021-08-04 15:38:51,496 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:38:51,496 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:38:51,496 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:38:51,497 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:38:51,497 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:38:51,497 - settings: INFO  
+2021-08-04 15:38:51,497 - settings: INFO 调度矿卡 f68909a0-e644-415f-a140-15c19f162b8f  KK004
+2021-08-04 15:38:51,497 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:38:51,497 - settings: INFO 矿卡行程：无
+2021-08-04 15:38:51,497 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:38:51,497 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:38:51,497 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:38:51,498 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:38:51,498 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:38:51,498 - settings: INFO  
+2021-08-04 15:38:51,498 - settings: INFO 调度矿卡 35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19  KK006
+2021-08-04 15:38:51,498 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:38:51,498 - settings: INFO 矿卡行程：无
+2021-08-04 15:38:51,498 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:38:51,498 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:38:51,498 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:38:51,498 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:38:51,498 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:38:51,498 - settings: INFO  
+2021-08-04 15:38:51,499 - settings: INFO 调度矿卡 fa028808-a3f0-47dd-9929-f23e2cac2bf8  KK005
+2021-08-04 15:38:51,499 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:38:51,499 - settings: INFO 矿卡行程：无
+2021-08-04 15:38:51,499 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:38:51,499 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:38:51,499 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:38:51,499 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:38:51,499 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:38:51,499 - settings: INFO  
+2021-08-04 15:38:51,499 - settings: INFO 调度矿卡 dd8f0405-1ade-4d23-8985-2a1e603c5c2a  KK002
+2021-08-04 15:38:51,499 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:38:51,499 - settings: INFO 矿卡行程：无
+2021-08-04 15:38:51,499 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:38:51,500 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:38:51,500 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:38:51,500 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:38:51,500 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:38:51,500 - settings: INFO  
+2021-08-04 15:38:51,500 - settings: INFO 调度矿卡 31c1c93a-b037-4ab6-88b6-eef6cd23804b  XDE120-8
+2021-08-04 15:38:51,500 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:38:51,500 - settings: INFO 矿卡行程：无
+2021-08-04 15:38:51,500 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:38:51,500 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:38:51,500 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:38:51,501 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:38:51,501 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:38:51,501 - settings: INFO  
+2021-08-04 15:38:51,501 - settings: INFO 调度矿卡 fb1d5516-9a42-4f6e-84fe-9955723badce  KK001
+2021-08-04 15:38:51,501 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:38:51,501 - settings: INFO 矿卡行程：无
+2021-08-04 15:38:51,501 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:38:51,501 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:38:51,501 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:38:51,501 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:38:51,501 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:38:51,501 - settings: INFO  
+2021-08-04 15:38:51,501 - settings: INFO 调度矿卡 5f010e86-3398-4f88-a0e7-27d104cc8bbd  KK008
+2021-08-04 15:38:51,502 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:38:51,502 - settings: INFO 矿卡行程：无
+2021-08-04 15:38:51,502 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:38:51,502 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:38:51,502 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:38:51,502 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:38:51,502 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:38:51,785 - settings: INFO #####################################周期更新结束#####################################
+2021-08-04 15:39:46,847 - settings: INFO 最大产量调度模式
+2021-08-04 15:39:46,861 - settings: INFO 最大产量:179.21176
+2021-08-04 15:39:46,861 - settings: INFO 各变量取值:
+2021-08-04 15:39:46,861 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 15:39:46,861 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 15:39:46,925 - settings: INFO 可用于动态派车的矿卡：
+2021-08-04 15:39:46,925 - settings: INFO {'31c1c93a-b037-4ab6-88b6-eef6cd23804b', 'aae4642f-f74b-4514-971e-c800a4182152', '5f010e86-3398-4f88-a0e7-27d104cc8bbd', '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', '9b251c39-42e8-4071-9a1f-d36625555513', 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', 'e0118ce2-7644-4f6e-aadc-8e0c33b11241', 'f68909a0-e644-415f-a140-15c19f162b8f', '5221a7f5-0a90-482f-b2bd-c902110a792d', 'fb1d5516-9a42-4f6e-84fe-9955723badce', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39'}
+2021-08-04 15:39:46,959 - settings: INFO  
+2021-08-04 15:39:46,959 - settings: INFO 调度系统启动
+2021-08-04 15:39:47,223 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 15:39:47,901 - settings: INFO 矿卡当前任务：
+2021-08-04 15:39:47,901 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': -2, '9b251c39-42e8-4071-9a1f-d36625555513': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'fb1d5516-9a42-4f6e-84fe-9955723badce': -2, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2, 'aae4642f-f74b-4514-971e-c800a4182152': -2, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': -2, 'f68909a0-e644-415f-a140-15c19f162b8f': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': -2}
+2021-08-04 15:39:50,726 - settings: INFO 最大产量调度模式
+2021-08-04 15:39:50,739 - settings: INFO 最大产量:179.21176
+2021-08-04 15:39:50,739 - settings: INFO 各变量取值:
+2021-08-04 15:39:50,740 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 15:39:50,740 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 15:39:50,740 - settings: INFO  
+2021-08-04 15:39:50,740 - settings: INFO 调度矿卡 31c1c93a-b037-4ab6-88b6-eef6cd23804b  XDE120-8
+2021-08-04 15:39:50,741 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:39:50,741 - settings: INFO 矿卡行程：无
+2021-08-04 15:39:50,741 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:39:50,741 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:39:50,741 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:39:50,741 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:39:50,741 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:39:50,741 - settings: INFO  
+2021-08-04 15:39:50,741 - settings: INFO 调度矿卡 aae4642f-f74b-4514-971e-c800a4182152  KK010
+2021-08-04 15:39:50,741 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:39:50,741 - settings: INFO 矿卡行程：无
+2021-08-04 15:39:50,741 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:39:50,742 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:39:50,742 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:39:50,742 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:39:50,742 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:39:50,742 - settings: INFO  
+2021-08-04 15:39:50,742 - settings: INFO 调度矿卡 5f010e86-3398-4f88-a0e7-27d104cc8bbd  KK008
+2021-08-04 15:39:50,742 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:39:50,742 - settings: INFO 矿卡行程：无
+2021-08-04 15:39:50,742 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:39:50,742 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:39:50,742 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:39:50,743 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:39:50,743 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:39:50,743 - settings: INFO  
+2021-08-04 15:39:50,743 - settings: INFO 调度矿卡 35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19  KK006
+2021-08-04 15:39:50,743 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:39:50,743 - settings: INFO 矿卡行程：无
+2021-08-04 15:39:50,743 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:39:50,743 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:39:50,743 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:39:50,743 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:39:50,744 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:39:50,744 - settings: INFO  
+2021-08-04 15:39:50,744 - settings: INFO 调度矿卡 fa028808-a3f0-47dd-9929-f23e2cac2bf8  KK005
+2021-08-04 15:39:50,744 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:39:50,744 - settings: INFO 矿卡行程：无
+2021-08-04 15:39:50,744 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:39:50,744 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:39:50,744 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:39:50,744 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:39:50,744 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:39:50,744 - settings: INFO  
+2021-08-04 15:39:50,745 - settings: INFO 调度矿卡 9b251c39-42e8-4071-9a1f-d36625555513  验证bug
+2021-08-04 15:39:50,745 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:39:50,745 - settings: INFO 矿卡行程：无
+2021-08-04 15:39:50,745 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:39:50,745 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:39:50,746 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:39:50,746 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:39:50,746 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:39:50,746 - settings: INFO  
+2021-08-04 15:39:50,746 - settings: INFO 调度矿卡 dd8f0405-1ade-4d23-8985-2a1e603c5c2a  KK002
+2021-08-04 15:39:50,746 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:39:50,746 - settings: INFO 矿卡行程：无
+2021-08-04 15:39:50,746 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:39:50,746 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:39:50,747 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:39:50,747 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:39:50,747 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:39:50,747 - settings: INFO  
+2021-08-04 15:39:50,747 - settings: INFO 调度矿卡 e0118ce2-7644-4f6e-aadc-8e0c33b11241  KK003
+2021-08-04 15:39:50,747 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:39:50,747 - settings: INFO 矿卡行程：无
+2021-08-04 15:39:50,747 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:39:50,747 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:39:50,747 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:39:50,747 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:39:50,748 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:39:50,748 - settings: INFO  
+2021-08-04 15:39:50,748 - settings: INFO 调度矿卡 f68909a0-e644-415f-a140-15c19f162b8f  KK004
+2021-08-04 15:39:50,748 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:39:50,748 - settings: INFO 矿卡行程：无
+2021-08-04 15:39:50,748 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:39:50,748 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:39:50,748 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:39:50,748 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:39:50,748 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:39:50,748 - settings: INFO  
+2021-08-04 15:39:50,748 - settings: INFO 调度矿卡 5221a7f5-0a90-482f-b2bd-c902110a792d  NTE200-4（18#）
+2021-08-04 15:39:50,749 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:39:50,749 - settings: INFO 矿卡行程：无
+2021-08-04 15:39:50,749 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:39:50,749 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:39:50,749 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:39:50,749 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:39:50,749 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:39:50,749 - settings: INFO  
+2021-08-04 15:39:50,749 - settings: INFO 调度矿卡 fb1d5516-9a42-4f6e-84fe-9955723badce  KK001
+2021-08-04 15:39:50,749 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:39:50,749 - settings: INFO 矿卡行程：无
+2021-08-04 15:39:50,749 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:39:50,750 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:39:50,750 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:39:50,750 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:39:50,750 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:39:50,750 - settings: INFO  
+2021-08-04 15:39:50,750 - settings: INFO 调度矿卡 1b787c4a-210a-46ce-a32c-73cbc1cd5e39  KK007
+2021-08-04 15:39:50,750 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 15:39:50,750 - settings: INFO 矿卡行程：无
+2021-08-04 15:39:50,750 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 15:39:50,750 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 15:39:50,750 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 15:39:50,751 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 15:39:50,751 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 15:39:51,085 - settings: INFO #####################################周期更新结束#####################################
+2021-08-04 15:51:45,784 - settings: INFO 最大产量调度模式
+2021-08-04 15:51:45,798 - settings: INFO 最大产量:179.21176
+2021-08-04 15:51:45,798 - settings: INFO 各变量取值:
+2021-08-04 15:51:45,798 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 15:51:45,799 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 15:51:46,046 - settings: INFO 可用于动态派车的矿卡：
+2021-08-04 15:51:46,046 - settings: INFO {'31c1c93a-b037-4ab6-88b6-eef6cd23804b', '5221a7f5-0a90-482f-b2bd-c902110a792d', 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19', '5f010e86-3398-4f88-a0e7-27d104cc8bbd', 'aae4642f-f74b-4514-971e-c800a4182152', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', 'fb1d5516-9a42-4f6e-84fe-9955723badce', 'f68909a0-e644-415f-a140-15c19f162b8f', 'e0118ce2-7644-4f6e-aadc-8e0c33b11241', '9b251c39-42e8-4071-9a1f-d36625555513', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39'}
+2021-08-04 15:51:46,166 - settings: INFO  
+2021-08-04 15:51:46,166 - settings: INFO 调度系统启动
+2021-08-04 15:51:46,673 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 16:02:15,110 - settings: INFO 最大产量调度模式
+2021-08-04 16:02:15,121 - settings: INFO 最大产量:179.21176
+2021-08-04 16:02:15,121 - settings: INFO 各变量取值:
+2021-08-04 16:02:15,122 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:02:15,122 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:02:15,203 - settings: INFO 可用于动态派车的矿卡：
+2021-08-04 16:02:15,203 - settings: INFO {'31c1c93a-b037-4ab6-88b6-eef6cd23804b', '5221a7f5-0a90-482f-b2bd-c902110a792d', '9b251c39-42e8-4071-9a1f-d36625555513', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', 'fb1d5516-9a42-4f6e-84fe-9955723badce', '5f010e86-3398-4f88-a0e7-27d104cc8bbd', 'aae4642f-f74b-4514-971e-c800a4182152', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', 'e0118ce2-7644-4f6e-aadc-8e0c33b11241', '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19', 'f68909a0-e644-415f-a140-15c19f162b8f'}
+2021-08-04 16:02:15,242 - settings: INFO  
+2021-08-04 16:02:15,242 - settings: INFO 调度系统启动
+2021-08-04 16:02:15,603 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 16:02:15,700 - settings: ERROR 设备路网信息异常异常
+2021-08-04 16:02:15,701 - settings: ERROR 0
+2021-08-04 16:02:15,751 - settings: ERROR 读取矿卡任务异常-reids读取异常
+2021-08-04 16:02:15,751 - settings: ERROR 'DeviceMap' object has no attribute 'truck_current_task'
+2021-08-04 16:02:15,751 - settings: INFO 矿卡当前任务：
+2021-08-04 16:02:15,751 - settings: INFO {}
+2021-08-04 16:02:16,359 - settings: ERROR 读取矿卡可用时间异常-redis读取异常
+2021-08-04 16:02:16,359 - settings: ERROR '31c1c93a-b037-4ab6-88b6-eef6cd23804b'
+2021-08-04 16:02:16,364 - settings: WARNING 'DeviceMap' object has no attribute 'truck_current_task'
+2021-08-04 16:02:16,364 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:02:16,364 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:02:16,365 - settings: WARNING 'DeviceMap' object has no attribute 'truck_current_task'
+2021-08-04 16:02:16,365 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:02:16,365 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:02:16,365 - settings: WARNING 'DeviceMap' object has no attribute 'truck_current_task'
+2021-08-04 16:02:16,365 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:02:16,365 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:02:16,365 - settings: WARNING 'DeviceMap' object has no attribute 'truck_current_task'
+2021-08-04 16:02:16,365 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:02:16,365 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:02:16,365 - settings: WARNING 'DeviceMap' object has no attribute 'truck_current_task'
+2021-08-04 16:02:16,365 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:02:16,365 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:02:16,365 - settings: WARNING 'DeviceMap' object has no attribute 'truck_current_task'
+2021-08-04 16:02:16,365 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:02:16,365 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:02:16,365 - settings: WARNING 'DeviceMap' object has no attribute 'truck_current_task'
+2021-08-04 16:02:16,365 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:02:16,366 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:02:16,366 - settings: WARNING 'DeviceMap' object has no attribute 'truck_current_task'
+2021-08-04 16:02:16,366 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:02:16,366 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:02:16,366 - settings: WARNING 'DeviceMap' object has no attribute 'truck_current_task'
+2021-08-04 16:02:16,366 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:02:16,366 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:02:16,366 - settings: WARNING 'DeviceMap' object has no attribute 'truck_current_task'
+2021-08-04 16:02:16,366 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:02:16,366 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:02:16,366 - settings: WARNING 'DeviceMap' object has no attribute 'truck_current_task'
+2021-08-04 16:02:16,366 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:02:16,366 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:02:16,366 - settings: WARNING 'DeviceMap' object has no attribute 'truck_current_task'
+2021-08-04 16:02:16,366 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:02:16,367 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:02:16,407 - settings: ERROR 设备路网信息异常异常
+2021-08-04 16:02:16,407 - settings: ERROR 0
+2021-08-04 16:02:18,924 - settings: INFO 最大产量调度模式
+2021-08-04 16:02:18,936 - settings: INFO 最大产量:179.21176
+2021-08-04 16:02:18,936 - settings: INFO 各变量取值:
+2021-08-04 16:02:18,936 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:02:18,936 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:02:18,937 - settings: ERROR 矿卡预计抵达时间计算异常
+2021-08-04 16:02:18,937 - settings: ERROR '31c1c93a-b037-4ab6-88b6-eef6cd23804b'
+2021-08-04 16:02:18,937 - settings: ERROR 挖机/卸载设备预计装载量计算异常
+2021-08-04 16:02:18,937 - settings: ERROR '31c1c93a-b037-4ab6-88b6-eef6cd23804b'
+2021-08-04 16:02:18,937 - settings: ERROR 卸载设备预计装载量计算异常
+2021-08-04 16:02:18,937 - settings: ERROR '31c1c93a-b037-4ab6-88b6-eef6cd23804b'

@@ -128,7 +128,7 @@ park_index_to_uuid_dict = {}
 
 park_num = 0
 
-for item in session_postgre.query(WalkTimePort).all():
+for item in session_postgre.query(WalkTimePark).all():
     park = str(item.park_area_id)
     if park not in park_uuid_to_index_dict:
         park_uuid_to_index_dict[park] = park_num
