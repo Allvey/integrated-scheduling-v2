@@ -1,0 +1,5 @@
+2021-08-19 16:06:28,892 - settings: ERROR (psycopg2.OperationalError) could not connect to server: Connection timed out (0x0000274C/10060)
+	Is the server running on host "192.168.28.111" and accepting
+	TCP/IP connections on port 5432?
+
+(Background on this error at: http://sqlalche.me/e/14/e3q8)
