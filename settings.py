@@ -25,7 +25,6 @@ import time
 ########################################################################################################################
 # 日志存储地址
 log_path = '/usr/local/fleet-log/dispatch'
-# log_path = '/root/WatoDisp/RDlogs'
 
 # # 创建日志目录
 # if not os.path.exists(log_path):
@@ -40,7 +39,7 @@ logger.setLevel(logging.INFO)
 
 # timefilehandler = logging.handlers.TimedRotatingFileHandler(log_path + "/dispatch.log", when='M', interval=1, backupCount=60)
 # filehandler = logging.handlers.RotatingFileHandler(log_path + "/dispatch.log", maxBytes=3*1024*1024, backupCount=10)
-filehandler = logging.handlers.RotatingFileHandler("./TFlog/dispatch.log", maxBytes=3 * 1024 * 1024, backupCount=10)
+filehandler = logging.handlers.RotatingFileHandler("Logs/dispatch.log", maxBytes=3 * 1024 * 1024, backupCount=10)
 # 设置后缀名称，跟strftime的格式一样
 filehandler.suffix = "%Y-%m-%d_%H-%M.log"
 
