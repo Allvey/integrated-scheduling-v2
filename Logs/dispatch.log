@@ -3,3 +3,87 @@
 	TCP/IP connections on port 5432?
 
 (Background on this error at: http://sqlalche.me/e/14/e3q8)
+2021-08-19 16:06:49,897 - settings: ERROR (psycopg2.OperationalError) could not connect to server: Connection timed out (0x0000274C/10060)
+	Is the server running on host "192.168.28.111" and accepting
+	TCP/IP connections on port 5432?
+
+(Background on this error at: http://sqlalche.me/e/14/e3q8)
+2021-08-19 16:07:05,741 - settings: WARNING (mysql.connector.errors.InterfaceError) 2003: Can't connect to MySQL server on '192.168.28.111:3306' (10053 你的主机中的软件中止了一个已建立的连接。)
+(Background on this error at: http://sqlalche.me/e/14/rvf5)
+2021-08-19 16:07:05,750 - settings: ERROR (mysql.connector.errors.InterfaceError) 2003: Can't connect to MySQL server on '192.168.28.111:3306' (10051 向一个无法连接的网络尝试了一个套接字操作。)
+(Background on this error at: http://sqlalche.me/e/14/rvf5)
+2021-08-19 16:07:05,754 - settings: ERROR (mysql.connector.errors.InterfaceError) 2003: Can't connect to MySQL server on '192.168.28.111:3306' (10051 向一个无法连接的网络尝试了一个套接字操作。)
+(Background on this error at: http://sqlalche.me/e/14/rvf5)
+2021-08-19 16:07:05,755 - settings: INFO 可用于动态派车的矿卡：
+2021-08-19 16:07:05,755 - settings: INFO set()
+2021-08-19 16:07:05,758 - settings: WARNING (mysql.connector.errors.InterfaceError) 2003: Can't connect to MySQL server on '192.168.28.111:3306' (10051 向一个无法连接的网络尝试了一个套接字操作。)
+(Background on this error at: http://sqlalche.me/e/14/rvf5)
+2021-08-19 16:07:05,763 - settings: WARNING (mysql.connector.errors.InterfaceError) 2003: Can't connect to MySQL server on '192.168.28.111:3306' (10051 向一个无法连接的网络尝试了一个套接字操作。)
+(Background on this error at: http://sqlalche.me/e/14/rvf5)
+2021-08-19 16:07:05,767 - settings: WARNING (mysql.connector.errors.InterfaceError) 2003: Can't connect to MySQL server on '192.168.28.111:3306' (10051 向一个无法连接的网络尝试了一个套接字操作。)
+(Background on this error at: http://sqlalche.me/e/14/rvf5)
+2021-08-19 16:07:05,768 - settings: ERROR 路网信息异常
+2021-08-19 16:07:05,768 - settings: ERROR (psycopg2.OperationalError) could not connect to server: Network is unreachable (0x00002743/10051)
+	Is the server running on host "192.168.28.111" and accepting
+	TCP/IP connections on port 5432?
+
+(Background on this error at: http://sqlalche.me/e/14/e3q8)
+2021-08-19 16:07:13,440 - settings: INFO 可用于动态派车的矿卡：
+2021-08-19 16:07:13,441 - settings: INFO set()
+2021-08-19 16:07:13,845 - settings: INFO 矿卡位于路段:
+2021-08-19 16:07:13,845 - settings: INFO {'670259cf-0ff2-4856-943c-94d4c25ca533': '4bf20d33-6a2c-4cb8-a104-da7c685fe24d'}
+2021-08-19 16:07:14,136 - settings: INFO 矿卡当前速度:
+2021-08-19 16:07:14,137 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': 0.0, '7266b283-6e13-4acf-9b65-0f31a1fe4e3d': 13.0, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': 0.0, '670259cf-0ff2-4856-943c-94d4c25ca533': 10.0, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': 10.0, 'fb1d5516-9a42-4f6e-84fe-9955723badce': 0.0, '773ec2e8-ca5a-4776-96bf-4bafdc737e20': 0.0, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': 0.0, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': 0.0, 'aae4642f-f74b-4514-971e-c800a4182152': 0.0, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': 0.0, 'f68909a0-e644-415f-a140-15c19f162b8f': 0.0, '5221a7f5-0a90-482f-b2bd-c902110a792d': 0.0, 'e2690b20-37b4-4d2d-b490-aa30989798d6': 10.0, '08bdc980-b0b0-4c24-b26f-3393299ba2c7': 10.0, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': 0.0}
+2021-08-19 16:07:14,162 - settings: INFO 存在矿卡的路段:
+2021-08-19 16:07:14,162 - settings: INFO []
+2021-08-19 16:07:18,537 - settings: INFO 真实路网距离-驶往挖机:
+2021-08-19 16:07:18,548 - settings: INFO [[2197 3636]
+ [1308 2747]]
+2021-08-19 16:07:18,549 - settings: INFO 真实路网距离-驶往卸点:
+2021-08-19 16:07:18,549 - settings: INFO [[2195 3702]
+ [1303 2810]]
+2021-08-19 16:07:18,550 - settings: INFO 阻塞路网距离-驶往挖机:
+2021-08-19 16:07:18,550 - settings: INFO [[2197 3636]
+ [1308 2747]]
+2021-08-19 16:07:18,551 - settings: INFO 阻塞路网距离-驶往卸点:
+2021-08-19 16:07:18,551 - settings: INFO [[2195 3702]
+ [1303 2810]]
+2021-08-19 16:07:18,663 - settings: INFO 最大产量调度模式
+2021-08-19 16:07:18,665 - settings: INFO road_factor
+2021-08-19 16:07:18,666 - settings: INFO [[0.00498864 0.00296136]
+ [0.00841364 0.00638636]]
+2021-08-19 16:07:18,687 - settings: INFO 最大产量:358.59236
+2021-08-19 16:07:18,688 - settings: INFO 各变量取值:
+2021-08-19 16:07:18,688 - settings: INFO 重运车流:[[0.0, 358.59236], [0.0, 0.0]] 单位: 吨/时
+2021-08-19 16:07:18,688 - settings: INFO 空运车流:[[0.0, 0.0], [358.59236, 0.0]] 单位: 吨/时
+2021-08-19 16:07:18,689 - settings: INFO  
+2021-08-19 16:07:18,689 - settings: INFO 调度系统启动
+2021-08-19 16:07:18,894 - settings: INFO 可用于动态派车的矿卡：
+2021-08-19 16:07:18,894 - settings: INFO set()
+2021-08-19 16:07:19,110 - settings: INFO #####################################周期更新开始#####################################
+2021-08-19 16:07:19,681 - settings: INFO 矿卡当前任务：
+2021-08-19 16:07:19,682 - settings: INFO {}
+2021-08-19 16:07:19,682 - settings: INFO 驶往卸点实际载重
+2021-08-19 16:07:19,682 - settings: INFO [[0. 0.]
+ [0. 0.]]
+2021-08-19 16:07:19,683 - settings: INFO 卸点路段行驶时间(h)
+2021-08-19 16:07:19,683 - settings: INFO [[0.0878  0.14808]
+ [0.05212 0.1124 ]]
+2021-08-19 16:07:19,684 - settings: INFO 驶往卸点实际车流
+2021-08-19 16:07:19,684 - settings: INFO [[0. 0.]
+ [0. 0.]]
+2021-08-19 16:07:19,684 - settings: INFO 驶往挖机实际载重
+2021-08-19 16:07:19,684 - settings: INFO [[0. 0.]
+ [0. 0.]]
+2021-08-19 16:07:19,684 - settings: INFO 挖机路段行驶时间(h)
+2021-08-19 16:07:19,684 - settings: INFO [[0.09986364 0.16527273]
+ [0.05945455 0.12486364]]
+2021-08-19 16:07:19,685 - settings: INFO 驶往挖机实际车流
+2021-08-19 16:07:19,685 - settings: INFO [[0. 0.]
+ [0. 0.]]
+2021-08-19 16:07:20,164 - settings: INFO 矿卡位于路段:
+2021-08-19 16:07:20,165 - settings: INFO {'670259cf-0ff2-4856-943c-94d4c25ca533': '4bf20d33-6a2c-4cb8-a104-da7c685fe24d'}
+2021-08-19 16:07:20,290 - settings: INFO 矿卡当前速度:
+2021-08-19 16:07:20,290 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': 0.0, '7266b283-6e13-4acf-9b65-0f31a1fe4e3d': 13.0, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': 0.0, '670259cf-0ff2-4856-943c-94d4c25ca533': 10.0, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': 10.0, 'fb1d5516-9a42-4f6e-84fe-9955723badce': 0.0, '773ec2e8-ca5a-4776-96bf-4bafdc737e20': 0.0, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': 0.0, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': 0.0, 'aae4642f-f74b-4514-971e-c800a4182152': 0.0, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': 0.0, 'f68909a0-e644-415f-a140-15c19f162b8f': 0.0, '5221a7f5-0a90-482f-b2bd-c902110a792d': 0.0, 'e2690b20-37b4-4d2d-b490-aa30989798d6': 10.0, '08bdc980-b0b0-4c24-b26f-3393299ba2c7': 10.0, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': 0.0}
+2021-08-19 16:07:20,305 - settings: INFO 存在矿卡的路段:
+2021-08-19 16:07:20,306 - settings: INFO []
