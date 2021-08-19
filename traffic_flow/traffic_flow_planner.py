@@ -14,15 +14,6 @@ from traffic_flow.traffic_flow_info import *
 # start = time.time()
 # much_job = [x**2 for x in range (1, 1000000, 3)]
 
-# 需要提供的值
-# traffic_programme_para.excavator_strength[excavator_index] = 200  # 挖机最大装载能力，单位吨/小时
-# traffic_programme_para.grade_loading_array[excavator_index] = 100  # 挖机装载物料品位
-# traffic_programme_para.excavator_priority_coefficient[excavator_index] = 1  # 挖机优先级
-# traffic_programme_para.dump_strength[dump_index] = 200  # 卸载设备最大卸载能力，单位吨/小时
-# traffic_programme_para.grade_upper_dump_array[dump_index] = 100  # 卸载设备品位上限
-# traffic_programme_para.grade_lower_dump_array[dump_index] = 100  # 卸载设备品位下限
-# traffic_programme_para.dump_priority_coefficient[dump_index] = 1  # 卸载设备优先级
-
 
 # 从数据库中读取挖机和卸载设备相关参数，并将线性规划所用参数保存在TrafficProgPara类中
 
@@ -31,7 +22,7 @@ from traffic_flow.traffic_flow_info import *
 def transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator,
                                  b_dump, grade_loading_array,
                                  max_unload_weigh_alg_flag, truck_total_num,
-                                 goto_excavator_dis, goto_dump_dis, min_throughout,
+                                 walk_time_to_excavator, walk_time_to_dump, min_throughout,
                                  grade_lower_array=None, grade_upper_array=None):
     row = len(coefficient)  # 代表挖机的个数,第i行代表第i台挖机
     col = len(coefficient[0])  # 代表卸载设备的个数,第j行代表第j个卸载设备
@@ -51,14 +42,17 @@ def transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator,
         prob += pulp.lpDot(flatten(var_x), coefficient.flatten())
     else:
         prob = pulp.LpProblem('Transportation Problem', sense=pulp.LpMinimize)
-        goto_excavator_cost = var_x * goto_excavator_dis
-        goto_dump_cost = var_y * goto_dump_dis
+        goto_excavator_cost = var_x * walk_time_to_excavator
+        goto_dump_cost = var_y * walk_time_to_dump
         prob += (pulp.lpSum(flatten(goto_excavator_cost)) + 1.5 * pulp.lpSum(flatten(goto_dump_cost)))
 
     # 定义约束条件
     # 最小产量约束，仅在最小化成本模式下成立
     if max_unload_weigh_alg_flag == False:
         prob += pulp.lpSum(var_x) >= min_throughout
+
+    logger.info("road_factor")
+    logger.info(w_ij)
 
     # 矿卡总数约束,在每条道路上的车辆总数要小于矿卡总个数
     # 通过矩阵按元素相乘得到每条卸载道路上的车辆个数
@@ -67,7 +61,7 @@ def transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator,
     load_truck_totla_num_array = s_ij * var_y
     # 装载的矿卡数和卸载的矿卡数需要小于矿卡总数
     prob += (pulp.lpSum(unload_truck_total_num_array) +
-             pulp.lpSum(load_truck_totla_num_array) <= truck_total_num)
+             pulp.lpSum(load_truck_totla_num_array) <= 2)
 
     # 最大工作强度约束
     # 约束每个挖机的工作强度
@@ -168,13 +162,13 @@ def traffic_flow_plan():
     grade_lower_dump_array = traffic_programme_para.grade_lower_dump_array
     grade_upper_dump_array = traffic_programme_para.grade_upper_dump_array
     min_throughout = traffic_programme_para.min_throughout
-    goto_excavator_distance = traffic_programme_para.goto_excavator_distance
-    goto_dump_distance = traffic_programme_para.goto_dump_distance
+    walk_time_to_excavator = traffic_programme_para.walk_time_to_excavator
+    walk_time_to_dump = traffic_programme_para.walk_time_to_dump
     truck_total_num = traffic_programme_para.truck_total_num
 
     res = transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator, b_dump,
                                        grade_loading_array, max_unload_weigh_alg_flag, truck_total_num,
-                                       goto_excavator_distance, goto_dump_distance, min_throughout,
+                                       walk_time_to_excavator, walk_time_to_dump, min_throughout,
                                        grade_upper_dump_array, grade_lower_dump_array)
 
     if max_unload_weigh_alg_flag:
@@ -192,11 +186,14 @@ def traffic_flow_plan():
     logger.info(f'空运车流:{res["var_y"]} 单位: 吨/时')
 
     # 通过矩阵按元素相乘得到每条卸载道路上的车辆个数
+    print("卸载道路上的车辆个数")
     unload_traffic = res['var_x']
     print((traffic_programme_para.goto_dump_factor * unload_traffic).round(3))
     # 通过矩阵按元素相乘得到每条装载道路上的车辆个数
+    print("装载道路上的车辆个数")
     load_traffic = res['var_y']
     print((traffic_programme_para.goto_excavator_factor * load_traffic).round(3))
+
     return res["var_x"], res["var_y"]
 
 traffic_flow_plan()

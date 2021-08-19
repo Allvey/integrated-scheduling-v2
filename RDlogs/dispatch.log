@@ -2396,3 +2396,1131 @@ FROM park_load_distance]
 2021-08-04 16:02:18,937 - settings: ERROR '31c1c93a-b037-4ab6-88b6-eef6cd23804b'
 2021-08-04 16:02:18,937 - settings: ERROR 卸载设备预计装载量计算异常
 2021-08-04 16:02:18,937 - settings: ERROR '31c1c93a-b037-4ab6-88b6-eef6cd23804b'
+2021-08-04 16:03:38,709 - settings: INFO 最大产量调度模式
+2021-08-04 16:03:38,723 - settings: INFO 最大产量:179.21176
+2021-08-04 16:03:38,723 - settings: INFO 各变量取值:
+2021-08-04 16:03:38,723 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:03:38,723 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:03:38,899 - settings: INFO 可用于动态派车的矿卡：
+2021-08-04 16:03:38,899 - settings: INFO {'5f010e86-3398-4f88-a0e7-27d104cc8bbd', 'f68909a0-e644-415f-a140-15c19f162b8f', '31c1c93a-b037-4ab6-88b6-eef6cd23804b', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19', '9b251c39-42e8-4071-9a1f-d36625555513', '5221a7f5-0a90-482f-b2bd-c902110a792d', 'e0118ce2-7644-4f6e-aadc-8e0c33b11241', 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', 'aae4642f-f74b-4514-971e-c800a4182152', 'fb1d5516-9a42-4f6e-84fe-9955723badce'}
+2021-08-04 16:03:39,001 - settings: INFO  
+2021-08-04 16:03:39,001 - settings: INFO 调度系统启动
+2021-08-04 16:03:39,437 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 16:03:40,013 - settings: INFO 矿卡当前任务：
+2021-08-04 16:03:40,013 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': -2, '9b251c39-42e8-4071-9a1f-d36625555513': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'fb1d5516-9a42-4f6e-84fe-9955723badce': -2, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2, 'aae4642f-f74b-4514-971e-c800a4182152': -2, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': -2, 'f68909a0-e644-415f-a140-15c19f162b8f': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': -2}
+2021-08-04 16:03:43,060 - settings: INFO 最大产量调度模式
+2021-08-04 16:03:43,071 - settings: INFO 最大产量:179.21176
+2021-08-04 16:03:43,071 - settings: INFO 各变量取值:
+2021-08-04 16:03:43,071 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:03:43,071 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:03:43,072 - settings: INFO  
+2021-08-04 16:03:43,072 - settings: INFO 调度矿卡 5f010e86-3398-4f88-a0e7-27d104cc8bbd  KK008
+2021-08-04 16:03:43,072 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:03:43,072 - settings: INFO 矿卡行程：无
+2021-08-04 16:03:43,072 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:03:43,072 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:03:43,072 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:03:43,073 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:03:43,073 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:03:43,073 - settings: INFO  
+2021-08-04 16:03:43,073 - settings: INFO 调度矿卡 f68909a0-e644-415f-a140-15c19f162b8f  KK004
+2021-08-04 16:03:43,073 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:03:43,073 - settings: INFO 矿卡行程：无
+2021-08-04 16:03:43,073 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:03:43,073 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:03:43,073 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:03:43,073 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:03:43,073 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:03:43,074 - settings: INFO  
+2021-08-04 16:03:43,074 - settings: INFO 调度矿卡 31c1c93a-b037-4ab6-88b6-eef6cd23804b  XDE120-8
+2021-08-04 16:03:43,074 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:03:43,074 - settings: INFO 矿卡行程：无
+2021-08-04 16:03:43,074 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:03:43,074 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:03:43,074 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:03:43,074 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:03:43,074 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:03:43,074 - settings: INFO  
+2021-08-04 16:03:43,075 - settings: INFO 调度矿卡 1b787c4a-210a-46ce-a32c-73cbc1cd5e39  KK007
+2021-08-04 16:03:43,075 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:03:43,075 - settings: INFO 矿卡行程：无
+2021-08-04 16:03:43,075 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:03:43,075 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:03:43,075 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:03:43,075 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:03:43,075 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:03:43,075 - settings: INFO  
+2021-08-04 16:03:43,075 - settings: INFO 调度矿卡 fa028808-a3f0-47dd-9929-f23e2cac2bf8  KK005
+2021-08-04 16:03:43,075 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:03:43,075 - settings: INFO 矿卡行程：无
+2021-08-04 16:03:43,076 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:03:43,076 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:03:43,076 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:03:43,076 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:03:43,076 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:03:43,076 - settings: INFO  
+2021-08-04 16:03:43,076 - settings: INFO 调度矿卡 35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19  KK006
+2021-08-04 16:03:43,076 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:03:43,076 - settings: INFO 矿卡行程：无
+2021-08-04 16:03:43,076 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:03:43,076 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:03:43,077 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:03:43,077 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:03:43,077 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:03:43,077 - settings: INFO  
+2021-08-04 16:03:43,077 - settings: INFO 调度矿卡 9b251c39-42e8-4071-9a1f-d36625555513  验证bug
+2021-08-04 16:03:43,077 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:03:43,077 - settings: INFO 矿卡行程：无
+2021-08-04 16:03:43,077 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:03:43,077 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:03:43,077 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:03:43,078 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:03:43,078 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:03:43,078 - settings: INFO  
+2021-08-04 16:03:43,078 - settings: INFO 调度矿卡 5221a7f5-0a90-482f-b2bd-c902110a792d  NTE200-4（18#）
+2021-08-04 16:03:43,078 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:03:43,078 - settings: INFO 矿卡行程：无
+2021-08-04 16:03:43,078 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:03:43,078 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:03:43,078 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:03:43,078 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:03:43,078 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:03:43,079 - settings: INFO  
+2021-08-04 16:03:43,079 - settings: INFO 调度矿卡 e0118ce2-7644-4f6e-aadc-8e0c33b11241  KK003
+2021-08-04 16:03:43,079 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:03:43,079 - settings: INFO 矿卡行程：无
+2021-08-04 16:03:43,079 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:03:43,079 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:03:43,079 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:03:43,079 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:03:43,079 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:03:43,079 - settings: INFO  
+2021-08-04 16:03:43,079 - settings: INFO 调度矿卡 dd8f0405-1ade-4d23-8985-2a1e603c5c2a  KK002
+2021-08-04 16:03:43,080 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:03:43,080 - settings: INFO 矿卡行程：无
+2021-08-04 16:03:43,080 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:03:43,080 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:03:43,080 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:03:43,080 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:03:43,080 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:03:43,080 - settings: INFO  
+2021-08-04 16:03:43,080 - settings: INFO 调度矿卡 aae4642f-f74b-4514-971e-c800a4182152  KK010
+2021-08-04 16:03:43,080 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:03:43,080 - settings: INFO 矿卡行程：无
+2021-08-04 16:03:43,080 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:03:43,081 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:03:43,081 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:03:43,081 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:03:43,081 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:03:43,081 - settings: INFO  
+2021-08-04 16:03:43,081 - settings: INFO 调度矿卡 fb1d5516-9a42-4f6e-84fe-9955723badce  KK001
+2021-08-04 16:03:43,081 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:03:43,081 - settings: INFO 矿卡行程：无
+2021-08-04 16:03:43,081 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:03:43,081 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:03:43,082 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:03:43,082 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:03:43,082 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:03:43,401 - settings: INFO #####################################周期更新结束#####################################
+2021-08-04 16:04:39,505 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 16:04:40,494 - settings: INFO 矿卡当前任务：
+2021-08-04 16:04:40,494 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': -2, '9b251c39-42e8-4071-9a1f-d36625555513': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'fb1d5516-9a42-4f6e-84fe-9955723badce': -2, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2, 'aae4642f-f74b-4514-971e-c800a4182152': -2, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': -2, 'f68909a0-e644-415f-a140-15c19f162b8f': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': -2}
+2021-08-04 16:04:43,538 - settings: INFO 最大产量调度模式
+2021-08-04 16:04:43,550 - settings: INFO 最大产量:179.21176
+2021-08-04 16:04:43,550 - settings: INFO 各变量取值:
+2021-08-04 16:04:43,550 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:04:43,550 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:04:43,551 - settings: INFO  
+2021-08-04 16:04:43,551 - settings: INFO 调度矿卡 5f010e86-3398-4f88-a0e7-27d104cc8bbd  KK008
+2021-08-04 16:04:43,551 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:04:43,551 - settings: INFO 矿卡行程：无
+2021-08-04 16:04:43,551 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:04:43,551 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:04:43,551 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:04:43,551 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:04:43,551 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:04:43,551 - settings: INFO  
+2021-08-04 16:04:43,551 - settings: INFO 调度矿卡 f68909a0-e644-415f-a140-15c19f162b8f  KK004
+2021-08-04 16:04:43,552 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:04:43,552 - settings: INFO 矿卡行程：无
+2021-08-04 16:04:43,552 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:04:43,552 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:04:43,552 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:04:43,552 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:04:43,552 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:04:43,552 - settings: INFO  
+2021-08-04 16:04:43,552 - settings: INFO 调度矿卡 31c1c93a-b037-4ab6-88b6-eef6cd23804b  XDE120-8
+2021-08-04 16:04:43,552 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:04:43,553 - settings: INFO 矿卡行程：无
+2021-08-04 16:04:43,553 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:04:43,553 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:04:43,553 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:04:43,553 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:04:43,553 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:04:43,553 - settings: INFO  
+2021-08-04 16:04:43,553 - settings: INFO 调度矿卡 1b787c4a-210a-46ce-a32c-73cbc1cd5e39  KK007
+2021-08-04 16:04:43,553 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:04:43,553 - settings: INFO 矿卡行程：无
+2021-08-04 16:04:43,553 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:04:43,554 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:04:43,554 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:04:43,554 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:04:43,554 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:04:43,554 - settings: INFO  
+2021-08-04 16:04:43,554 - settings: INFO 调度矿卡 fa028808-a3f0-47dd-9929-f23e2cac2bf8  KK005
+2021-08-04 16:04:43,554 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:04:43,555 - settings: INFO 矿卡行程：无
+2021-08-04 16:04:43,555 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:04:43,555 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:04:43,555 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:04:43,555 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:04:43,555 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:04:43,555 - settings: INFO  
+2021-08-04 16:04:43,555 - settings: INFO 调度矿卡 35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19  KK006
+2021-08-04 16:04:43,555 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:04:43,555 - settings: INFO 矿卡行程：无
+2021-08-04 16:04:43,555 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:04:43,556 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:04:43,556 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:04:43,556 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:04:43,556 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:04:43,556 - settings: INFO  
+2021-08-04 16:04:43,556 - settings: INFO 调度矿卡 9b251c39-42e8-4071-9a1f-d36625555513  验证bug
+2021-08-04 16:04:43,556 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:04:43,556 - settings: INFO 矿卡行程：无
+2021-08-04 16:04:43,556 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:04:43,556 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:04:43,556 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:04:43,557 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:04:43,557 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:04:43,557 - settings: INFO  
+2021-08-04 16:04:43,557 - settings: INFO 调度矿卡 5221a7f5-0a90-482f-b2bd-c902110a792d  NTE200-4（18#）
+2021-08-04 16:04:43,557 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:04:43,557 - settings: INFO 矿卡行程：无
+2021-08-04 16:04:43,557 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:04:43,557 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:04:43,557 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:04:43,557 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:04:43,557 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:04:43,558 - settings: INFO  
+2021-08-04 16:04:43,558 - settings: INFO 调度矿卡 e0118ce2-7644-4f6e-aadc-8e0c33b11241  KK003
+2021-08-04 16:04:43,558 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:04:43,558 - settings: INFO 矿卡行程：无
+2021-08-04 16:04:43,558 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:04:43,558 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:04:43,558 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:04:43,558 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:04:43,558 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:04:43,558 - settings: INFO  
+2021-08-04 16:04:43,558 - settings: INFO 调度矿卡 dd8f0405-1ade-4d23-8985-2a1e603c5c2a  KK002
+2021-08-04 16:04:43,559 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:04:43,559 - settings: INFO 矿卡行程：无
+2021-08-04 16:04:43,559 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:04:43,559 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:04:43,559 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:04:43,559 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:04:43,559 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:04:43,559 - settings: INFO  
+2021-08-04 16:04:43,559 - settings: INFO 调度矿卡 aae4642f-f74b-4514-971e-c800a4182152  KK010
+2021-08-04 16:04:43,559 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:04:43,559 - settings: INFO 矿卡行程：无
+2021-08-04 16:04:43,559 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:04:43,560 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:04:43,560 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:04:43,560 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:04:43,560 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:04:43,560 - settings: INFO  
+2021-08-04 16:04:43,560 - settings: INFO 调度矿卡 fb1d5516-9a42-4f6e-84fe-9955723badce  KK001
+2021-08-04 16:04:43,560 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:04:43,560 - settings: INFO 矿卡行程：无
+2021-08-04 16:04:43,560 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:04:43,560 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:04:43,561 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:04:43,561 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:04:43,561 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:04:44,007 - settings: INFO #####################################周期更新结束#####################################
+2021-08-04 16:08:16,033 - settings: INFO 最大产量调度模式
+2021-08-04 16:08:16,047 - settings: INFO 最大产量:179.21176
+2021-08-04 16:08:16,047 - settings: INFO 各变量取值:
+2021-08-04 16:08:16,047 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:08:16,047 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:08:16,113 - settings: INFO 可用于动态派车的矿卡：
+2021-08-04 16:08:16,113 - settings: INFO {'35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19', 'aae4642f-f74b-4514-971e-c800a4182152', 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', 'fb1d5516-9a42-4f6e-84fe-9955723badce', '9b251c39-42e8-4071-9a1f-d36625555513', '5f010e86-3398-4f88-a0e7-27d104cc8bbd', '5221a7f5-0a90-482f-b2bd-c902110a792d', 'f68909a0-e644-415f-a140-15c19f162b8f', '31c1c93a-b037-4ab6-88b6-eef6cd23804b', 'e0118ce2-7644-4f6e-aadc-8e0c33b11241', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8'}
+2021-08-04 16:08:16,203 - settings: INFO  
+2021-08-04 16:08:16,203 - settings: INFO 调度系统启动
+2021-08-04 16:08:16,536 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 16:08:17,146 - settings: INFO 矿卡当前任务：
+2021-08-04 16:08:17,146 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': -2, '9b251c39-42e8-4071-9a1f-d36625555513': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'fb1d5516-9a42-4f6e-84fe-9955723badce': -2, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2, 'aae4642f-f74b-4514-971e-c800a4182152': -2, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': -2, 'f68909a0-e644-415f-a140-15c19f162b8f': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': -2}
+2021-08-04 16:08:20,766 - settings: INFO 最大产量调度模式
+2021-08-04 16:08:20,781 - settings: INFO 最大产量:179.21176
+2021-08-04 16:08:20,781 - settings: INFO 各变量取值:
+2021-08-04 16:08:20,782 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:08:20,782 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:08:20,782 - settings: INFO  
+2021-08-04 16:08:20,782 - settings: INFO 调度矿卡 35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19  KK006
+2021-08-04 16:08:20,783 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:08:20,783 - settings: INFO 矿卡行程：无
+2021-08-04 16:08:20,783 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:08:20,783 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:08:20,783 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:08:20,783 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:08:20,783 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:08:20,784 - settings: INFO  
+2021-08-04 16:08:20,784 - settings: INFO 调度矿卡 aae4642f-f74b-4514-971e-c800a4182152  KK010
+2021-08-04 16:08:20,784 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:08:20,784 - settings: INFO 矿卡行程：无
+2021-08-04 16:08:20,784 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:08:20,784 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:08:20,784 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:08:20,784 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:08:20,784 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:08:20,785 - settings: INFO  
+2021-08-04 16:08:20,785 - settings: INFO 调度矿卡 dd8f0405-1ade-4d23-8985-2a1e603c5c2a  KK002
+2021-08-04 16:08:20,785 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:08:20,785 - settings: INFO 矿卡行程：无
+2021-08-04 16:08:20,785 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:08:20,785 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:08:20,785 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:08:20,785 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:08:20,785 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:08:20,786 - settings: INFO  
+2021-08-04 16:08:20,786 - settings: INFO 调度矿卡 fb1d5516-9a42-4f6e-84fe-9955723badce  KK001
+2021-08-04 16:08:20,786 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:08:20,786 - settings: INFO 矿卡行程：无
+2021-08-04 16:08:20,786 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:08:20,786 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:08:20,786 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:08:20,786 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:08:20,786 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:08:20,787 - settings: INFO  
+2021-08-04 16:08:20,787 - settings: INFO 调度矿卡 9b251c39-42e8-4071-9a1f-d36625555513  验证bug
+2021-08-04 16:08:20,787 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:08:20,787 - settings: INFO 矿卡行程：无
+2021-08-04 16:08:20,787 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:08:20,787 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:08:20,787 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:08:20,787 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:08:20,788 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:08:20,788 - settings: INFO  
+2021-08-04 16:08:20,788 - settings: INFO 调度矿卡 5f010e86-3398-4f88-a0e7-27d104cc8bbd  KK008
+2021-08-04 16:08:20,788 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:08:20,788 - settings: INFO 矿卡行程：无
+2021-08-04 16:08:20,788 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:08:20,788 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:08:20,788 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:08:20,789 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:08:20,789 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:08:20,789 - settings: INFO  
+2021-08-04 16:08:20,789 - settings: INFO 调度矿卡 5221a7f5-0a90-482f-b2bd-c902110a792d  NTE200-4（18#）
+2021-08-04 16:08:20,789 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:08:20,789 - settings: INFO 矿卡行程：无
+2021-08-04 16:08:20,789 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:08:20,789 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:08:20,789 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:08:20,790 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:08:20,790 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:08:20,790 - settings: INFO  
+2021-08-04 16:08:20,790 - settings: INFO 调度矿卡 f68909a0-e644-415f-a140-15c19f162b8f  KK004
+2021-08-04 16:08:20,790 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:08:20,790 - settings: INFO 矿卡行程：无
+2021-08-04 16:08:20,790 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:08:20,790 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:08:20,791 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:08:20,791 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:08:20,791 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:08:20,791 - settings: INFO  
+2021-08-04 16:08:20,791 - settings: INFO 调度矿卡 31c1c93a-b037-4ab6-88b6-eef6cd23804b  XDE120-8
+2021-08-04 16:08:20,791 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:08:20,791 - settings: INFO 矿卡行程：无
+2021-08-04 16:08:20,791 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:08:20,791 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:08:20,792 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:08:20,792 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:08:20,792 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:08:20,792 - settings: INFO  
+2021-08-04 16:08:20,792 - settings: INFO 调度矿卡 e0118ce2-7644-4f6e-aadc-8e0c33b11241  KK003
+2021-08-04 16:08:20,793 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:08:20,793 - settings: INFO 矿卡行程：无
+2021-08-04 16:08:20,793 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:08:20,793 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:08:20,793 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:08:20,794 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:08:20,794 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:08:20,794 - settings: INFO  
+2021-08-04 16:08:20,794 - settings: INFO 调度矿卡 1b787c4a-210a-46ce-a32c-73cbc1cd5e39  KK007
+2021-08-04 16:08:20,794 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:08:20,794 - settings: INFO 矿卡行程：无
+2021-08-04 16:08:20,794 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:08:20,794 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:08:20,795 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:08:20,795 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:08:20,795 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:08:20,795 - settings: INFO  
+2021-08-04 16:08:20,795 - settings: INFO 调度矿卡 fa028808-a3f0-47dd-9929-f23e2cac2bf8  KK005
+2021-08-04 16:08:20,795 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:08:20,795 - settings: INFO 矿卡行程：无
+2021-08-04 16:08:20,795 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:08:20,796 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:08:20,796 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:08:20,796 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:08:20,796 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:08:21,362 - settings: INFO #####################################周期更新结束#####################################
+2021-08-04 16:20:57,246 - settings: ERROR (psycopg2.OperationalError) could not connect to server: Connection timed out (0x0000274C/10060)
+	Is the server running on host "192.168.28.111" and accepting
+	TCP/IP connections on port 5432?
+
+(Background on this error at: http://sqlalche.me/e/14/e3q8)
+2021-08-04 16:21:13,181 - settings: ERROR (psycopg2.OperationalError) could not connect to server: Software caused connection abort (0x00002745/10053)
+	Is the server running on host "192.168.28.111" and accepting
+	TCP/IP connections on port 5432?
+
+(Background on this error at: http://sqlalche.me/e/14/e3q8)
+2021-08-04 16:21:13,219 - settings: WARNING (mysql.connector.errors.InterfaceError) 2003: Can't connect to MySQL server on '192.168.28.111:3306' (10065 套接字操作尝试一个无法连接的主机。)
+(Background on this error at: http://sqlalche.me/e/14/rvf5)
+2021-08-04 16:21:13,952 - settings: ERROR 矿卡KK005所在路段信息读取异常
+2021-08-04 16:21:13,964 - settings: ERROR 矿卡KK005实时速度读取异常
+2021-08-04 16:21:13,964 - settings: ERROR 'KK005'
+2021-08-04 16:21:14,340 - settings: ERROR 路网信息计成本计算异常
+2021-08-04 16:21:14,340 - settings: ERROR 'e5d0ac4e-c134-3ef1-901b-867980c8453e'
+2021-08-04 16:21:14,521 - settings: INFO 最大产量调度模式
+2021-08-04 16:21:14,542 - settings: INFO 最大产量:179.21176
+2021-08-04 16:21:14,543 - settings: INFO 各变量取值:
+2021-08-04 16:21:14,543 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:21:14,544 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:21:14,797 - settings: INFO 可用于动态派车的矿卡：
+2021-08-04 16:21:14,797 - settings: INFO {'e0118ce2-7644-4f6e-aadc-8e0c33b11241', 'f68909a0-e644-415f-a140-15c19f162b8f', '31c1c93a-b037-4ab6-88b6-eef6cd23804b', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', '5221a7f5-0a90-482f-b2bd-c902110a792d', '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19', '5f010e86-3398-4f88-a0e7-27d104cc8bbd', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', 'aae4642f-f74b-4514-971e-c800a4182152', 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', 'fb1d5516-9a42-4f6e-84fe-9955723badce', '9b251c39-42e8-4071-9a1f-d36625555513'}
+2021-08-04 16:21:14,870 - settings: INFO  
+2021-08-04 16:21:14,870 - settings: INFO 调度系统启动
+2021-08-04 16:21:15,115 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 16:21:15,170 - settings: ERROR 设备路网信息异常异常
+2021-08-04 16:21:15,170 - settings: ERROR 0
+2021-08-04 16:21:15,173 - settings: ERROR 备停区设备路网信息异常
+2021-08-04 16:21:15,173 - settings: ERROR 0
+2021-08-04 16:21:15,380 - settings: INFO 矿卡当前任务：
+2021-08-04 16:21:15,380 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': -2, '9b251c39-42e8-4071-9a1f-d36625555513': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'fb1d5516-9a42-4f6e-84fe-9955723badce': -2, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2, 'aae4642f-f74b-4514-971e-c800a4182152': -2, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': -2, 'f68909a0-e644-415f-a140-15c19f162b8f': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': -2}
+2021-08-04 16:21:15,381 - settings: ERROR 读取矿卡有效载重异常-矿卡型号信息缺失
+2021-08-04 16:21:15,381 - settings: ERROR 'e0118ce2-7644-4f6e-aadc-8e0c33b11241'
+2021-08-04 16:21:15,483 - settings: WARNING 0
+2021-08-04 16:21:15,483 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:21:15,483 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:21:15,483 - settings: WARNING 1
+2021-08-04 16:21:15,484 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:21:15,484 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:21:15,484 - settings: WARNING 2
+2021-08-04 16:21:15,484 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:21:15,485 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:21:15,485 - settings: WARNING 3
+2021-08-04 16:21:15,486 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:21:15,486 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:21:15,486 - settings: WARNING 4
+2021-08-04 16:21:15,486 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:21:15,486 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:21:15,487 - settings: WARNING 5
+2021-08-04 16:21:15,487 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:21:15,487 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:21:15,487 - settings: WARNING 6
+2021-08-04 16:21:15,487 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:21:15,487 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:21:15,487 - settings: WARNING 7
+2021-08-04 16:21:15,487 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:21:15,488 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:21:15,488 - settings: WARNING 8
+2021-08-04 16:21:15,488 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:21:15,488 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:21:15,488 - settings: WARNING 9
+2021-08-04 16:21:15,488 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:21:15,488 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:21:15,489 - settings: WARNING 10
+2021-08-04 16:21:15,489 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:21:15,489 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:21:15,489 - settings: WARNING 11
+2021-08-04 16:21:15,489 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:21:15,489 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:21:15,526 - settings: ERROR 设备路网信息异常异常
+2021-08-04 16:21:15,526 - settings: ERROR 0
+2021-08-04 16:21:15,530 - settings: ERROR 备停区设备路网信息异常
+2021-08-04 16:21:15,531 - settings: ERROR 0
+2021-08-04 16:21:15,728 - settings: ERROR 矿卡KK005所在路段信息读取异常
+2021-08-04 16:21:15,741 - settings: ERROR 矿卡KK005实时速度读取异常
+2021-08-04 16:21:15,742 - settings: ERROR 'KK005'
+2021-08-04 16:21:15,952 - settings: ERROR 路网信息计成本计算异常
+2021-08-04 16:21:15,952 - settings: ERROR 'e5d0ac4e-c134-3ef1-901b-867980c8453e'
+2021-08-04 16:21:16,044 - settings: INFO 最大产量调度模式
+2021-08-04 16:21:16,060 - settings: INFO 最大产量:179.21176
+2021-08-04 16:21:16,061 - settings: INFO 各变量取值:
+2021-08-04 16:21:16,061 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:21:16,062 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:21:16,062 - settings: ERROR 矿卡预计抵达时间计算异常
+2021-08-04 16:21:16,063 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:21:16,063 - settings: ERROR 挖机/卸载设备预计装载量计算异常
+2021-08-04 16:21:16,063 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:21:16,063 - settings: ERROR 卸载设备预计装载量计算异常
+2021-08-04 16:21:16,063 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:22:00,415 - settings: INFO 最大产量调度模式
+2021-08-04 16:22:00,427 - settings: INFO 最大产量:179.21176
+2021-08-04 16:22:00,427 - settings: INFO 各变量取值:
+2021-08-04 16:22:00,427 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:22:00,428 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:22:00,488 - settings: INFO 可用于动态派车的矿卡：
+2021-08-04 16:22:00,488 - settings: INFO {'31c1c93a-b037-4ab6-88b6-eef6cd23804b', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', 'fb1d5516-9a42-4f6e-84fe-9955723badce', 'e0118ce2-7644-4f6e-aadc-8e0c33b11241', '9b251c39-42e8-4071-9a1f-d36625555513', 'f68909a0-e644-415f-a140-15c19f162b8f', '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', '5f010e86-3398-4f88-a0e7-27d104cc8bbd', '5221a7f5-0a90-482f-b2bd-c902110a792d', 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', 'aae4642f-f74b-4514-971e-c800a4182152'}
+2021-08-04 16:22:00,516 - settings: INFO  
+2021-08-04 16:22:00,516 - settings: INFO 调度系统启动
+2021-08-04 16:22:01,538 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 16:22:01,606 - settings: ERROR 设备路网信息异常异常
+2021-08-04 16:22:01,606 - settings: ERROR 0
+2021-08-04 16:22:01,619 - settings: ERROR 备停区设备路网信息异常
+2021-08-04 16:22:01,619 - settings: ERROR 0
+2021-08-04 16:22:01,788 - settings: INFO 矿卡当前任务：
+2021-08-04 16:22:01,788 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': -2, '9b251c39-42e8-4071-9a1f-d36625555513': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'fb1d5516-9a42-4f6e-84fe-9955723badce': -2, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2, 'aae4642f-f74b-4514-971e-c800a4182152': -2, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': -2, 'f68909a0-e644-415f-a140-15c19f162b8f': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': -2}
+2021-08-04 16:22:01,788 - settings: ERROR 读取矿卡有效载重异常-矿卡型号信息缺失
+2021-08-04 16:22:01,788 - settings: ERROR '31c1c93a-b037-4ab6-88b6-eef6cd23804b'
+2021-08-04 16:22:01,845 - settings: WARNING 0
+2021-08-04 16:22:01,845 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:01,846 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:01,846 - settings: WARNING 1
+2021-08-04 16:22:01,846 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:01,846 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:01,846 - settings: WARNING 2
+2021-08-04 16:22:01,846 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:01,846 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:01,846 - settings: WARNING 3
+2021-08-04 16:22:01,847 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:01,847 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:01,847 - settings: WARNING 4
+2021-08-04 16:22:01,847 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:01,847 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:01,847 - settings: WARNING 5
+2021-08-04 16:22:01,847 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:01,847 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:01,847 - settings: WARNING 6
+2021-08-04 16:22:01,847 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:01,847 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:01,847 - settings: WARNING 7
+2021-08-04 16:22:01,847 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:01,847 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:01,847 - settings: WARNING 8
+2021-08-04 16:22:01,847 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:01,848 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:01,848 - settings: WARNING 9
+2021-08-04 16:22:01,848 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:01,848 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:01,848 - settings: WARNING 10
+2021-08-04 16:22:01,848 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:01,848 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:01,848 - settings: WARNING 11
+2021-08-04 16:22:01,848 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:01,848 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:01,898 - settings: ERROR 设备路网信息异常异常
+2021-08-04 16:22:01,898 - settings: ERROR 0
+2021-08-04 16:22:01,903 - settings: ERROR 备停区设备路网信息异常
+2021-08-04 16:22:01,903 - settings: ERROR 0
+2021-08-04 16:22:03,521 - settings: INFO 最大产量调度模式
+2021-08-04 16:22:03,533 - settings: INFO 最大产量:179.21176
+2021-08-04 16:22:03,534 - settings: INFO 各变量取值:
+2021-08-04 16:22:03,534 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:22:03,534 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:22:03,534 - settings: ERROR 矿卡预计抵达时间计算异常
+2021-08-04 16:22:03,535 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:22:03,535 - settings: ERROR 挖机/卸载设备预计装载量计算异常
+2021-08-04 16:22:03,535 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:22:03,535 - settings: ERROR 卸载设备预计装载量计算异常
+2021-08-04 16:22:03,535 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:22:42,636 - settings: INFO 最大产量调度模式
+2021-08-04 16:22:42,647 - settings: INFO 最大产量:179.21176
+2021-08-04 16:22:42,647 - settings: INFO 各变量取值:
+2021-08-04 16:22:42,647 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:22:42,647 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:22:42,708 - settings: INFO 可用于动态派车的矿卡：
+2021-08-04 16:22:42,708 - settings: INFO {'35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19', '5221a7f5-0a90-482f-b2bd-c902110a792d', 'f68909a0-e644-415f-a140-15c19f162b8f', '9b251c39-42e8-4071-9a1f-d36625555513', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', '31c1c93a-b037-4ab6-88b6-eef6cd23804b', 'e0118ce2-7644-4f6e-aadc-8e0c33b11241', '5f010e86-3398-4f88-a0e7-27d104cc8bbd', 'aae4642f-f74b-4514-971e-c800a4182152', 'fb1d5516-9a42-4f6e-84fe-9955723badce', 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8'}
+2021-08-04 16:22:42,755 - settings: INFO  
+2021-08-04 16:22:42,755 - settings: INFO 调度系统启动
+2021-08-04 16:22:42,935 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 16:22:42,998 - settings: ERROR 设备路网信息异常异常
+2021-08-04 16:22:42,998 - settings: ERROR 0
+2021-08-04 16:22:43,007 - settings: ERROR 备停区设备路网信息异常
+2021-08-04 16:22:43,007 - settings: ERROR 0
+2021-08-04 16:22:43,171 - settings: INFO 矿卡当前任务：
+2021-08-04 16:22:43,171 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': -2, '9b251c39-42e8-4071-9a1f-d36625555513': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'fb1d5516-9a42-4f6e-84fe-9955723badce': -2, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2, 'aae4642f-f74b-4514-971e-c800a4182152': -2, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': -2, 'f68909a0-e644-415f-a140-15c19f162b8f': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': -2}
+2021-08-04 16:22:43,171 - settings: ERROR 读取矿卡有效载重异常-矿卡型号信息缺失
+2021-08-04 16:22:43,172 - settings: ERROR '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19'
+2021-08-04 16:22:43,297 - settings: WARNING 0
+2021-08-04 16:22:43,297 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:43,297 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:43,298 - settings: WARNING 1
+2021-08-04 16:22:43,298 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:43,298 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:43,298 - settings: WARNING 2
+2021-08-04 16:22:43,299 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:43,299 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:43,299 - settings: WARNING 3
+2021-08-04 16:22:43,299 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:43,299 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:43,299 - settings: WARNING 4
+2021-08-04 16:22:43,299 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:43,299 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:43,299 - settings: WARNING 5
+2021-08-04 16:22:43,300 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:43,300 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:43,300 - settings: WARNING 6
+2021-08-04 16:22:43,300 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:43,300 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:43,300 - settings: WARNING 7
+2021-08-04 16:22:43,300 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:43,300 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:43,300 - settings: WARNING 8
+2021-08-04 16:22:43,300 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:43,300 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:43,300 - settings: WARNING 9
+2021-08-04 16:22:43,300 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:43,300 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:43,300 - settings: WARNING 10
+2021-08-04 16:22:43,301 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:43,301 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:43,301 - settings: WARNING 11
+2021-08-04 16:22:43,301 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:22:43,301 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:22:43,333 - settings: ERROR 设备路网信息异常异常
+2021-08-04 16:22:43,333 - settings: ERROR 0
+2021-08-04 16:22:43,337 - settings: ERROR 备停区设备路网信息异常
+2021-08-04 16:22:43,337 - settings: ERROR 0
+2021-08-04 16:22:45,110 - settings: INFO 最大产量调度模式
+2021-08-04 16:22:45,123 - settings: INFO 最大产量:179.21176
+2021-08-04 16:22:45,123 - settings: INFO 各变量取值:
+2021-08-04 16:22:45,123 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:22:45,124 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:22:45,124 - settings: ERROR 矿卡预计抵达时间计算异常
+2021-08-04 16:22:45,124 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:22:45,124 - settings: ERROR 挖机/卸载设备预计装载量计算异常
+2021-08-04 16:22:45,124 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:22:45,124 - settings: ERROR 卸载设备预计装载量计算异常
+2021-08-04 16:22:45,124 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:23:02,248 - settings: INFO 最大产量调度模式
+2021-08-04 16:23:02,261 - settings: INFO 最大产量:179.21176
+2021-08-04 16:23:02,261 - settings: INFO 各变量取值:
+2021-08-04 16:23:02,261 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:23:02,261 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:23:02,335 - settings: INFO 可用于动态派车的矿卡：
+2021-08-04 16:23:02,336 - settings: INFO {'35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19', '9b251c39-42e8-4071-9a1f-d36625555513', '5f010e86-3398-4f88-a0e7-27d104cc8bbd', 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', 'aae4642f-f74b-4514-971e-c800a4182152', 'e0118ce2-7644-4f6e-aadc-8e0c33b11241', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', 'fb1d5516-9a42-4f6e-84fe-9955723badce', '5221a7f5-0a90-482f-b2bd-c902110a792d', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', '31c1c93a-b037-4ab6-88b6-eef6cd23804b', 'f68909a0-e644-415f-a140-15c19f162b8f'}
+2021-08-04 16:23:02,357 - settings: INFO  
+2021-08-04 16:23:02,357 - settings: INFO 调度系统启动
+2021-08-04 16:23:02,524 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 16:23:03,212 - settings: INFO 矿卡当前任务：
+2021-08-04 16:23:03,212 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': -2, '9b251c39-42e8-4071-9a1f-d36625555513': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'fb1d5516-9a42-4f6e-84fe-9955723badce': -2, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2, 'aae4642f-f74b-4514-971e-c800a4182152': -2, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': -2, 'f68909a0-e644-415f-a140-15c19f162b8f': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': -2}
+2021-08-04 16:23:06,248 - settings: INFO 最大产量调度模式
+2021-08-04 16:23:06,258 - settings: INFO 最大产量:179.21176
+2021-08-04 16:23:06,258 - settings: INFO 各变量取值:
+2021-08-04 16:23:06,258 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:23:06,259 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:23:06,259 - settings: INFO  
+2021-08-04 16:23:06,259 - settings: INFO 调度矿卡 35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19  KK006
+2021-08-04 16:23:06,259 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:23:06,259 - settings: INFO 矿卡行程：无
+2021-08-04 16:23:06,259 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:23:06,259 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:23:06,259 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:23:06,260 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:23:06,260 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:23:06,260 - settings: INFO  
+2021-08-04 16:23:06,260 - settings: INFO 调度矿卡 9b251c39-42e8-4071-9a1f-d36625555513  验证bug
+2021-08-04 16:23:06,260 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:23:06,260 - settings: INFO 矿卡行程：无
+2021-08-04 16:23:06,260 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:23:06,260 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:23:06,260 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:23:06,260 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:23:06,261 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:23:06,261 - settings: INFO  
+2021-08-04 16:23:06,261 - settings: INFO 调度矿卡 5f010e86-3398-4f88-a0e7-27d104cc8bbd  KK008
+2021-08-04 16:23:06,261 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:23:06,261 - settings: INFO 矿卡行程：无
+2021-08-04 16:23:06,261 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:23:06,261 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:23:06,261 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:23:06,261 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:23:06,261 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:23:06,261 - settings: INFO  
+2021-08-04 16:23:06,261 - settings: INFO 调度矿卡 dd8f0405-1ade-4d23-8985-2a1e603c5c2a  KK002
+2021-08-04 16:23:06,261 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:23:06,262 - settings: INFO 矿卡行程：无
+2021-08-04 16:23:06,262 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:23:06,262 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:23:06,262 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:23:06,262 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:23:06,262 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:23:06,262 - settings: INFO  
+2021-08-04 16:23:06,262 - settings: INFO 调度矿卡 aae4642f-f74b-4514-971e-c800a4182152  KK010
+2021-08-04 16:23:06,262 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:23:06,262 - settings: INFO 矿卡行程：无
+2021-08-04 16:23:06,262 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:23:06,262 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:23:06,263 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:23:06,263 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:23:06,263 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:23:06,263 - settings: INFO  
+2021-08-04 16:23:06,263 - settings: INFO 调度矿卡 e0118ce2-7644-4f6e-aadc-8e0c33b11241  KK003
+2021-08-04 16:23:06,263 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:23:06,263 - settings: INFO 矿卡行程：无
+2021-08-04 16:23:06,263 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:23:06,263 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:23:06,263 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:23:06,264 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:23:06,264 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:23:06,264 - settings: INFO  
+2021-08-04 16:23:06,264 - settings: INFO 调度矿卡 1b787c4a-210a-46ce-a32c-73cbc1cd5e39  KK007
+2021-08-04 16:23:06,264 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:23:06,264 - settings: INFO 矿卡行程：无
+2021-08-04 16:23:06,264 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:23:06,264 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:23:06,264 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:23:06,264 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:23:06,264 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:23:06,265 - settings: INFO  
+2021-08-04 16:23:06,265 - settings: INFO 调度矿卡 fb1d5516-9a42-4f6e-84fe-9955723badce  KK001
+2021-08-04 16:23:06,265 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:23:06,265 - settings: INFO 矿卡行程：无
+2021-08-04 16:23:06,265 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:23:06,265 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:23:06,266 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:23:06,266 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:23:06,266 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:23:06,266 - settings: INFO  
+2021-08-04 16:23:06,267 - settings: INFO 调度矿卡 5221a7f5-0a90-482f-b2bd-c902110a792d  NTE200-4（18#）
+2021-08-04 16:23:06,267 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:23:06,267 - settings: INFO 矿卡行程：无
+2021-08-04 16:23:06,267 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:23:06,267 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:23:06,267 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:23:06,267 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:23:06,267 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:23:06,267 - settings: INFO  
+2021-08-04 16:23:06,268 - settings: INFO 调度矿卡 fa028808-a3f0-47dd-9929-f23e2cac2bf8  KK005
+2021-08-04 16:23:06,268 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:23:06,268 - settings: INFO 矿卡行程：无
+2021-08-04 16:23:06,268 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:23:06,268 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:23:06,268 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:23:06,268 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:23:06,268 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:23:06,268 - settings: INFO  
+2021-08-04 16:23:06,268 - settings: INFO 调度矿卡 31c1c93a-b037-4ab6-88b6-eef6cd23804b  XDE120-8
+2021-08-04 16:23:06,268 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:23:06,268 - settings: INFO 矿卡行程：无
+2021-08-04 16:23:06,269 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:23:06,269 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:23:06,269 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:23:06,269 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:23:06,269 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:23:06,269 - settings: INFO  
+2021-08-04 16:23:06,269 - settings: INFO 调度矿卡 f68909a0-e644-415f-a140-15c19f162b8f  KK004
+2021-08-04 16:23:06,269 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:23:06,269 - settings: INFO 矿卡行程：无
+2021-08-04 16:23:06,269 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:23:06,269 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:23:06,270 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:23:06,270 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:23:06,270 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:23:06,483 - settings: INFO #####################################周期更新结束#####################################
+2021-08-04 16:23:40,397 - settings: INFO 最大产量调度模式
+2021-08-04 16:23:40,412 - settings: INFO 最大产量:179.21176
+2021-08-04 16:23:40,412 - settings: INFO 各变量取值:
+2021-08-04 16:23:40,412 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:23:40,412 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:23:40,502 - settings: INFO 可用于动态派车的矿卡：
+2021-08-04 16:23:40,502 - settings: INFO {'9b251c39-42e8-4071-9a1f-d36625555513', '31c1c93a-b037-4ab6-88b6-eef6cd23804b', 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', '5f010e86-3398-4f88-a0e7-27d104cc8bbd', '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', 'f68909a0-e644-415f-a140-15c19f162b8f', 'aae4642f-f74b-4514-971e-c800a4182152', 'e0118ce2-7644-4f6e-aadc-8e0c33b11241', '5221a7f5-0a90-482f-b2bd-c902110a792d', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', 'fb1d5516-9a42-4f6e-84fe-9955723badce'}
+2021-08-04 16:23:40,559 - settings: INFO  
+2021-08-04 16:23:40,559 - settings: INFO 调度系统启动
+2021-08-04 16:23:40,808 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 16:23:40,883 - settings: ERROR 设备路网信息异常异常
+2021-08-04 16:23:40,883 - settings: ERROR 0
+2021-08-04 16:23:40,887 - settings: ERROR 备停区设备路网信息异常
+2021-08-04 16:23:40,887 - settings: ERROR 0
+2021-08-04 16:23:41,077 - settings: INFO 矿卡当前任务：
+2021-08-04 16:23:41,077 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': -2, '9b251c39-42e8-4071-9a1f-d36625555513': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'fb1d5516-9a42-4f6e-84fe-9955723badce': -2, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2, 'aae4642f-f74b-4514-971e-c800a4182152': -2, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': -2, 'f68909a0-e644-415f-a140-15c19f162b8f': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': -2}
+2021-08-04 16:23:41,077 - settings: ERROR 读取矿卡有效载重异常-矿卡型号信息缺失
+2021-08-04 16:23:41,077 - settings: ERROR '9b251c39-42e8-4071-9a1f-d36625555513'
+2021-08-04 16:23:41,116 - settings: WARNING 0
+2021-08-04 16:23:41,116 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:23:41,116 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:23:41,116 - settings: WARNING 1
+2021-08-04 16:23:41,117 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:23:41,117 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:23:41,117 - settings: WARNING 2
+2021-08-04 16:23:41,117 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:23:41,117 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:23:41,117 - settings: WARNING 3
+2021-08-04 16:23:41,117 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:23:41,117 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:23:41,117 - settings: WARNING 4
+2021-08-04 16:23:41,117 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:23:41,117 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:23:41,117 - settings: WARNING 5
+2021-08-04 16:23:41,117 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:23:41,117 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:23:41,117 - settings: WARNING 6
+2021-08-04 16:23:41,118 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:23:41,118 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:23:41,118 - settings: WARNING 7
+2021-08-04 16:23:41,118 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:23:41,118 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:23:41,118 - settings: WARNING 8
+2021-08-04 16:23:41,118 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:23:41,118 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:23:41,118 - settings: WARNING 9
+2021-08-04 16:23:41,118 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:23:41,118 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:23:41,118 - settings: WARNING 10
+2021-08-04 16:23:41,118 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:23:41,118 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:23:41,118 - settings: WARNING 11
+2021-08-04 16:23:41,119 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:23:41,119 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:23:41,142 - settings: ERROR 设备路网信息异常异常
+2021-08-04 16:23:41,142 - settings: ERROR 0
+2021-08-04 16:23:41,148 - settings: ERROR 备停区设备路网信息异常
+2021-08-04 16:23:41,148 - settings: ERROR 0
+2021-08-04 16:23:42,769 - settings: INFO 最大产量调度模式
+2021-08-04 16:23:42,782 - settings: INFO 最大产量:179.21176
+2021-08-04 16:23:42,782 - settings: INFO 各变量取值:
+2021-08-04 16:23:42,782 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:23:42,782 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:23:42,783 - settings: ERROR 矿卡预计抵达时间计算异常
+2021-08-04 16:23:42,783 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:23:42,783 - settings: ERROR 挖机/卸载设备预计装载量计算异常
+2021-08-04 16:23:42,783 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:23:42,783 - settings: ERROR 卸载设备预计装载量计算异常
+2021-08-04 16:23:42,783 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:24:27,025 - settings: INFO 最大产量调度模式
+2021-08-04 16:24:27,038 - settings: INFO 最大产量:179.21176
+2021-08-04 16:24:27,038 - settings: INFO 各变量取值:
+2021-08-04 16:24:27,039 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:24:27,039 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:24:27,150 - settings: INFO 可用于动态派车的矿卡：
+2021-08-04 16:24:27,150 - settings: INFO {'9b251c39-42e8-4071-9a1f-d36625555513', 'fb1d5516-9a42-4f6e-84fe-9955723badce', '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19', 'aae4642f-f74b-4514-971e-c800a4182152', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', '31c1c93a-b037-4ab6-88b6-eef6cd23804b', 'e0118ce2-7644-4f6e-aadc-8e0c33b11241', 'f68909a0-e644-415f-a140-15c19f162b8f', '5221a7f5-0a90-482f-b2bd-c902110a792d', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', '5f010e86-3398-4f88-a0e7-27d104cc8bbd'}
+2021-08-04 16:24:27,189 - settings: INFO  
+2021-08-04 16:24:27,189 - settings: INFO 调度系统启动
+2021-08-04 16:24:27,492 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 16:24:27,565 - settings: ERROR 设备路网信息异常异常
+2021-08-04 16:24:27,566 - settings: ERROR 0
+2021-08-04 16:24:27,572 - settings: ERROR 备停区设备路网信息异常
+2021-08-04 16:24:27,572 - settings: ERROR 0
+2021-08-04 16:24:27,772 - settings: INFO 矿卡当前任务：
+2021-08-04 16:24:27,772 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': -2, '9b251c39-42e8-4071-9a1f-d36625555513': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'fb1d5516-9a42-4f6e-84fe-9955723badce': -2, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2, 'aae4642f-f74b-4514-971e-c800a4182152': -2, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': -2, 'f68909a0-e644-415f-a140-15c19f162b8f': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': -2}
+2021-08-04 16:24:27,772 - settings: ERROR 读取矿卡有效载重异常-矿卡型号信息缺失
+2021-08-04 16:24:27,772 - settings: ERROR '9b251c39-42e8-4071-9a1f-d36625555513'
+2021-08-04 16:24:27,848 - settings: WARNING 0
+2021-08-04 16:24:27,848 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:24:27,848 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:24:27,848 - settings: WARNING 1
+2021-08-04 16:24:27,849 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:24:27,849 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:24:27,849 - settings: WARNING 2
+2021-08-04 16:24:27,849 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:24:27,849 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:24:27,849 - settings: WARNING 3
+2021-08-04 16:24:27,849 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:24:27,849 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:24:27,849 - settings: WARNING 4
+2021-08-04 16:24:27,850 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:24:27,850 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:24:27,850 - settings: WARNING 5
+2021-08-04 16:24:27,850 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:24:27,850 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:24:27,850 - settings: WARNING 6
+2021-08-04 16:24:27,850 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:24:27,850 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:24:27,850 - settings: WARNING 7
+2021-08-04 16:24:27,850 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:24:27,850 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:24:27,850 - settings: WARNING 8
+2021-08-04 16:24:27,850 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:24:27,850 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:24:27,850 - settings: WARNING 9
+2021-08-04 16:24:27,850 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:24:27,851 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:24:27,851 - settings: WARNING 10
+2021-08-04 16:24:27,851 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:24:27,851 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:24:27,851 - settings: WARNING 11
+2021-08-04 16:24:27,851 - settings: ERROR 矿卡行程读取异常
+2021-08-04 16:24:27,851 - settings: ERROR local variable 'task' referenced before assignment
+2021-08-04 16:24:27,911 - settings: ERROR 设备路网信息异常异常
+2021-08-04 16:24:27,912 - settings: ERROR 0
+2021-08-04 16:24:27,920 - settings: ERROR 备停区设备路网信息异常
+2021-08-04 16:24:27,920 - settings: ERROR 0
+2021-08-04 16:24:31,348 - settings: INFO 最大产量调度模式
+2021-08-04 16:24:31,360 - settings: INFO 最大产量:179.21176
+2021-08-04 16:24:31,360 - settings: INFO 各变量取值:
+2021-08-04 16:24:31,360 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:24:31,360 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:24:31,361 - settings: ERROR 矿卡预计抵达时间计算异常
+2021-08-04 16:24:31,361 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:24:31,361 - settings: ERROR 挖机/卸载设备预计装载量计算异常
+2021-08-04 16:24:31,361 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:24:31,361 - settings: ERROR 卸载设备预计装载量计算异常
+2021-08-04 16:24:31,361 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:27:08,458 - settings: INFO 最大产量调度模式
+2021-08-04 16:27:08,474 - settings: INFO 最大产量:179.21176
+2021-08-04 16:27:08,474 - settings: INFO 各变量取值:
+2021-08-04 16:27:08,475 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:27:08,475 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:27:08,616 - settings: INFO 可用于动态派车的矿卡：
+2021-08-04 16:27:08,616 - settings: INFO {'e0118ce2-7644-4f6e-aadc-8e0c33b11241', 'f68909a0-e644-415f-a140-15c19f162b8f', '5221a7f5-0a90-482f-b2bd-c902110a792d', '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19', 'aae4642f-f74b-4514-971e-c800a4182152', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', 'fb1d5516-9a42-4f6e-84fe-9955723badce', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', '5f010e86-3398-4f88-a0e7-27d104cc8bbd', '9b251c39-42e8-4071-9a1f-d36625555513', '31c1c93a-b037-4ab6-88b6-eef6cd23804b'}
+2021-08-04 16:27:08,801 - settings: INFO  
+2021-08-04 16:27:08,801 - settings: INFO 调度系统启动
+2021-08-04 16:27:10,038 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 16:27:10,961 - settings: INFO 矿卡当前任务：
+2021-08-04 16:27:10,961 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': -2, '9b251c39-42e8-4071-9a1f-d36625555513': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'fb1d5516-9a42-4f6e-84fe-9955723badce': -2, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2, 'aae4642f-f74b-4514-971e-c800a4182152': -2, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': -2, 'f68909a0-e644-415f-a140-15c19f162b8f': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': -2}
+2021-08-04 16:27:16,906 - settings: INFO 最大产量调度模式
+2021-08-04 16:27:16,917 - settings: INFO 最大产量:179.21176
+2021-08-04 16:27:16,917 - settings: INFO 各变量取值:
+2021-08-04 16:27:16,917 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:27:16,918 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:27:16,918 - settings: ERROR 矿卡预计抵达时间计算异常
+2021-08-04 16:27:16,918 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:27:16,918 - settings: ERROR 挖机/卸载设备预计装载量计算异常
+2021-08-04 16:27:16,918 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:27:16,918 - settings: ERROR 卸载设备预计装载量计算异常
+2021-08-04 16:27:16,918 - settings: ERROR 'Dispatcher' object has no attribute 'truck_index_to_uuid_dict'
+2021-08-04 16:28:11,354 - settings: INFO 最大产量调度模式
+2021-08-04 16:28:11,366 - settings: INFO 最大产量:179.21176
+2021-08-04 16:28:11,366 - settings: INFO 各变量取值:
+2021-08-04 16:28:11,366 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:28:11,367 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:28:11,445 - settings: INFO 可用于动态派车的矿卡：
+2021-08-04 16:28:11,446 - settings: INFO {'9b251c39-42e8-4071-9a1f-d36625555513', 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', '31c1c93a-b037-4ab6-88b6-eef6cd23804b', '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19', 'aae4642f-f74b-4514-971e-c800a4182152', '5f010e86-3398-4f88-a0e7-27d104cc8bbd', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', 'f68909a0-e644-415f-a140-15c19f162b8f', 'e0118ce2-7644-4f6e-aadc-8e0c33b11241', 'fb1d5516-9a42-4f6e-84fe-9955723badce', '5221a7f5-0a90-482f-b2bd-c902110a792d'}
+2021-08-04 16:28:11,552 - settings: INFO  
+2021-08-04 16:28:11,553 - settings: INFO 调度系统启动
+2021-08-04 16:28:11,993 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 16:28:12,236 - settings: INFO 矿卡当前任务：
+2021-08-04 16:28:12,236 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': -2, '9b251c39-42e8-4071-9a1f-d36625555513': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'fb1d5516-9a42-4f6e-84fe-9955723badce': -2, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2, 'aae4642f-f74b-4514-971e-c800a4182152': -2, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': -2, 'f68909a0-e644-415f-a140-15c19f162b8f': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': -2}
+2021-08-04 16:28:14,851 - settings: INFO 最大产量调度模式
+2021-08-04 16:28:14,863 - settings: INFO 最大产量:179.21176
+2021-08-04 16:28:14,863 - settings: INFO 各变量取值:
+2021-08-04 16:28:14,864 - settings: INFO 重运车流:[[179.21176, 0.0]] 单位: 吨/时
+2021-08-04 16:28:14,864 - settings: INFO 空运车流:[[179.21176], [0.0]] 单位: 吨/时
+2021-08-04 16:28:14,864 - settings: INFO  
+2021-08-04 16:28:14,864 - settings: INFO 调度矿卡 9b251c39-42e8-4071-9a1f-d36625555513  验证bug
+2021-08-04 16:28:14,864 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:28:14,864 - settings: INFO 矿卡行程：无
+2021-08-04 16:28:14,864 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:28:14,865 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:28:14,865 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:28:14,865 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:28:14,865 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:28:14,865 - settings: INFO  
+2021-08-04 16:28:14,865 - settings: INFO 调度矿卡 dd8f0405-1ade-4d23-8985-2a1e603c5c2a  KK002
+2021-08-04 16:28:14,865 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:28:14,865 - settings: INFO 矿卡行程：无
+2021-08-04 16:28:14,865 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:28:14,865 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:28:14,865 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:28:14,866 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:28:14,866 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:28:14,866 - settings: INFO  
+2021-08-04 16:28:14,866 - settings: INFO 调度矿卡 31c1c93a-b037-4ab6-88b6-eef6cd23804b  XDE120-8
+2021-08-04 16:28:14,866 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:28:14,866 - settings: INFO 矿卡行程：无
+2021-08-04 16:28:14,866 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:28:14,866 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:28:14,866 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:28:14,866 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:28:14,866 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:28:14,866 - settings: INFO  
+2021-08-04 16:28:14,867 - settings: INFO 调度矿卡 35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19  KK006
+2021-08-04 16:28:14,867 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:28:14,867 - settings: INFO 矿卡行程：无
+2021-08-04 16:28:14,867 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:28:14,867 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:28:14,867 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:28:14,867 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:28:14,867 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:28:14,867 - settings: INFO  
+2021-08-04 16:28:14,867 - settings: INFO 调度矿卡 aae4642f-f74b-4514-971e-c800a4182152  KK010
+2021-08-04 16:28:14,867 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:28:14,867 - settings: INFO 矿卡行程：无
+2021-08-04 16:28:14,867 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:28:14,868 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:28:14,868 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:28:14,868 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:28:14,868 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:28:14,868 - settings: INFO  
+2021-08-04 16:28:14,868 - settings: INFO 调度矿卡 5f010e86-3398-4f88-a0e7-27d104cc8bbd  KK008
+2021-08-04 16:28:14,868 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:28:14,868 - settings: INFO 矿卡行程：无
+2021-08-04 16:28:14,868 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:28:14,868 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:28:14,868 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:28:14,869 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:28:14,869 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:28:14,869 - settings: INFO  
+2021-08-04 16:28:14,869 - settings: INFO 调度矿卡 1b787c4a-210a-46ce-a32c-73cbc1cd5e39  KK007
+2021-08-04 16:28:14,869 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:28:14,869 - settings: INFO 矿卡行程：无
+2021-08-04 16:28:14,869 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:28:14,869 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:28:14,869 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:28:14,869 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:28:14,869 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:28:14,870 - settings: INFO  
+2021-08-04 16:28:14,870 - settings: INFO 调度矿卡 fa028808-a3f0-47dd-9929-f23e2cac2bf8  KK005
+2021-08-04 16:28:14,870 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:28:14,870 - settings: INFO 矿卡行程：无
+2021-08-04 16:28:14,870 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:28:14,870 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:28:14,870 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:28:14,870 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:28:14,870 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:28:14,870 - settings: INFO  
+2021-08-04 16:28:14,870 - settings: INFO 调度矿卡 f68909a0-e644-415f-a140-15c19f162b8f  KK004
+2021-08-04 16:28:14,870 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:28:14,870 - settings: INFO 矿卡行程：无
+2021-08-04 16:28:14,871 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:28:14,871 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:28:14,871 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:28:14,871 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:28:14,871 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:28:14,876 - settings: INFO  
+2021-08-04 16:28:14,877 - settings: INFO 调度矿卡 e0118ce2-7644-4f6e-aadc-8e0c33b11241  KK003
+2021-08-04 16:28:14,877 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:28:14,877 - settings: INFO 矿卡行程：无
+2021-08-04 16:28:14,877 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:28:14,878 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:28:14,878 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:28:14,878 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:28:14,878 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:28:14,878 - settings: INFO  
+2021-08-04 16:28:14,878 - settings: INFO 调度矿卡 fb1d5516-9a42-4f6e-84fe-9955723badce  KK001
+2021-08-04 16:28:14,878 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:28:14,878 - settings: INFO 矿卡行程：无
+2021-08-04 16:28:14,878 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:28:14,879 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:28:14,879 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:28:14,879 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:28:14,880 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:28:14,880 - settings: INFO  
+2021-08-04 16:28:14,880 - settings: INFO 调度矿卡 5221a7f5-0a90-482f-b2bd-c902110a792d  NTE200-4（18#）
+2021-08-04 16:28:14,880 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:28:14,880 - settings: INFO 矿卡行程：无
+2021-08-04 16:28:14,880 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:28:14,880 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:28:14,880 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:28:14,880 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:28:14,880 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:28:15,127 - settings: INFO #####################################周期更新结束#####################################
+2021-08-04 16:36:54,114 - settings: INFO 最大产量调度模式
+2021-08-04 16:36:54,132 - settings: INFO 最大产量:164.27745
+2021-08-04 16:36:54,132 - settings: INFO 各变量取值:
+2021-08-04 16:36:54,132 - settings: INFO 重运车流:[[164.27745, 0.0]] 单位: 吨/时
+2021-08-04 16:36:54,132 - settings: INFO 空运车流:[[164.27745], [0.0]] 单位: 吨/时
+2021-08-04 16:36:54,216 - settings: INFO 可用于动态派车的矿卡：
+2021-08-04 16:36:54,216 - settings: INFO {'dd8f0405-1ade-4d23-8985-2a1e603c5c2a', '31c1c93a-b037-4ab6-88b6-eef6cd23804b', 'e0118ce2-7644-4f6e-aadc-8e0c33b11241', 'f68909a0-e644-415f-a140-15c19f162b8f', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', 'fb1d5516-9a42-4f6e-84fe-9955723badce', 'aae4642f-f74b-4514-971e-c800a4182152', '9b251c39-42e8-4071-9a1f-d36625555513', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', '5221a7f5-0a90-482f-b2bd-c902110a792d', '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19'}
+2021-08-04 16:36:54,269 - settings: INFO  
+2021-08-04 16:36:54,269 - settings: INFO 调度系统启动
+2021-08-04 16:36:54,555 - settings: INFO #####################################周期更新开始#####################################
+2021-08-04 16:36:54,985 - settings: INFO 矿卡当前任务：
+2021-08-04 16:36:54,985 - settings: INFO {'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': -2, '9b251c39-42e8-4071-9a1f-d36625555513': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'fb1d5516-9a42-4f6e-84fe-9955723badce': -2, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2, 'aae4642f-f74b-4514-971e-c800a4182152': -2, 'f68909a0-e644-415f-a140-15c19f162b8f': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': -2}
+2021-08-04 16:36:57,193 - settings: INFO 最大产量调度模式
+2021-08-04 16:36:57,205 - settings: INFO 最大产量:164.27745
+2021-08-04 16:36:57,206 - settings: INFO 各变量取值:
+2021-08-04 16:36:57,206 - settings: INFO 重运车流:[[164.27745, 0.0]] 单位: 吨/时
+2021-08-04 16:36:57,206 - settings: INFO 空运车流:[[164.27745], [0.0]] 单位: 吨/时
+2021-08-04 16:36:57,206 - settings: INFO  
+2021-08-04 16:36:57,206 - settings: INFO 调度矿卡 dd8f0405-1ade-4d23-8985-2a1e603c5c2a  KK002
+2021-08-04 16:36:57,206 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:36:57,207 - settings: INFO 矿卡行程：无
+2021-08-04 16:36:57,207 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:36:57,207 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:36:57,207 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:36:57,207 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:36:57,207 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:36:57,207 - settings: INFO  
+2021-08-04 16:36:57,207 - settings: INFO 调度矿卡 31c1c93a-b037-4ab6-88b6-eef6cd23804b  XDE120-8
+2021-08-04 16:36:57,207 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:36:57,207 - settings: INFO 矿卡行程：无
+2021-08-04 16:36:57,207 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:36:57,208 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:36:57,208 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:36:57,208 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:36:57,208 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:36:57,208 - settings: INFO  
+2021-08-04 16:36:57,208 - settings: INFO 调度矿卡 e0118ce2-7644-4f6e-aadc-8e0c33b11241  KK003
+2021-08-04 16:36:57,208 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:36:57,208 - settings: INFO 矿卡行程：无
+2021-08-04 16:36:57,208 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:36:57,208 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:36:57,208 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:36:57,209 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:36:57,209 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:36:57,209 - settings: INFO  
+2021-08-04 16:36:57,209 - settings: INFO 调度矿卡 f68909a0-e644-415f-a140-15c19f162b8f  KK004
+2021-08-04 16:36:57,209 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:36:57,209 - settings: INFO 矿卡行程：无
+2021-08-04 16:36:57,209 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:36:57,209 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:36:57,209 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:36:57,209 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:36:57,209 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:36:57,209 - settings: INFO  
+2021-08-04 16:36:57,209 - settings: INFO 调度矿卡 1b787c4a-210a-46ce-a32c-73cbc1cd5e39  KK007
+2021-08-04 16:36:57,210 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:36:57,210 - settings: INFO 矿卡行程：无
+2021-08-04 16:36:57,210 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:36:57,210 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:36:57,210 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:36:57,210 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:36:57,210 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:36:57,210 - settings: INFO  
+2021-08-04 16:36:57,210 - settings: INFO 调度矿卡 fb1d5516-9a42-4f6e-84fe-9955723badce  KK001
+2021-08-04 16:36:57,210 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:36:57,210 - settings: INFO 矿卡行程：无
+2021-08-04 16:36:57,210 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:36:57,211 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:36:57,211 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:36:57,211 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:36:57,211 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:36:57,211 - settings: INFO  
+2021-08-04 16:36:57,211 - settings: INFO 调度矿卡 aae4642f-f74b-4514-971e-c800a4182152  KK010
+2021-08-04 16:36:57,211 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:36:57,211 - settings: INFO 矿卡行程：无
+2021-08-04 16:36:57,211 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:36:57,211 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:36:57,211 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:36:57,212 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:36:57,212 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:36:57,212 - settings: INFO  
+2021-08-04 16:36:57,212 - settings: INFO 调度矿卡 9b251c39-42e8-4071-9a1f-d36625555513  验证bug
+2021-08-04 16:36:57,212 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:36:57,212 - settings: INFO 矿卡行程：无
+2021-08-04 16:36:57,212 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:36:57,212 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:36:57,212 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:36:57,212 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:36:57,212 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:36:57,212 - settings: INFO  
+2021-08-04 16:36:57,212 - settings: INFO 调度矿卡 fa028808-a3f0-47dd-9929-f23e2cac2bf8  KK005
+2021-08-04 16:36:57,213 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:36:57,213 - settings: INFO 矿卡行程：无
+2021-08-04 16:36:57,213 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:36:57,213 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:36:57,213 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:36:57,213 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:36:57,213 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:36:57,214 - settings: INFO  
+2021-08-04 16:36:57,214 - settings: INFO 调度矿卡 5221a7f5-0a90-482f-b2bd-c902110a792d  NTE200-4（18#）
+2021-08-04 16:36:57,214 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:36:57,214 - settings: INFO 矿卡行程：无
+2021-08-04 16:36:57,214 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:36:57,215 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:36:57,215 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:36:57,215 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:36:57,216 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:36:57,216 - settings: INFO  
+2021-08-04 16:36:57,216 - settings: INFO 调度矿卡 35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19  KK006
+2021-08-04 16:36:57,216 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-08-04 16:36:57,216 - settings: INFO 矿卡行程：无
+2021-08-04 16:36:57,216 - settings: INFO 涉及挖机：['18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e']
+2021-08-04 16:36:57,216 - settings: INFO 挖机饱和度：[1.]
+2021-08-04 16:36:57,216 - settings: INFO 行程时间：[2.30666667]
+2021-08-04 16:36:57,216 - settings: INFO 行驶时间：[2.30666667]
+2021-08-04 16:36:57,216 - settings: INFO 目的地：18a8cfc1-0ff6-42ac-bb2a-2d770e42d39e
+2021-08-04 16:36:57,551 - settings: INFO #####################################周期更新结束#####################################

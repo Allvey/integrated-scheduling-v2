@@ -159,7 +159,13 @@ def update_total_truck():
         query = np.array(session_mysql.query(Equipment).filter_by(device_type=1, isdeleted=0).all())
 
         for item in query:
-            truck_list.append(item.id)
+            json_value = json.loads(redis2.get(item.equipment_id))
+            is_online = json_value.get('isOnline')
+            if is_online:
+                truck_list.append(item.id)
+
+        # for item in query:
+        #     truck_list.append(item.id)
 
         if len(truck_list) < 1:
             raise Exception("无矿卡设备可用-矿卡集合读取异常")

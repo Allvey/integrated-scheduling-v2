@@ -14,26 +14,18 @@ from sqlalchemy import Column, create_engine
 from sqlalchemy import VARCHAR, DateTime, Float, Integer, BOOLEAN
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-import numpy as np
-from redis import StrictRedis, ConnectionPool
-import redis
-from datetime import datetime, timedelta
-import copy
-import json
-import sched
-import time
+# import numpy as np
+# from redis import StrictRedis, ConnectionPool
+# import redis
+# from datetime import datetime, timedelta
+# import copy
+# import json
+# import sched
+# import time
 
-pool5 = ConnectionPool(host='192.168.28.111', db=5, port=6379, password='Huituo@123')
-
-redis5 = StrictRedis(connection_pool=pool5)
-
-pool2 = ConnectionPool(host='192.168.28.111', db=2, port=6379, password='Huituo@123')
-
-redis2 = StrictRedis(connection_pool=pool2)
 
 # 创建对象的基类:
 Base = declarative_base()
-
 
 # 初始化数据库连接:
 engine_mysql = create_engine('mysql+mysqlconnector://root:Huituo@123@192.168.28.111:3306/waytous')
@@ -350,3 +342,21 @@ class JobRecord(Base):
         self.start_time = start_time
         self.end_time = end_time
         self.work_type = work_type
+
+class WrokRecord(Base):
+    __tablename__ = 'statistic_work_record'
+
+    equipment_id = Column(VARCHAR(50), primary_key=True)
+    work_day = Column(DateTime, primary_key=True)
+    load_entrance_time = Column(Float)
+    load_entrance_count = Column(Integer)
+    load_exit_time = Column(DateTime)
+    load_exit_count = Column(Integer)
+
+    def __init__(self, equipment_id, work_day, load_entrance_time, load_entrance_count, load_exit_time, load_exit_count):
+        self.equipment_id = equipment_id
+        self.work_day = work_day
+        self.load_entrance_time = load_entrance_time
+        self.load_entrance_count = load_entrance_count
+        self.load_exit_time = load_exit_time
+        self.load_exit_count = load_exit_count

@@ -11,6 +11,15 @@
 from tables import *
 from urllib.parse import quote
 import logging.handlers
+from redis import StrictRedis, ConnectionPool
+import numpy as np
+from redis import StrictRedis, ConnectionPool
+import redis
+from datetime import datetime, timedelta
+import copy
+import json
+import sched
+import time
 
 # 创建日志
 ########################################################################################################################
@@ -31,7 +40,7 @@ logger.setLevel(logging.INFO)
 
 # timefilehandler = logging.handlers.TimedRotatingFileHandler(log_path + "/dispatch.log", when='M', interval=1, backupCount=60)
 # filehandler = logging.handlers.RotatingFileHandler(log_path + "/dispatch.log", maxBytes=3*1024*1024, backupCount=10)
-filehandler = logging.handlers.RotatingFileHandler("./RDlogs/dispatch.log", maxBytes=3 * 1024 * 1024, backupCount=10)
+filehandler = logging.handlers.RotatingFileHandler("./TFlog/dispatch.log", maxBytes=3 * 1024 * 1024, backupCount=10)
 # 设置后缀名称，跟strftime的格式一样
 filehandler.suffix = "%Y-%m-%d_%H-%M.log"
 

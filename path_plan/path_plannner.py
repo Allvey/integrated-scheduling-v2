@@ -10,20 +10,12 @@ import numpy
 from settings import *
 from static_data_process import *
 from settings import *
-
-load_area_uuid_to_index_dict, unload_area_uuid_to_index_dict, \
-load_area_index_to_uuid_dict, unload_area_index_to_uuid_dict = build_work_area_uuid_index_map()
-
-park_uuid_to_index_dict, park_index_to_uuid_dict = build_park_uuid_index_map()
-
-load_area_num, unload_area_num = len(load_area_uuid_to_index_dict), len(unload_area_uuid_to_index_dict)
-
-truck_uuid_to_name_dict, truck_name_to_uuid_dict = build_truck_uuid_name_map()
+from para_config import *
 
 M = 1000000
 
 
-class PathPlanner:
+class PathPlanner(WalkManage):
     def __init__(self):
         # 路线行驶成本
         self.rout_cost = np.array((unload_area_num, load_area_num))
@@ -37,11 +29,11 @@ class PathPlanner:
         self.num_of_unload_area = len(set(update_unload_area()))
         # 备停区数量
         self.num_of_park_area = len(set(update_park_area()))
-        # 路网信息
-        self.walk_time_to_load_area = np.full((self.num_of_unload_area, self.num_of_load_area), M)
-        self.walk_time_to_unload_area = np.full((self.num_of_unload_area, self.num_of_load_area), M)
+        # 路网行驶成本信息信息
+        self.cost_to_load_area = np.full((self.num_of_unload_area, self.num_of_load_area), M)
+        self.cost_to_unload_area = np.full((self.num_of_unload_area, self.num_of_load_area), M)
         # 路网信息（备停区）
-        self.walk_time_park = np.full((self.num_of_park_area, self.num_of_load_area), M)
+        self.cost_park_to_load_area = np.full((self.num_of_park_area, self.num_of_load_area), M)
         # 路段类
         self.lane = LaneInfo()
         self.lane.lane_speed_generate()
@@ -49,16 +41,16 @@ class PathPlanner:
     def path_cost_generate(self, load_area_id, unload_area_id, is_park):
 
         # 卸载道路阻塞成本初始化
-        to_unload_blockage_cost = 0
+        cost_to_unload_blockage = 0
         # 装载道路阻塞成本初始化
-        to_load_blockage_cost = 0
+        cost_to_load_blockage = 0
         # 卸载道路总成本初始化
         to_unload_cost = 0
         # 装载道路总成本初始化
         to_load_cost = 0
 
         # 阻塞成本权重
-        alpha = 500
+        alpha = 10000
         # 距离成本权重
         beta = 1
 
@@ -72,27 +64,27 @@ class PathPlanner:
                 # 读取道路路段信息
                 for lane_id in path.park_load_lanes:
                     # 各路段阻塞成本累加
-                    to_load_blockage_cost = to_load_blockage_cost + beta * self.lane_cost_generate(lane_id)
+                    cost_to_load_blockage = cost_to_load_blockage + beta * self.lane_cost_generate(lane_id)
 
                 # 道路总成本=道路距离成本+道路阻塞成本
-                to_load_cost = alpha * to_load_blockage_cost + beta * path.park_load_distance
+                to_load_cost = alpha * cost_to_load_blockage + beta * path.park_load_distance
             else:
                 path = session_postgre.query(WalkTime).filter_by(load_area_id=load_area_id,
                                                                  unload_area_id=unload_area_id).first()
 
                 for lane_id in path.to_unload_lanes:
-                    to_unload_blockage_cost = to_unload_blockage_cost + self.lane_cost_generate(lane_id)
+                    cost_to_unload_blockage = cost_to_unload_blockage + self.lane_cost_generate(lane_id)
 
                 for lane_id in path.to_load_lanes:
-                    to_load_blockage_cost = to_load_blockage_cost + self.lane_cost_generate(lane_id)
+                    cost_to_load_blockage = cost_to_load_blockage + self.lane_cost_generate(lane_id)
 
-                to_unload_cost = alpha * to_unload_blockage_cost + beta * path.to_unload_distance
-                to_load_cost = alpha * to_load_blockage_cost + beta * path.to_load_distance
+                to_unload_cost = alpha * cost_to_unload_blockage + beta * path.to_unload_distance
+                to_load_cost = alpha * cost_to_load_blockage + beta * path.to_load_distance
         except Exception as es:
             logger.error(f'道路{load_area_id-unload_area_id}行驶成本计算异常')
             logger.error(es)
 
-        return to_unload_cost, to_load_cost
+        return to_load_cost, to_unload_cost
 
     def lane_cost_generate(self, lane_id):
         try:
@@ -119,39 +111,49 @@ class PathPlanner:
 
     def walk_cost(self):
 
-        try:
+        self.period_walk_para_load()
 
-            # 读取路网距离信息
-            walk_time_load_distance = np.full((self.num_of_unload_area, self.num_of_load_area), M)
-            walk_time_unload_distance = np.full((self.num_of_unload_area, self.num_of_load_area), M)
+        self.period_map_para_load()
+
+        try:
 
             # 读取路网成本
             for walk_time in session_postgre.query(WalkTime).all():
                 unload_area_index = unload_area_uuid_to_index_dict[str(walk_time.unload_area_id)]
                 load_area_index = load_area_uuid_to_index_dict[str(walk_time.load_area_id)]
-                self.walk_time_to_load_area[unload_area_index][load_area_index], \
-                self.walk_time_to_unload_area[unload_area_index][load_area_index] = \
+                self.cost_to_load_area[unload_area_index][load_area_index], \
+                self.cost_to_unload_area[unload_area_index][load_area_index] = \
                     self.path_cost_generate(walk_time.load_area_id, walk_time.unload_area_id, False)
-
-                walk_time_unload_distance[unload_area_index][load_area_index] = walk_time.to_load_distance
-                walk_time_load_distance[unload_area_index][load_area_index] = walk_time.to_unload_distance
 
             # 读取备停区路网成本
             for walk_time_park in session_postgre.query(WalkTimePark).all():
                 park_area_index = park_uuid_to_index_dict[str(walk_time_park.park_area_id)]
                 load_area_index = load_area_uuid_to_index_dict[str(walk_time_park.load_area_id)]
-                _, self.walk_time_park[park_area_index][load_area_index] = \
+                _, self.cost_park_to_load_area[park_area_index][load_area_index] = \
                     self.path_cost_generate(walk_time_park.load_area_id, walk_time_park.park_area_id, True)
         except Exception as es:
             logger.error('路网信息计成本计算异常')
             logger.error(es)
 
-        print("真实路网距离：装载-卸载")
-        print(self.walk_time_to_load_area)
-        print(self.walk_time_to_unload_area)
-        print("实际路网距离(阻塞)：装载-卸载")
-        print(walk_time_load_distance)
-        print(walk_time_unload_distance)
+        cost_to_excavator = np.zeros_like(self.distance_to_excavator)
+        cost_to_dump = np.zeros_like(self.distance_to_dump)
+
+        for i in range(dynamic_dump_num):
+            for j in range(dynamic_excavator_num):
+                cost_to_excavator[i][j] = self.cost_to_load_area[self.dump_index_to_unload_area_index_dict[i]][self.excavator_index_to_load_area_index_dict[j]]
+                cost_to_dump[i][j] = self.cost_to_unload_area[self.dump_index_to_unload_area_index_dict[i]][self.excavator_index_to_load_area_index_dict[j]]
+
+        logger.info("真实路网距离-驶往挖机:")
+        logger.info(self.distance_to_excavator)
+
+        logger.info("真实路网距离-驶往卸点:")
+        logger.info(self.distance_to_dump)
+
+        logger.info("阻塞路网距离-驶往挖机:")
+        logger.info(cost_to_excavator)
+
+        logger.info("阻塞路网距离-驶往卸点:")
+        logger.info(cost_to_dump)
 
 
 class LaneInfo:
@@ -185,7 +187,8 @@ class LaneInfo:
                 item = item.decode(encoding='utf-8')
                 json_value = json.loads(redis2.get(item))
                 device_type = json_value.get('type')
-                if device_type == 1:
+                is_online = json_value.get('isOnline')
+                if device_type == 1 and is_online:
                     truck_locate = json_value.get('laneId')
                     truck_locate_dict[truck_name_to_uuid_dict[item]] = truck_locate
         except Exception as es:
@@ -198,14 +201,20 @@ class LaneInfo:
         # truck -> lane
         truck_locate_dict = self.update_truck_loacate()
 
-        print("truck -> lane")
-        print(truck_locate_dict)
+        # print("truck -> lane")
+        # print(truck_locate_dict)
+
+        logger.info("矿卡位于路段:")
+        logger.info(truck_locate_dict)
 
         # truck -> speed
         truck_speed_dict = self.update_truck_speed()
 
-        print("truck -> speed")
-        print(truck_speed_dict)
+        # print("truck -> speed")
+        # print(truck_speed_dict)
+
+        logger.info("矿卡当前速度:")
+        logger.info(truck_speed_dict)
 
         try:
             # lane_set, 用到的路段集合
@@ -221,6 +230,7 @@ class LaneInfo:
             lane_set = set(lane_set)
         except Exception as es:
             logger.error('所用路网路段集合读取异常')
+            logger.info(es)
 
         # lane -> speed, 各路段平均行驶速度
         self.lane_speed_dict = {}
@@ -250,8 +260,11 @@ class LaneInfo:
                     tmp_lane_set.append(lane_id)
 
             # 存在矿卡的路段
-            print("存在矿卡的路段:")
-            print(tmp_lane_set)
+            # print("存在矿卡的路段:")
+            # print(tmp_lane_set)
+
+            logger.info("存在矿卡的路段:")
+            logger.info(tmp_lane_set)
 
             # 对不存在的矿卡路段，实时速度设置为最高
             for lane_id in lane_set:
@@ -268,3 +281,7 @@ class LaneInfo:
             logger.error(es)
 
         return self.lane_speed_dict
+
+# path_planner = PathPlanner()
+#
+# path_planner.walk_cost()
