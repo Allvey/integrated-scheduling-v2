@@ -116,7 +116,6 @@ class DumpInfo(WalkManage):
         self.cur_dump_real_mass = np.zeros(self.dynamic_dump_num)
         now = datetime.now().strftime('%Y-%m-%d')
         for dump_id in self.dump_uuid_to_index_dict.keys():
-            # print(excavator_id)
             for query in session_mysql.query(LoadInfo). \
                     join(Equipment, LoadInfo.dump_id == Equipment.equipment_id). \
                     filter(Equipment.id == dump_id, LoadInfo.time > now). \

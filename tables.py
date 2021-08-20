@@ -295,8 +295,9 @@ class Equipment(Base):
     equipment_spec = Column(VARCHAR(36))
     equipment_state = Column(Integer)
     isdeleted = Column(Integer)
+    disabled = Column(Integer)
 
-    def __init__(self, id, equipment_id, device_name, device_type, equipment_spec, equipment_state, isdeleted):
+    def __init__(self, id, equipment_id, device_name, device_type, equipment_spec, equipment_state, isdeleted, disabled):
         self.id = id
         self.equipment_id = equipment_id
         self.device_name = device_name
@@ -304,16 +305,19 @@ class Equipment(Base):
         self.equipment_spec = equipment_spec
         self.equipment_state = equipment_state
         self.isdeleted = isdeleted
+        self.disabled = disabled
 
 class EquipmentSpec(Base):
     __tablename__ = 'sys_equipment_spec'
 
     id = Column(VARCHAR(36), primary_key=True)
     capacity = Column(Integer)
+    mining_abililty = Column(Float)
 
-    def __init__(self, id, capacity):
+    def __init__(self, id, capacity, mining_abililty):
         self.id = id
         self.capacity = capacity
+        self.mining_abililty = self.mining_abililty
 
 class LoadInfo(Base):
     __tablename__ = 'sys_loadinfo'
@@ -360,3 +364,18 @@ class WrokRecord(Base):
         self.load_entrance_count = load_entrance_count
         self.load_exit_time = load_exit_time
         self.load_exit_count = load_exit_count
+
+
+class DumpArea(Base):
+    __tablename__ = 'Geo_DumpArea'
+
+    Id = Column(VARCHAR(50), primary_key=True)
+    BindList = Column(VARCHAR(1000))
+    UnloadAbililty = Column(Float)
+    Disabled = Column(Integer)
+
+    def __init__(self, Id, BindList, UnloadAbililty, Disabled):
+        self.Id = Id
+        self.BindList = BindList
+        self.UnloadAbililty = UnloadAbililty
+        self.Disabled = Disabled

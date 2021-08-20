@@ -97,8 +97,12 @@ class Traffic_para(WalkManage):
     def extract_dump_info(self):
         try:
             for dump_index in range(dynamic_excavator_num):
+                unload_area_id = unload_area_index_to_uuid_dict[self.dump_index_to_unload_area_index_dict[dump_index]]
 
-                self.dump_strength[dump_index] = 10000  # 卸载设备最大卸载能力，单位吨/小时
+                unload_ability = session_postgre.query(DumpArea).filter_by(Id=unload_area_id).first().UnloadAbililty
+                self.dump_strength[dump_index] = unload_ability # 卸载设备最大卸载能力，单位吨/小时
+
+                # self.dump_strength[dump_index] = 10000  # 卸载设备最大卸载能力，单位吨/小时
                 self.grade_upper_dump_array[dump_index] = 100  # 卸点品位上限
                 self.grade_lower_dump_array[dump_index] = 100  # 卸点品位下限
                 self.dump_priority_coefficient[dump_index] = 1  # 卸载设备优先级
@@ -135,7 +139,11 @@ class Traffic_para(WalkManage):
     def extract_excavator_info(self):
         try:
             for excavator_index in range(len(self.excavator_index_to_uuid_dict)):
-                self.excavator_strength[excavator_index] = 1000  # 挖机最大装载能力，单位吨/小时
+                load_ability = session_mysql.query(EquipmentSpec.mining_abililty).\
+                    join(Equipment, Equipment.equipment_spec == EquipmentSpec.id).\
+                    filter(Equipment.id == self.excavator_index_to_uuid_dict[excavator_index]).first()
+                self.excavator_strength[excavator_index] = load_ability.mining_abililty
+                # self.excavator_strength[excavator_index] = 1000  # 挖机最大装载能力，单位吨/小时
                 self.grade_loading_array[excavator_index] = 100  # 挖机装载物料品位
                 self.excavator_priority_coefficient[excavator_index] = 1  # 挖机优先级
         except Exception as es:
@@ -266,3 +274,6 @@ def Traffic_para_init(num_of_load_area, num_of_unload_area, num_of_excavator, nu
         logger.error(es)
         logger.error("车流规划类比初始化异常")
     return tra_para
+
+
+Traffic_para_init(2, 2, 2, 2)

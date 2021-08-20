@@ -9,8 +9,8 @@
 
 # 静态数据处理(函数名即为注释)
 
-
 from settings import *
+
 
 def build_work_area_uuid_index_map():
     # load_area_id <-> load_area_index
@@ -137,6 +137,7 @@ def update_deveices_map(unload_area_uuid_to_index_dict, load_area_uuid_to_index_
             'excavator_index_to_load_area_index_dict': excavator_index_to_load_area_index_dict,
             'dump_index_to_unload_area_index_dict': dump_index_to_unload_area_index_dict}
 
+
 def update_truck_uuid_index_map(dynamic_truck_set):
     truck_uuid_to_index_dict = {}
     truck_index_to_uuid_dict = {}
@@ -151,21 +152,22 @@ def update_truck_uuid_index_map(dynamic_truck_set):
     return {'truck_uuid_to_index_dict': truck_uuid_to_index_dict,
             'truck_index_to_uuid_dict': truck_index_to_uuid_dict}
 
+
 def update_total_truck():
     # 矿卡集合
     truck_list = []
 
     try:
-        query = np.array(session_mysql.query(Equipment).filter_by(device_type=1, isdeleted=0).all())
-
-        for item in query:
-            json_value = json.loads(redis2.get(item.equipment_id))
-            is_online = json_value.get('isOnline')
-            if is_online:
-                truck_list.append(item.id)
+        query = np.array(session_mysql.query(Equipment).filter_by(device_type=1, isdeleted=0, disabled=0).all())
 
         # for item in query:
-        #     truck_list.append(item.id)
+        #     json_value = json.loads(redis2.get(item.equipment_id))
+        #     is_online = json_value.get('isOnline')
+        #     if is_online:
+        #         truck_list.append(item.id)
+
+        for item in query:
+            truck_list.append(item.id)
 
         if len(truck_list) < 1:
             raise Exception("无矿卡设备可用-矿卡集合读取异常")
@@ -189,6 +191,7 @@ def update_fixdisp_truck():
     except Exception as es:
         logger.error(es)
     return fixed_truck_list
+
 
 def update_autodisp_excavator():
     # 用于动态派车的挖机集合
@@ -216,6 +219,7 @@ def update_autodisp_dump():
         logger.warning(es)
     return dynamic_dump_list
 
+
 def update_load_area():
     load_area_list = []
     for walk_time in session_postgre.query(WalkTime).all():
@@ -229,6 +233,7 @@ def update_unload_area():
     for walk_time in session_postgre.query(WalkTime).all():
         unload_area_list.append(walk_time.unload_area_id)
     return unload_area_list
+
 
 def update_park_area():
     park_area_list = []
