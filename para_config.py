@@ -42,10 +42,16 @@ M = 100000000
 
 # 装载区、卸载区、备停区在调度算法运行器件默认不发生改变，提前计算部分参量
 # (uuid,index(id)映射关系, 装载区数量, 卸载区数量, 备停区数量, 以及初次统计动态调度矿卡)
-load_area_uuid_to_index_dict, unload_area_uuid_to_index_dict, \
-load_area_index_to_uuid_dict, unload_area_index_to_uuid_dict = build_work_area_uuid_index_map()
+(
+    load_area_uuid_to_index_dict,
+    unload_area_uuid_to_index_dict,
+    load_area_index_to_uuid_dict,
+    unload_area_index_to_uuid_dict,
+) = build_work_area_uuid_index_map()
 
-load_area_num, unload_area_num = len(load_area_uuid_to_index_dict), len(unload_area_uuid_to_index_dict)
+load_area_num, unload_area_num = len(load_area_uuid_to_index_dict), len(
+    unload_area_uuid_to_index_dict
+)
 
 park_uuid_to_index_dict, park_index_to_uuid_dict = build_park_uuid_index_map()
 
@@ -93,51 +99,65 @@ class DeviceMap:
 
     def get_excavator_uuid_to_index_dict(self):
         return self.excavator_uuid_to_index_dict
-    
+
     def get_dump_uuid_to_index_dict(self):
         return self.dump_uuid_to_index_dict
-    
+
     def get_excavator_index_to_uuid_dict(self):
         return self.excavator_index_to_uuid_dict
-    
+
     def get_dump_index_to_uuid_dict(self):
         return self.dump_index_to_uuid_dict
-    
+
     def get_dump_uuid_to_unload_area_uuid_dict(self):
         return self.dump_uuid_to_unload_area_uuid_dict
-    
+
     def get_excavator_uuid_to_load_area_uuid_dict(self):
         return self.excavator_uuid_to_load_area_uuid_dict
-    
+
     def get_excavator_index_to_load_area_index_dict(self):
         return self.excavator_index_to_load_area_index_dict
-    
+
     def get_dump_index_to_unload_area_index_dict(self):
         return self.dump_index_to_unload_area_index_dict
-    
+
     def get_truck_uuid_to_index_dict(self):
         return self.truck_uuid_to_index_dict
-    
+
     def get_truck_index_to_uuid_dict(self):
         return self.truck_index_to_uuid_dict
 
     def period_map_para_update(self):
-        device_map_dict = update_deveices_map(unload_area_uuid_to_index_dict, load_area_uuid_to_index_dict)
+        device_map_dict = update_deveices_map(
+            unload_area_uuid_to_index_dict, load_area_uuid_to_index_dict
+        )
 
-        self.excavator_uuid_to_index_dict = device_map_dict['excavator_uuid_to_index_dict']
-        self.dump_uuid_to_index_dict = device_map_dict['dump_uuid_to_index_dict']
-        self.excavator_index_to_uuid_dict = device_map_dict['excavator_index_to_uuid_dict']
-        self.dump_index_to_uuid_dict = device_map_dict['dump_index_to_uuid_dict']
+        self.excavator_uuid_to_index_dict = device_map_dict[
+            "excavator_uuid_to_index_dict"
+        ]
+        self.dump_uuid_to_index_dict = device_map_dict["dump_uuid_to_index_dict"]
+        self.excavator_index_to_uuid_dict = device_map_dict[
+            "excavator_index_to_uuid_dict"
+        ]
+        self.dump_index_to_uuid_dict = device_map_dict["dump_index_to_uuid_dict"]
 
-        self.dump_uuid_to_unload_area_uuid_dict = device_map_dict['dump_uuid_to_unload_area_uuid_dict']
-        self.excavator_uuid_to_load_area_uuid_dict = device_map_dict['excavator_uuid_to_load_area_uuid_dict']
-        self.excavator_index_to_load_area_index_dict = device_map_dict['excavator_index_to_load_area_index_dict']
-        self.dump_index_to_unload_area_index_dict = device_map_dict['dump_index_to_unload_area_index_dict']
+        self.dump_uuid_to_unload_area_uuid_dict = device_map_dict[
+            "dump_uuid_to_unload_area_uuid_dict"
+        ]
+        self.excavator_uuid_to_load_area_uuid_dict = device_map_dict[
+            "excavator_uuid_to_load_area_uuid_dict"
+        ]
+        self.excavator_index_to_load_area_index_dict = device_map_dict[
+            "excavator_index_to_load_area_index_dict"
+        ]
+        self.dump_index_to_unload_area_index_dict = device_map_dict[
+            "dump_index_to_unload_area_index_dict"
+        ]
 
         truck_map_dict = update_truck_uuid_index_map(dynamic_truck_set)
 
-        self.truck_uuid_to_index_dict = truck_map_dict['truck_uuid_to_index_dict']
-        self.truck_index_to_uuid_dict = truck_map_dict['truck_index_to_uuid_dict']
+        self.truck_uuid_to_index_dict = truck_map_dict["truck_uuid_to_index_dict"]
+        self.truck_index_to_uuid_dict = truck_map_dict["truck_index_to_uuid_dict"]
 
     def period_map_para_load(self):
         # 装载关系映射
@@ -146,10 +166,18 @@ class DeviceMap:
         self.excavator_index_to_uuid_dict = device_map.excavator_index_to_uuid_dict
         self.dump_index_to_uuid_dict = device_map.dump_index_to_uuid_dict
 
-        self.dump_uuid_to_unload_area_uuid_dict = device_map.dump_uuid_to_unload_area_uuid_dict
-        self.excavator_uuid_to_load_area_uuid_dict = device_map.excavator_uuid_to_load_area_uuid_dict
-        self.excavator_index_to_load_area_index_dict = device_map.excavator_index_to_load_area_index_dict
-        self.dump_index_to_unload_area_index_dict = device_map.dump_index_to_unload_area_index_dict
+        self.dump_uuid_to_unload_area_uuid_dict = (
+            device_map.dump_uuid_to_unload_area_uuid_dict
+        )
+        self.excavator_uuid_to_load_area_uuid_dict = (
+            device_map.excavator_uuid_to_load_area_uuid_dict
+        )
+        self.excavator_index_to_load_area_index_dict = (
+            device_map.excavator_index_to_load_area_index_dict
+        )
+        self.dump_index_to_unload_area_index_dict = (
+            device_map.dump_index_to_unload_area_index_dict
+        )
 
         self.truck_uuid_to_index_dict = device_map.truck_uuid_to_index_dict
         self.truck_index_to_uuid_dict = device_map.truck_index_to_uuid_dict
@@ -161,7 +189,9 @@ class WalkManage(DeviceMap):
         # # 工作区和设备不具备一一对应关系, 为方便就计算, 算法维护两套路网: 面向路网和面向设备
 
         # 路网真实距离
-        self.walk_time_to_excavator = np.full((dynamic_dump_num, dynamic_excavator_num), M)
+        self.walk_time_to_excavator = np.full(
+            (dynamic_dump_num, dynamic_excavator_num), M
+        )
         self.walk_time_to_dump = np.full((dynamic_dump_num, dynamic_excavator_num), M)
         self.walk_time_park_to_excavator = np.full((park_num, dynamic_excavator_num), M)
         self.walk_time_park_to_load_area = np.full((park_num, load_area_num), M)
@@ -169,7 +199,9 @@ class WalkManage(DeviceMap):
         self.walk_time_to_unload_area = np.full((unload_area_num, load_area_num), M)
 
         # 路网行驶时间
-        self.distance_to_excavator = np.full((dynamic_dump_num, dynamic_excavator_num), M)
+        self.distance_to_excavator = np.full(
+            (dynamic_dump_num, dynamic_excavator_num), M
+        )
         self.distance_to_dump = np.full((dynamic_dump_num, dynamic_excavator_num), M)
         self.distance_park_to_excavator = np.full((park_num, dynamic_excavator_num), M)
         self.distance_park_to_load_area = np.full((park_num, load_area_num), M)
@@ -224,12 +256,18 @@ class WalkManage(DeviceMap):
                 unload_area = str(item.unload_area_id)
                 load_area_index = load_area_uuid_to_index_dict[load_area]
                 unload_area_index = unload_area_uuid_to_index_dict[unload_area]
-                self.distance_to_load_area[unload_area_index][load_area_index] = float(item.to_load_distance)
+                self.distance_to_load_area[unload_area_index][load_area_index] = float(
+                    item.to_load_distance
+                )
                 self.walk_time_to_load_area[unload_area_index][load_area_index] = float(
-                    60 / 1000 * item.to_load_distance / empty_speed)
-                self.distance_to_unload_area[unload_area_index][load_area_index] = float(item.to_unload_distance)
-                self.walk_time_to_unload_area[unload_area_index][load_area_index] = float(
-                    60 / 1000 * item.to_unload_distance / heavy_speed)
+                    60 / 1000 * item.to_load_distance / empty_speed
+                )
+                self.distance_to_unload_area[unload_area_index][
+                    load_area_index
+                ] = float(item.to_unload_distance)
+                self.walk_time_to_unload_area[unload_area_index][
+                    load_area_index
+                ] = float(60 / 1000 * item.to_unload_distance / heavy_speed)
         except Exception as es:
             logger.error("路网信息异常")
             logger.error(es)
@@ -238,14 +276,18 @@ class WalkManage(DeviceMap):
         try:
             for i in range(dynamic_dump_num):
                 for j in range(dynamic_excavator_num):
-                    self.distance_to_excavator[i][j] = self.distance_to_load_area[self.dump_index_to_unload_area_index_dict[i]] \
-                        [self.excavator_index_to_load_area_index_dict[j]]
-                    self.walk_time_to_excavator[i][j] = self.walk_time_to_load_area[self.dump_index_to_unload_area_index_dict[i]] \
-                        [self.excavator_index_to_load_area_index_dict[j]]
-                    self.distance_to_dump[i][j] = self.distance_to_unload_area[self.dump_index_to_unload_area_index_dict[i]] \
-                        [self.excavator_index_to_load_area_index_dict[j]]
-                    self.walk_time_to_dump[i][j] = self.walk_time_to_unload_area[self.dump_index_to_unload_area_index_dict[i]] \
-                        [self.excavator_index_to_load_area_index_dict[j]]
+                    self.distance_to_excavator[i][j] = self.distance_to_load_area[
+                        self.dump_index_to_unload_area_index_dict[i]
+                    ][self.excavator_index_to_load_area_index_dict[j]]
+                    self.walk_time_to_excavator[i][j] = self.walk_time_to_load_area[
+                        self.dump_index_to_unload_area_index_dict[i]
+                    ][self.excavator_index_to_load_area_index_dict[j]]
+                    self.distance_to_dump[i][j] = self.distance_to_unload_area[
+                        self.dump_index_to_unload_area_index_dict[i]
+                    ][self.excavator_index_to_load_area_index_dict[j]]
+                    self.walk_time_to_dump[i][j] = self.walk_time_to_unload_area[
+                        self.dump_index_to_unload_area_index_dict[i]
+                    ][self.excavator_index_to_load_area_index_dict[j]]
         except Exception as es:
             logger.error("设备路网信息异常异常")
             logger.error(es)
@@ -256,19 +298,26 @@ class WalkManage(DeviceMap):
             park_area = str(item.park_area_id)
             load_area_index = load_area_uuid_to_index_dict[load_area]
             park_index = park_uuid_to_index_dict[park_area]
-            self.distance_park_to_load_area[park_index][load_area_index] = float(item.park_load_distance)
+            self.distance_park_to_load_area[park_index][load_area_index] = float(
+                item.park_load_distance
+            )
             self.walk_time_park_to_load_area[park_index][load_area_index] = float(
-                60 / 1000 * item.park_load_distance / empty_speed)
+                60 / 1000 * item.park_load_distance / empty_speed
+            )
         # except Exception as es:
         #     logger.error("备停区路网信息异常")
         #     logger.error(es)
         # try:
         for i in range(park_num):
             for j in range(dynamic_excavator_num):
-                self.distance_park_to_excavator[i][j] = self.distance_park_to_load_area[i][
-                    self.excavator_index_to_load_area_index_dict[j]]
-                self.walk_time_park_to_excavator[i][j] = self.walk_time_park_to_load_area[i][
-                    self.excavator_index_to_load_area_index_dict[j]]
+                self.distance_park_to_excavator[i][j] = self.distance_park_to_load_area[
+                    i
+                ][self.excavator_index_to_load_area_index_dict[j]]
+                self.walk_time_park_to_excavator[i][
+                    j
+                ] = self.walk_time_park_to_load_area[i][
+                    self.excavator_index_to_load_area_index_dict[j]
+                ]
         # except Exception as es:
         #     logger.error("备停区设备路网信息异常")
         #     logger.error(es)
@@ -300,6 +349,7 @@ device_map.period_map_para_update()
 
 walk_manage.period_walk_para_update()
 
+
 def period_para_update():
     global load_area_uuid_to_index_dict, load_area_index_to_uuid_dict
     global unload_area_uuid_to_index_dict, unload_area_index_to_uuid_dict
@@ -309,10 +359,16 @@ def period_para_update():
     global dynamic_truck_num, dynamic_excavator_num, dynamic_dump_num
     # 装载区、卸载区、备停区在调度算法运行器件默认不发生改变，提前计算部分参量
     # (uuid,index(id)映射关系, 装载区数量, 卸载区数量, 备停区数量, 以及初次统计动态调度矿卡)
-    load_area_uuid_to_index_dict, unload_area_uuid_to_index_dict, \
-    load_area_index_to_uuid_dict, unload_area_index_to_uuid_dict = build_work_area_uuid_index_map()
+    (
+        load_area_uuid_to_index_dict,
+        unload_area_uuid_to_index_dict,
+        load_area_index_to_uuid_dict,
+        unload_area_index_to_uuid_dict,
+    ) = build_work_area_uuid_index_map()
 
-    load_area_num, unload_area_num = len(load_area_uuid_to_index_dict), len(unload_area_uuid_to_index_dict)
+    load_area_num, unload_area_num = len(load_area_uuid_to_index_dict), len(
+        unload_area_uuid_to_index_dict
+    )
 
     park_uuid_to_index_dict, park_index_to_uuid_dict = build_park_uuid_index_map()
 

@@ -296,8 +296,10 @@ class Equipment(Base):
     equipment_state = Column(Integer)
     isdeleted = Column(Integer)
     disabled = Column(Integer)
+    bind_list = Column(VARCHAR(1000))
+    only_allowed = Column(Integer)
 
-    def __init__(self, id, equipment_id, device_name, device_type, equipment_spec, equipment_state, isdeleted, disabled):
+    def __init__(self, id, equipment_id, device_name, device_type, equipment_spec, equipment_state, isdeleted, disabled, bind_list, only_allowed):
         self.id = id
         self.equipment_id = equipment_id
         self.device_name = device_name
@@ -306,6 +308,8 @@ class Equipment(Base):
         self.equipment_state = equipment_state
         self.isdeleted = isdeleted
         self.disabled = disabled
+        self.bind_list = bind_list
+        self.only_allowed = only_allowed
 
 class EquipmentSpec(Base):
     __tablename__ = 'sys_equipment_spec'
@@ -317,7 +321,7 @@ class EquipmentSpec(Base):
     def __init__(self, id, capacity, mining_abililty):
         self.id = id
         self.capacity = capacity
-        self.mining_abililty = self.mining_abililty
+        self.mining_abililty = mining_abililty
 
 class LoadInfo(Base):
     __tablename__ = 'sys_loadinfo'
@@ -347,7 +351,7 @@ class JobRecord(Base):
         self.end_time = end_time
         self.work_type = work_type
 
-class WrokRecord(Base):
+class WorkRecord(Base):
     __tablename__ = 'statistic_work_record'
 
     equipment_id = Column(VARCHAR(50), primary_key=True)

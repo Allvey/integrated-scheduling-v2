@@ -274,6 +274,3 @@ def Traffic_para_init(num_of_load_area, num_of_unload_area, num_of_excavator, nu
         logger.error(es)
         logger.error("车流规划类比初始化异常")
     return tra_para
-
-
-Traffic_para_init(2, 2, 2, 2)

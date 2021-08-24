@@ -3,7 +3,7 @@
 # @Time : 2021/7/23 11:23
 # @Author : Opfer
 # @Site :
-# @File : static_data_process.py    
+# @File : static_data_process.py
 # @Software: PyCharm
 
 
@@ -39,8 +39,12 @@ def build_work_area_uuid_index_map():
             raise Exception("无路网信息")
     except Exception as es:
         logger.error(es)
-    return load_area_uuid_to_index_dict, unload_area_uuid_to_index_dict, \
-           load_area_index_to_uuid_dict, unload_area_index_to_uuid_dict
+    return (
+        load_area_uuid_to_index_dict,
+        unload_area_uuid_to_index_dict,
+        load_area_index_to_uuid_dict,
+        unload_area_index_to_uuid_dict,
+    )
 
 
 def build_park_uuid_index_map():
@@ -98,7 +102,9 @@ def update_deveices_map(unload_area_uuid_to_index_dict, load_area_uuid_to_index_
     try:
         excavator_num = 0
         dump_num = 0
-        for item in session_mysql.query(Dispatch).filter_by(isdeleted=0, isauto=1).all():
+        for item in (
+            session_mysql.query(Dispatch).filter_by(isdeleted=0, isauto=1).all()
+        ):
             # excavator_id <-> excavator_index
             # dump_id <-> dump_index
             # excavator_id <-> load_area_id
@@ -113,29 +119,33 @@ def update_deveices_map(unload_area_uuid_to_index_dict, load_area_uuid_to_index_
                 dump_uuid_to_index_dict[dump_id] = dump_num
                 dump_index_to_uuid_dict[dump_num] = dump_id
                 dump_uuid_to_unload_area_uuid_dict[dump_id] = unload_area_id
-                dump_index_to_unload_area_index_dict[dump_uuid_to_index_dict[dump_id]] = \
-                    unload_area_uuid_to_index_dict[unload_area_id]
+                dump_index_to_unload_area_index_dict[
+                    dump_uuid_to_index_dict[dump_id]
+                ] = unload_area_uuid_to_index_dict[unload_area_id]
                 dump_num = dump_num + 1
             if excavator_id not in excavator_uuid_to_index_dict:
                 excavator_uuid_to_index_dict[excavator_id] = excavator_num
                 excavator_index_to_uuid_dict[excavator_num] = excavator_id
                 excavator_uuid_to_load_area_uuid_dict[excavator_id] = load_area_id
-                excavator_index_to_load_area_index_dict[excavator_uuid_to_index_dict[excavator_id]] = \
-                    load_area_uuid_to_index_dict[load_area_id]
+                excavator_index_to_load_area_index_dict[
+                    excavator_uuid_to_index_dict[excavator_id]
+                ] = load_area_uuid_to_index_dict[load_area_id]
                 excavator_num = excavator_num + 1
         if excavator_num < 1 or dump_num < 1:
             raise Exception("无动态派车计划可用-动态派车挖机/卸载设备映射失败")
     except Exception as es:
         logger.warning(es)
 
-    return {'excavator_uuid_to_index_dict': excavator_uuid_to_index_dict,
-            'dump_uuid_to_index_dict': dump_uuid_to_index_dict,
-            'excavator_index_to_uuid_dict': excavator_index_to_uuid_dict,
-            'dump_index_to_uuid_dict': dump_index_to_uuid_dict,
-            'dump_uuid_to_unload_area_uuid_dict': dump_uuid_to_unload_area_uuid_dict,
-            'excavator_uuid_to_load_area_uuid_dict': excavator_uuid_to_load_area_uuid_dict,
-            'excavator_index_to_load_area_index_dict': excavator_index_to_load_area_index_dict,
-            'dump_index_to_unload_area_index_dict': dump_index_to_unload_area_index_dict}
+    return {
+        "excavator_uuid_to_index_dict": excavator_uuid_to_index_dict,
+        "dump_uuid_to_index_dict": dump_uuid_to_index_dict,
+        "excavator_index_to_uuid_dict": excavator_index_to_uuid_dict,
+        "dump_index_to_uuid_dict": dump_index_to_uuid_dict,
+        "dump_uuid_to_unload_area_uuid_dict": dump_uuid_to_unload_area_uuid_dict,
+        "excavator_uuid_to_load_area_uuid_dict": excavator_uuid_to_load_area_uuid_dict,
+        "excavator_index_to_load_area_index_dict": excavator_index_to_load_area_index_dict,
+        "dump_index_to_unload_area_index_dict": dump_index_to_unload_area_index_dict,
+    }
 
 
 def update_truck_uuid_index_map(dynamic_truck_set):
@@ -149,8 +159,10 @@ def update_truck_uuid_index_map(dynamic_truck_set):
         truck_index_to_uuid_dict[truck_num] = truck_id
         truck_num = truck_num + 1
 
-    return {'truck_uuid_to_index_dict': truck_uuid_to_index_dict,
-            'truck_index_to_uuid_dict': truck_index_to_uuid_dict}
+    return {
+        "truck_uuid_to_index_dict": truck_uuid_to_index_dict,
+        "truck_index_to_uuid_dict": truck_index_to_uuid_dict,
+    }
 
 
 def update_total_truck():
@@ -158,7 +170,11 @@ def update_total_truck():
     truck_list = []
 
     try:
-        query = np.array(session_mysql.query(Equipment).filter_by(device_type=1, isdeleted=0, disabled=0).all())
+        query = np.array(
+            session_mysql.query(Equipment)
+            .filter_by(device_type=1, isdeleted=0, disabled=0)
+            .all()
+        )
 
         # for item in query:
         #     json_value = json.loads(redis2.get(item.equipment_id))
@@ -182,7 +198,9 @@ def update_fixdisp_truck():
     fixed_truck_list = []
 
     try:
-        query = np.array(session_mysql.query(Dispatch).filter_by(isauto=0, isdeleted=0).all())
+        query = np.array(
+            session_mysql.query(Dispatch).filter_by(isauto=0, isdeleted=0).all()
+        )
 
         for item in query:
             fixed_truck_list.append(item.truck_id)
@@ -197,7 +215,9 @@ def update_autodisp_excavator():
     # 用于动态派车的挖机集合
     dynamic_excavator_list = []
     try:
-        for item in session_mysql.query(Dispatch).filter_by(isdeleted=0, isauto=1).all():
+        for item in (
+            session_mysql.query(Dispatch).filter_by(isdeleted=0, isauto=1).all()
+        ):
             dynamic_excavator_list.append(item.exactor_id)
         if len(dynamic_excavator_list) < 1:
             raise Exception("无动态派车计划可用-动态派车挖机/卸载设备集合读取异常")
@@ -211,7 +231,9 @@ def update_autodisp_dump():
     # 用于动态调度的卸载点集合
     dynamic_dump_list = []
     try:
-        for item in session_mysql.query(Dispatch).filter_by(isdeleted=0, isauto=1).all():
+        for item in (
+            session_mysql.query(Dispatch).filter_by(isdeleted=0, isauto=1).all()
+        ):
             dynamic_dump_list.append(item.dump_id)
         if len(dynamic_dump_list) < 1:
             raise Exception("无动态派车计划可用-动态派车挖机/卸载设备集合读取异常")
