@@ -81,12 +81,20 @@ try:
     # 创建DBsession_mysql类型:
     DBsession_mysql = sessionmaker(bind=engine_mysql)
 
+    DBsession_mysql = scoped_session(DBsession_mysql)
+
     DBsession_postgre = sessionmaker(bind=engine_postgre)
+
+    DBsession_postgre = scoped_session(DBsession_postgre)
 
     # 创建session_mysql对象:
     session_mysql = DBsession_mysql()
 
+    session_mysql.expire_on_commit = False
+
     session_postgre = DBsession_postgre()
+
+    session_postgre.expire_on_commit = False
 except Exception as es:
     logger.error("数据库连接失败")
     logger.error(es)

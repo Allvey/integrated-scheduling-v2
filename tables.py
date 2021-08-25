@@ -12,7 +12,7 @@
 
 from sqlalchemy import Column, create_engine
 from sqlalchemy import VARCHAR, DateTime, Float, Integer, BOOLEAN
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.ext.declarative import declarative_base
 # import numpy as np
 # from redis import StrictRedis, ConnectionPool
@@ -35,7 +35,11 @@ engine_postgre = create_engine('postgresql://postgres:Huituo@123@192.168.28.111:
 # 创建DBsession_mysql类型:
 DBsession_mysql = sessionmaker(bind=engine_mysql)
 
+DBsession_mysql = scoped_session(DBsession_mysql)
+
 DBsession_postgre = sessionmaker(bind=engine_postgre)
+
+DBsession_postgre = scoped_session(DBsession_postgre)
 
 # 创建session_mysql对象:
 session_mysql = DBsession_mysql()
@@ -298,8 +302,10 @@ class Equipment(Base):
     disabled = Column(Integer)
     bind_list = Column(VARCHAR(1000))
     only_allowed = Column(Integer)
+    priority = Column(Integer)
 
-    def __init__(self, id, equipment_id, device_name, device_type, equipment_spec, equipment_state, isdeleted, disabled, bind_list, only_allowed):
+    def __init__(self, id, equipment_id, device_name, device_type, equipment_spec, equipment_state, isdeleted, \
+                 disabled, bind_list, only_allowed, priority):
         self.id = id
         self.equipment_id = equipment_id
         self.device_name = device_name
@@ -310,6 +316,7 @@ class Equipment(Base):
         self.disabled = disabled
         self.bind_list = bind_list
         self.only_allowed = only_allowed
+        self.priority = priority
 
 class EquipmentSpec(Base):
     __tablename__ = 'sys_equipment_spec'
@@ -377,9 +384,21 @@ class DumpArea(Base):
     BindList = Column(VARCHAR(1000))
     UnloadAbililty = Column(Float)
     Disabled = Column(Integer)
+    Material = Column(VARCHAR(36))
 
-    def __init__(self, Id, BindList, UnloadAbililty, Disabled):
+    def __init__(self, Id, BindList, UnloadAbililty, Disabled, Material):
         self.Id = Id
         self.BindList = BindList
         self.UnloadAbililty = UnloadAbililty
         self.Disabled = Disabled
+        self.Material = Material
+
+class DiggerArea(Base):
+    __tablename__ = 'Geo_DiggingWorkArea'
+
+    Id = Column(VARCHAR(50), primary_key=True)
+    Material = Column(VARCHAR(36))
+
+    def __init__(self, Id, Material):
+        self.Id = Id
+        self.Material = Material

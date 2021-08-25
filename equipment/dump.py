@@ -14,6 +14,8 @@ from settings import *
 # 卸载设备类
 class DumpInfo(WalkManage):
     def __init__(self):
+        # # 卸载设备集合
+        # self.dynamic_dump_set = set(update_autodisp_dump())
         # 卸载设备数量
         self.dynamic_dump_num = len(dynamic_dump_set)
         # 目标产量
@@ -38,6 +40,12 @@ class DumpInfo(WalkManage):
         self.entrance_time = np.zeros(self.dynamic_dump_num)
         # 出场时间
         self.exit_time = np.zeros(self.dynamic_dump_num)
+        # 卸载点物料类型
+        self.dump_material = {}
+
+        # 初始化读取映射及路网
+        self.period_map_para_load()
+        self.period_walk_para_load()
 
     def get_unloading_time(self):
         return self.unloading_time
@@ -110,7 +118,7 @@ class DumpInfo(WalkManage):
                 self.entrance_time[self.dump_uuid_to_index_dict[dump_id]] = 0.50
                 self.exit_time[self.dump_uuid_to_index_dict[dump_id]] = 0.50
 
-    # 读取出入场时间
+    # 读取卸载任务时间
     def get_unloading_task_time(self):
         unloading_time = self.unloading_time
 
@@ -141,9 +149,17 @@ class DumpInfo(WalkManage):
                     + query.load_weight
                 )
 
-    def period_update(self):
+    def update_dump_material(self):
+        for dump_id in dynamic_dump_set:
+            unload_area_id = session_mysql.query(Dispatch).filter_by(dump_id=dump_id).first().unload_area_id
+            dump_material_id = session_postgre.query(DumpArea).filter_by(Id=unload_area_id).first().Material
+            self.dump_material[dump_id] = dump_material_id
 
-        print("Dump update!")
+    def para_period_update(self):
+
+        # print("Dump update!")
+
+        logger.info("Dump update!")
 
         # 装载周期参数
         self.period_map_para_load()

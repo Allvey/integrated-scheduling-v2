@@ -10,6 +10,9 @@ from traffic_flow.traffic_flow_planner import *
 from static_data_process import *
 from para_config import *
 from settings import *
+from equipment.dump import DumpInfo
+from equipment.excavator import ExcavatorInfo
+
 
 # 矿卡设备类
 class TruckInfo(WalkManage):
@@ -52,6 +55,18 @@ class TruckInfo(WalkManage):
         # 排斥关系modify
         self.excavator_exclude_modify = None
         # 矿卡优先级
+        self.truck_priority = np.ones(self.dynamic_truck_num)
+        # 矿卡绑定物料
+        self.truck_material_bind = {}
+        # 矿卡绑定物料modify
+        self.dump_material_bind_modify = None
+        self.excavator_material_bind_modify = None
+        # 引入对象
+        self.dump = DumpInfo()
+        self.excavator = ExcavatorInfo()
+        # 初始化读取映射及路网
+        self.period_map_para_load()
+        self.period_walk_para_load()
 
     # def period_map_para_load(self):
     #     # 关系映射
@@ -103,6 +118,8 @@ class TruckInfo(WalkManage):
     def get_payload(self):
         return self.payload
 
+    ################################################ short term update ################################################
+
     # 更新矿卡当前任务
     def update_truck_current_task(self):
         self.truck_current_task = {}
@@ -130,29 +147,6 @@ class TruckInfo(WalkManage):
 
         logger.info("矿卡当前任务：")
         logger.info(self.truck_current_task)
-
-    # 更新矿卡实际容量
-    def update_truck_payload(self):
-        try:
-            self.payload = np.zeros(self.dynamic_truck_num)
-            for truck_id in self.dynamic_truck_set:
-                trcuk_index = self.truck_uuid_to_index_dict[truck_id]
-                truck_spec = (
-                    session_mysql.query(Equipment)
-                    .filter_by(id=truck_id)
-                    .first()
-                    .equipment_spec
-                )
-                # truck_spec = query.equipment_spec
-                self.payload[trcuk_index] = (
-                    session_mysql.query(EquipmentSpec)
-                    .filter_by(id=truck_spec)
-                    .first()
-                    .capacity
-                )
-        except Exception as es:
-            logger.error("读取矿卡有效载重异常-矿卡型号信息缺失")
-            logger.error(es)
 
     # 更新矿卡最后装载/卸载时间
     def update_truck_last_leave_time(self):
@@ -220,7 +214,6 @@ class TruckInfo(WalkManage):
             logger.error("读取矿卡可用时间异常-redis读取异常")
             logger.error(es)
 
-    # 更新矿卡行程
     def update_truck_trip(self):
 
         walk_time_to_load_area = walk_manage.get_walk_time_to_load_area()
@@ -236,8 +229,8 @@ class TruckInfo(WalkManage):
                 # print("truck_task:", truck_id, task)
                 item = (
                     session_mysql.query(EquipmentPair)
-                    .filter_by(truck_id=truck_id, isdeleted=0)
-                    .first()
+                        .filter_by(truck_id=truck_id, isdeleted=0)
+                        .first()
                 )
                 if task in empty_task_set + heavy_task_set and item is None:
                     raise Exception(f"矿卡 {truck_id} 配对关系异常")
@@ -270,8 +263,8 @@ class TruckInfo(WalkManage):
                     #         end_area_index]
                     # else:
                     self.cur_truck_reach_excavator[i] = (
-                        last_unload_time
-                        + walk_time_to_load_area[start_area_index][end_area_index]
+                            last_unload_time
+                            + walk_time_to_load_area[start_area_index][end_area_index]
                     )
                 # 若矿卡状态为重载
                 elif task in heavy_task_set:
@@ -295,8 +288,8 @@ class TruckInfo(WalkManage):
                         self.dump_uuid_to_index_dict[item.dump_id],
                     ]
                     self.cur_truck_reach_dump[i] = (
-                        last_load_time
-                        + walk_time_to_unload_area[end_area_index][start_area_index]
+                            last_load_time
+                            + walk_time_to_unload_area[end_area_index][start_area_index]
                     )
                 # 其他状态，矿卡状态为-2，equipment_pair表不存在该矿卡
                 else:
@@ -309,6 +302,46 @@ class TruckInfo(WalkManage):
         # print("当前矿卡行程：")
         # print(self.truck_current_trip)
 
+    ################################################ long term update ################################################
+
+    # 更新矿卡实际容量
+    def update_truck_payload(self):
+        try:
+            self.payload = np.zeros(self.dynamic_truck_num)
+            for truck_id in self.dynamic_truck_set:
+                trcuk_index = self.truck_uuid_to_index_dict[truck_id]
+                truck_spec = (
+                    session_mysql.query(Equipment)
+                        .filter_by(id=truck_id)
+                        .first()
+                        .equipment_spec
+                )
+                # truck_spec = query.equipment_spec
+                self.payload[trcuk_index] = (
+                    session_mysql.query(EquipmentSpec)
+                        .filter_by(id=truck_spec)
+                        .first()
+                        .capacity
+                )
+        except Exception as es:
+            logger.error("读取矿卡有效载重异常-矿卡型号信息缺失")
+            logger.error(es)
+
+    def update_truck_priority(self):
+        self.truck_priority = np.zeros(self.dynamic_truck_num)
+
+        for truck_id in dynamic_truck_set:
+            item = session_mysql.query(Equipment).filter_by(id=truck_id).first()
+            truck_index = self.truck_uuid_to_index_dict[truck_id]
+            if item.priority == 0:
+                self.truck_priority[truck_index] = 2
+            elif item.priority == 1:
+                self.truck_priority[truck_index] = 1.5
+            elif item.priority == 2:
+                self.truck_priority[truck_index] = 1
+            elif item.priority == 3:
+                self.truck_priority[truck_index] = 0.5
+
     def update_truck_dump_area_bind(self):
         try:
 
@@ -319,7 +352,7 @@ class TruckInfo(WalkManage):
                         self.truck_dump_bind[truck_name_to_uuid_dict[truck_name]] = str(
                             dump_area.Id
                         )
-        except ExcavatorInfo as es:
+        except Exception as es:
             logger.error("矿卡-卸载区域绑定关系读取异常")
             logger.error(es)
 
@@ -333,7 +366,7 @@ class TruckInfo(WalkManage):
                         self.truck_excavator_bind[
                             truck_name_to_uuid_dict[truck_name]
                         ] = excavator_id
-        except ExcavatorInfo as es:
+        except Exception as es:
             logger.error("矿卡-挖机绑定关系读取异常")
             logger.error(es)
 
@@ -349,8 +382,8 @@ class TruckInfo(WalkManage):
             for excavator_id in dynamic_excavator_set:
                 item = (
                     session_mysql.query(Equipment)
-                    .filter_by(id=excavator_id, only_allowed=1)
-                    .first()
+                        .filter_by(id=excavator_id, only_allowed=1)
+                        .first()
                 )
                 if item is not None:
                     for truck_id in dynamic_truck_set:
@@ -360,8 +393,8 @@ class TruckInfo(WalkManage):
                                 self.truck_uuid_to_index_dict[truck_id]
                             ][
                                 self.excavator_uuid_to_index_dict[excavator_id]
-                            ] = -1000000
-        except ExcavatorInfo as es:
+                            ] = 1000000
+        except Exception as es:
             logger.error("矿卡-挖机禁止关系读取异常")
             logger.error(es)
 
@@ -369,12 +402,91 @@ class TruckInfo(WalkManage):
 
         pass
 
-    def period_update(self):
+    def update_truck_material(self):
 
-        print("Truck update!")
+        self.excavator.update_excavator_material()
+        self.dump.update_dump_material()
 
-        # # 更新行走队形
-        # self.walker.update_walk_time()
+        self.truck_material_bind = {}
+        self.update_truck_excavator_bind()
+        self.update_truck_dump_area_bind()
+
+        self.excavator_material_bind_modify = np.full((self.dynamic_truck_num, dynamic_excavator_num), 0)
+        self.dump_material_bind_modify = np.full((self.dynamic_truck_num, dynamic_excavator_num), 0)
+
+        # for truck_id in dynamic_truck_set:
+        #     if truck_id in self.truck_dump_bind:
+        #         unload_area_id = self.truck_dump_bind[truck_id]
+        #         # unload_area_id = session_mysql.query(Dispatch.unload_area_id).filter_by(dump_id=dump_id).first()
+        #         dump_material_id = session_postgre.query(DumpArea).filter_by(Id=unload_area_id).first().Material
+        #         self.truck_material_bind[truck_id] = dump_material_id
+        #
+        #     if truck_id in self.truck_excavator_bind:
+        #         excavator_id = self.truck_excavator_bind[truck_id]
+        #         load_area_id = session_mysql.query(Dispatch).filter_by(exactor_id=excavator_id).first().load_area_id
+        #         excavator_material_id = session_postgre.query(DiggerArea).filter_by(Id=load_area_id).first().Material
+        #         self.truck_material_bind[truck_id] = excavator_material_id
+
+        for truck_id in dynamic_truck_set:
+
+            truck_index = self.truck_uuid_to_index_dict[truck_id]
+
+            if truck_id in self.truck_dump_bind:
+                unload_area_id = self.truck_dump_bind[truck_id]
+                dump_material_id = session_postgre.query(DumpArea).filter_by(Id=unload_area_id).first().Material
+                self.truck_material_bind[truck_id] = dump_material_id
+
+                # unload_area_index = unload_area_uuid_to_index_dict[unload_area_id]
+                # for dump_index in range(dynamic_dump_num):
+                #     if self.dump_index_to_unload_area_index_dict[dump_index] == unload_area_index:
+                #         self.dump_material_bind_modify[truck_index][dump_index] = 1000000
+
+            if truck_id in self.truck_excavator_bind:
+                excavator_id = self.truck_excavator_bind[truck_id]
+                print(self.excavator.excavator_material)
+                excavator_material_id = self.excavator.excavator_material[excavator_id]
+                self.truck_material_bind[truck_id] = excavator_material_id
+
+                # excavator_index = self.excavator.excavator_uuid_to_index_dict[excavator_id]
+                # self.excavator_material_bind_modify[truck_index][excavator_index] = 1000000
+
+        for truck_id in dynamic_truck_set:
+
+            truck_index = self.truck_uuid_to_index_dict[truck_id]
+
+            if truck_id in self.truck_material_bind:
+
+                material = self.truck_material_bind[truck_id]
+
+                for excavator_id in dynamic_excavator_set:
+                    excavator_material_id = self.excavator.excavator_material[excavator_id]
+                    excavator_index = self.excavator.excavator_uuid_to_index_dict[excavator_id]
+                    if excavator_material_id != material:
+                        self.excavator_material_bind_modify[truck_index][excavator_index] = 1000000
+
+                for dump_id in dynamic_dump_set:
+                    dump_material_id = self.dump.dump_material[dump_id]
+                    dump_index = self.dump.dump_uuid_to_index_dict[dump_id]
+                    if dump_material_id != material:
+                        self.dump_material_bind_modify[truck_index][dump_index] = 1000000
+
+        # print("-------------------------------------------")
+        # print("truck")
+        # print(self.truck_uuid_to_index_dict)
+        # print("truck_material_bind")
+        # print(self.truck_material_bind)
+        # print("excavator")
+        # print(dynamic_excavator_set)
+        # print(self.excavator_material_bind_modify)
+        # print("dump")
+        # print(dynamic_dump_set)
+        # print(self.dump_material_bind_modify)
+
+    def para_period_update(self):
+
+        # print("Para truck update!")
+
+        logger.info("Para truck update!")
 
         # 装载周期参数
         self.period_map_para_load()
@@ -393,11 +505,27 @@ class TruckInfo(WalkManage):
         # 更新矿卡数量
         self.dynamic_truck_num = len(self.dynamic_truck_set)
 
-        # 更新卡车当前任务
-        self.update_truck_current_task()
-
         # 更新有效载重
         self.update_truck_payload()
+
+        # 更新绑定关系
+        self.update_truck_dump_area_bind()
+
+        self.update_truck_excavator_bind()
+
+        # 更新禁止关系
+        self.update_truck_excavator_exclude()
+
+        # 更新矿卡调度优先级
+        self.update_truck_priority()
+
+        # 更新矿卡物料类型
+        self.update_truck_material()
+
+    def state_period_update(self):
+
+        # 更新卡车当前任务
+        self.update_truck_current_task()
 
         # 更新卡车最后一次装载/卸载时间
         self.update_truck_last_leave_time()
@@ -405,9 +533,52 @@ class TruckInfo(WalkManage):
         # 更新卡车当前行程
         self.update_truck_trip()
 
-        # 更新绑定关系
-        self.update_truck_dump_area_bind()
-
-        self.update_truck_excavator_bind()
-
-        self.update_truck_excavator_exclude()
+    # def period_update(self):
+    #
+    #     print("Truck update!")
+    #
+    #     # # 更新行走队形
+    #     # self.walker.update_walk_time()
+    #
+    #     # 装载周期参数
+    #     self.period_map_para_load()
+    #
+    #     self.period_walk_para_load()
+    #
+    #     # 更新全部矿卡设备集合
+    #     truck_set = set(update_total_truck())
+    #
+    #     # 更新固定派车矿卡集合
+    #     fixed_truck_set = set(update_fixdisp_truck())
+    #
+    #     # 更新动态派车矿卡集合
+    #     self.dynamic_truck_set = truck_set.difference(fixed_truck_set)
+    #
+    #     # 更新矿卡数量
+    #     self.dynamic_truck_num = len(self.dynamic_truck_set)
+    #
+    #     # 更新卡车当前任务
+    #     self.update_truck_current_task()
+    #
+    #     # 更新有效载重
+    #     self.update_truck_payload()
+    #
+    #     # 更新卡车最后一次装载/卸载时间
+    #     self.update_truck_last_leave_time()
+    #
+    #     # 更新卡车当前行程
+    #     self.update_truck_trip()
+    #
+    #     # 更新绑定关系
+    #     self.update_truck_dump_area_bind()
+    #
+    #     self.update_truck_excavator_bind()
+    #
+    #     # 更新禁止关系
+    #     self.update_truck_excavator_exclude()
+    #
+    #     # 更新矿卡调度优先级
+    #     self.update_truck_priority()
+    #
+    #     # 更新矿卡物料类型
+    #     self.update_truck_material()

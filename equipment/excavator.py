@@ -14,6 +14,8 @@ from settings import *
 # 挖机设备类
 class ExcavatorInfo(WalkManage):
     def __init__(self):
+        # # 挖机集合
+        # self.dynamic_excavator_set = set(update_autodisp_excavator())
         # 装载设备数量
         self.dynamic_excavator_num = len(dynamic_excavator_set)
         # 目标产量
@@ -38,6 +40,12 @@ class ExcavatorInfo(WalkManage):
         self.entrance_time = np.zeros(self.dynamic_excavator_num)
         # 出场时间
         self.exit_time = np.zeros(self.dynamic_excavator_num)
+        # 挖机对应物料类型
+        self.excavator_material = {}
+
+        # 初始化读取映射及路网
+        self.period_map_para_load()
+        self.period_walk_para_load()
 
     # def period_map_para_load(self):
     #     # 关系映射
@@ -166,9 +174,17 @@ class ExcavatorInfo(WalkManage):
                     + query.load_weight
                 )
 
-    def period_update(self):
+    def update_excavator_material(self):
+        for excavator_id in dynamic_excavator_set:
+            load_area_id = session_mysql.query(Dispatch).filter_by(exactor_id=excavator_id).first().load_area_id
+            excavator_material_id = session_postgre.query(DiggerArea).filter_by(Id=load_area_id).first().Material
+            self.excavator_material[excavator_id] = excavator_material_id
 
-        print("Excavator update!")
+    def para_period_update(self):
+
+        # print("Excavator update!")
+
+        logger.info("Excavator update!")
 
         # 装载周期参数
         self.period_map_para_load()

@@ -6,6 +6,7 @@
 # @File : realtime_dispatch.py
 # @Software: PyCharm
 
+
 # 实时调度模块
 
 from traffic_flow.traffic_flow_planner import *
@@ -15,6 +16,10 @@ from settings import *
 from equipment.truck import TruckInfo
 from equipment.excavator import ExcavatorInfo
 from equipment.dump import DumpInfo
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
+from apscheduler.jobstores.memory import MemoryJobStore
+from apscheduler.executors.pool import ThreadPoolExecutor, ProcessPoolExecutor
 
 # 调度类
 class Dispatcher(WalkManage):
@@ -111,9 +116,9 @@ class Dispatcher(WalkManage):
                         datetime.now() - self.start_time
                     ) / timedelta(hours=0, minutes=1, seconds=0)
 
-            print(self.truck_index_to_uuid_dict)
-            print(excavator_ava_ls)
-            print(dump_ava_ls)
+            # print(self.truck_index_to_uuid_dict)
+            # print(excavator_ava_ls)
+            # print(dump_ava_ls)
         except Exception as es:
             logger.error("矿卡预计抵达时间计算异常")
             logger.error(es)
@@ -403,31 +408,79 @@ class Dispatcher(WalkManage):
             logger.error("挖机/卸载设备预计装载量计算异常")
             logger.error(es)
 
-    def period_update(self):
+    # def period_update(self):
+    #
+    #     logger.info(
+    #         "#####################################周期更新开始#####################################"
+    #     )
+    #
+    #     # 装载周期参数
+    #     self.period_map_para_load()
+    #
+    #     self.period_walk_para_load()
+    #
+    #     # 更新卸载设备对象
+    #     self.dump.period_update()
+    #
+    #     # 更新挖机对象
+    #     self.excavator.period_update()
+    #
+    #     # 更新矿卡对象
+    #     self.truck.period_update()
+    #
+    #     # # 更新距离参量
+    #     # self.walker.update_walk_time()
+    #
+    #     # # 更新设备距离（不同于工作区距离）
+    #     # self.update_walk_time()
+    #
+    #     # 更新实时车流
+    #     self.update_actual_traffic_flow()
+    #
+    #     # 计算理想车流
+    #     (
+    #         self.opt_goto_dump_traffic_flow,
+    #         self.opt_goto_excavator_traffic_flow,
+    #     ) = traffic_flow_plan()
+    #
+    #     # 矿卡抵达时间
+    #     excavator_reach_list, dump_reach_list = self.update_truck_reach_time()
+    #
+    #     # 挖机可用时间
+    #     self.update_excavator_ava_time(excavator_reach_list)
+    #
+    #     # 卸载设备可用时间
+    #     self.update_dump_ava_time(dump_reach_list)
+    #
+    #     # 挖机预计装载量
+    #     self.update_pre_load_throughout()
+    #
+    #     # 卸载设备预计卸载量
+    #     self.update_pre_unload_throughout()
+
+    def para_period_update(self):
 
         logger.info(
             "#####################################周期更新开始#####################################"
         )
 
-        # 装载周期参数
+        # 装载映射参数及
         self.period_map_para_load()
 
         self.period_walk_para_load()
 
         # 更新卸载设备对象
-        self.dump.period_update()
+        self.dump.para_period_update()
 
         # 更新挖机对象
-        self.excavator.period_update()
+        self.excavator.para_period_update()
 
         # 更新矿卡对象
-        self.truck.period_update()
+        self.truck.para_period_update()
 
-        # # 更新距离参量
-        # self.walker.update_walk_time()
+    def state_period_update(self):
 
-        # # 更新设备距离（不同于工作区距离）
-        # self.update_walk_time()
+        self.truck.state_period_update()
 
         # 更新实时车流
         self.update_actual_traffic_flow()
@@ -452,6 +505,7 @@ class Dispatcher(WalkManage):
 
         # 卸载设备预计卸载量
         self.update_pre_unload_throughout()
+
 
     def sim_para_reset(self):
 
@@ -518,6 +572,9 @@ class Dispatcher(WalkManage):
                     f"行程时间：{(np.maximum(self.sim_excavator_ava_time, now + walk_time_park_to_excavator[0, :]) + loading_time - now)}"
                 )
                 logger.info(f"行驶时间：{walk_time_park_to_excavator[0, :] + loading_time}")
+                logger.info("物料类型")
+                if truck_id in self.truck.truck_material_bind:
+                    logger.info(self.truck.truck_material_bind[truck_id])
             except Exception as es:
                 logger.error(f"矿卡{truck_id}状态不匹配")
                 logger.error(es)
@@ -540,9 +597,8 @@ class Dispatcher(WalkManage):
                             - now
                         )
                     )
-                    + self.truck.excavator_exclude_modify[
-                        self.truck_uuid_to_index_dict[truck_id]
-                    ]
+                    - self.truck.excavator_exclude_modify[truck_index]
+                    - self.truck.excavator_material_bind_modify[truck_index]
                 )
 
             # target = np.argmin((walk_time_park_to_excavator[0, :] + loading_time))
@@ -607,6 +663,9 @@ class Dispatcher(WalkManage):
             logger.info(self.actual_goto_dump_traffic_flow[int(trip[1]), :])
             logger.info("卸载点理想车流")
             logger.info(self.opt_goto_dump_traffic_flow[int(trip[1]), :])
+            logger.info("物料类型")
+            if truck_id in self.truck.truck_material_bind:
+                logger.info(self.truck.truck_material_bind[truck_id])
 
             if truck_id in self.truck.truck_dump_bind:
                 bind_unload_area_id = self.truck.truck_dump_bind[truck_id]
@@ -618,9 +677,8 @@ class Dispatcher(WalkManage):
                 target = np.argmin(
                     (self.actual_goto_dump_traffic_flow[int(trip[1]), :] + 0.001)
                     / (self.opt_goto_dump_traffic_flow[int(trip[1]), :] + 0.001)
-                    - self.truck.excavator_exclude_modify[
-                        self.truck_uuid_to_index_dict[truck_id]
-                    ]
+                    + self.truck.excavator_exclude_modify[truck_index]
+                    + self.truck.excavator_material_bind_modify[truck_index]
                 )
 
             logger.info("车流比:")
@@ -692,6 +750,9 @@ class Dispatcher(WalkManage):
             logger.info(self.actual_goto_excavator_traffic_flow[trip[1], :])
             logger.info("挖机理想车流")
             logger.info(self.opt_goto_excavator_traffic_flow[trip[1], :])
+            logger.info("物料类型")
+            if truck_id in self.truck.truck_material_bind:
+                logger.info(self.truck.truck_material_bind[truck_id])
 
             if truck_id in self.truck.truck_excavator_bind:
                 target = self.excavator_uuid_to_index_dict[
@@ -701,9 +762,8 @@ class Dispatcher(WalkManage):
                 target = np.argmin(
                     (self.actual_goto_excavator_traffic_flow[trip[1], :] + 0.001)
                     / (self.opt_goto_excavator_traffic_flow[trip[1], :] + 0.001)
-                    - self.truck.excavator_exclude_modify[
-                        self.truck_uuid_to_index_dict[truck_id]
-                    ]
+                    + self.truck.excavator_exclude_modify[truck_index]
+                    + self.truck.excavator_material_bind_modify[truck_index]
                 )
 
             logger.info("车流比:")
@@ -718,199 +778,199 @@ class Dispatcher(WalkManage):
 
     def schedule_construct(self):
 
-        # try:
+        try:
 
-        # 读取所需信息
-        trucks = self.truck.get_truck_num()
-        truck_current_trip = self.truck.get_truck_current_trip()
-        truck_current_task = self.truck.get_truck_current_task()
-        payload = self.truck.get_payload()
-        unloading_time = self.dump.get_unloading_time()
-        loading_time = self.excavator.get_loading_time()
+            # 读取所需信息
+            trucks = self.truck.get_truck_num()
+            truck_current_trip = self.truck.get_truck_current_trip()
+            truck_current_task = self.truck.get_truck_current_task()
+            payload = self.truck.get_payload()
+            unloading_time = self.dump.get_unloading_time()
+            loading_time = self.excavator.get_loading_time()
 
-        # 出入场时间
-        loading_task_time = self.excavator.get_loading_task_time()
-        unloading_task_time = self.dump.get_unloading_task_time()
+            # 出入场时间
+            loading_task_time = self.excavator.get_loading_task_time()
+            unloading_task_time = self.dump.get_unloading_task_time()
 
-        walk_time_to_unload_area = walk_manage.get_walk_time_to_unload_area()
-        walk_time_to_load_area = walk_manage.get_walk_time_to_load_area()
+            walk_time_to_unload_area = walk_manage.get_walk_time_to_unload_area()
+            walk_time_to_load_area = walk_manage.get_walk_time_to_load_area()
 
-        # Seq初始化
-        Seq = [[truck_current_trip[i][1], -1] for i in range(trucks)]
+            # Seq初始化
+            Seq = [[truck_current_trip[i][1], -1] for i in range(trucks)]
 
-        # 根据矿卡最早可用时间顺序进行规划
-        temp = copy.deepcopy(self.cur_truck_ava_time)
+            # 根据矿卡最早可用时间顺序进行规划
+            temp = copy.deepcopy(self.cur_truck_ava_time) * self.truck.truck_priority
 
-        # 没有启动的矿卡加上一个很大的值，降低其优先级
-        for i in range(trucks):
-            task = truck_current_task[self.truck_index_to_uuid_dict[i]]
-            if task == -2:
-                temp[i] = temp[i] + M
+            # 没有启动的矿卡加上一个很大的值，降低其优先级
+            for i in range(trucks):
+                task = truck_current_task[self.truck_index_to_uuid_dict[i]]
+                if task == -2:
+                    temp[i] = temp[i] + M
 
-        index = np.argsort(temp.reshape(1, -1))
-        index = index.flatten()
+            index = np.argsort(temp.reshape(1, -1))
+            index = index.flatten()
 
-        # 对于在线矿卡已经赋予新的派车计划，更新其最早可用时间，及相关设备时间参数
-        for truck in index:
-            if len(Seq[truck]) > 0:
+            # 对于在线矿卡已经赋予新的派车计划，更新其最早可用时间，及相关设备时间参数
+            for truck in index:
+                if len(Seq[truck]) > 0:
 
-                # try:
-                task = truck_current_task[self.truck_index_to_uuid_dict[truck]]
+                    # try:
+                    task = truck_current_task[self.truck_index_to_uuid_dict[truck]]
 
-                # 矿卡结束当前派车计划后的目的地
-                end_eq_index = truck_current_trip[truck][1]
+                    # 矿卡结束当前派车计划后的目的地
+                    end_eq_index = truck_current_trip[truck][1]
 
-                # 调用调度函数，得到最优目的地序号
-                target_eq_index = self.truck_schedule(
-                    self.truck_index_to_uuid_dict[truck]
-                )
+                    # 调用调度函数，得到最优目的地序号
+                    target_eq_index = self.truck_schedule(
+                        self.truck_index_to_uuid_dict[truck]
+                    )
 
-                # 写入Seq序列
-                Seq[truck][1] = target_eq_index
+                    # 写入Seq序列
+                    Seq[truck][1] = target_eq_index
 
-                # except Exception as es:
-                #     logger.error(f'矿卡 {truck_uuid_to_name_dict[self.truck_index_to_uuid_dict[truck]]} 派车计划计算异常')
-                #     logger.error(es)
+                    # except Exception as es:
+                    #     logger.error(f'矿卡 {truck_uuid_to_name_dict[self.truck_index_to_uuid_dict[truck]]} 派车计划计算异常')
+                    #     logger.error(es)
 
-                try:
+                    try:
 
-                    if task in empty_task_set:
-                        target_area_index = self.dump_index_to_unload_area_index_dict[
-                            target_eq_index
-                        ]
-                        end_area_index = self.excavator_index_to_load_area_index_dict[
-                            end_eq_index
-                        ]
-                        # 更新变量，预计产量更新
-                        self.sim_dump_real_mass[target_eq_index] = (
-                            self.sim_dump_real_mass[target_eq_index] + payload[truck]
-                        )
-                        # 预计卸载设备可用时间更新
-                        self.sim_dump_ava_time[target_eq_index] = (
-                            max(
-                                self.sim_dump_ava_time[target_eq_index],
-                                self.sim_truck_ava_time[truck]
-                                + walk_time_to_unload_area[target_area_index][
-                                    end_area_index
-                                ],
-                            )
-                            + unloading_task_time[target_eq_index]
-                        )
-                    elif task in heavy_task_set:
-                        target_area_index = (
-                            self.excavator_index_to_load_area_index_dict[
+                        if task in empty_task_set:
+                            target_area_index = self.dump_index_to_unload_area_index_dict[
                                 target_eq_index
                             ]
-                        )
-                        end_area_index = self.dump_index_to_unload_area_index_dict[
-                            end_eq_index
-                        ]
-                        # 更新变量，预计产量更新
-                        self.sim_excavator_real_mass[target_eq_index] = (
-                            self.sim_excavator_real_mass[target_eq_index]
-                            + payload[truck]
-                        )
-                        # 预计装载点可用时间更新
-                        self.sim_excavator_ava_time[target_eq_index] = (
-                            max(
-                                self.sim_excavator_ava_time[target_eq_index],
-                                self.sim_truck_ava_time[truck]
-                                + walk_time_to_unload_area[end_area_index][
-                                    target_area_index
-                                ],
+                            end_area_index = self.excavator_index_to_load_area_index_dict[
+                                end_eq_index
+                            ]
+                            # 更新变量，预计产量更新
+                            self.sim_dump_real_mass[target_eq_index] = (
+                                self.sim_dump_real_mass[target_eq_index] + payload[truck]
                             )
-                            + loading_task_time[target_eq_index]
+                            # 预计卸载设备可用时间更新
+                            self.sim_dump_ava_time[target_eq_index] = (
+                                max(
+                                    self.sim_dump_ava_time[target_eq_index],
+                                    self.sim_truck_ava_time[truck]
+                                    + walk_time_to_unload_area[target_area_index][
+                                        end_area_index
+                                    ],
+                                )
+                                + unloading_task_time[target_eq_index]
+                            )
+                        elif task in heavy_task_set:
+                            target_area_index = (
+                                self.excavator_index_to_load_area_index_dict[
+                                    target_eq_index
+                                ]
+                            )
+                            end_area_index = self.dump_index_to_unload_area_index_dict[
+                                end_eq_index
+                            ]
+                            # 更新变量，预计产量更新
+                            self.sim_excavator_real_mass[target_eq_index] = (
+                                self.sim_excavator_real_mass[target_eq_index]
+                                + payload[truck]
+                            )
+                            # 预计装载点可用时间更新
+                            self.sim_excavator_ava_time[target_eq_index] = (
+                                max(
+                                    self.sim_excavator_ava_time[target_eq_index],
+                                    self.sim_truck_ava_time[truck]
+                                    + walk_time_to_unload_area[end_area_index][
+                                        target_area_index
+                                    ],
+                                )
+                                + loading_task_time[target_eq_index]
+                            )
+                        else:
+                            pass
+                    except Exception as es:
+                        logger.error(
+                            f"矿卡 {truck_uuid_to_name_dict[self.truck_index_to_uuid_dict[truck]]} 调度状态更新异常"
+                        )
+                        logger.error(es)
+
+            for i in range(len(Seq)):
+                try:
+
+                    record = {"truckId": self.truck_index_to_uuid_dict[i]}
+                    task = self.truck.get_truck_current_task()[
+                        self.truck_index_to_uuid_dict[i]
+                    ]
+                    if task in empty_task_set:
+                        item = (
+                            session_mysql.query(Dispatch)
+                            .filter_by(
+                                dump_id=self.dump_index_to_uuid_dict[Seq[i][1]],
+                                isauto=1,
+                                isdeleted=0,
+                            )
+                            .first()
+                        )
+                        record["exactorId"] = item.exactor_id
+                        record["dumpId"] = item.dump_id
+                        record["loadAreaId"] = item.load_area_id
+                        record["unloadAreaId"] = item.unload_area_id
+                        record["dispatchId"] = item.id
+                        record["isdeleted"] = False
+                        record["creator"] = item.creator
+                        record["createtime"] = item.createtime.strftime(
+                            "%b %d, %Y %#I:%#M:%#S %p"
+                        )
+                    elif task in heavy_task_set:
+                        item = (
+                            session_mysql.query(Dispatch)
+                            .filter_by(
+                                exactor_id=self.excavator_index_to_uuid_dict[Seq[i][1]],
+                                isauto=1,
+                                isdeleted=0,
+                            )
+                            .first()
+                        )
+                        record["exactorId"] = self.excavator_index_to_uuid_dict[Seq[i][1]]
+                        record["dumpId"] = item.dump_id
+                        record["loadAreaId"] = item.load_area_id
+                        record["unloadAreaId"] = item.unload_area_id
+                        record["dispatchId"] = item.id
+                        record["isdeleted"] = False
+                        record["creator"] = item.creator
+                        record["createtime"] = item.createtime.strftime(
+                            "%b %d, %Y %#I:%#M:%#S %p"
+                        )
+                    elif task == -2:
+                        item = (
+                            session_mysql.query(Dispatch)
+                            .filter_by(
+                                exactor_id=self.excavator_index_to_uuid_dict[Seq[i][1]],
+                                isauto=1,
+                                isdeleted=0,
+                            )
+                            .first()
+                        )
+                        record["exactorId"] = item.exactor_id
+                        record["dumpId"] = item.dump_id
+                        record["loadAreaId"] = item.load_area_id
+                        record["unloadAreaId"] = item.unload_area_id
+                        record["dispatchId"] = item.id
+                        record["isdeleted"] = False
+                        record["creator"] = item.creator
+                        record["createtime"] = item.createtime.strftime(
+                            "%b %d, %Y %#I:%#M:%#S %p"
                         )
                     else:
                         pass
+
+                    redis5.set(self.truck_index_to_uuid_dict[i], str(json.dumps(record)))
                 except Exception as es:
-                    logger.error(
-                        f"矿卡 {truck_uuid_to_name_dict[self.truck_index_to_uuid_dict[truck]]} 调度状态更新异常"
-                    )
+                    logger.error("调度结果写入异常-redis写入异常")
+                    logger.error(f"调度结果:{Seq}")
                     logger.error(es)
 
-        for i in range(len(Seq)):
-            try:
-
-                record = {"truckId": self.truck_index_to_uuid_dict[i]}
-                task = self.truck.get_truck_current_task()[
-                    self.truck_index_to_uuid_dict[i]
-                ]
-                if task in empty_task_set:
-                    item = (
-                        session_mysql.query(Dispatch)
-                        .filter_by(
-                            dump_id=self.dump_index_to_uuid_dict[Seq[i][1]],
-                            isauto=1,
-                            isdeleted=0,
-                        )
-                        .first()
-                    )
-                    record["exactorId"] = item.exactor_id
-                    record["dumpId"] = item.dump_id
-                    record["loadAreaId"] = item.load_area_id
-                    record["unloadAreaId"] = item.unload_area_id
-                    record["dispatchId"] = item.id
-                    record["isdeleted"] = False
-                    record["creator"] = item.creator
-                    record["createtime"] = item.createtime.strftime(
-                        "%b %d, %Y %#I:%#M:%#S %p"
-                    )
-                elif task in heavy_task_set:
-                    item = (
-                        session_mysql.query(Dispatch)
-                        .filter_by(
-                            exactor_id=self.excavator_index_to_uuid_dict[Seq[i][1]],
-                            isauto=1,
-                            isdeleted=0,
-                        )
-                        .first()
-                    )
-                    record["exactorId"] = self.excavator_index_to_uuid_dict[Seq[i][1]]
-                    record["dumpId"] = item.dump_id
-                    record["loadAreaId"] = item.load_area_id
-                    record["unloadAreaId"] = item.unload_area_id
-                    record["dispatchId"] = item.id
-                    record["isdeleted"] = False
-                    record["creator"] = item.creator
-                    record["createtime"] = item.createtime.strftime(
-                        "%b %d, %Y %#I:%#M:%#S %p"
-                    )
-                elif task == -2:
-                    item = (
-                        session_mysql.query(Dispatch)
-                        .filter_by(
-                            exactor_id=self.excavator_index_to_uuid_dict[Seq[i][1]],
-                            isauto=1,
-                            isdeleted=0,
-                        )
-                        .first()
-                    )
-                    record["exactorId"] = item.exactor_id
-                    record["dumpId"] = item.dump_id
-                    record["loadAreaId"] = item.load_area_id
-                    record["unloadAreaId"] = item.unload_area_id
-                    record["dispatchId"] = item.id
-                    record["isdeleted"] = False
-                    record["creator"] = item.creator
-                    record["createtime"] = item.createtime.strftime(
-                        "%b %d, %Y %#I:%#M:%#S %p"
-                    )
-                else:
-                    pass
-
-                redis5.set(self.truck_index_to_uuid_dict[i], str(json.dumps(record)))
-            except Exception as es:
-                logger.error("调度结果写入异常-redis写入异常")
-                logger.error(f"调度结果:{Seq}")
-                logger.error(es)
-
-        for i in range(trucks):
-            print("dispatch_setting:")
-            print(redis5.get(self.truck_index_to_uuid_dict[i]))
-        # except Exception as es:
-        #     logger.error("更新不及时")
-        #     logger.error(es)
+            for i in range(trucks):
+                print("dispatch_setting:")
+                print(redis5.get(self.truck_index_to_uuid_dict[i]))
+        except Exception as es:
+            logger.error("更新不及时")
+            logger.error(es)
 
         logger.info(
             "#####################################周期更新结束#####################################"
@@ -919,18 +979,59 @@ class Dispatcher(WalkManage):
         return Seq
 
 
-# 下面三个函数保证程序定期执行，不用管他
-def process(dispatcher):
+def para_process(dispatcher):
 
-    # 更新周期参数
-    period_para_update()
+    logger.info("papa_process!")
 
     # 清空数据库缓存
     session_mysql.commit()
     session_mysql.flush()
 
+    # 清空数据库缓存
+    session_postgre.commit()
+    session_postgre.flush()
+
+    # 更新周期参数
+    period_para_update()
+
+    # # 清空数据库缓存
+    # session_mysql.commit()
+    # session_mysql.flush()
+    #
+    # # 清空数据库缓存
+    # session_postgre.commit()
+    # session_postgre.flush()
+
     # 周期更新
-    dispatcher.period_update()
+    dispatcher.para_period_update()
+
+    # # 参数重置
+    # dispatcher.sim_para_reset()
+
+    # try:
+
+    # 调度计算
+    # dispatcher.schedule_construct()
+
+    # except Exception as es:
+    #     logger.error("更新不及时")
+    #     logger.error(es)
+
+
+def state_process(dispatcher):
+
+    # print("state_process!")
+
+    # 清空数据库缓存
+    session_mysql.commit()
+    session_mysql.flush()
+
+    # 清空数据库缓存
+    session_postgre.commit()
+    session_postgre.flush()
+
+    # 周期更新
+    dispatcher.state_period_update()
 
     # 参数重置
     dispatcher.sim_para_reset()
@@ -943,6 +1044,17 @@ def process(dispatcher):
     # except Exception as es:
     #     logger.error("更新不及时")
     #     logger.error(es)
+
+
+
+
+
+# 下面三个函数保证程序定期执行，不用管他
+def process(dispatcher):
+
+    para_process(dispatcher)
+
+    state_process(dispatcher)
 
 
 scheduler = sched.scheduler(time.time, time.sleep)
@@ -965,3 +1077,68 @@ if __name__ == "__main__":
     dispatcher = Dispatcher()
 
     main(10, dispatcher)
+
+
+
+
+
+
+
+
+# # 下面三个函数保证程序定期执行，不用管他
+# def process(dispatcher):
+#
+#     # 更新周期参数
+#     period_para_update()
+#
+#     # 清空数据库缓存
+#     session_mysql.commit()
+#     session_mysql.flush()
+#
+#     # 清空数据库缓存
+#     session_postgre.commit()
+#     session_postgre.flush()
+#
+#     # 周期更新
+#     dispatcher.period_update()
+#
+#     # 参数重置
+#     dispatcher.sim_para_reset()
+#
+#     # try:
+#
+#     # 调度计算
+#     dispatcher.schedule_construct()
+#
+#     # except Exception as es:
+#     #     logger.error("更新不及时")
+#     #     logger.error(es)
+#
+#
+# dispatcher = Dispatcher()
+#
+# para_process(dispatcher)
+#
+# state_process(dispatcher)
+#
+#
+# jobstores = {'default': MemoryJobStore()}
+#
+# executors = {'default': ThreadPoolExecutor(10)}
+#
+# job_defaults = {'coalesce': False, 'max_instances': 10}
+#
+# scheduler = BlockingScheduler(jobstores=jobstores, executors=executors, job_defaults=job_defaults)
+#
+# # scheduler = BlockingScheduler()
+#
+# scheduler.add_job(para_process, args=[dispatcher], id='ins1', trigger='interval', seconds=60)
+#
+# scheduler.add_job(state_process, args=[dispatcher], id='ins2', trigger='interval', seconds=10)
+#
+# if __name__ == '__main__':
+#     try:
+#         scheduler.start()
+#     except SystemExit:
+#         print('exit')
+#         exit()
