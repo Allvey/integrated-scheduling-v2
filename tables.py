@@ -393,7 +393,7 @@ class DumpArea(Base):
         self.Disabled = Disabled
         self.Material = Material
 
-class DiggerArea(Base):
+class DiggingWorkArea(Base):
     __tablename__ = 'Geo_DiggingWorkArea'
 
     Id = Column(VARCHAR(50), primary_key=True)
@@ -402,3 +402,4 @@ class DiggerArea(Base):
     def __init__(self, Id, Material):
         self.Id = Id
         self.Material = Material
+

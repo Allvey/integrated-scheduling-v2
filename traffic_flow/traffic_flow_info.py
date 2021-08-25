@@ -3,7 +3,7 @@
 # @Time : 2021/8/3 10:41
 # @Author : Opfer
 # @Site :
-# @File : traffic_flow_info.py    
+# @File : traffic_flow_info.py
 # @Software: PyCharm
 
 # import
@@ -12,6 +12,13 @@ from static_data_process import *
 from settings import *
 from path_plan.path_plannner import *
 from para_config import *
+from traffic_flow.traffic_flow_planner import *
+from static_data_process import *
+from para_config import *
+from settings import *
+from equipment.truck import TruckInfo
+from equipment.excavator import ExcavatorInfo
+from equipment.dump import DumpInfo
 
 # 车流规划类
 class Traffic_para(WalkManage):
@@ -54,6 +61,7 @@ class Traffic_para(WalkManage):
         self.path_planner = PathPlanner()
         self.path_planner.walk_cost()
 
+
         '''
         以下参数暂时没用到
         '''
@@ -69,6 +77,10 @@ class Traffic_para(WalkManage):
         self.priority_coefficient = np.zeros((num_of_excavator, num_of_dump))  # 卸载道路的优先级系数
         self.grade_lower_dump_array = np.zeros(num_of_dump)  # 卸载点矿石品位下限
         self.grade_upper_dump_array = np.zeros(num_of_dump)  # 卸载点矿石品位上限
+
+        # 装/卸区的物料类型
+        self.load_area_material_type = {}
+        self.unload_area_material_type = {}
 
     # # 提取卸载点信息并建立映射
     # def extract_dump_info(self):
@@ -168,7 +180,22 @@ class Traffic_para(WalkManage):
     #             unload_area_uuid_to_index_dict[unload_area_id] = unload_area_index
     #             unload_area_index_to_uuid_dict[unload_area_index] = unload_area_id
     #             unload_area_index += 1
-    def extract_walk_time_info(self):
+
+
+
+    # 根据物料优先级生成新的影响调度的coast矩阵
+    # def arrange_material_type (self, material_type):
+    #
+    #     # 首先判断物料的种
+    #     # if material_type:
+    #     #     logger.info(f'物料类型是土方')
+    #     # else：
+    #     #     logger.info(f'物料类型是煤方')
+
+    include_material_type = True
+
+    def extract_walk_time_info(self, include_material_type):
+
         try:
             # 车流规划部分矩阵格式与其余两个模块不同
             cost_to_load_area = self.path_planner.cost_to_load_area
@@ -177,44 +204,97 @@ class Traffic_para(WalkManage):
             distance_to_load_area = self.path_planner.distance_to_load_area
             distance_to_unload_area = self.path_planner.distance_to_unload_area
 
+            self.load_area_material_type = {}
+            self.unload_area_material_type = {}
+            for item in session_postgre.query(DiggingWorkArea).all():
+                if item.Material is not None:
+                    self.load_area_material_type[load_area_uuid_to_index_dict[item.Id]] = item.Material
+
+            for item in session_postgre.query(DumpArea).all():
+                if item.Material is not None:
+                    self.unload_area_material_type[unload_area_uuid_to_index_dict[item.Id]] = item.Material
+
             # 路网信息读取
             for unload_area_index in range(unload_area_num):
                 for load_area_index in range(load_area_num):
-                    self.goto_load_area_factor[unload_area_index][load_area_index] = \
-                        (cost_to_load_area[unload_area_index][load_area_index] / (empty_speed * 1000)) / self.payload
+                    # 是否考虑cost
+                    if include_material_type == True:
+                        logger.info(f'考虑物料类型')
+                        if self.unload_area_material_type[unload_area_index] == 'c481794b-6ced-45b9-a9c4-c4a388f44418' \
+                                    and self.load_area_material_type[load_area_index] == 'c481794b-6ced-45b9-a9c4-c4a388f44418':
 
-                    self.goto_unload_area_factor[load_area_index][unload_area_index] = \
-                        (cost_to_unload_area[unload_area_index][load_area_index] / (heavy_speed * 1000)) /  self.payload
+                                self.goto_load_area_factor[unload_area_index][load_area_index] = \
+                                    0.75*(cost_to_load_area[unload_area_index][load_area_index] / (empty_speed * 1000)) / self.payload
+
+                                self.goto_unload_area_factor[load_area_index][unload_area_index] = \
+                                    0.75*(cost_to_unload_area[unload_area_index][load_area_index] / (heavy_speed * 1000)) /  self.payload
+                        else:
+                                self.goto_load_area_factor[unload_area_index][load_area_index] = \
+                                    (cost_to_load_area[unload_area_index][load_area_index] / (empty_speed * 1000)) / self.payload
+
+                                self.goto_unload_area_factor[load_area_index][unload_area_index] = \
+                                    (cost_to_unload_area[unload_area_index][load_area_index] / (heavy_speed * 1000)) /  self.payload
+                    # 不考虑物料类型的cost
+                    else:
+                        self.goto_load_area_factor[unload_area_index][load_area_index] = \
+                            (cost_to_load_area[unload_area_index][load_area_index] / (empty_speed * 1000)) / self.payload
+
+                        self.goto_unload_area_factor[load_area_index][unload_area_index] = \
+                            (cost_to_unload_area[unload_area_index][load_area_index] / (heavy_speed * 1000)) /  self.payload
+
+
         except Exception as es:
             logger.error(es)
             logger.error("车流规划信息计算异常")
 
-        # for walk_time in session_postgre.query(WalkTime).all():
-        #     load_area_id = str(walk_time.load_area_id)
-        #     unload_area_id = str(walk_time.unload_area_id)
-        #     # 将uuid转为id
-        #     load_area_index = load_area_uuid_to_index_dict[load_area_id]
-        #     unload_area_index = unload_area_uuid_to_index_dict[unload_area_id]
-        #
-        #     # # 运输路线距离
-        #     # self.walk_time_to_load_area[unload_area_index][load_area_index] = walk_time.to_load_distance
-        #     # self.walk_time_to_unload_area[load_area_index][unload_area_index] = walk_time.to_unload_distance
-        #
-        #     # 卸载道路上，每运输1吨货物需要一辆卡车运行时长,等于（该卸载道路上车辆平均运行时长/卡车平均实际装载量）
-        #     # 单位为辆小时/吨
-        #     # i代表第i个电铲,j代表第j个卸载点
-        #     # walktime_goto_dump单位是秒，需要除以3600，转成小时
-        #     self.goto_load_area_factor[unload_area_index][load_area_index] = \
-        #         (60 / 1000 * walk_time.to_load_distance / self.empty_speed) / self.payload
-        #     # / self.avg_goto_excavator_weight[load_area_index][unload_area_index]
-        #
-        #     # 装载道路上，每提供1吨的装载能力需要一辆卡车运行时长,等于（该装载道路上车辆平均运行时长/卡车平均装载能力）
-        #     # 单位为辆小时/吨
-        #     # i代表第i个卸载点,j代表第j个电铲
-        #     # walktime_goto_excavator单位是秒，需要除以3600，转成小时
-        #     self.goto_unload_area_factor[load_area_index][unload_area_index] = \
-        #         (60 / 1000 * walk_time.to_unload_distance / self.heavy_speed) / self.payload
-        #     # / self.avg_goto_excavator_weight[unload_area_index][load_area_index]
+
+    # def extract_walk_time_info(self):
+    #     try:
+    #         # 车流规划部分矩阵格式与其余两个模块不同
+    #         cost_to_load_area = self.path_planner.cost_to_load_area
+    #         cost_to_unload_area = self.path_planner.cost_to_unload_area
+    #
+    #         distance_to_load_area = self.path_planner.distance_to_load_area
+    #         distance_to_unload_area = self.path_planner.distance_to_unload_area
+    #
+    #         # 路网信息读取
+    #         for unload_area_index in range(unload_area_num):
+    #             for load_area_index in range(load_area_num):
+    #                 self.goto_load_area_factor[unload_area_index][load_area_index] = \
+    #                     (cost_to_load_area[unload_area_index][load_area_index] / (empty_speed * 1000)) / self.payload
+    #
+    #                 self.goto_unload_area_factor[load_area_index][unload_area_index] = \
+    #                     (cost_to_unload_area[unload_area_index][load_area_index] / (heavy_speed * 1000)) /  self.payload
+    #     except Exception as es:
+    #         logger.error(es)
+    #         logger.error("车流规划信息计算异常")
+    #
+    #     # for walk_time in session_postgre.query(WalkTime).all():
+    #     #     load_area_id = str(walk_time.load_area_id)
+    #     #     unload_area_id = str(walk_time.unload_area_id)
+    #     #     # 将uuid转为id
+    #     #     load_area_index = load_area_uuid_to_index_dict[load_area_id]
+    #     #     unload_area_index = unload_area_uuid_to_index_dict[unload_area_id]
+    #     #
+    #     #     # # 运输路线距离
+    #     #     # self.walk_time_to_load_area[unload_area_index][load_area_index] = walk_time.to_load_distance
+    #     #     # self.walk_time_to_unload_area[load_area_index][unload_area_index] = walk_time.to_unload_distance
+    #     #
+    #     #     # 卸载道路上，每运输1吨货物需要一辆卡车运行时长,等于（该卸载道路上车辆平均运行时长/卡车平均实际装载量）
+    #     #     # 单位为辆小时/吨
+    #     #     # i代表第i个电铲,j代表第j个卸载点
+    #     #     # walktime_goto_dump单位是秒，需要除以3600，转成小时
+    #     #     self.goto_load_area_factor[unload_area_index][load_area_index] = \
+    #     #         (60 / 1000 * walk_time.to_load_distance / self.empty_speed) / self.payload
+    #     #     # / self.avg_goto_excavator_weight[load_area_index][unload_area_index]
+    #     #
+    #     #     # 装载道路上，每提供1吨的装载能力需要一辆卡车运行时长,等于（该装载道路上车辆平均运行时长/卡车平均装载能力）
+    #     #     # 单位为辆小时/吨
+    #     #     # i代表第i个卸载点,j代表第j个电铲
+    #     #     # walktime_goto_excavator单位是秒，需要除以3600，转成小时
+    #     #     self.goto_unload_area_factor[load_area_index][unload_area_index] = \
+    #     #         (60 / 1000 * walk_time.to_unload_distance / self.heavy_speed) / self.payload
+    #     #     # / self.avg_goto_excavator_weight[unload_area_index][load_area_index]
 
 
 # 初始化车流规划类
