@@ -324,11 +324,17 @@ class EquipmentSpec(Base):
     id = Column(VARCHAR(36), primary_key=True)
     capacity = Column(Integer)
     mining_abililty = Column(Float)
+    length = Column(Float)
+    width = Column(Float)
+    max_speed = Column(Float)
 
-    def __init__(self, id, capacity, mining_abililty):
+    def __init__(self, id, capacity, mining_abililty, length, width, max_speed):
         self.id = id
         self.capacity = capacity
         self.mining_abililty = mining_abililty
+        self.length = length
+        self.width = width
+        self.max_speed = max_speed
 
 class LoadInfo(Base):
     __tablename__ = 'sys_loadinfo'
@@ -392,6 +398,7 @@ class DumpArea(Base):
         self.UnloadAbililty = UnloadAbililty
         self.Disabled = Disabled
         self.Material = Material
+
 
 class DiggingWorkArea(Base):
     __tablename__ = 'Geo_DiggingWorkArea'

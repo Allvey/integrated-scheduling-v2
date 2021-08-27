@@ -42,6 +42,14 @@ class TruckInfo(WalkManage):
         # self.sim_truck_ava_time = np.zeros(self.dynamic_truck_num)
         # 矿卡有效载重
         self.payload = np.zeros(self.dynamic_truck_num)
+        # 矿卡时速
+        self.empty_speed = {}
+        self.heavy_speed = {}
+        # 矿卡长宽
+        self.geo_length = {}
+        self.geo_width = {}
+        # 矿卡型号
+        self.size = {}
         # 矿卡当前行程(第一列为出发地序号, 第二列为目的地序号)
         self.truck_current_trip = np.full((self.dynamic_truck_num, 2), -1)
         # 矿卡挖机绑定关系
@@ -67,6 +75,8 @@ class TruckInfo(WalkManage):
         # 初始化读取映射及路网
         self.period_map_para_load()
         self.period_walk_para_load()
+
+        self.para_period_update()
 
     # def period_map_para_load(self):
     #     # 关系映射
@@ -117,6 +127,12 @@ class TruckInfo(WalkManage):
 
     def get_payload(self):
         return self.payload
+
+    def get_width(self):
+        return self.geo_width
+
+    def get_length(self):
+        return self.geo_length
 
     ################################################ short term update ################################################
 
@@ -327,6 +343,8 @@ class TruckInfo(WalkManage):
             logger.error("读取矿卡有效载重异常-矿卡型号信息缺失")
             logger.error(es)
 
+        print(self.payload)
+
     def update_truck_priority(self):
         self.truck_priority = np.zeros(self.dynamic_truck_num)
 
@@ -399,7 +417,6 @@ class TruckInfo(WalkManage):
             logger.error(es)
 
     def update_truck_dump_exclude(self):
-
         pass
 
     def update_truck_material(self):
@@ -470,6 +487,17 @@ class TruckInfo(WalkManage):
                     if dump_material_id != material:
                         self.dump_material_bind_modify[truck_index][dump_index] = 1000000
 
+    def update_truck_spec(self):
+        for truck_id in dynamic_truck_set:
+            self.size[truck_id] = session_mysql.query(Equipment).filter_by(id=truck_id).first().equipment_spec
+
+    def update_truck_size(self):
+        self.update_truck_spec()
+        for truck_id in dynamic_truck_set:
+            truck_spec_id = self.size[truck_id]
+            self.geo_length[truck_id] = session_mysql.query(EquipmentSpec).filter_by(id=truck_spec_id).first().length
+            self.geo_width[truck_spec_id] = session_mysql.query(EquipmentSpec).filter_by(id=truck_spec_id).first().width
+
         # print("-------------------------------------------")
         # print("truck")
         # print(self.truck_uuid_to_index_dict)
@@ -481,6 +509,15 @@ class TruckInfo(WalkManage):
         # print("dump")
         # print(dynamic_dump_set)
         # print(self.dump_material_bind_modify)
+
+    def update_truck_speed(self):
+        for truck_id in dynamic_truck_set:
+            self.empty_speed[truck_id] = session_mysql.query(EquipmentSpec.max_speed). \
+                Join(Equipment, EquipmentSpec.id == Equipment.equipment_spec). \
+                filter(Equipment.id == truck_id).first()
+            self.heavy_speed[truck_id] = session_mysql.query(EquipmentSpec.max_speed). \
+                Join(Equipment, EquipmentSpec.id == Equipment.equipment_spec). \
+                filter(Equipment.id == truck_id).first()
 
     def para_period_update(self):
 

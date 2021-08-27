@@ -11,6 +11,7 @@ from settings import *
 from static_data_process import *
 from settings import *
 from para_config import *
+from equipment.truck import TruckInfo
 
 M = 1000000
 
@@ -22,7 +23,9 @@ class PathPlanner(WalkManage):
         # 路段集合
         self.lane_set = {}
         # 车辆长度(暂)
-        self.truck_length = 113
+        self.truck = TruckInfo()
+        self.truck.update_truck_size()
+        self.truck_length = float(sum(self.truck.get_length().values())) / len(self.truck.get_length())
         # 装载区数量
         self.num_of_load_area = len(set(update_load_area()))
         # 卸载区数量

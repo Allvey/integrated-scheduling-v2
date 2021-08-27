@@ -47,6 +47,9 @@ class DumpInfo(WalkManage):
         self.period_map_para_load()
         self.period_walk_para_load()
 
+        # 参数初始化
+        self.para_period_update()
+
     def get_unloading_time(self):
         return self.unloading_time
 

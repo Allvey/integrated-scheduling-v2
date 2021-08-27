@@ -47,6 +47,9 @@ class ExcavatorInfo(WalkManage):
         self.period_map_para_load()
         self.period_walk_para_load()
 
+        # 参数初始化
+        self.para_period_update()
+
     # def period_map_para_load(self):
     #     # 关系映射
     #     self.excavator_uuid_to_index_dict = device_map.excavator_uuid_to_index_dict
@@ -177,7 +180,7 @@ class ExcavatorInfo(WalkManage):
     def update_excavator_material(self):
         for excavator_id in dynamic_excavator_set:
             load_area_id = session_mysql.query(Dispatch).filter_by(exactor_id=excavator_id).first().load_area_id
-            excavator_material_id = session_postgre.query(DiggerArea).filter_by(Id=load_area_id).first().Material
+            excavator_material_id = session_postgre.query(DiggingWorkArea).filter_by(Id=load_area_id).first().Material
             self.excavator_material[excavator_id] = excavator_material_id
 
     def para_period_update(self):

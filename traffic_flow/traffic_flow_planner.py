@@ -196,7 +196,7 @@ def traffic_flow_plan():
 
     return res["var_x"], res["var_y"]
 
-traffic_flow_plan()
+# traffic_flow_plan()
 
 # end = time.time()
 # print("used {:.5}s".format(end-start))

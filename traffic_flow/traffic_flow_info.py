@@ -19,6 +19,7 @@ from settings import *
 from equipment.truck import TruckInfo
 from equipment.excavator import ExcavatorInfo
 from equipment.dump import DumpInfo
+from equipment.truck import TruckInfo
 
 # 车流规划类
 class Traffic_para(WalkManage):
@@ -37,10 +38,10 @@ class Traffic_para(WalkManage):
         # self.excavator_uuid_to_load_area_uuid_dict = {}  # 用于保存挖机与装载区的绑定关系(uuid)
         # self.dump_index_to_unload_area_index_dict = {}  # 用于保存卸点与卸载区的绑定关系(id)
         # self.excavator_index_to_load_area_index_dict = {}  # 用于保存挖机与装载区的绑定关系(id)
+        self.truck = TruckInfo()
 
-
-        self.empty_speed = 25  # 空载矿卡平均时速
-        self.heavy_speed = 22  # 重载矿卡平均时速
+        self.empty_speed = empty_speed  # 空载矿卡平均时速
+        self.heavy_speed = heavy_speed  # 重载矿卡平均时速
         self.walk_time_to_load_area = np.zeros((num_of_unload_area, num_of_load_area))  # 空载运输路线距离
         self.walk_time_to_unload_area = np.zeros((num_of_load_area, num_of_unload_area))  # 重载运输路线距离
 
@@ -51,7 +52,11 @@ class Traffic_para(WalkManage):
         self.avg_goto_dump_weight = np.full((num_of_load_area, num_of_unload_area), 1)
         self.walk_time_to_excavator = np.zeros((num_of_dump, num_of_excavator))  # 逻辑空载运输路线距离
         self.walk_time_to_dump = np.zeros((num_of_excavator, num_of_dump))  # 逻辑重载运输路线距离
-        self.payload = 20  # 有效载重(不同型号矿卡载重不同，这里暂时认为车队是同质的)
+
+        # self.payload = 200  # 有效载重(不同型号矿卡载重不同，这里暂时认为车队是同质的)
+        self.truck = TruckInfo()
+        self.payload = np.mean(self.truck.get_payload())
+
         self.min_throughout = 200  # 最小产量约束
         self.truck_total_num = 0
 
@@ -196,32 +201,37 @@ class Traffic_para(WalkManage):
 
     def extract_walk_time_info(self, include_material_type):
 
-        try:
-            # 车流规划部分矩阵格式与其余两个模块不同
-            cost_to_load_area = self.path_planner.cost_to_load_area
-            cost_to_unload_area = self.path_planner.cost_to_unload_area
+        # try:
+        # 车流规划部分矩阵格式与其余两个模块不同
+        cost_to_load_area = self.path_planner.cost_to_load_area
+        cost_to_unload_area = self.path_planner.cost_to_unload_area
 
-            distance_to_load_area = self.path_planner.distance_to_load_area
-            distance_to_unload_area = self.path_planner.distance_to_unload_area
+        distance_to_load_area = self.path_planner.distance_to_load_area
+        distance_to_unload_area = self.path_planner.distance_to_unload_area
 
-            self.load_area_material_type = {}
-            self.unload_area_material_type = {}
-            for item in session_postgre.query(DiggingWorkArea).all():
-                if item.Material is not None:
-                    self.load_area_material_type[load_area_uuid_to_index_dict[item.Id]] = item.Material
+        self.load_area_material_type = {}
+        self.unload_area_material_type = {}
+        for item in session_postgre.query(DiggingWorkArea).all():
+            load_area_id = str(item.Id)
+            if load_area_id in load_area_uuid_to_index_dict:
+                self.load_area_material_type[load_area_id] = item.Material
 
-            for item in session_postgre.query(DumpArea).all():
-                if item.Material is not None:
-                    self.unload_area_material_type[unload_area_uuid_to_index_dict[item.Id]] = item.Material
+        for item in session_postgre.query(DumpArea).all():
+            unload_area_id = str(item.Id)
+            if unload_area_id in unload_area_uuid_to_index_dict:
+                self.unload_area_material_type[unload_area_id] = item.Material
 
-            # 路网信息读取
-            for unload_area_index in range(unload_area_num):
-                for load_area_index in range(load_area_num):
-                    # 是否考虑cost
-                    if include_material_type == True:
-                        logger.info(f'考虑物料类型')
-                        if self.unload_area_material_type[unload_area_index] == 'c481794b-6ced-45b9-a9c4-c4a388f44418' \
-                                    and self.load_area_material_type[load_area_index] == 'c481794b-6ced-45b9-a9c4-c4a388f44418':
+        # 路网信息读取
+        for unload_area_index in range(unload_area_num):
+            for load_area_index in range(load_area_num):
+                # 是否考虑cost
+                if include_material_type == True:
+                    logger.info(f'考虑物料类型')
+                    unload_area_id = unload_area_index_to_uuid_dict[unload_area_index]
+                    load_area_id = load_area_index_to_uuid_dict[load_area_index]
+                    if unload_area_id in unload_area_uuid_to_index_dict and load_area_id in load_area_uuid_to_index_dict:
+                        if self.unload_area_material_type[unload_area_id] == 'c481794b-6ced-45b9-a9c4-c4a388f44418' \
+                                    and self.load_area_material_type[load_area_id] == 'c481794b-6ced-45b9-a9c4-c4a388f44418':
 
                                 self.goto_load_area_factor[unload_area_index][load_area_index] = \
                                     0.75*(cost_to_load_area[unload_area_index][load_area_index] / (empty_speed * 1000)) / self.payload
@@ -234,18 +244,18 @@ class Traffic_para(WalkManage):
 
                                 self.goto_unload_area_factor[load_area_index][unload_area_index] = \
                                     (cost_to_unload_area[unload_area_index][load_area_index] / (heavy_speed * 1000)) /  self.payload
-                    # 不考虑物料类型的cost
-                    else:
-                        self.goto_load_area_factor[unload_area_index][load_area_index] = \
-                            (cost_to_load_area[unload_area_index][load_area_index] / (empty_speed * 1000)) / self.payload
+                # 不考虑物料类型的cost
+                else:
+                    self.goto_load_area_factor[unload_area_index][load_area_index] = \
+                        (cost_to_load_area[unload_area_index][load_area_index] / (empty_speed * 1000)) / self.payload
 
-                        self.goto_unload_area_factor[load_area_index][unload_area_index] = \
-                            (cost_to_unload_area[unload_area_index][load_area_index] / (heavy_speed * 1000)) /  self.payload
+                    self.goto_unload_area_factor[load_area_index][unload_area_index] = \
+                        (cost_to_unload_area[unload_area_index][load_area_index] / (heavy_speed * 1000)) / self.payload
 
 
-        except Exception as es:
-            logger.error(es)
-            logger.error("车流规划信息计算异常")
+        # except Exception as es:
+        #     logger.error(es)
+        #     logger.error("车流规划路网信息计算异常")
 
 
     # def extract_walk_time_info(self):
@@ -300,57 +310,61 @@ class Traffic_para(WalkManage):
 # 初始化车流规划类
 def Traffic_para_init(num_of_load_area, num_of_unload_area, num_of_excavator, num_of_dump):
 
-    try:
+    # try:
 
-        tra_para = Traffic_para(num_of_load_area, num_of_unload_area, num_of_excavator, num_of_dump)
+    tra_para = Traffic_para(num_of_load_area, num_of_unload_area, num_of_excavator, num_of_dump)
 
-        tra_para.period_map_para_load()
+    tra_para.period_map_para_load()
 
-        tra_para.period_walk_para_load()
+    tra_para.period_walk_para_load()
 
-        # Traffic_para.extract_walk_time_info(tra_para)
+    # Traffic_para.extract_walk_time_info(tra_para)
 
-        Traffic_para.extract_excavator_info(tra_para)
+    tra_para.extract_excavator_info()
 
-        Traffic_para.extract_dump_info(tra_para)
+    tra_para.extract_dump_info()
 
-        Traffic_para.extract_walk_time_info(tra_para)
+    tra_para.extract_walk_time_info(True)
 
-        # 全部矿卡设备集合
-        truck_set = set(update_total_truck())
+    tra_para.truck.update_truck_payload()
 
-        # 固定派车矿卡集合
-        fixed_truck_set = set(update_fixdisp_truck())
+    tra_para.payload = np.mean(tra_para.truck.get_payload())
 
-        # 动态派车矿卡集合
-        tra_para.truck_total_num = len(truck_set.difference(fixed_truck_set))
+    # 全部矿卡设备集合
+    truck_set = set(update_total_truck())
 
-        # 计算逻辑道路因子
-        for i in range(num_of_excavator):
-            for j in range(num_of_dump):
-                # 查找挖机绑定的装载区, 卸载设备绑定的卸载区
-                load_area_index = tra_para.excavator_index_to_load_area_index_dict[i]
-                unload_area_index = tra_para.dump_index_to_unload_area_index_dict[j]
+    # 固定派车矿卡集合
+    fixed_truck_set = set(update_fixdisp_truck())
 
-                # 逻辑道路因子赋值, 来自实际道路因子
-                tra_para.goto_excavator_factor[j][i] = \
-                    tra_para.goto_load_area_factor[unload_area_index][load_area_index]
+    # 动态派车矿卡集合
+    tra_para.truck_total_num = len(truck_set.difference(fixed_truck_set))
 
-                tra_para.goto_dump_factor[i][j] = \
-                    tra_para.goto_unload_area_factor[load_area_index][unload_area_index]
+    # 计算逻辑道路因子
+    for i in range(num_of_excavator):
+        for j in range(num_of_dump):
+            # 查找挖机绑定的装载区, 卸载设备绑定的卸载区
+            load_area_index = tra_para.excavator_index_to_load_area_index_dict[i]
+            unload_area_index = tra_para.dump_index_to_unload_area_index_dict[j]
 
-                # 每条卸载道路的优先级,等于电铲的优先级乘以卸载点的优先级
-                tra_para.priority_coefficient[i][j] = tra_para.excavator_priority_coefficient[i] \
-                                                                    * tra_para.dump_priority_coefficient[j]
+            # 逻辑道路因子赋值, 来自实际道路因子
+            tra_para.goto_excavator_factor[j][i] = \
+                tra_para.goto_load_area_factor[unload_area_index][load_area_index]
 
-                # # 逻辑距离赋值，来自实际道路距离
-                # tra_para.walk_time_to_excavator[j][i] = \
-                #     tra_para.walk_time_to_load_area[unload_area_index][load_area_index]
-                #
-                # tra_para.walk_time_to_dump[i][j] = \
-                #     tra_para.walk_time_to_unload_area[load_area_index][unload_area_index]
+            tra_para.goto_dump_factor[i][j] = \
+                tra_para.goto_unload_area_factor[load_area_index][unload_area_index]
 
-    except Exception as es:
-        logger.error(es)
-        logger.error("车流规划类比初始化异常")
+            # 每条卸载道路的优先级,等于电铲的优先级乘以卸载点的优先级
+            tra_para.priority_coefficient[i][j] = tra_para.excavator_priority_coefficient[i] \
+                                                                * tra_para.dump_priority_coefficient[j]
+
+            # # 逻辑距离赋值，来自实际道路距离
+            # tra_para.walk_time_to_excavator[j][i] = \
+            #     tra_para.walk_time_to_load_area[unload_area_index][load_area_index]
+            #
+            # tra_para.walk_time_to_dump[i][j] = \
+            #     tra_para.walk_time_to_unload_area[load_area_index][unload_area_index]
+
+    # except Exception as es:
+    #     logger.error(es)
+    #     logger.error("车流规划类比初始化异常")
     return tra_para

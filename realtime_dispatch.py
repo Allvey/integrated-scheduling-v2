@@ -537,9 +537,12 @@ class Dispatcher(WalkManage):
         # 卸载设备卸载时间
         unloading_time = self.dump.get_unloading_time()
         # 路网信息
-        walk_time_park_to_excavator = walk_manage.get_walk_time_park_to_excavator()
-        walk_time_to_dump = walk_manage.get_walk_time_to_dump()
-        walk_time_to_excavator = walk_manage.get_walk_time_to_excavator()
+        walk_time_park_to_excavator = walk_manage.get_walk_time_park_to_excavator() \
+                                      * (empty_speed / self.truck.empty_speed[truck_id])
+        walk_time_to_dump = walk_manage.get_walk_time_to_dump() * \
+                            (heavy_speed / self.truck.heavy_speed[truck_id])
+        walk_time_to_excavator = walk_manage.get_walk_time_to_excavator() * \
+                                 (empty_speed / self.truck.empty_speed[truck_id])
 
         # 出入场时间
         loading_task_time = self.excavator.get_loading_task_time()
