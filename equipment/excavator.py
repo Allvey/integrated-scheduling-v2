@@ -42,6 +42,10 @@ class ExcavatorInfo(WalkManage):
         self.exit_time = np.zeros(self.dynamic_excavator_num)
         # 挖机对应物料类型
         self.excavator_material = {}
+        # 挖机设备优先级
+        self.excavator_priority_coefficient = np.ones(dynamic_excavator_num)
+        # 挖机物料优先级
+        self.excavator_material_priority = np.ones(dynamic_excavator_num)
 
         # 初始化读取映射及路网
         self.period_map_para_load()
@@ -49,22 +53,6 @@ class ExcavatorInfo(WalkManage):
 
         # 参数初始化
         self.para_period_update()
-
-    # def period_map_para_load(self):
-    #     # 关系映射
-    #     self.excavator_uuid_to_index_dict = device_map.excavator_uuid_to_index_dict
-    #     self.dump_uuid_to_index_dict = device_map.dump_uuid_to_index_dict
-    #     self.excavator_index_to_uuid_dict = device_map.excavator_index_to_uuid_dict
-    #     self.dump_index_to_uuid_dict = device_map.dump_index_to_uuid_dict
-    #
-    #     self.dump_uuid_to_unload_area_uuid_dict = device_map.dump_uuid_to_unload_area_uuid_dict
-    #     self.excavator_uuid_to_load_area_uuid_dict = device_map.excavator_uuid_to_load_area_uuid_dict
-    #     self.excavator_index_to_load_area_index_dict = device_map.excavator_index_to_load_area_index_dict
-    #     self.dump_index_to_unload_area_index_dict = device_map.dump_index_to_unload_area_index_dict
-    #
-    # def period_walk_para_load(self):
-    #     self.truck_uuid_to_index_dict = device_map.truck_uuid_to_index_dict
-    #     self.truck_index_to_uuid_dict = device_map.truck_index_to_uuid_dict
 
     def get_loading_time(self):
         return self.loading_time
@@ -183,6 +171,26 @@ class ExcavatorInfo(WalkManage):
             excavator_material_id = session_postgre.query(DiggingWorkArea).filter_by(Id=load_area_id).first().Material
             self.excavator_material[excavator_id] = excavator_material_id
 
+    def update_excavator_priority(self):
+        for excavator_id in dynamic_excavator_set:
+            item = session_mysql.query(Equipment).filter_by(id=excavator_id).first()
+            self.excavator_priority_coefficient[self.excavator_uuid_to_index_dict[excavator_id]] = item.priority + 1
+
+            # 物料优先级控制
+            rule = 1
+            rule7 = session_mysql.query(DispatchRule).filter_by(id=7).first()
+            material_priority_use = rule7.disabled
+            if material_priority_use == 0:
+                rule = rule7.rule_weight
+
+            if rule == 0:
+                if session_mysql.query(Material).filter_by(id=self.excavator_material[excavator_id]).first().name == '土':
+                    self.excavator_material_priority[self.excavator_uuid_to_index_dict[excavator_id]] = 5
+            elif rule == 2:
+                if session_mysql.query(Material).filter_by(id=self.excavator_material[excavator_id]).first().name == '煤':
+                    self.excavator_material_priority[self.excavator_uuid_to_index_dict[excavator_id]] = 5
+
+
     def para_period_update(self):
 
         # print("Excavator update!")
@@ -210,13 +218,12 @@ class ExcavatorInfo(WalkManage):
         # 计算实时装载量
         self.update_actual_load_throughout()
 
+        # 更新挖机物料
+        self.update_excavator_material()
+
+        # 更新挖机优先级
+
         # 挖机目标产量
         self.excavator_target_mass = np.full(
             self.dynamic_excavator_num, excavator_target_mass
         )
-
-        # # 同步挖机虚拟装载量
-        # self.sim_excavator_real_mass = copy.deepcopy(self.cur_excavator_real_mass)
-
-        # # 计算卸载设备预估产量
-        # self.update_pre_load_throughout()

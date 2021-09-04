@@ -142,7 +142,6 @@ class WalkTime(Base):
     #     self.walktime_load = walktime_load
     #     self.walktime_unload = walktime_unload
 
-
 # class Truck(Base):
 #     __tablename__ = 'truck_status'
 #
@@ -410,3 +409,25 @@ class DiggingWorkArea(Base):
         self.Id = Id
         self.Material = Material
 
+
+class DispatchRule(Base):
+    __tablename__ = 'sys_dispatch_rule'
+
+    id = Column(Integer, primary_key=True)
+    rule_weight = Column(Float)
+    disabled = Column(BOOLEAN)
+
+    def __init__(self, id, rule_weight, disabled):
+        self.id = id
+        self.rule_weight = rule_weight
+        self.disabled = disabled
+
+
+class Material(Base):
+    __tablename__ = 'resource_materials'
+    id = Column(VARCHAR(40), primary_key=True)
+    name = Column(VARCHAR(40))
+
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name

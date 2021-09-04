@@ -6,12 +6,10 @@
 # @File : path_plannner.py    
 # @Software: PyCharm
 
-import numpy
-from settings import *
-from static_data_process import *
-from settings import *
-from para_config import *
 from equipment.truck import TruckInfo
+from path_plan.priority_control import weighted_walk_cost, available_walk
+from para_config import *
+from tables import *
 
 M = 1000000
 
@@ -51,13 +49,27 @@ class PathPlanner(WalkManage):
         to_unload_cost = 0
         # 装载道路总成本初始化
         to_load_cost = 0
+        # 道路权重
+        weighted_distance = weighted_walk_cost()
 
+        # 修正因子
+        weight = 10000
         # 阻塞成本权重
-        alpha = 10000
+        alpha = 1 * weight
         # 距离成本权重
         beta = 1
 
+        # 距离成本启用
+        rule1 = session_mysql.query(DispatchRule).filter_by(id=1).first()
+        if rule1.disabled == 0:
+            alpha = alpha * rule1.rule_weight
+
+        # 拥堵成本启用
+        rule2 = session_mysql.query(DispatchRule).filter_by(id=2).first()
+        if rule2.disabled == 0:
+            beta = beta * rule2.rule_weight
         try:
+
             # 备停区处理
             if is_park:
                 # 提取指定道路记录
@@ -84,7 +96,7 @@ class PathPlanner(WalkManage):
                 to_unload_cost = alpha * cost_to_unload_blockage + beta * path.to_unload_distance
                 to_load_cost = alpha * cost_to_load_blockage + beta * path.to_load_distance
         except Exception as es:
-            logger.error(f'道路{load_area_id-unload_area_id}行驶成本计算异常')
+            logger.error(f'道路{load_area_id + "-" +unload_area_id}行驶成本计算异常')
             logger.error(es)
 
         return to_load_cost, to_unload_cost
@@ -118,33 +130,48 @@ class PathPlanner(WalkManage):
 
         self.period_map_para_load()
 
-        try:
+        # try:
 
-            # 读取路网成本
-            for walk_time in session_postgre.query(WalkTime).all():
-                unload_area_index = unload_area_uuid_to_index_dict[str(walk_time.unload_area_id)]
-                load_area_index = load_area_uuid_to_index_dict[str(walk_time.load_area_id)]
-                self.cost_to_load_area[unload_area_index][load_area_index], \
-                self.cost_to_unload_area[unload_area_index][load_area_index] = \
-                    self.path_cost_generate(walk_time.load_area_id, walk_time.unload_area_id, False)
+        # 读取路网成本
+        for walk_time in session_postgre.query(WalkTime).all():
+            print(str(walk_time.load_area_id), str(walk_time.unload_area_id))
+            print(walk_time.load_area_name, walk_time.unload_area_name)
+            load_area_id, unload_area_id = str(walk_time.load_area_id), str(walk_time.unload_area_id)
+            unload_area_index = unload_area_uuid_to_index_dict[unload_area_id]
+            load_area_index = load_area_uuid_to_index_dict[load_area_id]
+            self.cost_to_load_area[unload_area_index][load_area_index], \
+            self.cost_to_unload_area[unload_area_index][load_area_index] = \
+                self.path_cost_generate(load_area_id, unload_area_id, False)
 
-            # 读取备停区路网成本
-            for walk_time_park in session_postgre.query(WalkTimePark).all():
-                park_area_index = park_uuid_to_index_dict[str(walk_time_park.park_area_id)]
-                load_area_index = load_area_uuid_to_index_dict[str(walk_time_park.load_area_id)]
-                _, self.cost_park_to_load_area[park_area_index][load_area_index] = \
-                    self.path_cost_generate(walk_time_park.load_area_id, walk_time_park.park_area_id, True)
-        except Exception as es:
-            logger.error('路网信息计成本计算异常')
-            logger.error(es)
+        # 读取备停区路网成本
+        for walk_time_park in session_postgre.query(WalkTimePark).all():
+            park_area_index = park_uuid_to_index_dict[str(walk_time_park.park_area_id)]
+            load_area_index = load_area_uuid_to_index_dict[str(walk_time_park.load_area_id)]
+            _, self.cost_park_to_load_area[park_area_index][load_area_index] = \
+                self.path_cost_generate(str(walk_time_park.load_area_id), str(walk_time_park.park_area_id), True)
+        # except Exception as es:
+        #     logger.error('路网信息计成本计算异常')
+        #     logger.error(es)
 
         cost_to_excavator = np.zeros_like(self.distance_to_excavator)
         cost_to_dump = np.zeros_like(self.distance_to_dump)
 
+        # 路网优先级
+        walk_weight = weighted_walk_cost()
+
+        walk_weight = walk_weight / walk_weight.min()
+
+        # 路网禁用关系
+        walk_available = available_walk()
+
+        print("path_weight", walk_weight)
+
         for i in range(dynamic_dump_num):
             for j in range(dynamic_excavator_num):
-                cost_to_excavator[i][j] = self.cost_to_load_area[self.dump_index_to_unload_area_index_dict[i]][self.excavator_index_to_load_area_index_dict[j]]
-                cost_to_dump[i][j] = self.cost_to_unload_area[self.dump_index_to_unload_area_index_dict[i]][self.excavator_index_to_load_area_index_dict[j]]
+                load_area_index = self.excavator_index_to_load_area_index_dict[j]
+                unload_area_index = self.dump_index_to_unload_area_index_dict[i]
+                cost_to_excavator[i][j] = self.cost_to_load_area[unload_area_index][load_area_index] / walk_weight[i][j]
+                cost_to_dump[i][j] = self.cost_to_unload_area[unload_area_index][load_area_index] / walk_weight[i][j] * walk_available[i][j]
 
         logger.info("真实路网距离-驶往挖机:")
         logger.info(self.distance_to_excavator)
@@ -157,6 +184,8 @@ class PathPlanner(WalkManage):
 
         logger.info("阻塞路网距离-驶往卸点:")
         logger.info(cost_to_dump)
+
+        return cost_to_excavator, cost_to_dump, walk_weight, walk_available
 
 
 class LaneInfo:

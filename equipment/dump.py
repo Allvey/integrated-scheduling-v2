@@ -42,6 +42,8 @@ class DumpInfo(WalkManage):
         self.exit_time = np.zeros(self.dynamic_dump_num)
         # 卸载点物料类型
         self.dump_material = {}
+        # 卸点优先级
+        self.dump_priority_coefficient = np.ones(self.dynamic_dump_num)
 
         # 初始化读取映射及路网
         self.period_map_para_load()
@@ -64,6 +66,17 @@ class DumpInfo(WalkManage):
 
     def get_dynamic_dump_set(self):
         return self.dynamic_dump_set
+
+    def get_unloading_task_time(self):
+        unloading_time = self.unloading_time
+
+        dump_entrance_time = self.entrance_time
+
+        dump_exit_time = self.exit_time
+
+        unloading_task_time = unloading_time + dump_entrance_time + dump_exit_time
+
+        return unloading_task_time
 
     # 更新卸载设备卸载时间
     def update_dump_unloadtime(self):
@@ -121,18 +134,6 @@ class DumpInfo(WalkManage):
                 self.entrance_time[self.dump_uuid_to_index_dict[dump_id]] = 0.50
                 self.exit_time[self.dump_uuid_to_index_dict[dump_id]] = 0.50
 
-    # 读取卸载任务时间
-    def get_unloading_task_time(self):
-        unloading_time = self.unloading_time
-
-        dump_entrance_time = self.entrance_time
-
-        dump_exit_time = self.exit_time
-
-        unloading_task_time = unloading_time + dump_entrance_time + dump_exit_time
-
-        return unloading_task_time
-
     # 更新卸载设备实际卸载量
     def update_actual_unload_thoughout(self):
         self.cur_dump_real_mass = np.zeros(self.dynamic_dump_num)
@@ -156,7 +157,12 @@ class DumpInfo(WalkManage):
         for dump_id in dynamic_dump_set:
             unload_area_id = session_mysql.query(Dispatch).filter_by(dump_id=dump_id).first().unload_area_id
             dump_material_id = session_postgre.query(DumpArea).filter_by(Id=unload_area_id).first().Material
-            self.dump_material[dump_id] = dump_material_id
+            self.dump_material[dump_id] = dump_material_id\
+
+    def update_dump_priority(self):
+        for dump_id in dynamic_dump_set:
+            item = session_mysql.query(Equipment).filter_by(id=dump_id).first()
+            self.dump_priority_coefficient[self.dump_uuid_to_index_dict[dump_id]] += item.priority
 
     def para_period_update(self):
 
@@ -169,11 +175,6 @@ class DumpInfo(WalkManage):
 
         self.period_walk_para_load()
 
-        # # 初始化卸载设备可用时间
-        # self.cur_dump_ava_time = np.full(self.dynamic_dump_num,
-        #                                    (datetime.now() - self.start_time) / timedelta(hours=0, minutes=1,
-        #                                                                                   seconds=0))
-
         # 用于动态调度的卸载设备
         self.dynamic_dump_set = set(update_autodisp_dump())
 
@@ -182,14 +183,17 @@ class DumpInfo(WalkManage):
         # 计算平均卸载时间
         self.update_dump_unloadtime()
 
+        # 计算平均进出场时间
+        self.update_dump_entrance_exit_time()
+
         # 计算实时卸载量
         self.update_actual_unload_thoughout()
 
+        # 更新卸点物料
+        self.update_dump_material()
+
+        # 更新设备优先级
+        self.update_dump_priority()
+
         # 卸载目标产量
         self.dump_target_mass = np.full(self.dynamic_dump_num, dump_target_mass)
-
-        # # 同步虚拟卸载量
-        # self.sim_dump_real_mass = copy.deepcopy(self.cur_dump_real_mass)
-
-        # # 计算卸载设备预估产量
-        # self.update_pre_unload_throughout()

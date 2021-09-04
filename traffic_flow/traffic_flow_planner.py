@@ -19,13 +19,13 @@ from traffic_flow.traffic_flow_info import *
 
 
 # 解决线性规划问题，生成每条道路的流量
-def transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator,
+def transportation_problem_slove(coefficient_goto_dump, coefficient_goto_excavator, w_ij, s_ij, b_excavator,
                                  b_dump, grade_loading_array,
                                  max_unload_weigh_alg_flag, truck_total_num,
                                  walk_time_to_excavator, walk_time_to_dump, min_throughout,
                                  grade_lower_array=None, grade_upper_array=None):
-    row = len(coefficient)  # 代表挖机的个数,第i行代表第i台挖机
-    col = len(coefficient[0])  # 代表卸载设备的个数,第j行代表第j个卸载设备
+    row = len(coefficient_goto_dump)  # 代表挖机的个数,第i行代表第i台挖机
+    col = len(coefficient_goto_dump[0])  # 代表卸载设备的个数,第j行代表第j个卸载设备
 
     # prob = pulp.LpProblem('Transportation Problem', sense=pulp.LpMaximize)
     # 卸载道路的流量,单位是吨/小时,i代表起点为第i个挖机,j代表终点为第j个卸载设备
@@ -39,7 +39,7 @@ def transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator,
     if max_unload_weigh_alg_flag == True:
         prob = pulp.LpProblem('Transportation Problem', sense=pulp.LpMaximize)
         # 得到目标函数，目标函数是使得系统的运输量最大
-        prob += pulp.lpDot(flatten(var_x), coefficient.flatten())
+        prob += (pulp.lpDot(flatten(var_y), coefficient_goto_excavator.flatten()))
     else:
         prob = pulp.LpProblem('Transportation Problem', sense=pulp.LpMinimize)
         goto_excavator_cost = var_x * walk_time_to_excavator
@@ -53,6 +53,7 @@ def transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator,
 
     logger.info("road_factor")
     logger.info(w_ij)
+    logger.info(s_ij)
 
     # 矿卡总数约束,在每条道路上的车辆总数要小于矿卡总个数
     # 通过矩阵按元素相乘得到每条卸载道路上的车辆个数
@@ -61,7 +62,7 @@ def transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator,
     load_truck_totla_num_array = s_ij * var_y
     # 装载的矿卡数和卸载的矿卡数需要小于矿卡总数
     prob += (pulp.lpSum(unload_truck_total_num_array) +
-             pulp.lpSum(load_truck_totla_num_array) <= 2)
+             pulp.lpSum(load_truck_totla_num_array) <= truck_total_num)
 
     # 最大工作强度约束
     # 约束每个挖机的工作强度
@@ -153,7 +154,8 @@ def traffic_flow_plan():
     else:
         logger.info(f'最小成本调度模式')
 
-    coefficient = traffic_programme_para.priority_coefficient
+    coefficient_goto_dump = traffic_programme_para.priority_coefficient_goto_dump
+    coefficient_goto_excavator = traffic_programme_para.priority_coefficient_goto_excavator
     w_ij = traffic_programme_para.goto_dump_factor
     s_ij = traffic_programme_para.goto_excavator_factor
     b_excavator = traffic_programme_para.excavator_strength
@@ -166,7 +168,9 @@ def traffic_flow_plan():
     walk_time_to_dump = traffic_programme_para.walk_time_to_dump
     truck_total_num = traffic_programme_para.truck_total_num
 
-    res = transportation_problem_slove(coefficient, w_ij, s_ij, b_excavator, b_dump,
+    print(w_ij, s_ij, b_excavator, b_dump)
+
+    res = transportation_problem_slove(coefficient_goto_dump, coefficient_goto_excavator, w_ij, s_ij, b_excavator, b_dump,
                                        grade_loading_array, max_unload_weigh_alg_flag, truck_total_num,
                                        walk_time_to_excavator, walk_time_to_dump, min_throughout,
                                        grade_upper_dump_array, grade_lower_dump_array)
@@ -180,8 +184,12 @@ def traffic_flow_plan():
 
     print('各变量的取值为：')
     logger.info('各变量取值:')
+    print(dynamic_dump_set)
+    print(dynamic_excavator_set)
     print(np.array(res['var_x']).round(3))
     logger.info(f'重运车流:{res["var_x"]} 单位: 吨/时')
+    print(dynamic_excavator_set)
+    print(dynamic_dump_set)
     print(np.array(res['var_y']).round(3))
     logger.info(f'空运车流:{res["var_y"]} 单位: 吨/时')
 
@@ -196,7 +204,7 @@ def traffic_flow_plan():
 
     return res["var_x"], res["var_y"]
 
-# traffic_flow_plan()
+traffic_flow_plan()
 
 # end = time.time()
 # print("used {:.5}s".format(end-start))
