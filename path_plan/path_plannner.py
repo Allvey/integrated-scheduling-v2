@@ -134,8 +134,8 @@ class PathPlanner(WalkManage):
 
         # 读取路网成本
         for walk_time in session_postgre.query(WalkTime).all():
-            print(str(walk_time.load_area_id), str(walk_time.unload_area_id))
-            print(walk_time.load_area_name, walk_time.unload_area_name)
+            # print(str(walk_time.load_area_id),str(walk_time.unload_area_id))
+            # print(walk_time.load_area_name, walk_time.unload_area_name)
             load_area_id, unload_area_id = str(walk_time.load_area_id), str(walk_time.unload_area_id)
             unload_area_index = unload_area_uuid_to_index_dict[unload_area_id]
             load_area_index = load_area_uuid_to_index_dict[load_area_id]
@@ -163,8 +163,7 @@ class PathPlanner(WalkManage):
 
         # 路网禁用关系
         walk_available = available_walk()
-
-        print("path_weight", walk_weight)
+        logger.info("walk_weight", walk_weight)
 
         for i in range(dynamic_dump_num):
             for j in range(dynamic_excavator_num):
@@ -179,10 +178,10 @@ class PathPlanner(WalkManage):
         logger.info("真实路网距离-驶往卸点:")
         logger.info(self.distance_to_dump)
 
-        logger.info("阻塞路网距离-驶往挖机:")
+        logger.info("加权-阻塞路网距离-驶往挖机:")
         logger.info(cost_to_excavator)
 
-        logger.info("阻塞路网距离-驶往卸点:")
+        logger.info("加权-阻塞路网距离-驶往卸点:")
         logger.info(cost_to_dump)
 
         return cost_to_excavator, cost_to_dump, walk_weight, walk_available

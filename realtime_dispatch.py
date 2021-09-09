@@ -686,12 +686,10 @@ class Dispatcher(WalkManage):
                         break
             else:
                 if rule3 and rule4:
-                    print("here233")
                     transport_value = (cost_to_excavator / walk_weight * walk_available)[:, int(trip[1])]
                     logger.info("不含车流规划：")
                     logger.info(transport_value)
                 else:
-                    print("here122")
                     transport_value = \
                         (self.actual_goto_dump_traffic_flow[int(trip[1]), :] + 0.001) \
                         / (self.opt_goto_dump_traffic_flow[int(trip[1]), :] + 0.001)
@@ -780,10 +778,8 @@ class Dispatcher(WalkManage):
                 ]
             else:
                 if rule3 and rule4:
-                    print("here233")
                     transport_value = (cost_to_excavator / walk_weight * walk_available)[int(trip[1]), :]
                 else:
-                    print("here122")
                     transport_value = \
                         (self.actual_goto_excavator_traffic_flow[trip[1], :] + 0.001) \
                         / (self.opt_goto_excavator_traffic_flow[trip[1], :] + 0.001)

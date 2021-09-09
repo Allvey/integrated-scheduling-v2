@@ -251,7 +251,6 @@ class TruckInfo(WalkManage):
                         self.excavator_uuid_to_index_dict[item.exactor_id],
                     ]
                     # if truck_uuid_to_name_dict[self.truck_index_to_uuid_dict[i]] in tmp_set:
-                    #     print("here")
                     #     self.cur_truck_reach_excavator[i] = last_unload_time + 10 * self.walk_time_to_load_area[start_area_index][
                     #         end_area_index]
                     # else:
@@ -337,6 +336,9 @@ class TruckInfo(WalkManage):
                 elif item.priority == 3:
                     self.truck_priority[truck_index] = 10
 
+        logger.info("矿卡优先级：")
+        logger.info(self.truck_priority)
+
     def update_truck_dump_area_bind(self):
         try:
             rule5 = session_mysql.query(DispatchRule).filter_by(id=5).first()
@@ -351,6 +353,10 @@ class TruckInfo(WalkManage):
         except Exception as es:
             logger.error("矿卡-卸载区域绑定关系读取异常")
             logger.error(es)
+
+        logger.info("矿卡-卸载点绑定关系")
+        logger.info(self.truck_dump_bind)
+
 
     def update_truck_excavator_bind(self):
         try:
@@ -367,6 +373,9 @@ class TruckInfo(WalkManage):
         except Exception as es:
             logger.error("矿卡-挖机绑定关系读取异常")
             logger.error(es)
+
+        logger.info("矿卡-挖机绑定关系")
+        logger.info(self.truck_excavator_bind)
 
     def update_truck_excavator_exclude(self):
 
@@ -398,6 +407,10 @@ class TruckInfo(WalkManage):
             logger.error("矿卡-挖机禁止关系读取异常")
             logger.error(es)
 
+        logger.info("矿卡-挖机禁止关系")
+        logger.info(self.truck_excavator_exclude)
+        logger.info(self.excavator_exclude_modify)
+
     def update_truck_dump_exclude(self):
         pass
 
@@ -424,10 +437,8 @@ class TruckInfo(WalkManage):
 
             if truck_id in self.truck_excavator_bind:
                 excavator_id = self.truck_excavator_bind[truck_id]
-                # print(self.excavator.excavator_material)
                 excavator_material_id = self.excavator.excavator_material[excavator_id]
                 self.truck_material_bind[truck_id] = excavator_material_id
-
 
         for truck_id in dynamic_truck_set:
 
@@ -448,6 +459,9 @@ class TruckInfo(WalkManage):
                     dump_index = self.dump.dump_uuid_to_index_dict[dump_id]
                     if dump_material_id != material:
                         self.dump_material_bind_modify[truck_index][dump_index] = 1000000
+
+        logger.info("矿卡-物料类型")
+        logger.info(self.truck_material_bind)
 
     def update_truck_spec(self):
         for truck_id in dynamic_truck_set:

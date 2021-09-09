@@ -668,7 +668,6 @@ class Dispatcher:
                 self.truck_current_trip[i] = [self.dump_uuid_to_index_dict[item.dump_id],
                                               self.excavator_uuid_to_index_dict[item.exactor_id]]
                 # if truck_uuid_to_name_dict[self.truck_index_to_uuid_dict[i]] in tmp_set:
-                #     print("here")
                 #     self.cur_truck_reach_shovel[i] = last_unload_time + 10 * self.com_time_area[start_area_index][
                 #         end_area_index]
                 # else:

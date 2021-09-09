@@ -194,7 +194,6 @@ class Traffic_para(WalkManage):
     #
     #         if rule == 0:
     #             if self.excavator.excavator_material[excavator_id] == 'c8092d59-7597-44d7-a731-5a568b46060e':
-    #                 print("here111")
     #                 self.excavator_material_priority[self.excavator_uuid_to_index_dict[excavator_id]] = 5
     #         elif rule == 2:
     #             if self.excavator.excavator_material[excavator_id] == 'c481794b-6ced-45b9-a9c4-c4a388f44418':
@@ -339,7 +338,6 @@ def Traffic_para_init(num_of_load_area, num_of_unload_area, num_of_excavator, nu
 
             # # 设备优先级
             # if not device_priority_use:
-            #     print("here1")
             #     # 每条卸载道路的优先级,等于电铲的优先级乘以卸载点的优先级
             #     tra_para.priority_coefficient_goto_dump[i][j] = tra_para.excavator_priority_coefficient[i] \
             #                                                         * tra_para.dump_priority_coefficient[j]
@@ -349,7 +347,6 @@ def Traffic_para_init(num_of_load_area, num_of_unload_area, num_of_excavator, nu
             #                                                         * tra_para.dump_priority_coefficient[j]
             # # 物料优先级
             # if not material_priority_use:
-            #     print("here2")
             #     # # 每条卸载道路的优先级,等于电铲的优先级乘以卸载点的优先级
             #     # tra_para.priority_coefficient_goto_dump[i][j] += tra_para.excavator_material_priority[i] \
             #     #                                                     * tra_para.dump_material_priority[j]
@@ -367,7 +364,10 @@ def Traffic_para_init(num_of_load_area, num_of_unload_area, num_of_excavator, nu
             # tra_para.walk_time_to_dump[i][j] = \
             #     tra_para.walk_time_to_unload_area[load_area_index][unload_area_index]
 
-    print("cout", tra_para.priority_coefficient_goto_dump, tra_para.priority_coefficient_goto_excavator)
+    logger.info("priority_coefficient_goto_dump")
+    logger.info(tra_para.priority_coefficient_goto_dump)
+    logger.info("priority_coefficient_goto_excavator")
+    logger.info(tra_para.priority_coefficient_goto_excavator)
 
     # except Exception as es:
     #     logger.error(es)

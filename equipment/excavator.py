@@ -177,16 +177,16 @@ class ExcavatorInfo(WalkManage):
             self.excavator_priority_coefficient[self.excavator_uuid_to_index_dict[excavator_id]] = item.priority + 1
 
             # 物料优先级控制
-            rule = 1
+            rule = 2
             rule7 = session_mysql.query(DispatchRule).filter_by(id=7).first()
             material_priority_use = rule7.disabled
             if material_priority_use == 0:
                 rule = rule7.rule_weight
 
-            if rule == 0:
+            if rule == 3:
                 if session_mysql.query(Material).filter_by(id=self.excavator_material[excavator_id]).first().name == '土':
                     self.excavator_material_priority[self.excavator_uuid_to_index_dict[excavator_id]] = 5
-            elif rule == 2:
+            elif rule == 1:
                 if session_mysql.query(Material).filter_by(id=self.excavator_material[excavator_id]).first().name == '煤':
                     self.excavator_material_priority[self.excavator_uuid_to_index_dict[excavator_id]] = 5
 
