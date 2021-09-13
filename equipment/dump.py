@@ -6,30 +6,14 @@
 # @File : dump.py    
 # @Software: PyCharm
 
-from traffic_flow.traffic_flow_planner import *
-from static_data_process import *
 from para_config import *
 from settings import *
 
 # 卸载设备类
 class DumpInfo(WalkManage):
     def __init__(self):
-        # # 卸载设备集合
-        # self.dynamic_dump_set = set(update_autodisp_dump())
         # 卸载设备数量
         self.dynamic_dump_num = len(dynamic_dump_set)
-        # 目标产量
-        self.dump_target_mass = np.zeros(self.dynamic_dump_num)
-        # 实际真实产量
-        self.cur_dump_real_mass = np.zeros(self.dynamic_dump_num)
-        # # 预计产量（包含正在驶往目的地的矿卡载重）
-        # self.pre_dump_real_mass = copy.deepcopy(self.cur_dump_real_mass)
-        # # 模拟实际产量（防止调度修改真实产量）
-        # self.sim_dump_real_mass = np.zeros(self.dynamic_dump_num)
-        # # 真实设备可用时间
-        # self.cur_dump_ava_time = np.zeros(self.dynamic_dump_num)
-        # # 模拟各设备可用时间（防止调度修改真实产量）
-        # self.sim_dump_ava_time = np.zeros(self.dynamic_dump_num)
         # 用于动态调度的卸载设备集合
         self.dynamic_dump_set = []
         # 开始时间
@@ -57,12 +41,6 @@ class DumpInfo(WalkManage):
 
     def get_dump_num(self):
         return self.dynamic_dump_num
-
-    def get_dump_target_mass(self):
-        return self.dump_target_mass
-
-    def get_dump_actual_mass(self):
-        return self.cur_dump_real_mass
 
     def get_dynamic_dump_set(self):
         return self.dynamic_dump_set
@@ -132,37 +110,22 @@ class DumpInfo(WalkManage):
                 logger.error(f"卸载设备 {dump_id} 出入场时间信息缺失, 已设为默认值(1min)")
                 logger.error(es)
                 self.entrance_time[self.dump_uuid_to_index_dict[dump_id]] = 0.50
-                self.exit_time[self.dump_uuid_to_index_dict[dump_id]] = 0.50
-
-    # 更新卸载设备实际卸载量
-    def update_actual_unload_thoughout(self):
-        self.cur_dump_real_mass = np.zeros(self.dynamic_dump_num)
-        now = datetime.now().strftime("%Y-%m-%d")
-        for dump_id in self.dump_uuid_to_index_dict.keys():
-            for query in (
-                session_mysql.query(LoadInfo)
-                .join(Equipment, LoadInfo.dump_id == Equipment.equipment_id)
-                .filter(Equipment.id == dump_id, LoadInfo.time > now)
-                .order_by(LoadInfo.time.desc())
-                .all()
-            ):
-                # print("time:", query.time)
-                # print("load_weight:", )
-                self.cur_dump_real_mass[self.dump_uuid_to_index_dict[dump_id]] = (
-                    self.cur_dump_real_mass[self.dump_uuid_to_index_dict[dump_id]]
-                    + query.load_weight
-                )
+            self.exit_time[self.dump_uuid_to_index_dict[dump_id]] = 0.50
 
     def update_dump_material(self):
+        self.dump_material = {}
         for dump_id in dynamic_dump_set:
-            unload_area_id = session_mysql.query(Dispatch).filter_by(dump_id=dump_id).first().unload_area_id
+            unload_area_id = session_mysql.query(Dispatch).filter_by(dump_id=dump_id, isauto=1, isdeleted=0).first().unload_area_id
             dump_material_id = session_postgre.query(DumpArea).filter_by(Id=unload_area_id).first().Material
-            self.dump_material[dump_id] = dump_material_id\
+            self.dump_material[dump_id] = dump_material_id
 
     def update_dump_priority(self):
+        self.dump_priority_coefficient = np.ones(self.dynamic_dump_num)
         for dump_id in dynamic_dump_set:
-            item = session_mysql.query(Equipment).filter_by(id=dump_id).first()
-            self.dump_priority_coefficient[self.dump_uuid_to_index_dict[dump_id]] += item.priority
+            unload_area_index = self.dump_index_to_unload_area_index_dict[self.dump_uuid_to_index_dict[dump_id]]
+            unload_area_id = unload_area_index_to_uuid_dict[unload_area_index]
+            item = session_postgre.query(DumpArea).filter_by(Id=unload_area_id).first()
+            self.dump_priority_coefficient[self.dump_uuid_to_index_dict[dump_id]] += item.Priority
 
     def para_period_update(self):
 
@@ -185,9 +148,6 @@ class DumpInfo(WalkManage):
 
         # 计算平均进出场时间
         self.update_dump_entrance_exit_time()
-
-        # 计算实时卸载量
-        self.update_actual_unload_thoughout()
 
         # 更新卸点物料
         self.update_dump_material()

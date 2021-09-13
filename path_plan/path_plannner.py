@@ -13,7 +13,6 @@ from tables import *
 
 M = 1000000
 
-
 class PathPlanner(WalkManage):
     def __init__(self):
         # 路线行驶成本
@@ -53,21 +52,28 @@ class PathPlanner(WalkManage):
         weighted_distance = weighted_walk_cost()
 
         # 修正因子
-        weight = 10000
+        weight = 100
         # 阻塞成本权重
-        alpha = 1 * weight
+        alpha = 0
         # 距离成本权重
         beta = 1
+
+        session_mysql.commit()
 
         # 距离成本启用
         rule1 = session_mysql.query(DispatchRule).filter_by(id=1).first()
         if rule1.disabled == 0:
-            alpha = alpha * rule1.rule_weight
+            beta = rule1.rule_weight
 
         # 拥堵成本启用
         rule2 = session_mysql.query(DispatchRule).filter_by(id=2).first()
         if rule2.disabled == 0:
-            beta = beta * rule2.rule_weight
+            alpha = rule2.rule_weight
+
+        beta /= beta
+
+        alpha = alpha / beta * weight
+
         try:
 
             # 备停区处理
@@ -130,40 +136,39 @@ class PathPlanner(WalkManage):
 
         self.period_map_para_load()
 
-        # try:
+        try:
+            # 读取路网成本
+            for walk_time in session_postgre.query(WalkTime).all():
+                load_area_id, unload_area_id = str(walk_time.load_area_id), str(walk_time.unload_area_id)
+                unload_area_index = unload_area_uuid_to_index_dict[unload_area_id]
+                load_area_index = load_area_uuid_to_index_dict[load_area_id]
+                self.cost_to_load_area[unload_area_index][load_area_index], \
+                self.cost_to_unload_area[unload_area_index][load_area_index] = \
+                    self.path_cost_generate(load_area_id, unload_area_id, False)
 
-        # 读取路网成本
-        for walk_time in session_postgre.query(WalkTime).all():
-            # print(str(walk_time.load_area_id),str(walk_time.unload_area_id))
-            # print(walk_time.load_area_name, walk_time.unload_area_name)
-            load_area_id, unload_area_id = str(walk_time.load_area_id), str(walk_time.unload_area_id)
-            unload_area_index = unload_area_uuid_to_index_dict[unload_area_id]
-            load_area_index = load_area_uuid_to_index_dict[load_area_id]
-            self.cost_to_load_area[unload_area_index][load_area_index], \
-            self.cost_to_unload_area[unload_area_index][load_area_index] = \
-                self.path_cost_generate(load_area_id, unload_area_id, False)
-
-        # 读取备停区路网成本
-        for walk_time_park in session_postgre.query(WalkTimePark).all():
-            park_area_index = park_uuid_to_index_dict[str(walk_time_park.park_area_id)]
-            load_area_index = load_area_uuid_to_index_dict[str(walk_time_park.load_area_id)]
-            _, self.cost_park_to_load_area[park_area_index][load_area_index] = \
-                self.path_cost_generate(str(walk_time_park.load_area_id), str(walk_time_park.park_area_id), True)
-        # except Exception as es:
-        #     logger.error('路网信息计成本计算异常')
-        #     logger.error(es)
+            # 读取备停区路网成本
+            for walk_time_park in session_postgre.query(WalkTimePark).all():
+                park_area_index = park_uuid_to_index_dict[str(walk_time_park.park_area_id)]
+                load_area_index = load_area_uuid_to_index_dict[str(walk_time_park.load_area_id)]
+                self.cost_park_to_load_area[park_area_index][load_area_index], _ = \
+                    self.path_cost_generate(str(walk_time_park.load_area_id), str(walk_time_park.park_area_id), True)
+        except Exception as es:
+            logger.error('路网信息计成本计算异常')
+            logger.error(es)
 
         cost_to_excavator = np.zeros_like(self.distance_to_excavator)
         cost_to_dump = np.zeros_like(self.distance_to_dump)
+        cost_park_to_excavator = np.zeros_like(self.distance_park_to_excavator)
 
-        # 路网优先级
-        walk_weight = weighted_walk_cost()
-
-        walk_weight = walk_weight / walk_weight.min()
+        # 路网权重
+        walk_weight, park_walk_weight = weighted_walk_cost()
 
         # 路网禁用关系
         walk_available = available_walk()
-        logger.info("walk_weight", walk_weight)
+
+        print("path_weight", walk_weight)
+
+        print("walk_avail", walk_available)
 
         for i in range(dynamic_dump_num):
             for j in range(dynamic_excavator_num):
@@ -172,19 +177,29 @@ class PathPlanner(WalkManage):
                 cost_to_excavator[i][j] = self.cost_to_load_area[unload_area_index][load_area_index] / walk_weight[i][j]
                 cost_to_dump[i][j] = self.cost_to_unload_area[unload_area_index][load_area_index] / walk_weight[i][j] * walk_available[i][j]
 
+        for j in range(dynamic_excavator_num):
+            load_area_index = self.excavator_index_to_load_area_index_dict[j]
+            cost_park_to_excavator[0][j] = self.cost_park_to_load_area[0][load_area_index] / park_walk_weight[0][j]
+
         logger.info("真实路网距离-驶往挖机:")
         logger.info(self.distance_to_excavator)
 
         logger.info("真实路网距离-驶往卸点:")
         logger.info(self.distance_to_dump)
 
-        logger.info("加权-阻塞路网距离-驶往挖机:")
+        logger.info("真实备停区路网距离-驶往挖机:")
+        logger.info(self.distance_park_to_excavator)
+
+        logger.info("阻塞路网距离-驶往挖机:")
         logger.info(cost_to_excavator)
 
-        logger.info("加权-阻塞路网距离-驶往卸点:")
+        logger.info("阻塞路网距离-驶往卸点:")
         logger.info(cost_to_dump)
 
-        return cost_to_excavator, cost_to_dump, walk_weight, walk_available
+        logger.info("阻塞备停区路网距离-驶往挖机：")
+        logger.info(cost_park_to_excavator)
+
+        return cost_to_excavator, cost_to_dump, cost_park_to_excavator
 
 
 class LaneInfo:
@@ -232,17 +247,11 @@ class LaneInfo:
         # truck -> lane
         truck_locate_dict = self.update_truck_loacate()
 
-        # print("truck -> lane")
-        # print(truck_locate_dict)
-
         logger.info("矿卡位于路段:")
         logger.info(truck_locate_dict)
 
         # truck -> speed
         truck_speed_dict = self.update_truck_speed()
-
-        # print("truck -> speed")
-        # print(truck_speed_dict)
 
         logger.info("矿卡当前速度:")
         logger.info(truck_speed_dict)

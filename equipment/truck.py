@@ -6,8 +6,6 @@
 # @File : truck.py    
 # @Software: PyCharm
 
-from traffic_flow.traffic_flow_planner import *
-from static_data_process import *
 from para_config import *
 from settings import *
 from equipment.dump import DumpInfo
@@ -37,9 +35,6 @@ class TruckInfo(WalkManage):
         self.truck_current_task = {}
         # 调度开始时间
         self.start_time = datetime.now()
-        # # 卡车完成装载及卸载时间
-        # self.cur_truck_ava_time = np.zeros(self.dynamic_truck_num)
-        # self.sim_truck_ava_time = np.zeros(self.dynamic_truck_num)
         # 矿卡有效载重
         self.payload = np.zeros(self.dynamic_truck_num)
         # 矿卡时速
@@ -61,14 +56,14 @@ class TruckInfo(WalkManage):
         # 矿卡卸点排斥关系
         self.truck_dump_exclude = {}
         # 排斥关系modify
-        self.excavator_exclude_modify = np.zeros(self.dynamic_truck_num)
+        self.excavator_exclude_modify = np.full((dynamic_truck_num, dynamic_excavator_num), 0)
         # 矿卡优先级
         self.truck_priority = np.ones(self.dynamic_truck_num)
         # 矿卡绑定物料
         self.truck_material_bind = {}
         # 矿卡绑定物料modify
-        self.dump_material_bind_modify = np.zeros(self.dynamic_truck_num)
-        self.excavator_material_bind_modify = np.zeros(self.dynamic_truck_num)
+        self.dump_material_bind_modify = np.full((self.dynamic_truck_num, dynamic_excavator_num), 0)
+        self.excavator_material_bind_modify =np.zeros(self.dynamic_truck_num)
         # 引入对象
         self.dump = DumpInfo()
         self.excavator = ExcavatorInfo()
@@ -100,7 +95,7 @@ class TruckInfo(WalkManage):
         return self.relative_last_load_time
 
     def get_realative_last_unload_time(self):
-        return self.relative_unlast_load_time
+        return self.relative_last_unload_time
 
     def get_payload(self):
         return self.payload
@@ -250,10 +245,6 @@ class TruckInfo(WalkManage):
                         self.dump_uuid_to_index_dict[item.dump_id],
                         self.excavator_uuid_to_index_dict[item.exactor_id],
                     ]
-                    # if truck_uuid_to_name_dict[self.truck_index_to_uuid_dict[i]] in tmp_set:
-                    #     self.cur_truck_reach_excavator[i] = last_unload_time + 10 * self.walk_time_to_load_area[start_area_index][
-                    #         end_area_index]
-                    # else:
                     self.cur_truck_reach_excavator[i] = (
                             last_unload_time
                             + walk_time_to_load_area[start_area_index][end_area_index]
@@ -336,9 +327,6 @@ class TruckInfo(WalkManage):
                 elif item.priority == 3:
                     self.truck_priority[truck_index] = 10
 
-        logger.info("矿卡优先级：")
-        logger.info(self.truck_priority)
-
     def update_truck_dump_area_bind(self):
         try:
             rule5 = session_mysql.query(DispatchRule).filter_by(id=5).first()
@@ -353,10 +341,6 @@ class TruckInfo(WalkManage):
         except Exception as es:
             logger.error("矿卡-卸载区域绑定关系读取异常")
             logger.error(es)
-
-        logger.info("矿卡-卸载点绑定关系")
-        logger.info(self.truck_dump_bind)
-
 
     def update_truck_excavator_bind(self):
         try:
@@ -373,9 +357,6 @@ class TruckInfo(WalkManage):
         except Exception as es:
             logger.error("矿卡-挖机绑定关系读取异常")
             logger.error(es)
-
-        logger.info("矿卡-挖机绑定关系")
-        logger.info(self.truck_excavator_bind)
 
     def update_truck_excavator_exclude(self):
 
@@ -407,10 +388,6 @@ class TruckInfo(WalkManage):
             logger.error("矿卡-挖机禁止关系读取异常")
             logger.error(es)
 
-        logger.info("矿卡-挖机禁止关系")
-        logger.info(self.truck_excavator_exclude)
-        logger.info(self.excavator_exclude_modify)
-
     def update_truck_dump_exclude(self):
         pass
 
@@ -437,8 +414,10 @@ class TruckInfo(WalkManage):
 
             if truck_id in self.truck_excavator_bind:
                 excavator_id = self.truck_excavator_bind[truck_id]
+                # print(self.excavator.excavator_material)
                 excavator_material_id = self.excavator.excavator_material[excavator_id]
                 self.truck_material_bind[truck_id] = excavator_material_id
+
 
         for truck_id in dynamic_truck_set:
 
@@ -459,9 +438,6 @@ class TruckInfo(WalkManage):
                     dump_index = self.dump.dump_uuid_to_index_dict[dump_id]
                     if dump_material_id != material:
                         self.dump_material_bind_modify[truck_index][dump_index] = 1000000
-
-        logger.info("矿卡-物料类型")
-        logger.info(self.truck_material_bind)
 
     def update_truck_spec(self):
         for truck_id in dynamic_truck_set:
@@ -484,8 +460,6 @@ class TruckInfo(WalkManage):
                 filter(Equipment.id == truck_id).first().max_speed
 
     def para_period_update(self):
-
-        # print("Para truck update!")
 
         # 设备优先级启用
         rule6 = session_mysql.query(DispatchRule).filter_by(id=6).first().disabled
@@ -546,53 +520,3 @@ class TruckInfo(WalkManage):
 
         # 矿卡速度更新
         self.update_truck_speed()
-
-    # def period_update(self):
-    #
-    #     print("Truck update!")
-    #
-    #     # # 更新行走队形
-    #     # self.walker.update_walk_time()
-    #
-    #     # 装载周期参数
-    #     self.period_map_para_load()
-    #
-    #     self.period_walk_para_load()
-    #
-    #     # 更新全部矿卡设备集合
-    #     truck_set = set(update_total_truck())
-    #
-    #     # 更新固定派车矿卡集合
-    #     fixed_truck_set = set(update_fixdisp_truck())
-    #
-    #     # 更新动态派车矿卡集合
-    #     self.dynamic_truck_set = truck_set.difference(fixed_truck_set)
-    #
-    #     # 更新矿卡数量
-    #     self.dynamic_truck_num = len(self.dynamic_truck_set)
-    #
-    #     # 更新卡车当前任务
-    #     self.update_truck_current_task()
-    #
-    #     # 更新有效载重
-    #     self.update_truck_payload()
-    #
-    #     # 更新卡车最后一次装载/卸载时间
-    #     self.update_truck_last_leave_time()
-    #
-    #     # 更新卡车当前行程
-    #     self.update_truck_trip()
-    #
-    #     # 更新绑定关系
-    #     self.update_truck_dump_area_bind()
-    #
-    #     self.update_truck_excavator_bind()
-    #
-    #     # 更新禁止关系
-    #     self.update_truck_excavator_exclude()
-    #
-    #     # 更新矿卡调度优先级
-    #     self.update_truck_priority()
-    #
-    #     # 更新矿卡物料类型
-    #     self.update_truck_material()

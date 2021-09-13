@@ -39,7 +39,7 @@ def transportation_problem_slove(coefficient_goto_dump, coefficient_goto_excavat
     if max_unload_weigh_alg_flag == True:
         prob = pulp.LpProblem('Transportation Problem', sense=pulp.LpMaximize)
         # 得到目标函数，目标函数是使得系统的运输量最大
-        prob += (pulp.lpDot(flatten(var_y), coefficient_goto_excavator.flatten()))
+        prob += (pulp.lpDot(flatten(var_x), coefficient_goto_dump.flatten()))
     else:
         prob = pulp.LpProblem('Transportation Problem', sense=pulp.LpMinimize)
         goto_excavator_cost = var_x * walk_time_to_excavator
@@ -168,7 +168,7 @@ def traffic_flow_plan():
     walk_time_to_dump = traffic_programme_para.walk_time_to_dump
     truck_total_num = traffic_programme_para.truck_total_num
 
-    # print(w_ij, s_ij, b_excavator, b_dump)
+    print(w_ij, s_ij, b_excavator, b_dump)
 
     res = transportation_problem_slove(coefficient_goto_dump, coefficient_goto_excavator, w_ij, s_ij, b_excavator, b_dump,
                                        grade_loading_array, max_unload_weigh_alg_flag, truck_total_num,
@@ -184,16 +184,12 @@ def traffic_flow_plan():
 
     print('各变量的取值为：')
     logger.info('各变量取值:')
-    logger.info(dynamic_excavator_set)
-    logger.info(dynamic_dump_set)
-    print(dynamic_excavator_set)
     print(dynamic_dump_set)
+    print(dynamic_excavator_set)
     print(np.array(res['var_x']).round(3))
     logger.info(f'重运车流:{res["var_x"]} 单位: 吨/时')
-    logger.info(dynamic_dump_set)
-    logger.info(dynamic_excavator_set)
-    print(dynamic_dump_set)
     print(dynamic_excavator_set)
+    print(dynamic_dump_set)
     print(np.array(res['var_y']).round(3))
     logger.info(f'空运车流:{res["var_y"]} 单位: 吨/时')
 

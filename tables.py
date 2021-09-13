@@ -390,13 +390,15 @@ class DumpArea(Base):
     UnloadAbililty = Column(Float)
     Disabled = Column(Integer)
     Material = Column(VARCHAR(36))
+    Priority = Column(Integer)
 
-    def __init__(self, Id, BindList, UnloadAbililty, Disabled, Material):
+    def __init__(self, Id, BindList, UnloadAbililty, Disabled, Material, Priority):
         self.Id = Id
         self.BindList = BindList
         self.UnloadAbililty = UnloadAbililty
         self.Disabled = Disabled
         self.Material = Material
+        self.Priority = Priority
 
 
 class DiggingWorkArea(Base):
@@ -424,7 +426,7 @@ class DispatchRule(Base):
 
 
 class Material(Base):
-    __tablename__ = 'resource_materials'
+    __tablename__ = 'resource_metarials'
     id = Column(VARCHAR(40), primary_key=True)
     name = Column(VARCHAR(40))
 
