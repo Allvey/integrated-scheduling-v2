@@ -16838,3 +16838,245 @@ WHERE sys_dispatch_rule.id = %(id_1)s
  LIMIT %(param_1)s]
 [parameters: [{}]]
 (Background on this error at: http://sqlalche.me/e/14/e3q8)
+2021-09-13 15:04:07,668 - settings: INFO 可用于动态派车的矿卡：
+2021-09-13 15:04:07,669 - settings: INFO {'e2690b20-37b4-4d2d-b490-aa30989798d6', '5221a7f5-0a90-482f-b2bd-c902110a792d', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', '31c1c93a-b037-4ab6-88b6-eef6cd23804b', 'aae4642f-f74b-4514-971e-c800a4182152', '08bdc980-b0b0-4c24-b26f-3393299ba2c7', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', '773ec2e8-ca5a-4776-96bf-4bafdc737e20'}
+2021-09-13 15:04:07,854 - settings: INFO Dump update!
+2021-09-13 15:04:07,912 - settings: ERROR 卸载设备 9274d2c7-0174-44e6-8423-3f986e2065fc 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:07,912 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:07,985 - settings: ERROR 卸载设备 839abed8-f66e-4c62-acfb-56d641c98515 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:07,985 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:08,070 - settings: INFO Excavator update!
+2021-09-13 15:04:08,307 - settings: INFO Para truck update!
+2021-09-13 15:04:08,996 - settings: INFO Excavator update!
+2021-09-13 15:04:09,376 - settings: INFO Dump update!
+2021-09-13 15:04:09,649 - settings: ERROR 卸载设备 9274d2c7-0174-44e6-8423-3f986e2065fc 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:09,649 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:09,664 - settings: ERROR 卸载设备 839abed8-f66e-4c62-acfb-56d641c98515 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:09,664 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:09,922 - settings: INFO Dump update!
+2021-09-13 15:04:10,241 - settings: ERROR 卸载设备 9274d2c7-0174-44e6-8423-3f986e2065fc 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:10,241 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:10,280 - settings: ERROR 卸载设备 839abed8-f66e-4c62-acfb-56d641c98515 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:10,280 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:10,349 - settings: INFO Excavator update!
+2021-09-13 15:04:10,799 - settings: INFO Para truck update!
+2021-09-13 15:04:11,820 - settings: INFO Dump update!
+2021-09-13 15:04:11,887 - settings: ERROR 卸载设备 9274d2c7-0174-44e6-8423-3f986e2065fc 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:11,888 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:11,916 - settings: ERROR 卸载设备 839abed8-f66e-4c62-acfb-56d641c98515 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:11,916 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:12,082 - settings: INFO Excavator update!
+2021-09-13 15:04:12,510 - settings: INFO Para truck update!
+2021-09-13 15:04:14,120 - settings: INFO 矿卡位于路段:
+2021-09-13 15:04:14,120 - settings: INFO {}
+2021-09-13 15:04:14,295 - settings: INFO 矿卡当前速度:
+2021-09-13 15:04:14,296 - settings: INFO {'f68909a0-e644-415f-a140-15c19f162b8f': 0.0, 'aae4642f-f74b-4514-971e-c800a4182152': 0.0, '7266b283-6e13-4acf-9b65-0f31a1fe4e3d': 0.0, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': 0.0, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': 0.0, '5221a7f5-0a90-482f-b2bd-c902110a792d': 0.0, '773ec2e8-ca5a-4776-96bf-4bafdc737e20': 0.0, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': 0.0, 'e2690b20-37b4-4d2d-b490-aa30989798d6': 0.0, '670259cf-0ff2-4856-943c-94d4c25ca533': 10.0, '08bdc980-b0b0-4c24-b26f-3393299ba2c7': 0.0, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': 0.0, 'fa028808-a3f0-47dd-9929-f23e2cac2bf8': 0.0, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': 0.0, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': 0.0, 'fb1d5516-9a42-4f6e-84fe-9955723badce': 0.0}
+2021-09-13 15:04:14,475 - settings: INFO 存在矿卡的路段:
+2021-09-13 15:04:14,475 - settings: INFO []
+2021-09-13 15:04:28,763 - settings: INFO 真实路网距离-驶往挖机:
+2021-09-13 15:04:28,763 - settings: INFO [[2747 1308]
+ [3636 2197]]
+2021-09-13 15:04:28,764 - settings: INFO 真实路网距离-驶往卸点:
+2021-09-13 15:04:28,764 - settings: INFO [[2810 1303]
+ [3702 2195]]
+2021-09-13 15:04:28,764 - settings: INFO 真实备停区路网距离-驶往挖机:
+2021-09-13 15:04:28,764 - settings: INFO [[2594 1155]]
+2021-09-13 15:04:28,765 - settings: INFO 阻塞路网距离-驶往挖机:
+2021-09-13 15:04:28,765 - settings: INFO [[2747 1308]
+ [3636 2197]]
+2021-09-13 15:04:28,765 - settings: INFO 阻塞路网距离-驶往卸点:
+2021-09-13 15:04:28,765 - settings: INFO [[2810 1303]
+ [3702 2195]]
+2021-09-13 15:04:28,766 - settings: INFO 阻塞备停区路网距离-驶往挖机：
+2021-09-13 15:04:28,766 - settings: INFO [[2594 1155]]
+2021-09-13 15:04:28,766 - settings: INFO Excavator update!
+2021-09-13 15:04:28,976 - settings: INFO Dump update!
+2021-09-13 15:04:29,057 - settings: ERROR 卸载设备 9274d2c7-0174-44e6-8423-3f986e2065fc 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:29,057 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:29,069 - settings: ERROR 卸载设备 839abed8-f66e-4c62-acfb-56d641c98515 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:29,069 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:29,778 - settings: INFO 最大产量调度模式
+2021-09-13 15:04:29,780 - settings: INFO road_factor
+2021-09-13 15:04:29,780 - settings: INFO [[0.00063864 0.00084136]
+ [0.00029614 0.00049886]]
+2021-09-13 15:04:29,781 - settings: INFO [[0.0005494 0.0002616]
+ [0.0007272 0.0004394]]
+2021-09-13 15:04:29,822 - settings: INFO 最大产量:8322.3505
+2021-09-13 15:04:29,822 - settings: INFO 各变量取值:
+2021-09-13 15:04:29,822 - settings: INFO 重运车流:[[0.0, 3322.3505], [5000.0, 0.0]] 单位: 吨/时
+2021-09-13 15:04:29,823 - settings: INFO 空运车流:[[0.0, 5000.0], [3322.3505, 0.0]] 单位: 吨/时
+2021-09-13 15:04:29,823 - settings: INFO  
+2021-09-13 15:04:29,823 - settings: INFO 调度系统启动
+2021-09-13 15:04:29,823 - settings: INFO Dump update!
+2021-09-13 15:04:29,976 - settings: ERROR 卸载设备 9274d2c7-0174-44e6-8423-3f986e2065fc 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:29,977 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:29,992 - settings: ERROR 卸载设备 839abed8-f66e-4c62-acfb-56d641c98515 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:29,992 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:30,073 - settings: INFO Excavator update!
+2021-09-13 15:04:30,355 - settings: INFO Dump update!
+2021-09-13 15:04:30,453 - settings: ERROR 卸载设备 9274d2c7-0174-44e6-8423-3f986e2065fc 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:30,453 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:30,481 - settings: ERROR 卸载设备 839abed8-f66e-4c62-acfb-56d641c98515 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:30,481 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:30,525 - settings: INFO Excavator update!
+2021-09-13 15:04:30,846 - settings: INFO Para truck update!
+2021-09-13 15:04:31,620 - settings: INFO Dump update!
+2021-09-13 15:04:31,705 - settings: ERROR 卸载设备 9274d2c7-0174-44e6-8423-3f986e2065fc 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:31,705 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:31,722 - settings: ERROR 卸载设备 839abed8-f66e-4c62-acfb-56d641c98515 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:31,723 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:31,772 - settings: INFO Excavator update!
+2021-09-13 15:04:32,021 - settings: INFO Para truck update!
+2021-09-13 15:04:33,838 - settings: INFO 矿卡位于路段:
+2021-09-13 15:04:33,838 - settings: INFO {}
+2021-09-13 15:04:34,224 - settings: INFO 矿卡当前速度:
+2021-09-13 15:04:34,224 - settings: INFO {'f68909a0-e644-415f-a140-15c19f162b8f': 0.0, 'aae4642f-f74b-4514-971e-c800a4182152': 0.0, '7266b283-6e13-4acf-9b65-0f31a1fe4e3d': 0.0, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': 0.0, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': 0.0, '5221a7f5-0a90-482f-b2bd-c902110a792d': 0.0, '773ec2e8-ca5a-4776-96bf-4bafdc737e20': 0.0, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': 0.0, 'e2690b20-37b4-4d2d-b490-aa30989798d6': 0.0, '670259cf-0ff2-4856-943c-94d4c25ca533': 10.0, '08bdc980-b0b0-4c24-b26f-3393299ba2c7': 0.0, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': 0.0, 'fa028808-a3f0-47dd-9929-f23e2cac2bf8': 0.0, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': 0.0, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': 0.0, 'fb1d5516-9a42-4f6e-84fe-9955723badce': 0.0}
+2021-09-13 15:04:34,280 - settings: INFO 存在矿卡的路段:
+2021-09-13 15:04:34,280 - settings: INFO []
+2021-09-13 15:04:35,721 - settings: INFO papa_process!
+2021-09-13 15:04:35,937 - settings: INFO 可用于动态派车的矿卡：
+2021-09-13 15:04:35,937 - settings: INFO {'e2690b20-37b4-4d2d-b490-aa30989798d6', '5221a7f5-0a90-482f-b2bd-c902110a792d', '1b787c4a-210a-46ce-a32c-73cbc1cd5e39', '31c1c93a-b037-4ab6-88b6-eef6cd23804b', 'aae4642f-f74b-4514-971e-c800a4182152', '08bdc980-b0b0-4c24-b26f-3393299ba2c7', 'fa028808-a3f0-47dd-9929-f23e2cac2bf8', '773ec2e8-ca5a-4776-96bf-4bafdc737e20'}
+2021-09-13 15:04:36,036 - settings: INFO #####################################周期更新开始#####################################
+2021-09-13 15:04:36,037 - settings: INFO Dump update!
+2021-09-13 15:04:36,276 - settings: ERROR 卸载设备 9274d2c7-0174-44e6-8423-3f986e2065fc 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:36,277 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:36,300 - settings: ERROR 卸载设备 839abed8-f66e-4c62-acfb-56d641c98515 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:36,301 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:36,378 - settings: INFO Excavator update!
+2021-09-13 15:04:36,652 - settings: INFO Para truck update!
+2021-09-13 15:04:37,819 - settings: INFO 矿卡当前任务：
+2021-09-13 15:04:37,819 - settings: INFO {'aae4642f-f74b-4514-971e-c800a4182152': -2, '5221a7f5-0a90-482f-b2bd-c902110a792d': -2, '773ec2e8-ca5a-4776-96bf-4bafdc737e20': -2, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': -2, 'e2690b20-37b4-4d2d-b490-aa30989798d6': -2, '08bdc980-b0b0-4c24-b26f-3393299ba2c7': -2, 'fa028808-a3f0-47dd-9929-f23e2cac2bf8': -2, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': -2}
+2021-09-13 15:04:38,850 - settings: INFO 驶往卸点实际载重
+2021-09-13 15:04:38,850 - settings: INFO [[0. 0.]
+ [0. 0.]]
+2021-09-13 15:04:38,850 - settings: INFO 卸点路段行驶时间(h)
+2021-09-13 15:04:38,850 - settings: INFO [[0.1124  0.05212]
+ [0.14808 0.0878 ]]
+2021-09-13 15:04:38,851 - settings: INFO 驶往卸点实际车流
+2021-09-13 15:04:38,851 - settings: INFO [[0. 0.]
+ [0. 0.]]
+2021-09-13 15:04:38,851 - settings: INFO 驶往挖机实际载重
+2021-09-13 15:04:38,851 - settings: INFO [[0. 0.]
+ [0. 0.]]
+2021-09-13 15:04:38,852 - settings: INFO 挖机路段行驶时间(h)
+2021-09-13 15:04:38,852 - settings: INFO [[0.12486364 0.05945455]
+ [0.16527273 0.09986364]]
+2021-09-13 15:04:38,852 - settings: INFO 驶往挖机实际车流
+2021-09-13 15:04:38,852 - settings: INFO [[0. 0.]
+ [0. 0.]]
+2021-09-13 15:04:39,025 - settings: INFO Dump update!
+2021-09-13 15:04:39,170 - settings: ERROR 卸载设备 9274d2c7-0174-44e6-8423-3f986e2065fc 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:39,170 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:39,300 - settings: ERROR 卸载设备 839abed8-f66e-4c62-acfb-56d641c98515 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:39,302 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:39,528 - settings: INFO Excavator update!
+2021-09-13 15:04:39,787 - settings: INFO Para truck update!
+2021-09-13 15:04:40,612 - settings: INFO Dump update!
+2021-09-13 15:04:40,708 - settings: ERROR 卸载设备 9274d2c7-0174-44e6-8423-3f986e2065fc 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:40,709 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:40,731 - settings: ERROR 卸载设备 839abed8-f66e-4c62-acfb-56d641c98515 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:04:40,731 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:04:40,973 - settings: INFO Excavator update!
+2021-09-13 15:04:41,381 - settings: INFO Para truck update!
+2021-09-13 15:04:44,009 - settings: INFO 矿卡位于路段:
+2021-09-13 15:04:44,009 - settings: INFO {}
+2021-09-13 15:04:44,656 - settings: INFO 矿卡当前速度:
+2021-09-13 15:04:44,656 - settings: INFO {'f68909a0-e644-415f-a140-15c19f162b8f': 0.0, 'aae4642f-f74b-4514-971e-c800a4182152': 0.0, '7266b283-6e13-4acf-9b65-0f31a1fe4e3d': 0.0, 'dd8f0405-1ade-4d23-8985-2a1e603c5c2a': 0.0, 'e0118ce2-7644-4f6e-aadc-8e0c33b11241': 0.0, '5221a7f5-0a90-482f-b2bd-c902110a792d': 0.0, '773ec2e8-ca5a-4776-96bf-4bafdc737e20': 0.0, '31c1c93a-b037-4ab6-88b6-eef6cd23804b': 0.0, 'e2690b20-37b4-4d2d-b490-aa30989798d6': 0.0, '670259cf-0ff2-4856-943c-94d4c25ca533': 10.0, '08bdc980-b0b0-4c24-b26f-3393299ba2c7': 0.0, '35bd9fcc-e57e-4e6d-854d-b6f1f16f6b19': 0.0, 'fa028808-a3f0-47dd-9929-f23e2cac2bf8': 0.0, '5f010e86-3398-4f88-a0e7-27d104cc8bbd': 0.0, '1b787c4a-210a-46ce-a32c-73cbc1cd5e39': 0.0, 'fb1d5516-9a42-4f6e-84fe-9955723badce': 0.0}
+2021-09-13 15:04:44,720 - settings: INFO 存在矿卡的路段:
+2021-09-13 15:04:44,720 - settings: INFO []
+2021-09-13 15:05:01,488 - settings: INFO 真实路网距离-驶往挖机:
+2021-09-13 15:05:01,489 - settings: INFO [[2747 1308]
+ [3636 2197]]
+2021-09-13 15:05:01,489 - settings: INFO 真实路网距离-驶往卸点:
+2021-09-13 15:05:01,489 - settings: INFO [[2810 1303]
+ [3702 2195]]
+2021-09-13 15:05:01,489 - settings: INFO 真实备停区路网距离-驶往挖机:
+2021-09-13 15:05:01,489 - settings: INFO [[2594 1155]]
+2021-09-13 15:05:01,490 - settings: INFO 阻塞路网距离-驶往挖机:
+2021-09-13 15:05:01,490 - settings: INFO [[2747 1308]
+ [3636 2197]]
+2021-09-13 15:05:01,490 - settings: INFO 阻塞路网距离-驶往卸点:
+2021-09-13 15:05:01,490 - settings: INFO [[2810 1303]
+ [3702 2195]]
+2021-09-13 15:05:01,490 - settings: INFO 阻塞备停区路网距离-驶往挖机：
+2021-09-13 15:05:01,490 - settings: INFO [[2594 1155]]
+2021-09-13 15:05:01,490 - settings: INFO Excavator update!
+2021-09-13 15:05:01,807 - settings: INFO Dump update!
+2021-09-13 15:05:01,938 - settings: ERROR 卸载设备 9274d2c7-0174-44e6-8423-3f986e2065fc 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:05:01,938 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:05:01,987 - settings: ERROR 卸载设备 839abed8-f66e-4c62-acfb-56d641c98515 出入场时间信息缺失, 已设为默认值(1min)
+2021-09-13 15:05:01,987 - settings: ERROR 'NoneType' object is not iterable
+2021-09-13 15:05:02,692 - settings: INFO 最大产量调度模式
+2021-09-13 15:05:02,692 - settings: INFO road_factor
+2021-09-13 15:05:02,693 - settings: INFO [[0.00063864 0.00084136]
+ [0.00029614 0.00049886]]
+2021-09-13 15:05:02,693 - settings: INFO [[0.0005494 0.0002616]
+ [0.0007272 0.0004394]]
+2021-09-13 15:05:02,706 - settings: INFO 最大产量:8322.3505
+2021-09-13 15:05:02,706 - settings: INFO 各变量取值:
+2021-09-13 15:05:02,707 - settings: INFO 重运车流:[[0.0, 3322.3505], [5000.0, 0.0]] 单位: 吨/时
+2021-09-13 15:05:02,707 - settings: INFO 空运车流:[[0.0, 5000.0], [3322.3505, 0.0]] 单位: 吨/时
+2021-09-13 15:05:18,074 - settings: INFO 真实路网距离-驶往挖机:
+2021-09-13 15:05:18,074 - settings: INFO [[2747 1308]
+ [3636 2197]]
+2021-09-13 15:05:18,074 - settings: INFO 真实路网距离-驶往卸点:
+2021-09-13 15:05:18,074 - settings: INFO [[2810 1303]
+ [3702 2195]]
+2021-09-13 15:05:18,075 - settings: INFO 真实备停区路网距离-驶往挖机:
+2021-09-13 15:05:18,075 - settings: INFO [[2594 1155]]
+2021-09-13 15:05:18,076 - settings: INFO 阻塞路网距离-驶往挖机:
+2021-09-13 15:05:18,076 - settings: INFO [[2747 1308]
+ [3636 2197]]
+2021-09-13 15:05:18,076 - settings: INFO 阻塞路网距离-驶往卸点:
+2021-09-13 15:05:18,076 - settings: INFO [[2810 1303]
+ [3702 2195]]
+2021-09-13 15:05:18,076 - settings: INFO 阻塞备停区路网距离-驶往挖机：
+2021-09-13 15:05:18,076 - settings: INFO [[2594 1155]]
+2021-09-13 15:05:18,076 - settings: INFO ==========================================================
+2021-09-13 15:05:18,076 - settings: INFO 调度矿卡 e2690b20-37b4-4d2d-b490-aa30989798d6 0 zxt_001
+2021-09-13 15:05:18,076 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-09-13 15:05:18,077 - settings: INFO 矿卡行程：无
+2021-09-13 15:05:18,077 - settings: INFO 涉及挖机：['34436ef4-4224-48b5-adcd-2d251777afe4', 'daa8685d-243f-410c-8657-78f368e34643']
+2021-09-13 15:05:18,077 - settings: INFO 行程时间：[6.52222222 2.54166667]
+2021-09-13 15:05:18,077 - settings: INFO 行驶时间：[6.52222222 2.54166667]
+2021-09-13 15:05:18,077 - settings: INFO 物料类型
+2021-09-13 15:05:18,077 - settings: INFO 挖机物料优先级
+2021-09-13 15:05:18,077 - settings: INFO [1. 1.]
+2021-09-13 15:05:18,077 - settings: INFO 挖机设备优先级
+2021-09-13 15:05:18,077 - settings: INFO [1. 2.]
+2021-09-13 15:05:18,078 - settings: INFO transport_value
+2021-09-13 15:05:18,078 - settings: INFO [[2594 1155]]
+2021-09-13 15:05:18,089 - settings: INFO 目的地：daa8685d-243f-410c-8657-78f368e34643
+2021-09-13 15:05:18,089 - settings: INFO ==========================================================
+2021-09-13 15:05:34,862 - settings: INFO 真实路网距离-驶往挖机:
+2021-09-13 15:05:34,862 - settings: INFO [[2747 1308]
+ [3636 2197]]
+2021-09-13 15:05:34,862 - settings: INFO 真实路网距离-驶往卸点:
+2021-09-13 15:05:34,862 - settings: INFO [[2810 1303]
+ [3702 2195]]
+2021-09-13 15:05:34,862 - settings: INFO 真实备停区路网距离-驶往挖机:
+2021-09-13 15:05:34,862 - settings: INFO [[2594 1155]]
+2021-09-13 15:05:34,862 - settings: INFO 阻塞路网距离-驶往挖机:
+2021-09-13 15:05:34,862 - settings: INFO [[2747 1308]
+ [3636 2197]]
+2021-09-13 15:05:34,863 - settings: INFO 阻塞路网距离-驶往卸点:
+2021-09-13 15:05:34,863 - settings: INFO [[2810 1303]
+ [3702 2195]]
+2021-09-13 15:05:34,863 - settings: INFO 阻塞备停区路网距离-驶往挖机：
+2021-09-13 15:05:34,863 - settings: INFO [[2594 1155]]
+2021-09-13 15:05:34,863 - settings: INFO ==========================================================
+2021-09-13 15:05:34,863 - settings: INFO 调度矿卡 5221a7f5-0a90-482f-b2bd-c902110a792d 1 NTE200-4（18#）
+2021-09-13 15:05:34,863 - settings: INFO 矿卡状态：矿卡启动或故障恢复
+2021-09-13 15:05:34,863 - settings: INFO 矿卡行程：无
+2021-09-13 15:05:34,863 - settings: INFO 涉及挖机：['34436ef4-4224-48b5-adcd-2d251777afe4', 'daa8685d-243f-410c-8657-78f368e34643']
+2021-09-13 15:05:34,864 - settings: INFO 行程时间：[6.52222222 2.54166667]
+2021-09-13 15:05:34,864 - settings: INFO 行驶时间：[6.52222222 2.54166667]
+2021-09-13 15:05:34,864 - settings: INFO 物料类型
+2021-09-13 15:05:34,864 - settings: INFO 挖机物料优先级
+2021-09-13 15:05:34,864 - settings: INFO [1. 1.]
+2021-09-13 15:05:34,864 - settings: INFO 挖机设备优先级
+2021-09-13 15:05:34,864 - settings: INFO [1. 2.]
+2021-09-13 15:05:34,865 - settings: INFO transport_value
+2021-09-13 15:05:34,865 - settings: INFO [[2594 1155]]
+2021-09-13 15:05:34,865 - settings: INFO 目的地：daa8685d-243f-410c-8657-78f368e34643
+2021-09-13 15:05:34,865 - settings: INFO ==========================================================

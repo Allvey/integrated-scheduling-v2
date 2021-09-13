@@ -14,37 +14,42 @@ from sqlalchemy import Column, create_engine
 from sqlalchemy import VARCHAR, DateTime, Float, Integer, BOOLEAN
 from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.ext.declarative import declarative_base
-# import numpy as np
-# from redis import StrictRedis, ConnectionPool
-# import redis
-# from datetime import datetime, timedelta
-# import copy
-# import json
-# import sched
-# import time
+from urllib.parse import quote
+from settings import *
 
-
-# 创建对象的基类:
 Base = declarative_base()
 
-# 初始化数据库连接:
-engine_mysql = create_engine('mysql+mysqlconnector://root:Huituo@123@192.168.28.111:3306/waytous')
+try:
+    engine_mysql = create_engine(
+        "mysql+mysqlconnector://root:%s@192.168.28.111:3306/waytous"
+        % quote("Huituo@123")
+    )
 
-engine_postgre = create_engine('postgresql://postgres:Huituo@123@192.168.28.111:5432/shenbao_2021520')
+    engine_postgre = create_engine(
+        "postgresql://postgres:%s@192.168.28.111:5432/shenbao_2021520"
+        % quote("Huituo@123")
+    )
 
-# 创建DBsession_mysql类型:
-DBsession_mysql = sessionmaker(bind=engine_mysql)
+    # 创建DBsession_mysql类型:
+    DBsession_mysql = sessionmaker(bind=engine_mysql)
 
-DBsession_mysql = scoped_session(DBsession_mysql)
+    DBsession_mysql = scoped_session(DBsession_mysql)
 
-DBsession_postgre = sessionmaker(bind=engine_postgre)
+    DBsession_postgre = sessionmaker(bind=engine_postgre)
 
-DBsession_postgre = scoped_session(DBsession_postgre)
+    DBsession_postgre = scoped_session(DBsession_postgre)
 
-# 创建session_mysql对象:
-session_mysql = DBsession_mysql()
+    # 创建session_mysql对象:
+    session_mysql = DBsession_mysql()
 
-session_postgre = DBsession_postgre()
+    session_mysql.expire_on_commit = False
+
+    session_postgre = DBsession_postgre()
+
+    session_postgre.expire_on_commit = False
+except Exception as es:
+    logger.error("数据库连接失败")
+    logger.error(es)
 
 
 # 定义对象:
