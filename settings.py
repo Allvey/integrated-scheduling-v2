@@ -11,7 +11,6 @@
 from tables import *
 from urllib.parse import quote
 import logging.handlers
-from redis import StrictRedis, ConnectionPool
 import numpy as np
 import os
 from redis import StrictRedis, ConnectionPool
