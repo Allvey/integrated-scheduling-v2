@@ -48,11 +48,11 @@ class PathPlanner(WalkManage):
         to_unload_cost = 0
         # 装载道路总成本初始化
         to_load_cost = 0
-        # 道路权重
-        weighted_distance = weighted_walk_cost()
+        # # 道路权重
+        # weighted_distance = weighted_walk_cost()
 
         # 修正因子
-        weight = 100
+        weight = 60
         # 阻塞成本权重
         alpha = 0
         # 距离成本权重
@@ -101,6 +101,10 @@ class PathPlanner(WalkManage):
 
                 to_unload_cost = alpha * cost_to_unload_blockage + beta * path.to_unload_distance
                 to_load_cost = alpha * cost_to_load_blockage + beta * path.to_load_distance
+                # print("拥堵因子-挖机")
+                # print(alpha, cost_to_load_blockage)
+                # print("拥堵因子-卸点")
+                # print(alpha, cost_to_unload_blockage)
         except Exception as es:
             logger.error(f'道路{load_area_id + "-" +unload_area_id}行驶成本计算异常')
             logger.error(es)
@@ -135,6 +139,9 @@ class PathPlanner(WalkManage):
         self.period_walk_para_load()
 
         self.period_map_para_load()
+
+        # 计算行驶成本前，更新路网速度信息
+        self.lane.lane_speed_generate()
 
         try:
             # 读取路网成本

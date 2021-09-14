@@ -27,8 +27,8 @@ import time
 log_path = "/usr/local/fleet-log/dispatch"
 
 # 创建日志目录
-if not os.path.exists(log_path):
-    os.mkdir(log_path)
+# if not os.path.exists(log_path):
+#     os.mkdir(log_path)
 
 # logging初始化工作
 logging.basicConfig()
@@ -38,8 +38,8 @@ logger.setLevel(logging.INFO)
 
 
 # timefilehandler = logging.handlers.TimedRotatingFileHandler(log_path + "/dispatch.log", when='M', interval=1, backupCount=60)
-filehandler = logging.handlers.RotatingFileHandler(log_path + "/dispatch.log", maxBytes=3*1024*1024, backupCount=10)
-# filehandler = logging.handlers.RotatingFileHandler("./Logs/dispatch.log", maxBytes=3 * 1024 * 1024, backupCount=10)
+# filehandler = logging.handlers.RotatingFileHandler(log_path + "/dispatch.log", maxBytes=3*1024*1024, backupCount=10)
+filehandler = logging.handlers.RotatingFileHandler("./Logs/dispatch.log", maxBytes=3 * 1024 * 1024, backupCount=10)
 # 设置后缀名称，跟strftime的格式一样
 filehandler.suffix = "%Y-%m-%d_%H-%M.log"
 

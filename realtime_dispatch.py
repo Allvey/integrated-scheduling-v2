@@ -393,6 +393,8 @@ class Dispatcher(WalkManage):
         # 卸载设备可用时间
         self.update_dump_ava_time(dump_reach_list)
 
+        self.cost_to_excavator, self.cost_to_dump, self.cost_park_to_excavator = self.path.walk_cost()
+
 
     def sim_para_reset(self):
 
@@ -406,7 +408,7 @@ class Dispatcher(WalkManage):
         rule3 = session_mysql.query(DispatchRule).filter_by(id=3).first().disabled
         rule4 = session_mysql.query(DispatchRule).filter_by(id=4).first().disabled
 
-        cost_to_excavator, cost_to_dump, cost_park_to_excavator = self.path.walk_cost()
+        # cost_to_excavator, cost_to_dump, cost_park_to_excavator = self.path.walk_cost()
 
         excavator_priority_coefficient = self.excavator.excavator_priority_coefficient
 
@@ -459,7 +461,7 @@ class Dispatcher(WalkManage):
             if truck_id in self.truck.truck_excavator_bind:
                 target = self.excavator_uuid_to_index_dict[self.truck.truck_excavator_bind[truck_id]]
             else:
-                transport_value = cost_park_to_excavator
+                transport_value = self.cost_park_to_excavator
 
                 logger.info("transport_value")
                 logger.info(transport_value)
@@ -514,7 +516,7 @@ class Dispatcher(WalkManage):
                 if truck_id in self.truck.truck_material_bind:
                     logger.info(self.truck.truck_material_bind[truck_id])
                 logger.info("驶往卸点的运输成本")
-                logger.info(cost_to_dump)
+                logger.info(self.cost_to_dump)
                 logger.info("卸点物料修正")
                 logger.info(self.truck.dump_material_bind_modify)
 
@@ -530,7 +532,7 @@ class Dispatcher(WalkManage):
                         break
             else:
                 if rule3 and rule4:
-                    transport_value = cost_to_dump[:, int(trip[1])]
+                    transport_value = self.cost_to_dump[:, int(trip[1])]
                 else:
                     transport_value = (self.actual_goto_dump_traffic_flow[int(trip[1]), :] + 0.001) \
                                     / (self.opt_goto_dump_traffic_flow[int(trip[1]), :] + 0.001)
@@ -590,7 +592,7 @@ class Dispatcher(WalkManage):
                 if truck_id in self.truck.truck_material_bind:
                     logger.info(self.truck.truck_material_bind[truck_id])
                 logger.info("驶往挖机的运输成本")
-                logger.info(cost_to_excavator)
+                logger.info(self.cost_to_excavator)
                 logger.info("挖机物料修正")
                 logger.info(self.truck.excavator_material_bind_modify)
                 logger.info("挖机优先级修正")
@@ -603,7 +605,7 @@ class Dispatcher(WalkManage):
                 target = self.excavator_uuid_to_index_dict[self.truck.truck_excavator_bind[truck_id]]
             else:
                 if rule3 and rule4:
-                    transport_value = cost_to_excavator[int(trip[1]), :]
+                    transport_value = self.cost_to_excavator[int(trip[1]), :]
                 else:
                     transport_value = (self.actual_goto_excavator_traffic_flow[trip[1], :] + 0.001) \
                                         / (self.opt_goto_excavator_traffic_flow[trip[1], :] + 0.001)
